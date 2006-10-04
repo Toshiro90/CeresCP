@@ -1,0 +1,48 @@
+Date		Added
+2006/10/03
+	* Fixed errors in emblems.php, adminquery.php, ladder.php and functions.php [BeoWulf]
+
+2006/10/03
+	* Changed all session maybe now there is no conflict with 2 cps in same machine [BeoWulf]
+
+2006/09/22
+	* Added some fuzzy to code image. [BeoWulf]
+
+2006/09/18
+	* Created first trial of an install script. [BeoWulf]
+	* Fixed install script checks and w3c instructions. [BeoWulf]
+	* Changed INSTALL.TXT instructions to fit the new install script. [BeoWulf]
+
+2006/09/18
+	* Added jail check to position.php so jailed characters may not reset
+		their position. [Entwined]
+	* Added Post functions do ajax engine. [BeoWulf]
+	* Changed login.php from get to post. [BeoWulf]
+	* Fixed whoisonline.php adjust to show position to minimum admin level set 
+		in config.php. [BeoWulf]
+	* Added check in functions.php to destroy session if you use more than one
+		CP in same machine when changing beteween them use different names 
+		for the CPs or it can be exploitable, still working on a different 
+		solution. [BeoWulf]
+	* Changed admincharinfo.php to a beta test in changing stored char_id in 
+		equip slots into something we can read. [BeoWulf]
+	* Added adminchars.php still working on it, to manage chars. [BeoWulf]
+	* Added money.php testing a 2 minutes ban after transfer. [BeoWulf]
+	* Added marriage.php testing a 2 minutes ban after divorce. [BeoWulf]
+	* Added guild.php if castle name is not defined it will skip and not show. [BeoWulf]
+	* Added dutch and indonesian to languages. [BeoWulf]
+	* Fixed some stuff in other language files, but still need translations. [BeoWulf]
+	* Fixed ladder.php and about.php to show the new classes. [BeoWulf]
+
+2006/09/14
+	* Added map and gm level check for position reset, so you can't reset your position if your in jail [Entwined]
+	* Added install/sql/rag_ragsrvinfo.sql and install/npc/agit_status.txt. You will have to install both of 
+		these correctly for agit status	check to work. [Entwined]
+	* Added ceres.php for control panel information [Entwined]
+	* Added max account check for account registration [Entwined]
+
+2006/09/13
+	* Added IP address field insertion on registrations (last_ip) [Entwined]
+	* Added an email verification field for account registration. [Entwined]
+	* Added some config settings for future use. [Entwined]
+	* Created the initial repository of CeresCP (rev4) as the working base. [Entwined]
