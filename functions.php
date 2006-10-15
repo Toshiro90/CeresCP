@@ -298,9 +298,7 @@ function check_ban() {
 
 	if ($result->count()) {
 		while ($line = $result->fetch_row()) {
-			if ($line[2] == 5)
-				return 1;
-			if ($line[1] > 0 && (time() - $line[0]) < 86400) //1 dia
+			if (($line[2] == 5 || $line[1] > 0) && (time() - $line[0]) < (86400 * 2)) //2 dias
 				return 1;
 		}
 	}
