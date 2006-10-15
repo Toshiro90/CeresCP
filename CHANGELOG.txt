@@ -1,9 +1,15 @@
 Date		Added
-2006/10/03
-	* Fixed errors in emblems.php, adminquery.php, ladder.php and functions.php [BeoWulf]
+2006/10/15
+	* Added a one day ipban to users blocked, it will keep then out to think about
+	what they did and can't creat accounts with ofensive nicks against GMs. [BeoWulf]
+	* Small fix in server_status.php, and a change in account.php so now its
+	post not get (internal stuff). [BeoWulf]
 
 2006/10/03
-	* Changed all session maybe now there is no conflict with 2 cps in same machine [BeoWulf]
+	* Fixed errors in emblems.php, adminquery.php, ladder.php and functions.php. [BeoWulf]
+
+2006/10/03
+	* Changed all session maybe now there is no conflict with 2 cps in same machine. [BeoWulf]
 
 2006/09/22
 	* Added some fuzzy to code image. [BeoWulf]

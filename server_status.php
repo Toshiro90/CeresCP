@@ -74,7 +74,7 @@ if ($CONFIG_show_rates)
 if ($CONFIG_agit_check)
 	echo "<tr><td = align=\"left\"><b>".$lang['AGIT']."&nbsp;</b></td><td>".$agit_status."</td></tr>";
 if ($quantos)
-        echo "<tr><td align=\"right\"><b><span title=\"See who's playing right now\" style=\"cursor:pointer\" onMouseOver=\"this.style.color='#FF3300'\" onMouseOut=\"this.style.color='#000000'\" ononClick=\"LINK_ajax('whoisonline.php','main_div');\">".$lang['SERVERSTATUS_USERSONLINE']."&nbsp;</span></b></td><td align=\"right\">$quantos</td></tr>";
+        echo "<tr><td align=\"right\"><b><span title=\"See who is online\" style=\"cursor:pointer\" onMouseOver=\"this.style.color='#FF3300'\" onMouseOut=\"this.style.color='#000000'\" onClick=\"LINK_ajax('whoisonline.php','main_div');\">".$lang['SERVERSTATUS_USERSONLINE']."&nbsp;</span></b></td><td align=\"right\">$quantos</td></tr>";
 else
         echo "<tr><td align=\"right\"><b>".$lang['SERVERSTATUS_USERSONLINE']."&nbsp;</b></td><td align=\"right\">$quantos</td></tr>";
 

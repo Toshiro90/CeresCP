@@ -292,6 +292,22 @@ function online_count() {
 	return $result->row[0];
 }
 
+function check_ban() {
+	$query = sprintf(CHECK_BAN, $_SERVER['REMOTE_ADDR']);
+	$result = execute_query($query, 'check_ban', 0, 0);
+
+	if ($result->count()) {
+		while ($line = $result->fetch_row()) {
+			if ($line[2] == 5)
+				return 1;
+			if ($line[1] > 0 && (time() - $line[0]) < 86400) //1 dia
+				return 1;
+		}
+	}
+
+	return 0;
+}
+
 function forger($hint, $lint) {
 	$result = 0;
 	$result = $lint * 65536;

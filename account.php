@@ -28,10 +28,10 @@ include_once 'config.php'; // loads config variables
 include_once 'query.php'; // imports queries
 include_once 'functions.php';
 
-if ($CONFIG_disable_account)
+if ($CONFIG_disable_account || check_ban())
 	redir("motd.php", "main_div", "Disabled");
 
-if (!empty($CONFIG_max_accounts)) {
+if ($CONFIG_max_accounts) {
 	$query = sprintf(MAX_ACCOUNTS);
 	$result = execute_query($query, 'account.php');
 	$maxaccounts = $result->fetch_row();
@@ -39,55 +39,55 @@ if (!empty($CONFIG_max_accounts)) {
 		redir("motd.php", "main_div", $lang['ACCOUNT_MAX_REACHED']);
 }
 
-if (isset($GET_opt)) {
-	if ($GET_opt == 1 && isset($GET_frm_name) && !strcmp($GET_frm_name, "account")) {
+if (isset($POST_opt)) {
+	if ($POST_opt == 1 && isset($POST_frm_name) && !strcmp($POST_frm_name, "account")) {
 		$session = $_SESSION[$CONFIG_name.'sessioncode'];
 		if ($CONFIG_auth_image && function_exists("gd_info")
-			&& strtoupper($GET_code) != substr(strtoupper(md5("Mytext".$session['account'])), 0,6))
+			&& strtoupper($POST_code) != substr(strtoupper(md5("Mytext".$session['account'])), 0,6))
 			alert($lang['INCORRECT_CODE']);
 
-		if (inject($GET_username) || inject($GET_password) || inject($GET_email))
+		if (inject($POST_username) || inject($POST_password) || inject($POST_email))
 			alert($lang['INCORRECT_CHARACTER']);
 
-		if (strlen(trim($GET_username)) < 4 || strlen(trim($GET_username)) > 23)
+		if (strlen(trim($POST_username)) < 4 || strlen(trim($POST_username)) > 23)
 			alert($lang['USERNAME_LENGTH']);
 
-		if ($CONFIG_safe_pass && (strlen(trim($GET_password)) < 6 || strlen(trim($GET_password)) > 23))
+		if ($CONFIG_safe_pass && (strlen(trim($POST_password)) < 6 || strlen(trim($POST_password)) > 23))
 			alert($lang['PASSWORD_LENGTH']);
 
-		if (strlen(trim($GET_password)) < 4 || strlen(trim($GET_password)) > 23)
+		if (strlen(trim($POST_password)) < 4 || strlen(trim($POST_password)) > 23)
 			alert($lang['PASSWORD_LENGTH_OLD']);
 
-		if (!strcmp($GET_password, $GET_username)) // passwords e username iguais
+		if (!strcmp($POST_password, $POST_username)) // passwords e username iguais
 			alert($lang['PASSWORD_REJECTED']);
 
-		if (strcmp($GET_password, $GET_confirm))
+		if (strcmp($POST_password, $POST_confirm))
 			alert($lang['PASSWORD_NOT_MATCH']);
 
-		if ($CONFIG_safe_pass && thepass(trim($GET_password)))
+		if ($CONFIG_safe_pass && thepass(trim($POST_password)))
 			alert($lang['PASSWORD_REJECTED']);
 
-		if (strlen($GET_email) < 7 || !strstr($GET_email, '@'))
+		if (strlen($POST_email) < 7 || !strstr($POST_email, '@'))
 			alert($lang['EMAIL_NEEDED']);
 
-		$query = sprintf(CHECK_USERID, trim($GET_username));
+		$query = sprintf(CHECK_USERID, trim($POST_username));
 		$result = execute_query($query, 'account.php');
 
 		if ($result->count())
 			alert($lang['USERNAME_IN_USE']);
 
-		if ($GET_sex) 
-			$GET_sex = 'F';
+		if ($POST_sex) 
+			$POST_sex = 'F';
 		else
-			$GET_sex = 'M';
+			$POST_sex = 'M';
 
 		if ($CONFIG_md5_pass)
-			$GET_password = md5($GET_password);
+			$POST_password = md5($POST_password);
 
-		$query = sprintf(INSERT_CHAR, trim($GET_username), trim($GET_password), $GET_sex, $GET_email, $_SERVER['REMOTE_ADDR']);
+		$query = sprintf(INSERT_CHAR, trim($POST_username), trim($POST_password), $POST_sex, $POST_email, $_SERVER['REMOTE_ADDR']);
 		$result = execute_query($query, 'account.php');
 
-		$query = sprintf(CHECK_ACCOUNTID, trim($GET_username), trim($GET_password));
+		$query = sprintf(CHECK_ACCOUNTID, trim($POST_username), trim($POST_password));
 		$result = execute_query($query, 'account.php');
 		
 		if ($line = $result->fetch_row()) {
@@ -105,7 +105,7 @@ $_SESSION[$CONFIG_name.'sessioncode'] = $session;
 
 	opentable($lang['NEW_ACCOUNT']);
 	echo "
-	<form id=\"account\" onSubmit=\"return GET_ajax('account.php','main_div','account');\"><table>
+	<form id=\"account\" onSubmit=\"return POST_ajax('account.php','main_div','account');\"><table>
 	<tr><td align=\"right\">".$lang['USERNAME'].":</td><td align=\"left\">
 	<input type=\"text\" name=\"username\" maxlength=\"23\" size=\"23\" onKeyPress=\"return force(this.name,this.form.id,event);\">
 	</td></tr>

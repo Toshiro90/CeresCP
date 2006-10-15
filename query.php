@@ -34,6 +34,7 @@ DEFINE('UPDATE_STATUS', "UPDATE `server_status` SET last_checked = NOW(), status
 DEFINE('INSERT_STATUS', "INSERT INTO `server_status` VALUES(NOW(), '0')");
 DEFINE('ABOUT_RATES', "SELECT exp, jexp, `drop` FROM `ragsrvinfo` WHERE `name` = '%s'");
 DEFINE('RATES_AGIT', "SELECT exp, jexp, `drop`, agit_status FROM `ragsrvinfo` WHERE `name` = '%s'");
+DEFINE('CHECK_BAN', "SELECT `lastlogin`, `ban_until`, `state` FROM `login` WHERE `last_ip` = '%s'");
 
 //verificando status online
 DEFINE('IS_ONLINE', "SELECT COUNT(1) FROM `char` WHERE online != '0' AND account_id = '%d'");
