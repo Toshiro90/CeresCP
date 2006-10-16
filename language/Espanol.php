@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 Ceres Control Panel
 
