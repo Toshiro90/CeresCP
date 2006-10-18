@@ -125,7 +125,7 @@ if (isset($POST_install)) {
 
 
 	//write the config.php file
-	$buffer = "<?\n";
+	$buffer = "<?php\n";
 	$buffer .= "/*\n";
 	$buffer .= "Ceres Control Panel\n";
 	$buffer .= "\n";
