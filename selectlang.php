@@ -29,7 +29,7 @@ include_once 'functions.php';
 
 $langdir = opendir ("language/");
 while ($file = readdir($langdir)) {
-	if (substr($file, strlen($file) - 4, 4) == ".php") {
+	if (strcmp(substr($file, strlen($file) - 4, 4), ".php") == 0) {
 		$file = substr($file, 0, strlen($file) - 4);
 		if (strcmp($file, "index") != 0 && strcmp($file, "language") != 0)
 			$idiom[] = $file;

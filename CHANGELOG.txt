@@ -1,4 +1,7 @@
 Date		Added
+2006/10/18
+	* Fixed an exploit in language.php [BeoWulf]
+
 2006/10/15
 	* Added a one day ipban to users blocked, it will keep then out to think about
 	what they did and can't creat accounts with ofensive nicks against GMs. [BeoWulf]

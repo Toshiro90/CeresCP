@@ -35,7 +35,7 @@ if (isset($GET_lang)){
 	$load = $CONFIG_language.".php";
 }
 
-if (!(is_file("./language/".$load)))
+if (!is_file("./language/".$load) || strpos($load, "..") !== false || inject($load))
 	$load = "English.php";
 
 include($load);
