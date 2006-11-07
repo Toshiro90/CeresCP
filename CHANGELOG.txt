@@ -1,4 +1,7 @@
-Date		Added
+Date
+2006/10/23
+	* Added a variable in recover.php [BeoWulf]
+
 2006/10/18
 	* Fixed an exploit in language.php [BeoWulf]
 
