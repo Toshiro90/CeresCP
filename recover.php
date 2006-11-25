@@ -76,7 +76,7 @@ echo "
 if ($CONFIG_auth_image && function_exists("gd_info")) {
 	echo "<tr><td align=\"right\">".$lang['CODE'].":</td><td align=\"left\">
 	<input type=\"text\" name=\"code\" maxlength=\"6\" size=\"6\" onKeyPress=\"return force(this.name,this.form.id,event);\">&nbsp;
-	<img src=\"img.php?img=login&var=$var\" alt=\"".$lang['SECURITY_CODE']."\"></td></tr>";
+	<img src=\"img.php?img=recover&var=$var\" alt=\"".$lang['SECURITY_CODE']."\"></td></tr>";
 }
 
 echo "
