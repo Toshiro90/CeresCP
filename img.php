@@ -44,5 +44,5 @@ for ($i = 0; $i < 40; $i++) {
 imagepng($im);
 imagedestroy($im);
 
-fim();
+exit(0);
 ?>
