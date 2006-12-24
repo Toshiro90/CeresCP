@@ -81,14 +81,14 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 								</div>
 								<script type="text/javascript">LINK_ajax('login.php', 'login_div');</script>
 								<div id="new_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
-									<script type="text/javascript">login_hide(2);</script>
 								</div>
+								<script type="text/javascript">login_hide(2);</script>
 								<div id="status_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
-									<script type="text/javascript">server_status();</script>
 								</div>
+								<script type="text/javascript">server_status();</script>
 								<div id="selectlang_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
-									<script type="text/javascript">LINK_ajax('selectlang.php', 'selectlang_div');</script>
 								</div>
+								<script type="text/javascript">LINK_ajax('selectlang.php', 'selectlang_div');</script>
 							</td>
 						</tr>
 					</table>
