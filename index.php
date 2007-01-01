@@ -64,7 +64,6 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 			<tr>
 				<td style="height:25px" colspan="5" bgcolor="#6186AF"  width="100%">
 					<div id="sub_menu" style="color:#FFFFFF; font-weight:bold">&nbsp;</div>
-					<script type="text/javascript">load_menu();</script>
 				</td>
 			</tr>
 			<tr valign=top>
@@ -74,21 +73,16 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 							<td valign="top" bgcolor="#FFFFFF" colspan="2" width="600" style="height:100%">
 								<div id="main_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
 								</div>
-								<script type="text/javascript">LINK_ajax('motd.php', 'main_div');</script>
 							</td>
 							<td bgcolor="#D0D9E0" valign="top" width="156" rowspan="5" style="height:100%">
 								<div id="login_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
 								</div>
-								<script type="text/javascript">LINK_ajax('login.php', 'login_div');</script>
 								<div id="new_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
 								</div>
-								<script type="text/javascript">login_hide(2);</script>
 								<div id="status_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
 								</div>
-								<script type="text/javascript">server_status();</script>
 								<div id="selectlang_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
 								</div>
-								<script type="text/javascript">LINK_ajax('selectlang.php', 'selectlang_div');</script>
 							</td>
 						</tr>
 					</table>
@@ -112,6 +106,14 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 				</td>
 			</tr>
 		</table>
+		<script type="text/javascript">
+			load_menu();
+			LINK_ajax('motd.php', 'main_div');
+			LINK_ajax('login.php', 'login_div');
+			login_hide(2);
+			server_status()
+			LINK_ajax('selectlang.php', 'selectlang_div');
+		</script>
 	</body>
 </html>
 

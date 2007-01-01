@@ -1,4 +1,7 @@
 Date
+2007/01/01
+	* Fixed Firefox incompatibility, stupid browser [BeoWulf]
+
 2006/12/03
 	* Reviewed img.php and middle.php files with help of gunawan wibisono [BeoWulf]
 
