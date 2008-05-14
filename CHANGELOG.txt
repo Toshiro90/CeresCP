@@ -1,4 +1,14 @@
 Date
+2008/05/14
+	* Fixed a bug with reset position leting a jailed person to get out, reported by panchox
+	at ea boards (and thanks for the temporary fix, brianlew, we really appreciated it) [Dekamaster]
+
+------------------
+We are retaking the project today (2008/05/14), we'll be slowly adding new stuffs to the control
+panel and fixing old bugs, if you have a bug to report you are welcome to share it with us at
+cerescp@gmail.com (yes we are reading it again)
+------------------
+
 2007/01/01
 	* Fixed Firefox incompatibility, stupid browser [BeoWulf]
 

@@ -39,12 +39,11 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 				if (inject($GET_GID1)) 
 					alert($lang['POSITION_RESET']);
 
-				$query = sprintf(GET_SAVE_POSITION, $GET_GID1);
+				$query = sprintf(GET_SAVE_POSITION, $GET_GID1, $GET_GID1);
 				$result = execute_query($query, "position.php");
+				if ($result->count() < 1) alert($lang['POSITION_JAIL']);
 				$line = $result->fetch_row();
 				$last_map = $line[1];
-				if ($last_map == $CONFIG_prison_map && $_SESSION[$CONFIG_name.'level'] < $CONFIG_gm_level)
-					alert($lang['POSITION_JAIL']);
 				$last_x = $line[2];
 				$last_y = $line[3];
 				$zeny = $line[4];
@@ -57,7 +56,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 			}
 		}
 
-		$query = sprintf(CHAR_GET_CHARS, $_SESSION[$CONFIG_name.'account_id']);
+		$query = sprintf(CHAR_GET_CHARS, $_SESSION[$CONFIG_name.'account_id'], $_SESSION[$CONFIG_name.'account_id']);
 		$result = execute_query($query, "position.php");
 
 		if ($result->count() < 1)

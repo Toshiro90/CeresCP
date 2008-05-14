@@ -23,7 +23,7 @@ To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
 
-$revision = 6;
+$revision = 7b;
 
 //functions.php
 //log de queries pra verifica?o posterior
@@ -53,13 +53,13 @@ DEFINE('CHANGE_EMAIL', "UPDATE `login` SET `email` = '%s' WHERE `user_pass` = '%
 DEFINE('CHECK_EMAIL', "SELECT `email` FROM `login` WHERE `account_id` = '%d'");
 
 //position.php reseta o char para a posicaoo certa
-DEFINE('CHAR_GET_CHARS', "SELECT `char_id`, `char_num`, `name`, `class`, `base_level`, `job_level`, `last_map` FROM `char`
-WHERE `account_id` = '%d'
-ORDER BY `char_num`
-");
-DEFINE('GET_SAVE_POSITION', "SELECT `name`, `save_map`, `save_x`, `save_y`, `zeny` FROM `char`
-WHERE `char_id` = '%d'
-");
+DEFINE('CHAR_GET_CHARS', "SELECT `char_id`, `char_num`, `name`, `class`, `base_level`, `job_level`, 
+`last_map` FROM `char` WHERE `account_id` = '%d' and `online`=0 and `char_id` not in (select 
+`char_id` FROM `sc_data` where type=249 and `account_id` = '%d') ORDER BY 
+`char_num`");
+DEFINE('GET_SAVE_POSITION', "SELECT `name`, `save_map`, `save_x`, `save_y`, `zeny` FROM `char` WHERE `char_id` 
+= '%d'  and `online`=0 and `char_id` not in (select `char_id` FROM `sc_data` where type=249 and 
+`char_id` = '%d')");
 DEFINE('FINAL_POSITION', "UPDATE `char` SET `last_map` = '%s', `last_x` = '%d', `last_y` = '%d', `zeny` = '%d'
 WHERE `char_id` = '%d'
 AND `online` = '0'

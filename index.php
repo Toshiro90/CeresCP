@@ -93,7 +93,7 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 					<p style="font-size: 9px; margin-top: 7"><font color="#FFFFFF">
 						Copyright © 2005
 						<span style="cursor:pointer" class="copyright_link" onClick="window.open('http://cerescp.sourceforge.net/');">
-						Ceres Control Panel</span> by Beowulf and Nightroad
+						Ceres Control Panel</span> by Beowulf and Dekamaster
 						<BR>
 						Powered by <span style="cursor:pointer" onClick="window.open('http://en.wikipedia.org/wiki/KISS_principle');">
 							<img src="images/kiss.png" alt="Keep It Simple Stupid! Technology" border="0" align=bottom>
