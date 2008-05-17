@@ -31,21 +31,21 @@ include_once 'functions.php';
 if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 	if ($_SESSION[$CONFIG_name.'account_id'] > 0) {
 
-		if (!empty($GET_opt)) {
-			if ($GET_opt == 1 && isset($GET_frm_name) && !strcmp($GET_frm_name, "changemail")) {
-				if (strlen($GET_email) < 7 || !strstr($GET_email, '@'))
+		if (!empty($POST_opt)) {
+			if ($POST_opt == 1 && isset($POST_frm_name) && !strcmp($POST_frm_name, "changemail")) {
+				if (strlen($POST_email) < 7 || !strstr($POST_email, '@') || !strstr($POST_email, '.'))
 					alert($lang['CHANGEMAIL_MAIL_INVALID']);
 
-				if (inject($GET_email) || inject($GET_login_pass)) 
+				if (inject($POST_email) || inject($POST_login_pass)) 
 					alert($lang['INCORRECT_CHARACTER']);
 
-				if (strlen($GET_login_pass) < 4 || strlen($GET_login_pass) > 23)
+				if (strlen($POST_login_pass) < 4 || strlen($POST_login_pass) > 23)
 					alert($lang['PASSWORD_LENGTH_OLD']);
 
 				if ($CONFIG_md5_pass)
-					$GET_login_pass = md5($GET_login_pass);
+					$POST_login_pass = md5($POST_login_pass);
 
-				$query = sprintf(CHANGE_EMAIL, $GET_email, $GET_login_pass, $_SESSION[$CONFIG_name.'account_id']);
+				$query = sprintf(CHANGE_EMAIL, $POST_email, $POST_login_pass, $_SESSION[$CONFIG_name.'account_id']);
 				$result = execute_query($query, 'changemail.php');
 			}
 		}
@@ -59,7 +59,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 
 	opentable($lang['CHANGEMAIL_CHANGEMAIL']);
 		echo "
-		<form id=\"changemail\" onsubmit=\"return GET_ajax('changemail.php','main_div','changemail')\"><table>
+		<form id=\"changemail\" onsubmit=\"return POST_ajax('changemail.php','main_div','changemail')\"><table>
 		<tr><td align=\"right\">".$lang['CHANGEMAIL_CURRENT_MAIL'].":</td><td align=\"left\">$cemail[0]</td></tr>
 		<tr><td align=\"right\">".$lang['CHANGEMAIL_NEW_MAIL'].":</td><td align=\"left\">
 		<input type=\"text\" name=\"email\" maxlength=\"40\" size=\"40\" onKeyPress=\"return force(this.name,this.form.id,event);\">

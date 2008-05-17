@@ -1,4 +1,8 @@
 Date
+
+2008/05/17
+	* Changed password.php and changemail.php to POST method. [BeoWulf]
+
 2008/05/14
 	* Fixed a bug with reset position leting a jailed person to get out, reported by panchox
 	at ea boards (and thanks for the temporary fix, brianlew, we really appreciated it) [Dekamaster]
