@@ -2,6 +2,11 @@ Date
 
 2008/05/17
 	* Changed password.php and changemail.php to POST method. [BeoWulf]
+	* Fixed the mail sending function, now the recover password function should work, also
+	now that we're using the phpmailer class you should be able to use gmail smtp server too [Dekamaster]
+	* Disabled error report by default [Dekamaster]
+	* Added a definition file for the e-mail template, now you can customize the template of
+	the email that will be sent to your players in /language/mail/ [Dekamaster]
 
 2008/05/14
 	* Fixed a bug with reset position leting a jailed person to get out, reported by panchox

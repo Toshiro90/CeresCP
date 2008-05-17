@@ -90,5 +90,5 @@ extract($CONFIG, EXTR_PREFIX_ALL, "CONFIG");
 extract($_GET, EXTR_PREFIX_ALL, "GET");
 extract($_POST, EXTR_PREFIX_ALL, "POST");
 extract($_SERVER, EXTR_PREFIX_ALL, "SERVER");
-
+error_reporting(0);
 ?>

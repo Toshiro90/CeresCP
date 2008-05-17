@@ -54,9 +54,9 @@ if (!empty($GET_opt)) {
 			$accounts[$i][2] = $result->row[2];
 		}
 
-		email($accounts);
+		$answer=email($accounts);
 
-		redir("motd.php", "main_div", "Mail Sent.");
+		redir("motd.php", "main_div", $answer);
 	}
 }
 

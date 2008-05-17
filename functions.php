@@ -418,4 +418,18 @@ function closetable() {
 	";
 }
 
+function read_maildef($file) {
+	global $lang;
+	if (!($handle = fopen("./language/mail/".$file.".txt", "rt")))
+		die(htmlformat($lang['TXT_ERROR']));
+	$maildef="";
+	while ($line = fgets($handle, 1024)) {
+		if ($line[0] == '/' && $line[1] == '/')
+			continue;
+		$maildef .= $line;
+	}
+	fclose($handle);
+	return $maildef;
+}
+
 ?>

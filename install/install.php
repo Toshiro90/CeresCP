@@ -221,6 +221,7 @@ if (isset($POST_install)) {
 	$buffer .= "extract(\$_GET, EXTR_PREFIX_ALL, \"GET\");\n";
 	$buffer .= "extract(\$_POST, EXTR_PREFIX_ALL, \"POST\");\n";
 	$buffer .= "extract(\$_SERVER, EXTR_PREFIX_ALL, \"SERVER\");\n";
+	$buffer .= "error_reporting(0);\n";
 	$buffer .= "?>\n";
 
 	if (!($handle = fopen ("config.php", "w")))
