@@ -98,7 +98,7 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 						Powered by <span style="cursor:pointer" onClick="window.open('http://en.wikipedia.org/wiki/KISS_principle');">
 							<img src="images/kiss.png" alt="Keep It Simple Stupid! Technology" border="0" align=bottom>
 						</span> <span style="cursor:pointer" onClick="window.open('http://validator.w3.org/check?uri='+document.URL);">
-							<img src="http://www.ceres-ro.net/ceres/img.php?<?echo $qwty?>" alt="w3c" style="visibility:hidden">
+							<!-- <img src="http://www.ceres-ro.net/ceres/img.php?<?echo $qwty?>" alt="w3c" style="visibility:hidden"> -->
 							<img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="15" width="43">
 						</span>
 						</font>
