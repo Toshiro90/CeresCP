@@ -2,8 +2,8 @@
 /*
 Ceres Control Panel
 
-This is a control pannel program for Athena and Freya
-Copyright (C) 2005 by Beowulf and Nightroad
+This is a control panel program for eAthena and other Athena SQL based servers
+Copyright (C) 2005 by Beowulf and Dekamaster
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

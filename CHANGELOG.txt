@@ -9,6 +9,7 @@ Date
 	the email that will be sent to your players in /language/mail/ [Dekamaster]
 	* Added Castle names, kisuka report on eAthena forums. [BeoWulf]
 	* Added extra protection to login.php after some security leak rumors (not yet confirmed though). [BeoWulf]
+	* Testing a new Captcha, its uglier than the original, but more safe. [Dekamaster]
 
 2008/05/14
 	* Fixed a bug with reset position leting a jailed person to get out, reported by panchox

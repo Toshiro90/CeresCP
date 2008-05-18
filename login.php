@@ -2,8 +2,8 @@
 /*
 Ceres Control Panel
 
-This is a control pannel program for Athena and Freya
-Copyright (C) 2005 by Beowulf and Nightroad
+This is a control panel program for eAthena and other Athena SQL based servers
+Copyright (C) 2005 by Beowulf and Dekamaster
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -192,14 +192,21 @@ echo "
 if ($CONFIG_auth_image && function_exists("gd_info")) {
 	echo "<tr><td align=left>".$lang['CODE'].":<br>
 	<input type=\"text\" name=\"code\" maxlength=\"6\" size=\"6\" onKeyPress=\"return force(this.name,this.form.id,event);\">&nbsp;
-	<img src=\"img.php?img=login&var=$var\" alt=\"".$lang['SECURITY_CODE']."\"></td></tr>";
-}
-
+	<input type=\"submit\" value=\"login\"></td></tr>
+	<tr><td align=left><input type=\"checkbox\" name=\"remember_me\" value=\"1\" style=\"border-color:#D0D9E0\" onKeyPress=\"return force(this.name,this.form.id,event);\">".$lang['LOGIN_REMEMBER']."</td></tr>";
+}else {
 echo "
 <tr><td align=left><input type=\"checkbox\" name=\"remember_me\" value=\"1\" style=\"border-color:#D0D9E0\" onKeyPress=\"return force(this.name,this.form.id,event);\">
 ".$lang['LOGIN_REMEMBER']."
 </td></tr><tr><td align=center><input type=\"submit\" value=\"login\">
-</td></tr></table></form>";
+</td></tr>";
+}
+echo "</table></form>";
+
+if ($CONFIG_auth_image && function_exists("gd_info")) {
+echo "<img src=\"img.php?img=login&var=$var\" alt=\"".$lang['SECURITY_CODE']."\">";
+}
+
 closetable();
 
 fim();

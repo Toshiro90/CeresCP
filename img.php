@@ -31,18 +31,36 @@ if (!isset($GET_img))
 
 $session = $_SESSION[$CONFIG_name.'sessioncode'];
 $code = $session[$GET_img];
-
-$im = imagecreate(55, 15);
-$bg = imagecolorallocate($im, 255, 255, 255);
-$textcolor = imagecolorallocate($im, 0, 0, 255);
-imagecolortransparent($im, $bg);
-imagestring($im, 5, 0, 0, substr(strtoupper(md5("Mytext".$code)), 0,6), $textcolor);
-for ($i = 0; $i < 40; $i++) {
-	$pixelcolor = imagecolorallocate($im, rand()%256, rand()%256, rand()%256);
-	imagesetpixel($im, rand()%55 , rand()%15, $pixelcolor);
-}
-imagepng($im);
-imagedestroy($im);
+$code=substr(strtoupper(md5("Mytext".$code)), 0,6);
+captcha(140,40,$code);
 
 exit(0);
+
+
+function captcha($width,$height,$code) {
+
+$font="./font/ChalkboardBold.ttf";
+
+$font_size = 17;
+$image = imagecreate($width, $height);
+$background_color = imagecolorallocate($image, 255, 255, 255);
+$text_color = imagecolorallocate($image, 20, 40, 100);
+$noise_color = imagecolorallocate($image, 100, 120, 180);
+
+for( $i=0; $i<($width*$height)/3; $i++ ) imagefilledellipse($image, mt_rand(0,$width), mt_rand(0,$height), 1, 1, $noise_color);
+for( $i=0; $i<($width*$height)/150; $i++ ) imageline($image, mt_rand(0,$width), mt_rand(0,$height), mt_rand(0,$width), mt_rand(0,$height), $noise_color);
+$x=6;$y=25;
+
+imagettftext($image, $font_size, rand(-45,45), $x, $y+rand(-10,10), $text_color, $font , $code[0]);
+imagettftext($image, $font_size, rand(-45,45), $x+23, $y+rand(-10,10), $text_color, $font , $code[1]);
+imagettftext($image, $font_size, rand(-45,45), $x+46, $y+rand(-10,10), $text_color, $font , $code[2]);
+imagettftext($image, $font_size, rand(-45,45), $x+69, $y+rand(-10,10), $text_color, $font , $code[3]);
+imagettftext($image, $font_size, rand(-45,45), $x+92, $y+rand(-10,10), $text_color, $font , $code[4]);
+imagettftext($image, $font_size, rand(-45,45), $x+115, $y+rand(-10,10), $text_color, $font , $code[5]);
+
+header('Content-Type: image/jpeg');
+imagejpeg($image);
+imagedestroy($image);
+}
+
 ?>
