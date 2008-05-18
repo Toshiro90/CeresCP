@@ -4,13 +4,15 @@ Date
 	* Changed password.php and changemail.php to POST method. [BeoWulf]
 	* Fixed the mail sending function, now the recover password function should work, also
 	now that we're using the phpmailer class you should be able to use gmail smtp server too [Dekamaster]
-	* Disabled error report by default [Dekamaster]
+	* Disabled error report by default. [Dekamaster]
 	* Added a definition file for the e-mail template, now you can customize the template of
 	the email that will be sent to your players in /language/mail/ [Dekamaster]
+	* Added Castle names, kisuka report on eAthena forums. [BeoWulf]
+	* Added extra protection to login.php after some security leak rumors (not yet confirmed though). [BeoWulf]
 
 2008/05/14
 	* Fixed a bug with reset position leting a jailed person to get out, reported by panchox
-	at ea boards (and thanks for the temporary fix, brianlew, we really appreciated it) [Dekamaster]
+	at ea boards (and thanks for the temporary fix, brianlew, we really appreciated it.) [Dekamaster]
 
 ------------------
 We are retaking the project today (2008/05/14), we'll be slowly adding new stuffs to the control
@@ -19,16 +21,16 @@ cerescp@gmail.com (yes we are reading it again)
 ------------------
 
 2007/01/01
-	* Fixed Firefox incompatibility, stupid browser [BeoWulf]
+	* Fixed Firefox incompatibility, stupid browser. [BeoWulf]
 
 2006/12/03
-	* Reviewed img.php and middle.php files with help of gunawan wibisono [BeoWulf]
+	* Reviewed img.php and middle.php files with help of gunawan wibisono. [BeoWulf]
 
 2006/10/23
-	* Added a variable in recover.php [BeoWulf]
+	* Added a variable in recover.php. [BeoWulf]
 
 2006/10/18
-	* Fixed an exploit in language.php [BeoWulf]
+	* Fixed an exploit in language.php. [BeoWulf]
 
 2006/10/15
 	* Added a one day ipban to users blocked, it will keep then out to think about

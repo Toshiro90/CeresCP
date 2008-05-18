@@ -432,4 +432,15 @@ function read_maildef($file) {
 	return $maildef;
 }
 
+function erro_de_login() {
+	session_destroy();
+	setcookie("login_pass", "", time() - 3600);
+	setcookie("userid", "", time() - 3600);
+	echo "
+	<script type=\"text/javascript\">
+		LINK_ajax('login.php', 'login_div');
+	</script>
+	";
+}
+
 ?>

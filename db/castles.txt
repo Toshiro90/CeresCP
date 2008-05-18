@@ -69,3 +69,15 @@
 21	Novice_Castle_2
 22	Novice_Castle_3
 23	Novice_Castle_4
+
+//WoE:SE
+24	Schwaltzvalt_Himinn
+25	Schwaltzvalt_Andlangr
+26	Schwaltzvalt_Viblainn
+27	Schwaltzvalt_Hljod
+28	Schwaltzvalt_Skidbladnir
+29	Arunafeltz_Mardol
+30	Arunafeltz_Cyr
+31	Arunafeltz_Horn
+32	Arunafeltz_Gefn
+33	Arunafeltz_Bandis

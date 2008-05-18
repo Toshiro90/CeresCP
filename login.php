@@ -67,24 +67,43 @@ if (!isset($_SESSION[$CONFIG_name.'account_id']) && isset($_COOKIE['login_pass']
 
 if (!empty($POST_opt)) {
 	if ($POST_opt == 1 && isset($POST_frm_name) && !strcmp($POST_frm_name, "login")) {
-		if (inject($POST_username) || inject($POST_login_pass))
-			alert($lang['INCORRECT_CHARACTER']);
-
-		$session = $_SESSION[$CONFIG_name.'sessioncode'];
-		if ($CONFIG_auth_image && function_exists("gd_info")
-			&& strtoupper($POST_code) != substr(strtoupper(md5("Mytext".$session['login'])), 0, 6))
-			alert($lang['INCORRECT_CODE']);
-
-		if (strlen($POST_username) > 23 || strlen($POST_username) < 4)
-			alert($lang['USERNAME_LENGTH']);
-
-		if (strlen($POST_login_pass) > 23 || strlen($POST_login_pass) < 4)
-			alert($lang['PASSWORD_LENGTH_OLD']);
 
 		$bf_check = bf_check_user(trim($POST_username));
 		if ($bf_check > 0) {
 			$msg = sprintf($lang['BLOCKED'], $bf_check);
+			erro_de_login();
 			alert($msg);
+		}
+
+		if (empty($POST_username) || empty($POST_login_pass)) {
+			erro_de_login();
+			alert($lang['INCORRECT_CHARACTER']);
+		}
+
+		if (inject($POST_username) || inject($POST_login_pass)) {
+			erro_de_login();
+			bf_error(trim($POST_username));
+			alert($lang['INCORRECT_CHARACTER']);
+		}
+
+		$session = $_SESSION[$CONFIG_name.'sessioncode'];
+		if ($CONFIG_auth_image && function_exists("gd_info")
+			&& strtoupper($POST_code) != substr(strtoupper(md5("Mytext".$session['login'])), 0, 6)) {
+			erro_de_login();
+			bf_error(trim($POST_username));
+			alert($lang['INCORRECT_CODE']);
+		}
+
+		if (strlen($POST_username) > 23 || strlen($POST_username) < 4) {
+			erro_de_login();
+			bf_error(trim($POST_username));
+			alert($lang['USERNAME_LENGTH']);
+		}
+
+		if (strlen($POST_login_pass) > 23 || strlen($POST_login_pass) < 4) {
+			erro_de_login();
+			bf_error(trim($POST_username));
+			alert($lang['PASSWORD_LENGTH_OLD']);
 		}
 
 		$query = sprintf(LOGIN_USER, trim($POST_username));
@@ -104,10 +123,12 @@ if (!empty($POST_opt)) {
 					setcookie("userid", $line[1], time() + 3600 * 24 * 30);
 				}
 			} else {
+				erro_de_login();
 				bf_error(trim($POST_username));
 				alert($lang['WRONG_USERNAME_PASSWORD']);
 			}
 		} else {
+			erro_de_login();
 			bf_error(trim($POST_username));
 			alert($lang['WRONG_USERNAME_PASSWORD']);
 		}
