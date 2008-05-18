@@ -22,9 +22,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
+
+if (!extension_loaded('mysql'))
+	die ("Mysql extension not loaded, Please verify your PHP configuration.");
+
 if (!is_file("./config.php"))
 	die("<a href=\"./install/install.php\">Run Instalation Script</a>");
-
 
 session_start();
 include_once 'config.php'; // loads config variables

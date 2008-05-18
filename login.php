@@ -190,8 +190,9 @@ echo "
 <input type=\"hidden\" name=\"opt\" value=\"1\">";
 
 if ($CONFIG_auth_image && function_exists("gd_info")) {
-	echo "<tr><td align=left>".$lang['CODE'].":<br>
-	<input type=\"text\" name=\"code\" maxlength=\"6\" size=\"6\" onKeyPress=\"return force(this.name,this.form.id,event);\">&nbsp;
+	echo "<tr><td align=left>".$lang['CODE'].":</td></tr>
+	<tr><td align=left><img src=\"img.php?img=login&var=$var\" alt=\"".$lang['SECURITY_CODE']."\"></td></tr>
+	<tr><td align=left><input type=\"text\" name=\"code\" maxlength=\"6\" size=\"6\" onKeyPress=\"return force(this.name,this.form.id,event);\">&nbsp;
 	<input type=\"submit\" value=\"login\"></td></tr>
 	<tr><td align=left><input type=\"checkbox\" name=\"remember_me\" value=\"1\" style=\"border-color:#D0D9E0\" onKeyPress=\"return force(this.name,this.form.id,event);\">".$lang['LOGIN_REMEMBER']."</td></tr>";
 }else {
@@ -202,10 +203,6 @@ echo "
 </td></tr>";
 }
 echo "</table></form>";
-
-if ($CONFIG_auth_image && function_exists("gd_info")) {
-echo "<img src=\"img.php?img=login&var=$var\" alt=\"".$lang['SECURITY_CODE']."\">";
-}
 
 closetable();
 

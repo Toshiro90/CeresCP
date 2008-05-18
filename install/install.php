@@ -33,6 +33,9 @@ To contact any of the authors about special permissions send
 a mail to cerescp@gmail.com
 */
 
+if (!extension_loaded('mysql'))
+	die ("Mysql extension not loaded, Please verify your PHP configuration.");
+
 if (is_file("../config.php"))
 	die("Already installed, please remove this directory or rename the install folder.");
 
