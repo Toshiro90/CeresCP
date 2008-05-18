@@ -91,8 +91,10 @@ if (isset($POST_opt)) {
 		$result = execute_query($query, 'account.php');
 		
 		if ($line = $result->fetch_row()) {
+			erro_de_login(1);
 			redir("motd.php", "main_div", $lang['ACCOUNT_CREATED']);
 		} else
+			erro_de_login(1);
 			redir("motd.php", "main_div", $lang['ACCOUNT_PROBLEM']);
 
 	}
@@ -102,6 +104,7 @@ if (isset($_SESSION[$CONFIG_name.'sessioncode']))
 	$session = $_SESSION[$CONFIG_name.'sessioncode'];
 $session['account'] = rand(12345, 99999);
 $_SESSION[$CONFIG_name.'sessioncode'] = $session;
+$var = rand(10, 9999999);
 
 	opentable($lang['NEW_ACCOUNT']);
 	echo "
@@ -123,10 +126,11 @@ $_SESSION[$CONFIG_name.'sessioncode'] = $session;
 	<input type=\"hidden\" name=\"opt\" value=\"1\"></td></tr>
 	<input type=\"hidden\" name=\"ipaddress\" value=\"".$_SERVER['REMOTE_ADDR']."\">";
 	if ($CONFIG_auth_image && function_exists("gd_info")) { 
-		echo "<tr><td align=right>".$lang['CODE'].":</td>
+		echo "<tr><td></td><td align=left><img src=\"img.php?img=account&var=$var\" alt=\"".$lang['SECURITY_CODE']."\">
+		</td></tr><tr><td align=right>".$lang['CODE'].":</td>
 		<td align=\"left\">
 		<input type=\"text\" name=\"code\" maxlength=\"6\" size=\"6\" onKeyPress=\"return force(this.name,this.form.id,event);\">
-		&nbsp;<img src=\"img.php?img=account\" alt=\"".$lang['SECURITY_CODE']."\"></td></tr>";
+		&nbsp;</td></tr>";
 	}
 
 	echo "

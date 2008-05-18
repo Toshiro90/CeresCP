@@ -10,6 +10,7 @@ Date
 	* Added Castle names, kisuka report on eAthena forums. [BeoWulf]
 	* Added extra protection to login.php after some security leak rumors (not yet confirmed though). [BeoWulf]
 	* Testing a new Captcha, its uglier than the original, but more safe. [Dekamaster]
+	* Extended some of login.php protection to account.php and recover.php just in case. [BeoWulf]
 
 2008/05/14
 	* Fixed a bug with reset position leting a jailed person to get out, reported by panchox

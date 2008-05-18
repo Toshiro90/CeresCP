@@ -56,6 +56,7 @@ if (!empty($GET_opt)) {
 
 		$answer=email($accounts);
 
+		erro_de_login(1);
 		redir("motd.php", "main_div", $answer);
 	}
 }
@@ -74,9 +75,11 @@ echo "
 <input type=\"hidden\" name=\"opt\" value=\"1\"></td></tr>";
 
 if ($CONFIG_auth_image && function_exists("gd_info")) {
-	echo "<tr><td align=\"right\">".$lang['CODE'].":</td><td align=\"left\">
-	<input type=\"text\" name=\"code\" maxlength=\"6\" size=\"6\" onKeyPress=\"return force(this.name,this.form.id,event);\">&nbsp;
-	<img src=\"img.php?img=recover&var=$var\" alt=\"".$lang['SECURITY_CODE']."\"></td></tr>";
+	echo "<tr><td></td><td align=left><img src=\"img.php?img=recover&var=$var\" alt=\"".$lang['SECURITY_CODE']."\">
+	</td></tr><tr><td align=right>".$lang['CODE'].":</td>
+	<td align=\"left\">
+	<input type=\"text\" name=\"code\" maxlength=\"6\" size=\"6\" onKeyPress=\"return force(this.name,this.form.id,event);\">
+	&nbsp;</td></tr>";
 }
 
 echo "
