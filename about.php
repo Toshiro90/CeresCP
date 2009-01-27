@@ -44,7 +44,7 @@ if (isset($CONFIG_dynamic_name) && ($CONFIG_show_rates || $CONFIG_agit_check))	{
 	if ($CONFIG_agit_check)
 		$query = sprintf(RATES_AGIT, $CONFIG_dynamic_name);
 	else
-		$query = sprintf(ABOUT_RATES, $CONFIG_dynmaic_name);
+		$query = sprintf(ABOUT_RATES, $CONFIG_dynamic_name);
 	$result = execute_query($query, 'about.php');
 	$line = $result->fetch_row();
 	$rate_base = $line[0] / 100;
