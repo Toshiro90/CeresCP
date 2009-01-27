@@ -26,8 +26,8 @@ an e-mail to cerescp@gmail.com
 //Do not change tags %s e %d ou %%
 
 //misc
-$lang['LOGGED'] = 'Usted estás logado.';
-$lang['LOGGEDOFF'] = 'Usted estás deslogado.';
+$lang['LOGGED'] = 'Usted está logueado.';
+$lang['LOGGEDOFF'] = 'Usted está deslogueado.';
 $lang['COOKIE_REJECTED'] = 'Cookie rechazado.';
 $lang['INCORRECT_CHARACTER'] = 'Caracter incorrecto detectado.';
 $lang['UNKNOWN_MAIL'] = 'Correo desconocido.';
@@ -70,7 +70,7 @@ $lang['NEED_TO_LOGIN'] = 'Necesita estar logado para tener acceso a esta página.
 $lang['NEED_TO_LOGIN_F'] = 'Necesita estar logado para tener acceso a esta función.';
 $lang['DB_ERROR'] = 'Excusa! Error encontrado en el DB, por favor intente otra vez más adelante.';
 $lang['TXT_ERROR'] = 'Error en archivo texto.';
-$lang['NEED_TO_LOGOUT_F'] = 'Usted debe estar deslogado del jeugo para utilizar esta función.';
+$lang['NEED_TO_LOGOUT_F'] = 'Usted debe estar deslogueado del juego para utilizar esta función.';
 $lang['CHANGE'] = 'Change';
 $lang['SUNDAY'] = 'Domingo';
 $lang['MONDAY'] = 'Lunes';
@@ -138,10 +138,10 @@ $lang['SERVERSTATUS_CHAR'] = 'Char Server';
 $lang['SERVERSTATUS_MAP'] = 'Map Server';
 $lang['SERVERSTATUS_ONLINE'] = 'Online';
 $lang['SERVERSTATUS_OFFLINE'] = 'Offline';
-$lang['SERVERSTATUS_USERSONLINE'] = 'Usuarios On';
-$LANG['AGIT']		=	'WoE';
-$LANG['AGIT_OFF']	=	'Off';
-$LANG['AGIT_ON']	=	'On';
+$lang['SERVERSTATUS_USERSONLINE'] = 'Usuarios Online';
+$lang['AGIT'] = 'WoE';
+$lang['AGIT_OFF'] = 'Off';
+$lang['AGIT_ON'] = 'On';
 
 //resetlook.php
 $lang['RESETLOOK_RESET_LOOK'] = 'El Reset Falló.';
@@ -226,10 +226,10 @@ $lang['ABR_SEX_MALE'] = 'M';
 $lang['ABR_SEX_FEMALE'] = 'F';
 $lang['SEX_MALE'] = 'Masculino';
 $lang['SEX_FEMALE'] = 'Feminino';
-$lang['ACCOUNT_CREATED'] = 'Cuenta Creada. Usted ahora puede logar.';
+$lang['ACCOUNT_CREATED'] = 'Cuenta Creada. Usted ahora puede loguear.';
 $lang['ACCOUNT_PROBLEM'] = 'Error creando conta, por favor intente otra vez más adelante.';
 $lang['INTERNAL_STATISTIC'] = '(para la estadística interna)';
-$lang['BIRTHDAY'] = 'Nascimiento';
+$lang['BIRTHDAY'] = 'Nacimiento';
 $lang['ACCOUNT_MAX_REACHED'] = 'There are too many accounts registered, please try again later.';
 
 //index.php
@@ -241,8 +241,8 @@ $lang['LINKS_LINKS'] = 'Links';
 $lang['LINKS_NAME'] = 'Nombre';
 
 //login.php
-$lang['LOGIN_WELCOME'] = 'Bien Venido';
-$lang['LOGIN_HELLO'] = 'Holla';
+$lang['LOGIN_WELCOME'] = 'Bienvenido';
+$lang['LOGIN_HELLO'] = 'Hola';
 $lang['LOGIN_REMEMBER'] = 'recuérdeme';
 
 //about.php
