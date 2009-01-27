@@ -358,7 +358,7 @@ function server_status() {
 	}
 	$diff = time() - strtotime($line[0]);
 	$retorno = 0;
-	if ($diff > 300 || $line[0] < 7) {
+	if ($diff > 300 || $line[1] < 7) {
 		$acc = @fsockopen ($CONFIG_accip, $CONFIG_accport, $errno, $errstr, 1);
 		$char = @fsockopen ($CONFIG_charip, $CONFIG_charport, $errno, $errstr, 1);
 		$map = @fsockopen ($CONFIG_mapip, $CONFIG_mapport, $errno, $errstr, 1);
