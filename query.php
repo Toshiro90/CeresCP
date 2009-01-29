@@ -29,7 +29,7 @@ $revision = 28;
 //log de queries pra verifica?o posterior
 DEFINE('ADD_QUERY_ENTRY', "INSERT INTO `query_log` (`Date`, `User`, `IP`, `page`, `Query`) VALUES(NOW(), '%s', '%s', '%s', '%s')");
 //status do server
-DEFINE('CHECK_STATUS', "SELECT * FROM `server_status`");
+DEFINE('CHECK_STATUS', "SELECT `last_checked`,`status`,TIMESTAMPDIFF(SECOND,`last_checked`,NOW()) FROM `server_status`");
 DEFINE('UPDATE_STATUS', "UPDATE `server_status` SET last_checked = NOW(), status = '%d'");
 DEFINE('INSERT_STATUS', "INSERT INTO `server_status` VALUES(NOW(), '0')");
 DEFINE('ABOUT_RATES', "SELECT exp, jexp, `drop` FROM `ragsrvinfo` WHERE `name` = '%s'");
