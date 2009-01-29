@@ -39,7 +39,7 @@ if (!$CONFIG_disable_account) {
 <?php
 if ($CONFIG_password_recover) {
 ?>
-<span title="Send to your e-mail the account info" style="cursor:pointer" onMouseOver="this.style.color='#FF3300'" onMouseOut="this.style.color='#000000'" onClick="return LINK_ajax('recover.php','main_div');">
+<span title="Send the account info to your e-mail" style="cursor:pointer" onMouseOver="this.style.color='#FF3300'" onMouseOut="this.style.color='#000000'" onClick="return LINK_ajax('recover.php','main_div');">
 <b><?php echo $lang['RECOVER_PASSWORD'] ?></b>
 </span>
 <?php
