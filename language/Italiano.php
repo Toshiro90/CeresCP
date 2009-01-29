@@ -255,4 +255,3 @@ $lang['ABOUT_TOTAL_CHAR'] = 'Totale Characters';
 $lang['ABOUT_TOTAL_ZENY'] = 'Totale Zeny';
 $lang['ABOUT_TOTAL_CLASS'] = 'Totale par classe';
 $lang['ABOUT_WOE_TIMES'] = 'Orari delle WoE'; //tempo delle WoE
-

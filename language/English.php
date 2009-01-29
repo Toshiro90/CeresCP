@@ -30,7 +30,7 @@ $lang['LOGGED'] = 'You are now logged in.';
 $lang['LOGGEDOFF'] = 'You are now logged off.';
 $lang['COOKIE_REJECTED'] = 'Cookie rejected.';
 $lang['INCORRECT_CHARACTER'] = 'Incorrect Character Detected.';
-$lang['UNKNOWN_MAIL'] = 'Unknown Mail.';
+$lang['UNKNOWN_MAIL'] = 'Unknown Email.';
 $lang['INCORRECT_CODE'] = 'Incorrect Code.';
 $lang['INCORRECT_PASSWORD'] = 'Incorrect Password.';
 $lang['PASSWORD_CHANGED'] = 'Password Changed.';
@@ -247,7 +247,7 @@ $lang['LOGIN_REMEMBER'] = 'remember me';
 //about.php
 $lang['ABOUT_ABOUT'] = 'About the server';
 $lang['ABOUT_SERVER_NAME'] = 'Server name';
-$lang['ABOUT_RATE'] = 'Rate';
+$lang['ABOUT_RATE'] = 'Rates';
 $lang['ABOUT_TOTAL_ACCOUNTS'] = 'Total Accounts';
 $lang['ABOUT_TOTAL_CHAR'] = 'Total Characteres';
 $lang['ABOUT_TOTAL_ZENY'] = 'Total Zeny';

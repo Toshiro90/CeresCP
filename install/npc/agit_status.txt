@@ -20,4 +20,3 @@ OnInit:
                 query_sql "UPDATE ragsrvinfo SET agit_status = 0";
         end;
 }
-
