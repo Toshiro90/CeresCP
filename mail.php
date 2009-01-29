@@ -56,14 +56,14 @@ $mail->Username   = $CONFIG_smtp_username;
 $mail->Password   = $CONFIG_smtp_password;
 
 $mail->From       = $CONFIG_smtp_mail;
-$mail->FromName   = "Ceres Control Panel";
+$mail->FromName   = $CONFIG_name;
 $mail->Subject    = "Password Recovery";
 $mail->Body       = $maildef;
 
 $mail->WordWrap   = 50;
 
 $mail->AddAddress($contas[0][2],$contas[0][2]);
-$mail->AddReplyTo($CONFIG_smtp_mail,"Ceres Control Panel");
+$mail->AddReplyTo($CONFIG_smtp_mail,$CONFIG_name);
 
 $mail->IsHTML(true);
 

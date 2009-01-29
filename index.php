@@ -27,7 +27,7 @@ if (!extension_loaded('mysql'))
 	die ("Mysql extension not loaded, Please verify your PHP configuration.");
 
 if (!is_file("./config.php"))
-	die("<a href=\"./install/install.php\">Run Instalation Script</a>");
+	die("<a href=\"./install/install.php\">Run Installation Script</a>");
 
 session_start();
 include_once 'config.php'; // loads config variables

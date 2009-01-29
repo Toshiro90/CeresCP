@@ -40,7 +40,7 @@ if (is_file("../config.php"))
 	die("Already installed, please remove this directory or rename the install folder.");
 
 if (is_file("./config.php"))
-	die("Instalation Complete, move config.php to your Control Panel root and delete or rename the install folder.");
+	die("Installation Complete, move config.php to your Control Panel root and delete or rename the install folder.");
 
 extract($_POST, EXTR_PREFIX_ALL, "POST");
 
@@ -232,7 +232,7 @@ if (isset($POST_install)) {
 	fwrite($handle, $buffer);
 	fclose($handle);
 
-	echo "Instalation Complete, move config.php to your Control Panel root and delete the install folder.\n";
+	echo "Installation Complete, move config.php to your Control Panel root and delete the install folder.\n";
 	if ($POST_server_di)
 		echo "<br>Dynamic Info: Copy ./install/npc/agit_status.txt to your rag npc folder and enable it.\n";
 	echo "</body></html>";

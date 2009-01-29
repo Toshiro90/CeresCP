@@ -75,7 +75,7 @@ $lang['CHANGE'] = 'Change';
 $lang['SUNDAY'] = 'Sunday';
 $lang['MONDAY'] = 'Monday';
 $lang['TUESDAY'] = 'Tuesday';
-$lang['WEDNSDAY'] = 'Wednsday';
+$lang['WEDNSDAY'] = 'Wednesday';
 $lang['THURSDAY'] = 'Thursday';
 $lang['FRIDAY'] = 'Friday';
 $lang['SATURDAY'] = 'Saturday';
@@ -139,9 +139,9 @@ $lang['SERVERSTATUS_MAP'] = 'Map Server';
 $lang['SERVERSTATUS_ONLINE'] = 'Online';
 $lang['SERVERSTATUS_OFFLINE'] = 'Offline';
 $lang['SERVERSTATUS_USERSONLINE'] = 'Users Online';
-$LANG['AGIT']		=	'WoE';
-$LANG['AGIT_OFF']	=	'Off';
-$LANG['AGIT_ON']	=	'On';
+$LANG['AGIT'] = 'WoE';
+$LANG['AGIT_OFF'] = 'Off';
+$LANG['AGIT_ON'] = 'On';
 //resetlook.php
 $lang['RESETLOOK_RESET_LOOK'] = 'Reset Look Failed.';
 $lang['RESETLOOK_EQUIP_OK'] = 'Equipment Have Been Reseted.';
@@ -180,7 +180,7 @@ $lang['MONEY_CHANGE'] = 'Transfer';
 $lang['MONEY_TWO_CHAR'] = 'You must have at least two characters.';
 $lang['MONEY_TRANSFER_FROM'] = 'Transfer Zeny From';
 $lang['MONEY_TRANSFER_TO'] = 'Transfer Zeny To';
-$lang['MONEY_PS1'] = '*There will be a cost of %d%%, from the transfered amount, to use this service';
+$lang['MONEY_PS1'] = '*There will be a cost of %d%%, from the transferred amount, to use this service';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Marriage';
@@ -249,11 +249,11 @@ $lang['ABOUT_ABOUT'] = 'About the server';
 $lang['ABOUT_SERVER_NAME'] = 'Server name';
 $lang['ABOUT_RATE'] = 'Rates';
 $lang['ABOUT_TOTAL_ACCOUNTS'] = 'Total Accounts';
-$lang['ABOUT_TOTAL_CHAR'] = 'Total Characteres';
+$lang['ABOUT_TOTAL_CHAR'] = 'Total Characters';
 $lang['ABOUT_TOTAL_ZENY'] = 'Total Zeny';
 $lang['ABOUT_TOTAL_CLASS'] = 'Total by class';
 $lang['ABOUT_WOE_TIMES'] = 'WoE times';
 
 //ceres.php
-$lang['ABOUT_CERES']	=	'Ceres Control Panel Information';
-$lang['CERES_TITLE']	=	'Ceres Control Panel';
+$lang['ABOUT_CERES'] = 'Ceres Control Panel Information';
+$lang['CERES_TITLE'] = 'Ceres Control Panel';

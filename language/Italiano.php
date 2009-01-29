@@ -139,9 +139,9 @@ $lang['SERVERSTATUS_MAP'] = 'Map Server';
 $lang['SERVERSTATUS_ONLINE'] = 'In linea';
 $lang['SERVERSTATUS_OFFLINE'] = 'Fuori linea';
 $lang['SERVERSTATUS_USERSONLINE'] = 'Connesso';
-$LANG['AGIT']		=	'WoE';
-$LANG['AGIT_OFF']	=	'Off';
-$LANG['AGIT_ON']	=	'On';
+$LANG['AGIT'] = 'WoE';
+$LANG['AGIT_OFF'] = 'Off';
+$LANG['AGIT_ON'] = 'On';
 
 //resetlook.php
 $lang['RESETLOOK_RESET_LOOK'] = 'Reset del Look fallito.';

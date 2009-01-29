@@ -140,9 +140,9 @@ $lang['SERVERSTATUS_MAP'] = 'Map Server';
 $lang['SERVERSTATUS_ONLINE'] = 'Online';
 $lang['SERVERSTATUS_OFFLINE'] = 'Offline';
 $lang['SERVERSTATUS_USERSONLINE'] = 'Users Online';
-$LANG['AGIT']		=	'WoE';
-$LANG['AGIT_OFF']	=	'Off';
-$LANG['AGIT_ON']	=	'On';
+$LANG['AGIT'] = 'WoE';
+$LANG['AGIT_OFF'] = 'Off';
+$LANG['AGIT_ON'] = 'On';
 
 //resetlook.php
 $lang['RESETLOOK_RESET_LOOK'] = 'Reset Look Gagal.';
