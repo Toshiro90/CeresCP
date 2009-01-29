@@ -67,7 +67,7 @@ if (isset($POST_opt)) {
 		if ($CONFIG_safe_pass && thepass(trim($POST_password)))
 			alert($lang['PASSWORD_REJECTED']);
 
-		if (strlen($POST_email) < 7 || !strstr($POST_email, '@'))
+		if (strlen($POST_email) < 7 || !strstr($POST_email, '@') || !strstr($POST_email, '.'))
 			alert($lang['EMAIL_NEEDED']);
 
 		$query = sprintf(CHECK_USERID, trim($POST_username));
