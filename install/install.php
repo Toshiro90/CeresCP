@@ -74,16 +74,16 @@ if (isset($POST_install)) {
 		$woe .= sprintf("tue(%02d%02d, %02d%02d); ", $POST_woe_tue_start_h, $POST_woe_tue_start_m, $POST_woe_tue_end_h, $POST_woe_tue_end_m);
 	}
 	if ($POST_woe_wed_start_h > 0 || $POST_woe_wed_end_h > 0) {
-		$woe .= sprintf("tue(%02d%02d, %02d%02d); ", $POST_woe_wed_start_h, $POST_woe_wed_start_m, $POST_woe_wed_end_h, $POST_woe_wed_end_m);
+		$woe .= sprintf("wed(%02d%02d, %02d%02d); ", $POST_woe_wed_start_h, $POST_woe_wed_start_m, $POST_woe_wed_end_h, $POST_woe_wed_end_m);
 	}
 	if ($POST_woe_thu_start_h > 0 || $POST_woe_thu_end_h > 0) {
-		$woe .= sprintf("tue(%02d%02d, %02d%02d); ", $POST_woe_thu_start_h, $POST_woe_thu_start_m, $POST_woe_thu_end_h, $POST_woe_thu_end_m);
+		$woe .= sprintf("thu(%02d%02d, %02d%02d); ", $POST_woe_thu_start_h, $POST_woe_thu_start_m, $POST_woe_thu_end_h, $POST_woe_thu_end_m);
 	}
 	if ($POST_woe_fri_start_h > 0 || $POST_woe_fri_end_h > 0) {
-		$woe .= sprintf("tue(%02d%02d, %02d%02d); ", $POST_woe_fri_start_h, $POST_woe_fri_start_m, $POST_woe_fri_end_h, $POST_woe_fri_end_m);
+		$woe .= sprintf("fri(%02d%02d, %02d%02d); ", $POST_woe_fri_start_h, $POST_woe_fri_start_m, $POST_woe_fri_end_h, $POST_woe_fri_end_m);
 	}
 	if ($POST_woe_sat_start_h > 0 || $POST_woe_sat_end_h > 0) {
-		$woe .= sprintf("tue(%02d%02d, %02d%02d); ", $POST_woe_sat_start_h, $POST_woe_sat_start_m, $POST_woe_sat_end_h, $POST_woe_sat_end_m);
+		$woe .= sprintf("sat(%02d%02d, %02d%02d); ", $POST_woe_sat_start_h, $POST_woe_sat_start_m, $POST_woe_sat_end_h, $POST_woe_sat_end_m);
 	}
 
 	//create the tables
@@ -115,16 +115,18 @@ if (isset($POST_install)) {
 	$query = "CREATE TABLE `bruteforce` (`action_id` int(11) NOT NULL auto_increment, `user` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `date` int(11) NOT NULL default '0', `ban` int(11) NOT NULL default '0', PRIMARY KEY  (`action_id`), KEY `user` (`user`), KEY `IP` (`IP`)) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
 	$result = mysql_query($query);
 
-	mysql_select_db($POST_sql_rag_db, $db);
-	$query = "DROP TABLE IF EXISTS `ragsrvinfo`;";
-	$result = mysql_query($query);
-	if ($result === FALSE)
-		die("MySQL: This user don't have permission to create or change table.");
+	if ($POST_woe_agit) {
+		mysql_select_db($POST_sql_rag_db, $db);
+		$query = "DROP TABLE IF EXISTS `ragsrvinfo`;";
+		$result = mysql_query($query);
+		if ($result === FALSE)
+			die("MySQL: This user don't have permission to create or change table.");
 
-	$query = "CREATE TABLE IF NOT EXISTS `ragsrvinfo` (`index` int(11) NOT NULL default '0', `name` varchar(255) NOT NULL default '', `exp` int(11) unsigned NOT NULL default '0', `jexp` int(11) unsigned NOT NULL default '0', `drop` int(11) unsigned NOT NULL default '0', `agit_status` tinyint(1) unsigned NOT NULL default '0', `motd` varchar(255) NOT NULL default '', KEY `name` (`name`)) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
-	$result = mysql_query($query);
-	if ($result === FALSE)
-		die("MySQL: This user don't have permission to create or change table.");
+		$query = "CREATE TABLE IF NOT EXISTS `ragsrvinfo` (`index` int(11) NOT NULL default '0', `name` varchar(255) NOT NULL default '', `exp` int(11) unsigned NOT NULL default '0', `jexp` int(11) unsigned NOT NULL default '0', `drop` int(11) unsigned NOT NULL default '0', `agit_status` tinyint(1) unsigned NOT NULL default '0', `motd` varchar(255) NOT NULL default '', KEY `name` (`name`)) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
+		$result = mysql_query($query);
+		if ($result === FALSE)
+			die("MySQL: This user don't have permission to create or change table.");
+	}
 
 
 	//write the config.php file
@@ -155,68 +157,68 @@ if (isset($POST_install)) {
 	$buffer .= "This file was generated using install.php\n";
 	$buffer .= "*/\n";
 	$buffer .= "\n";
-	$buffer .= "////sql connections\n";
-	$buffer .= "\$CONFIG['db_serv'] 			=	'".$POST_sql_host."';	// SQL Host\n";
-	$buffer .= "\$CONFIG['db_user'] 			=	'".$POST_sql_user."';		// SQL User\n";
-	$buffer .= "\$CONFIG['db_pass'] 			=	'".$POST_sql_pass."';		// SQL Password\n";
-	$buffer .= "\$CONFIG['rag_db'] 			=	'".$POST_sql_rag_db."';		// SQL Ragnarok Database name\n";
-	$buffer .= "\$CONFIG['cp_db'] 			=	'".$POST_sql_cp_db."';			// SQL CP Database name\n";
-	$buffer .= "\$CONFIG['log_db']			=	'".$POST_sql_log_db."';			// SQL Ragnarok Log Database name\n";
-	$buffer .= "\$CONFIG['md5_pass']			=	'".$POST_sql_md5."';			// Use MD5 password (enable = 1, disable = 0)\n";
+	$buffer .= "//sql connections\n";
+	$buffer .= "\$CONFIG['db_serv']		=	'".$POST_sql_host."';	// SQL Host\n";
+	$buffer .= "\$CONFIG['db_user']		=	'".$POST_sql_user."';		// SQL User\n";
+	$buffer .= "\$CONFIG['db_pass']		=	'".$POST_sql_pass."';		// SQL Password\n";
+	$buffer .= "\$CONFIG['rag_db']			=	'".$POST_sql_rag_db."';		// SQL Ragnarok Database name\n";
+	$buffer .= "\$CONFIG['cp_db']			=	'".$POST_sql_cp_db."';			// SQL CP Database name\n";
+	$buffer .= "\$CONFIG['log_db']			=	'".$POST_sql_log_db."';		// SQL Ragnarok Log Database name\n";
+	$buffer .= "\$CONFIG['md5_pass']		=	'".$POST_sql_md5."';			// Use MD5 password (enable = 1, disable = 0)\n";
 	$buffer .= "\$CONFIG['safe_pass']		=	'".$POST_sql_safe_pass."';			// Force the use of a safer password with size 6 and at least 2 letter and 2 numbers (enable = 1, disable = 0)\n";
 	$buffer .= "\n";
 	$buffer .= "//Admin Area\n";
-	$buffer .= "\$CONFIG['cp_admin']			=	'".$POST_cp_adm_lvl."';			// CP admin functions\n";
-	$buffer .= "\$CONFIG['gm_level']			=	'".$POST_cp_gm_lvl."';			// CP GM funtions\n";
+	$buffer .= "\$CONFIG['cp_admin']		=	'".$POST_cp_adm_lvl."';			// CP admin functions\n";
+	$buffer .= "\$CONFIG['gm_level']		=	'".$POST_cp_gm_lvl."';			// CP GM funtions\n";
 	$buffer .= "\n";
 	$buffer .= "//WOE\n";
 	$buffer .= "// sun = sunday, mon = monday, tue = tuesday, wed = wednesday, thu = thursday, fri = friday, sun = sunday\n";
 	$buffer .= "// place week_day(start_time, end_time) and a ';' between the times the freya default woe times is set as an example\n";
 	$buffer .= "// there is no limit you can place as many as you want, no spaces are needed, but using it you can understand.\n";
-	$buffer .= "\$CONFIG['woe_time']			=	'".$woe."';\n";
+	$buffer .= "\$CONFIG['woe_time']		=	'".$woe."';\n";
 	$buffer .= "\$CONFIG['agit_check']		=	'".$POST_woe_agit."';			// This WILL NOT WORK unless you installed the npc script AND you updated your ragsrvinfo table, read the installation notes for more info.\n";
 	$buffer .= "\n";
 	$buffer .= "//server name, rates\n";
-	$buffer .= "\$CONFIG['name']				=	'".$POST_server_name."';	// name of the server\n";
-	$buffer .= "\$CONFIG['rate']				=	'".$POST_server_rate."';		// rates of the server\n";
+	$buffer .= "\$CONFIG['name']			=	'".$POST_server_name."';	// name of the server\n";
+	$buffer .= "\$CONFIG['rate']			=	'".$POST_server_rate."';		// rates of the server\n";
 	$buffer .= "\$CONFIG['dynamic_info']		=	'".$POST_server_di."';			// Use info (rates) from the server it's self?\n";
 	$buffer .= "\$CONFIG['dynamic_name']		=	'".$POST_server_name."';	// The name of the server in ragsrvinfo's server name column (Used for dynamic info)\n";
 	$buffer .= "\$CONFIG['show_rates']		=	'".$POST_server_dr."';			//Show dynamic rates on server status and about page?\n";
 	$buffer .= "\n";
 	$buffer .= "//map,char,login servers settings\n";
-	$buffer .= "\$CONFIG['accip'] 			=	'".$POST_server_lip."';	// Account/Login Server IP\n";
-	$buffer .= "\$CONFIG['accport'] 			=	'".$POST_server_lport."';			// Account/Login Server Port\n";
-	$buffer .= "\$CONFIG['charip'] 			=	'".$POST_server_cip."';	// Char Server IP\n";
-	$buffer .= "\$CONFIG['charport'] 		=	'".$POST_server_cport."';			// Char Server Port\n";
-	$buffer .= "\$CONFIG['mapip'] 			=	'".$POST_server_mip."';	// Zone/Map Server IP\n";
-	$buffer .= "\$CONFIG['mapport'] 			=	'".$POST_server_mport."';			// Zone/Map Server Port\n";
+	$buffer .= "\$CONFIG['accip']			=	'".$POST_server_lip."';	// Account/Login Server IP\n";
+	$buffer .= "\$CONFIG['accport']		=	'".$POST_server_lport."';		// Account/Login Server Port\n";
+	$buffer .= "\$CONFIG['charip']			=	'".$POST_server_cip."';	// Char Server IP\n";
+	$buffer .= "\$CONFIG['charport']		=	'".$POST_server_cport."';		// Char Server Port\n";
+	$buffer .= "\$CONFIG['mapip']			=	'".$POST_server_mip."';	// Zone/Map Server IP\n";
+	$buffer .= "\$CONFIG['mapport']		=	'".$POST_server_mport."';		// Zone/Map Server Port\n";
 	$buffer .= "\n";
 	$buffer .= "//default language\n";
-	$buffer .= "\$CONFIG['language']			=	'".$POST_cp_language."';		// default language (remember to check if the translation exist before set)\n";
+	$buffer .= "\$CONFIG['language']		=	'".$POST_cp_language."';		// default language (remember to check if the translation exist before set)\n";
 	$buffer .= "\n";
 	$buffer .= "//cp features\n";
 	$buffer .= "\$CONFIG['disable_account']	=	'".$POST_feat_acc."';			// disable the account creation disable = 1, enable = 0\n";
-	$buffer .= "\$CONFIG['auth_image'] 		=	'".$POST_feat_vc."';			// enable the verification code image, to check if it's a real person using the cp, instead of a bot (brute-force atack) - Recommended, but requires gd library (enable = 1 disable = 0)\n";
+	$buffer .= "\$CONFIG['auth_image']		=	'".$POST_feat_vc."';			// enable the verification code image, to check if it's a real person using the cp, instead of a bot (brute-force atack) - Recommended, but requires gd library (enable = 1 disable = 0)\n";
 	$buffer .= "\$CONFIG['max_accounts']		=	'".$POST_feat_maa."';			// Max accounts allowed to be in the DB (0 = disabled)\n";
 	$buffer .= "\$CONFIG['password_recover']	=	'".$POST_feat_pr."';			// password recover enable = 1, disable = 0\n";
-	$buffer .= "\$CONFIG['reset_enable'] 	=	'".$POST_feat_rp."';			// reset position enable = 1, disable = 0\n";
-	$buffer .= "\$CONFIG['reset_cost'] 		=	'".$POST_feat_rc."';			// reset position cost, disable cost = 0\n";
-	$buffer .= "\$CONFIG['money_transfer'] 	=	'".$POST_feat_mt."';			// money transfer enable = 1, disable = 0\n";
-	$buffer .= "\$CONFIG['money_cost'] 		=	'".$POST_feat_mc."';			// money transfer cost (100 = 1%), disable cost = 0\n";
-	$buffer .= "\$CONFIG['set_slot']			=	'".$POST_feat_cs."';			// change char slot enable = 1, disable = 0\n";
+	$buffer .= "\$CONFIG['reset_enable']		=	'".$POST_feat_rp."';			// reset position enable = 1, disable = 0\n";
+	$buffer .= "\$CONFIG['reset_cost']		=	'".$POST_feat_rc."';		// reset position cost, disable cost = 0\n";
+	$buffer .= "\$CONFIG['money_transfer']	=	'".$POST_feat_mt."';			// money transfer enable = 1, disable = 0\n";
+	$buffer .= "\$CONFIG['money_cost']		=	'".$POST_feat_mc."';			// money transfer cost (100 = 1%), disable cost = 0\n";
+	$buffer .= "\$CONFIG['set_slot']		=	'".$POST_feat_cs."';			// change char slot enable = 1, disable = 0\n";
 	$buffer .= "\$CONFIG['reset_look']		=	'".$POST_feat_rl."';			// reset char equips and colors with error enable = 1, disable = 0\n";
-	$buffer .= "\$CONFIG['marry_enable'] 	=	'".$POST_feat_divorce."';			// enable marriage view and divorce\n";
+	$buffer .= "\$CONFIG['marry_enable']		=	'".$POST_feat_divorce."';			// enable marriage view and divorce\n";
 	$buffer .= "\$CONFIG['prison_map']		=	'".$POST_feat_pm."';		// Name of the map that is used as your jail (mapname.gat)\n";
 	$buffer .= "\n";
 	$buffer .= "//About Information\n";
 	$buffer .= "\$CONFIG['classlist_show']	=	'".$POST_feat_acl."';			// Show the class list on about.php? (disable = 0, enable = 1)\n";
 	$buffer .= "\n";
 	$buffer .= "//Mail\n";
-	$buffer .= "\$CONFIG['smtp_server'] 		=	'".$POST_smtp_server."';			// the smtp server, the cp will use to send mails\n";
-	$buffer .= "\$CONFIG['smtp_port'] 		=	'".$POST_smtp_port."';			// the smtp server port\n";
-	$buffer .= "\$CONFIG['smtp_mail'] 		=	'".$POST_smtp_mail."';			// the email of the admin\n";
-	$buffer .= "\$CONFIG['smtp_username'] 	=	'".$POST_smtp_username."';			// the username of the smtp server\n";
-	$buffer .= "\$CONFIG['smtp_password'] 	=	'".$POST_smtp_password."';			// the password of the smtp server\n";
+	$buffer .= "\$CONFIG['smtp_server']		=	'".$POST_smtp_server."';	// the smtp server, the cp will use to send mails\n";
+	$buffer .= "\$CONFIG['smtp_port']		=	'".$POST_smtp_port."';			// the smtp server port\n";
+	$buffer .= "\$CONFIG['smtp_mail']		=	'".$POST_smtp_mail."';		// the email of the admin\n";
+	$buffer .= "\$CONFIG['smtp_username']	=	'".$POST_smtp_username."';			// the username of the smtp server\n";
+	$buffer .= "\$CONFIG['smtp_password']	=	'".$POST_smtp_password."';			// the password of the smtp server\n";
 	$buffer .= "\n";
 	$buffer .= "\n";
 	$buffer .= "//DO NOT MESS WITH THIS\n";
@@ -233,8 +235,8 @@ if (isset($POST_install)) {
 	fclose($handle);
 
 	echo "Installation Complete, move config.php to your Control Panel root and delete the install folder.\n";
-	if ($POST_server_di)
-		echo "<br>Dynamic Info: Copy ./install/npc/agit_status.txt to your rag npc folder and enable it.\n";
+	if ($POST_woe_agit)
+		echo "<br>Agit Status: Copy ./install/npc/agit_status.txt to your rag npc folder and enable it.\n";
 	echo "</body></html>";
 	die();
 }
@@ -491,7 +493,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Reset Position Cost</td>
-										<td align="left"><input type="text" name="feat_rc" size="30" value="0"></td>
+										<td align="left"><input type="text" name="feat_rc" size="30" value="300"></td>
 									</tr>
 									<tr>
 										<td align="left">Money Transfer</td>
@@ -515,7 +517,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Prison Map</td>
-										<td align="left"><input type="text" name="feat_pm" size="30" value="sec_pri.gat"></td>
+										<td align="left"><input type="text" name="feat_pm" size="30" value="sec_pri"></td>
 									</tr>
 								</table>
 							</fieldset>
@@ -528,7 +530,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 								<table border="0" width="400">
 									<tr>
 										<td width="200" align="left">Smtp Server</td>
-										<td align="left"><input type="text" name="smtp_server" size="30" value="smtp.yoursmtpserver.com"></td>
+										<td align="left"><input type="text" name="smtp_server" size="30" value="localhost"></td>
 									</tr>
 									<tr>
 										<td align="left">Smtp Port</td>
