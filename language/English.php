@@ -47,7 +47,7 @@ $lang['CODE'] = 'Code';
 $lang['SECURITY_CODE'] = 'Security Code';
 $lang['RECOVER'] = 'Recover';
 $lang['PASSWORD_NOT_MATCH'] = 'Passwords do not match.';
-$lang['PASSWORD_REJECTED'] = 'Password rejected: Not Safe.\nIt needs 2 numbers and 2 letters at least and length 6.\nEx: cake48';
+$lang['PASSWORD_REJECTED'] = 'Password rejected: Not Safe. It must be at least 6 characters long and contain 2 numbers.';
 $lang['EMAIL_NEEDED'] = 'Email is needed.';
 $lang['INVALID_BIRTHDAY'] = 'Invalid Birthday.';
 $lang['SEX'] = 'Sex';
@@ -144,10 +144,10 @@ $LANG['AGIT_OFF'] = 'Off';
 $LANG['AGIT_ON'] = 'On';
 //resetlook.php
 $lang['RESETLOOK_RESET_LOOK'] = 'Reset Look Failed.';
-$lang['RESETLOOK_EQUIP_OK'] = 'Equipment Have Been Reseted.';
-$lang['RESETLOOK_HAIRC_OK'] = 'Hair Color Have Been Reseted.';
-$lang['RESETLOOK_HAIRS_OK'] = 'Hair Style Have Been Reseted.';
-$lang['RESETLOOK_CLOTHESC_OK'] = 'Clothes Color Have Been Reseted.';
+$lang['RESETLOOK_EQUIP_OK'] = 'Equipment has been reset.';
+$lang['RESETLOOK_HAIRC_OK'] = 'Hair Color has been reset.';
+$lang['RESETLOOK_HAIRS_OK'] = 'Hair Style has been reset.';
+$lang['RESETLOOK_CLOTHESC_OK'] = 'Clothes Color has been reset.';
 $lang['RESETLOOK_SELECT'] = 'Select at least one look to reset.';
 $lang['RESETLOOK_RESETLOOK'] = 'Reset Look';
 
@@ -157,7 +157,7 @@ $lang['RECOVER_RECOVER'] = 'Recover Password';
 //position.php
 $lang['POSITION_RESET'] = 'Reset Position Failed.';
 $lang['POSITION_NO_ZENY'] = 'Not enough zeny.';
-$lang['POSITION_OK'] = 'Position have been reseted.';
+$lang['POSITION_OK'] = 'Position has been reset.';
 $lang['POSITION_TITLE'] = 'Reset Position';
 $lang['POSITION_LEVEL'] = 'Level';
 $lang['POSITION_SELECT'] = 'Select';
