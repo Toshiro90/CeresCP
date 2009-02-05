@@ -47,9 +47,9 @@ $CONFIG['agit_check']		=	'0';			// This WILL NOT WORK unless you installed the n
 //server name, rates
 $CONFIG['name']			=	'Ceres Control Panel';	// name of the server
 $CONFIG['rate']			=	'1/1/1';		// rates of the server
-$CONFIG['dynamic_info']		=	'0';			// Use info (rates) from the server it's self?
+$CONFIG['dynamic_info']		=	'0';			// Use info (rates) from the server itself?
 $CONFIG['dynamic_name']		=	'Ceres Control Panel';	// The name of the server in ragsrvinfo's server name column (Used for dynamic info)
-$CONFIG['show_rates']		=	'0';			//Show dynamic rates on server status and about page?
+$CONFIG['show_rates']		=	'0';			// Show rates below server status?
 
 //map,char,login servers settings
 $CONFIG['accip']			=	'127.0.0.1';	// Account/Login Server IP

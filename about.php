@@ -40,7 +40,7 @@ $result = execute_query($query, 'about.php');
 $result->fetch_row();
 $zeny = moneyformat($result->row(0));
 
-if (isset($CONFIG_dynamic_name) && ($CONFIG_show_rates || $CONFIG_agit_check))	{
+if ($CONFIG_dynamic_info || $CONFIG_agit_check) {
 	if ($CONFIG_agit_check)
 		$query = sprintf(RATES_AGIT, $CONFIG_dynamic_name);
 	else
@@ -94,11 +94,11 @@ echo "
 		<td align=\"right\">".$lang['ABOUT_SERVER_NAME']."</td><td>&nbsp;</td><td align=\"left\">$CONFIG_name</td>
 	</tr>";
 
-	if ($CONFIG_show_rates)
+	if ($CONFIG_dynamic_info)
 		echo "<td align=\"right\">".$lang['ABOUT_RATE']."</td><td>&nbsp;</td><td align=\"left\">".$rate_base."/".$rate_job."/".$rate_drop."</td>";
 	else
 		echo "<td align=\"right\">".$lang['ABOUT_RATE']."</td><td>&nbsp;</td><td align=\"left\">$CONFIG_rate</td>";
-	echo "
+echo "
 	</tr>
 	<tr>
 	<td>&nbsp;</td>

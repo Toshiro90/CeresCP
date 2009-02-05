@@ -181,9 +181,9 @@ if (isset($POST_install)) {
 	$buffer .= "//server name, rates\n";
 	$buffer .= "\$CONFIG['name']			=	'".$POST_server_name."';	// name of the server\n";
 	$buffer .= "\$CONFIG['rate']			=	'".$POST_server_rate."';		// rates of the server\n";
-	$buffer .= "\$CONFIG['dynamic_info']		=	'".$POST_server_di."';			// Use info (rates) from the server it's self?\n";
+	$buffer .= "\$CONFIG['dynamic_info']		=	'".$POST_server_di."';			// Use info (rates) from the server itself?\n";
 	$buffer .= "\$CONFIG['dynamic_name']		=	'".$POST_server_name."';	// The name of the server in ragsrvinfo's server name column (Used for dynamic info)\n";
-	$buffer .= "\$CONFIG['show_rates']		=	'".$POST_server_dr."';			//Show dynamic rates on server status and about page?\n";
+	$buffer .= "\$CONFIG['show_rates']		=	'".$POST_server_dr."';			// Show rates below server status?\n";
 	$buffer .= "\n";
 	$buffer .= "//map,char,login servers settings\n";
 	$buffer .= "\$CONFIG['accip']			=	'".$POST_server_lip."';	// Account/Login Server IP\n";
