@@ -35,7 +35,7 @@ if (isset($_SESSION[$CONFIG_name.'SERVER'])) {
 	$_SESSION[$CONFIG_name.'SERVER'] = $CONFIG_name;
 }
 
-if (!isset($_SESSION[$CONFIG_name.'ipban']) || (isset($_SESSION[$CONFIG_name.'iptime']) && $_SESSION[$CONFIG_name.'iptime'] > (time() + 3000))) {
+if (!isset($_SESSION[$CONFIG_name.'ipban']) || (isset($_SESSION[$CONFIG_name.'iptime']) && (time() - $_SESSION[$CONFIG_name.'iptime']) > 300)) {
 	include_once 'ipban.php';
 	$_SESSION[$CONFIG_name.'ipban'] = ipban();
 	$_SESSION[$CONFIG_name.'iptime'] = time();
