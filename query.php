@@ -23,7 +23,7 @@ To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
 
-$revision = 34;
+$revision = 40;
 
 //functions.php
 //log queries in querylog
@@ -38,6 +38,8 @@ DEFINE('CHECK_BAN', "SELECT UNIX_TIMESTAMP(`lastlogin`), `unban_time`, `state` F
 //Online Status 
 DEFINE('IS_ONLINE', "SELECT COUNT(1) FROM `char` WHERE online != '0' AND account_id = '%d'");
 DEFINE('GET_ONLINE', "SELECT COUNT(1) FROM `char` WHERE online != '0'");
+//Check IP Ban
+DEFINE('CHECK_IPBAN', "SELECT COUNT(*) FROM `ipbanlist` WHERE `list` = '%u.*.*.*' OR `list` = '%u.%u.*.*' OR `list` = '%u.%u.%u.*' OR `list` = '%u.%u.%u.%u'");
 ////////////////////////////////////
 
 //login.php - User Login

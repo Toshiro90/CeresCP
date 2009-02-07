@@ -35,6 +35,8 @@ if (isset($_SESSION[$CONFIG_name.'SERVER'])) {
 	$_SESSION[$CONFIG_name.'SERVER'] = $CONFIG_name;
 }
 
+$mysql = new QueryClass($CONFIG_db_serv, $CONFIG_db_user, $CONFIG_db_pass, $CONFIG_rag_db, $CONFIG_cp_db);
+
 if (!isset($_SESSION[$CONFIG_name.'ipban']) || (isset($_SESSION[$CONFIG_name.'iptime']) && (time() - $_SESSION[$CONFIG_name.'iptime']) > 300)) {
 	include_once 'ipban.php';
 	$_SESSION[$CONFIG_name.'ipban'] = ipban();
@@ -43,8 +45,6 @@ if (!isset($_SESSION[$CONFIG_name.'ipban']) || (isset($_SESSION[$CONFIG_name.'ip
 
 if ($_SESSION[$CONFIG_name.'ipban'])
 	die("Denied");
-
-$mysql = new QueryClass($CONFIG_db_serv, $CONFIG_db_user, $CONFIG_db_pass, $CONFIG_rag_db, $CONFIG_cp_db);
 
 if (!isset($_SESSION[$CONFIG_name.'jobs']))
 	$_SESSION[$CONFIG_name.'jobs'] = readjobs();

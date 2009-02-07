@@ -23,42 +23,15 @@ To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
 
-function iplist() {
-	global $lang;
-	if (!($handle = fopen("./db/ipban.txt", "rt")))
-		die(htmlformat($lang['TXT_ERROR']));
-	while ($line = fgets($handle, 1024)) {
-		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
-			continue;
-		if (($ip = sscanf($line, "%s"))) {
-			$resp[] = $ip[0];
-		}
-	}	
-	fclose($handle);
-	if (isset($resp))
-		return $resp;
-	else
-		return 0;
-}
-
 function ipban() {
-	$banned = iplist();
-	$userip = $_SERVER['REMOTE_ADDR'];
+	$p = split('\.', $_SERVER['REMOTE_ADDR']);
 
-	for ($i = 0; isset($banned[$i]); $i++) {
-		if (strcmp($banned[$i], $userip) === 0)
-			return 1;
+	$query = sprintf(CHECK_IPBAN, $p[0], $p[0],$p[1], $p[0],$p[1],$p[2], $p[0],$p[1],$p[2],$p[3]);
+	$result = execute_query($query, 'ipban.php', 0, 0);
 
-		$pos = strpos($banned[$i], '.*');
-		if ($pos > 1) {
-			$newban = substr($banned[$i], 0, $pos + 1);
-			$newuse = substr($userip, 0, $pos + 1);
-			if (strcmp($newban, $newuse) === 0)
-				return 1;
-		}
-	}
+	$result->fetch_row();
 
-	return 0;
+	return $result->row[0];
 }
 
 ?>
