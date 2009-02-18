@@ -141,7 +141,7 @@ function readitems() {
 	while ($line = fgets($handle, 1024)) {
 		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
 			continue;
-		$item = sscanf($line, "%d,%[^,]");
+		$item = explode(',', $line, 4);
 		if (isset($item[0]) && isset($item[1])) {
 			for($i = 1; isset($item[1][$i]); $i++)
 				if ($item[1][$i] == '_') $item[1][$i] = ' ';
