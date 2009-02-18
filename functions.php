@@ -143,9 +143,7 @@ function readitems() {
 			continue;
 		$item = explode(',', $line, 4);
 		if (isset($item[0]) && isset($item[1])) {
-			for($i = 1; isset($item[1][$i]); $i++)
-				if ($item[1][$i] == '_') $item[1][$i] = ' ';
-			$resp[$item[0]] = $item[1];
+			$resp[$item[0]] = $item[2];
 		}
 	}	
 	$resp[0] = " ";
