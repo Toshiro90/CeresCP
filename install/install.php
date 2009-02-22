@@ -33,8 +33,8 @@ To contact any of the authors about special permissions send
 a mail to cerescp@gmail.com
 */
 
-extension_loaded('mysql')
-	or die ("Mysql extension not loaded. Please verify your PHP configuration.");
+extension_loaded('mysqli')
+	or die ("Mysqli extension not loaded. Please verify your PHP configuration.");
 
 if (is_file("../config.php"))
 	die("Already installed. Please remove this directory or rename the install folder.");
@@ -46,17 +46,17 @@ extract($_POST, EXTR_PREFIX_ALL, "POST");
 
 if (isset($POST_install)) {
 
-	$db = mysql_connect($POST_sql_host,$POST_sql_user,$POST_sql_pass)
+	$db = mysqli_connect($POST_sql_host,$POST_sql_user,$POST_sql_pass)
 		or die("Can't connect to MySQL server. Press back and check your MySQL host, user, password.");
 
-	mysql_select_db($POST_sql_rag_db, $db)
+	mysqli_select_db($db, $POST_sql_rag_db)
 		or die("Can't open ".$POST_sql_rag_db." database. Remember to create it before the Control Panel. Press back and check your configurations.");
 
-	if (!mysql_select_db($POST_sql_cp_db, $db)) {
+	if (!mysqli_select_db($db, $POST_sql_cp_db)) {
 		$query = "CREATE DATABASE ".$POST_sql_cp_db;
-		$result = mysql_query($query)
+		$result = mysqli_query($db, $query)
 			or die("Can't open or create ".$POST_sql_cp_db." database, press back and check your configurations.");
-		mysql_select_db($POST_sql_cp_db, $db);
+		mysqli_select_db($db, $POST_sql_cp_db);
 	}
 
 	if ($POST_cp_adm_lvl < $POST_cp_gm_lvl)
@@ -87,39 +87,39 @@ if (isset($POST_install)) {
 
 	//create the tables
 	$query = "DROP TABLE IF EXISTS `server_status`;";
-	$result = mysql_query($query)
+	$result = mysqli_query($db, $query)
 		or die("MySQL: This user doesn't have the DROP privilege on the ".$POST_sql_cp_db." database.");
 
 	$query = "CREATE TABLE `server_status` (`last_checked` datetime NOT NULL default '0000-00-00 00:00:00', `status` tinyint(1) NOT NULL default '0') TYPE=MyISAM;";
-	$result = mysql_query($query)
+	$result = mysqli_query($db, $query)
 		or die("MySQL: This user doesn't have the CREATE privilege on the ".$POST_sql_cp_db." database.");
 
 	$query = "DROP TABLE IF EXISTS `query_log`;";
-	$result = mysql_query($query);
+	$result = mysqli_query($db, $query);
 
 	$query = "CREATE TABLE `query_log` (`action_id` int(11) NOT NULL auto_increment, `Date` datetime NOT NULL default '0000-00-00 00:00:00', `User` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `page` varchar(24) NOT NULL default '', `query` text NOT NULL,   PRIMARY KEY  (`action_id`), KEY `action_id` (`action_id`) ) TYPE=MyISAM AUTO_INCREMENT=1 ;";
-	$result = mysql_query($query);
+	$result = mysqli_query($db, $query);
 
 	$query = "DROP TABLE IF EXISTS `links`;";
-	$result = mysql_query($query);
+	$result = mysqli_query($db, $query);
 
 	$query = "CREATE TABLE `links` (`cod` int(11) NOT NULL auto_increment, `name` varchar(30) NOT NULL, `url` varchar(255) NOT NULL, `desc` text NOT NULL, `size` int(11) default '0', PRIMARY KEY  (`cod`) ) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
-	$result = mysql_query($query);
+	$result = mysqli_query($db, $query);
 
 	$query = "DROP TABLE IF EXISTS `bruteforce`;";
-	$result = mysql_query($query);
+	$result = mysqli_query($db, $query);
 
 	$query = "CREATE TABLE `bruteforce` (`action_id` int(11) NOT NULL auto_increment, `user` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `date` int(11) NOT NULL default '0', `ban` int(11) NOT NULL default '0', PRIMARY KEY  (`action_id`), KEY `user` (`user`), KEY `IP` (`IP`)) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
-	$result = mysql_query($query);
+	$result = mysqli_query($db, $query);
 
 	if ($POST_woe_agit) {
-		mysql_select_db($POST_sql_rag_db, $db);
+		mysqli_select_db($db, $POST_sql_rag_db);
 		$query = "DROP TABLE IF EXISTS `ragsrvinfo`;";
-		$result = mysql_query($query)
+		$result = mysqli_query($db, $query)
 			or die("MySQL: This user doesn't have the DROP privilege on the ".$POST_sql_rag_db." database.");
 
 		$query = "CREATE TABLE IF NOT EXISTS `ragsrvinfo` (`index` int(11) NOT NULL default '0', `name` varchar(255) NOT NULL default '', `exp` int(11) unsigned NOT NULL default '0', `jexp` int(11) unsigned NOT NULL default '0', `drop` int(11) unsigned NOT NULL default '0', `agit_status` tinyint(1) unsigned NOT NULL default '0', `motd` varchar(255) NOT NULL default '', KEY `name` (`name`)) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
-		$result = mysql_query($query)
+		$result = mysqli_query($db, $query)
 			or die("MySQL: This user doesn't have the CREATE privilege on the ".$POST_sql_rag_db." database.");
 	}
 

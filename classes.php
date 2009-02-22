@@ -34,7 +34,7 @@ class ResultClass {
 
 	function fetch_row() {
 		if ($this->result !== TRUE && $this->result !== FALSE)
-			$this->row = mysql_fetch_row($this->result);
+			$this->row = mysqli_fetch_row($this->result);
 		else
 			$this->row = FALSE;
 		return $this->row;
@@ -42,7 +42,7 @@ class ResultClass {
 
 	function count() {
 		if ($this->result)
-			return mysql_num_rows($this->result);
+			return mysqli_num_rows($this->result);
 		return 0;
 	}
 
@@ -56,7 +56,7 @@ class ResultClass {
 		if (empty($this->result))
 			return;
 		if ($this->result !== TRUE && $this->result !== FALSE)
-			mysql_free_result($this->result);
+			mysqli_free_result($this->result);
 	}
 
 }
@@ -73,18 +73,18 @@ class QueryClass {
 		$this->rag_table = $rag;
 		$this->cp_table = $cp;
 
-		$this->link = mysql_connect($db_addr,$db_username,$db_password) or die($lang['DB_ERROR']);
+		$this->link = mysqli_connect($db_addr,$db_username,$db_password) or die($lang['DB_ERROR']);
 	}
 
 	function Query($query, $table = 0) {
 		global $lang;
 
 		if ($table)
-			mysql_select_db($this->cp_table,$this->link) or die ($lang['DB_ERROR']);
+			mysqli_select_db($this->link,$this->cp_table) or die ($lang['DB_ERROR']);
 		else
-			mysql_select_db($this->rag_table,$this->link) or die ($lang['DB_ERROR']);
+			mysqli_select_db($this->link,$this->rag_table) or die ($lang['DB_ERROR']);
 		
-		$this->result = mysql_query($query, $this->link);
+		$this->result = mysqli_query($this->link, $query);
 
 		if (strpos($query,"SELECT") === 0)
 			return new ResultClass($this->result);
@@ -99,7 +99,7 @@ class QueryClass {
 		if (empty($this->result))
 			return;
 		if ($this->result !== TRUE && $this->result !== FALSE)
-			mysql_free_result($this->result);
+			mysqli_free_result($this->result);
 	}
 }
 
