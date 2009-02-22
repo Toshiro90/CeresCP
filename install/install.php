@@ -34,33 +34,33 @@ a mail to cerescp@gmail.com
 */
 
 extension_loaded('mysql')
-	or die ("Mysql extension not loaded, Please verify your PHP configuration.");
+	or die ("Mysql extension not loaded. Please verify your PHP configuration.");
 
 if (is_file("../config.php"))
-	die("Already installed, please remove this directory or rename the install folder.");
+	die("Already installed. Please remove this directory or rename the install folder.");
 
 if (is_file("./config.php"))
-	die("Installation Complete, move config.php to your Control Panel root and delete or rename the install folder.");
+	die("Installation Complete. Move config.php to your Control Panel root and delete or rename the install folder.");
 
 extract($_POST, EXTR_PREFIX_ALL, "POST");
 
 if (isset($POST_install)) {
 
 	$db = mysql_connect($POST_sql_host,$POST_sql_user,$POST_sql_pass)
-		or die("Connection error, press back and check your MySQL host, user, password.");
+		or die("Can't connect to MySQL server. Press back and check your MySQL host, user, password.");
 
 	mysql_select_db($POST_sql_rag_db, $db)
-		or die("Cant open Ragnarok DB, remember to install it before the Control Panel, press back and check your configurations.");
+		or die("Can't open ".$POST_sql_rag_db." database. Remember to create it before the Control Panel. Press back and check your configurations.");
 
 	if (!mysql_select_db($POST_sql_cp_db, $db)) {
 		$query = "CREATE DATABASE ".$POST_sql_cp_db;
 		$result = mysql_query($query)
-			or die("Cant open Control Panel DB, press back and check your configurations.");
+			or die("Can't open or create ".$POST_sql_cp_db." database, press back and check your configurations.");
 		mysql_select_db($POST_sql_cp_db, $db);
 	}
 
 	if ($POST_cp_adm_lvl < $POST_cp_gm_lvl)
-		die ("Admin level can't be lower than GM level, press back and fix it.");
+		die ("Admin level can't be lower than GM level. Press back and fix it.");
 
 	$woe = "";
 	if ($POST_woe_sun_start_h > 0 || $POST_woe_sun_end_h > 0) {
@@ -88,11 +88,11 @@ if (isset($POST_install)) {
 	//create the tables
 	$query = "DROP TABLE IF EXISTS `server_status`;";
 	$result = mysql_query($query)
-		or die("MySQL: This user don't have permission to create or change table.");
+		or die("MySQL: This user doesn't have the DROP privilege on the ".$POST_sql_cp_db." database.");
 
 	$query = "CREATE TABLE `server_status` (`last_checked` datetime NOT NULL default '0000-00-00 00:00:00', `status` tinyint(1) NOT NULL default '0') TYPE=MyISAM;";
 	$result = mysql_query($query)
-		or die("MySQL: This user don't have permission to create or change table.");
+		or die("MySQL: This user doesn't have the CREATE privilege on the ".$POST_sql_cp_db." database.");
 
 	$query = "DROP TABLE IF EXISTS `query_log`;";
 	$result = mysql_query($query);
@@ -116,11 +116,11 @@ if (isset($POST_install)) {
 		mysql_select_db($POST_sql_rag_db, $db);
 		$query = "DROP TABLE IF EXISTS `ragsrvinfo`;";
 		$result = mysql_query($query)
-			or die("MySQL: This user don't have permission to create or change table.");
+			or die("MySQL: This user doesn't have the DROP privilege on the ".$POST_sql_rag_db." database.");
 
 		$query = "CREATE TABLE IF NOT EXISTS `ragsrvinfo` (`index` int(11) NOT NULL default '0', `name` varchar(255) NOT NULL default '', `exp` int(11) unsigned NOT NULL default '0', `jexp` int(11) unsigned NOT NULL default '0', `drop` int(11) unsigned NOT NULL default '0', `agit_status` tinyint(1) unsigned NOT NULL default '0', `motd` varchar(255) NOT NULL default '', KEY `name` (`name`)) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
 		$result = mysql_query($query)
-			or die("MySQL: This user don't have permission to create or change table.");
+			or die("MySQL: This user doesn't have the CREATE privilege on the ".$POST_sql_rag_db." database.");
 	}
 
 
@@ -225,11 +225,11 @@ if (isset($POST_install)) {
 	$buffer .= "?>\n";
 
 	$handle = fopen ("config.php", "w")
-		or die("Can't create config.php, check your permissions and press back.");
+		or die("Can't create config.php. Check your permissions and press back.");
 	fwrite($handle, $buffer);
 	fclose($handle);
 
-	echo "Installation Complete, move config.php to your Control Panel root and delete the install folder.\n";
+	echo "Installation Complete. Move config.php to your Control Panel root and delete the install folder.\n";
 	if ($POST_woe_agit)
 		echo "<br>Agit Status: Copy ./install/npc/agit_status.txt to your rag npc folder and enable it.\n";
 	echo "</body></html>";

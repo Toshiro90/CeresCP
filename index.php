@@ -24,7 +24,7 @@ an e-mail to cerescp@gmail.com
 */
 
 extension_loaded('mysql')
-	or die ("Mysql extension not loaded, Please verify your PHP configuration.");
+	or die ("Mysql extension not loaded. Please verify your PHP configuration.");
 
 is_file("./config.php")
 	or die("<a href=\"./install/install.php\">Run Installation Script</a>");
