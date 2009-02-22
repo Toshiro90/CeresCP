@@ -23,11 +23,11 @@ To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
 
-if (!extension_loaded('mysql'))
-	die ("Mysql extension not loaded, Please verify your PHP configuration.");
+extension_loaded('mysql')
+	or die ("Mysql extension not loaded, Please verify your PHP configuration.");
 
-if (!is_file("./config.php"))
-	die("<a href=\"./install/install.php\">Run Installation Script</a>");
+is_file("./config.php")
+	or die("<a href=\"./install/install.php\">Run Installation Script</a>");
 
 session_start();
 include_once 'config.php'; // loads config variables

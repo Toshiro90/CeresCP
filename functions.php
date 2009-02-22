@@ -57,8 +57,8 @@ if ($CONFIG['cp_admin'] < 10)
 
 function readcastles() {
 	global $lang;
-	if (!($handle = fopen("./db/castles.txt", "rt")))
-		die(htmlformat($lang['TXT_ERROR']));
+	$handle = fopen("./db/castles.txt", "rt")
+		or die(htmlformat($lang['TXT_ERROR']));
 	while ($line = fgets($handle, 1024)) {
 		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
 			continue;
@@ -155,8 +155,8 @@ function readjobs() {
 	global $lang;
 
 	$resp[] = "unknown";
-	if (!($handle = fopen("./db/jobs.txt", "rt")))
-		die(htmlformat($lang['TXT_ERROR']));
+	$handle = fopen("./db/jobs.txt", "rt")
+		or die(htmlformat($lang['TXT_ERROR']));
 	while ($line = fgets($handle, 1024)) {
 		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
 			continue;
@@ -226,8 +226,8 @@ function thepass($string) {
 	if ((strlen($string) - $numero) < 2)
 		return TRUE;
 
-	if (!($handle = fopen("./db/passdict.txt", "rt")))
-		die(htmlformat($lang['TXT_ERROR']));
+	$handle = fopen("./db/passdict.txt", "rt")
+		or die(htmlformat($lang['TXT_ERROR']));
 	while ($line = fgets($handle, 1024)) {
 		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
 			continue;
@@ -417,8 +417,8 @@ function closetable() {
 
 function read_maildef($file) {
 	global $lang;
-	if (!($handle = fopen("./language/mail/".$file.".txt", "rt")))
-		die(htmlformat($lang['TXT_ERROR']));
+	$handle = fopen("./language/mail/".$file.".txt", "rt")
+		or die(htmlformat($lang['TXT_ERROR']));
 	$maildef="";
 	while ($line = fgets($handle, 1024)) {
 		if ($line[0] == '/' && $line[1] == '/')
