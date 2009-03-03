@@ -121,7 +121,7 @@ $lang['WHOISONLINE_WHOISONLINE'] = 'Who is online';
 $lang['WHOISONLINE_COORDS'] = 'Coords';
 
 //top100zeny.php
-$lang['TOP100ZENY_TOP100ZENY'] = 'Top 100 Zeny';
+$lang['TOP100ZENY_TOP100ZENY'] = 'Top 100 Zeny Ladder';
 
 //slot.php
 $lang['SLOT_NOT_SELECTED'] = 'No new slot selected.';
@@ -195,7 +195,7 @@ $lang['MARRIAGE_PS2'] = '*You can only change one char at time';
 $lang['MARRIAGE_PS3'] = '*You will be banned for 2 minutes to save the changes';
 
 //ladder.php
-$lang['LADDER_TOP100'] = 'Ladder Top 100 Rank';
+$lang['LADDER_TOP100'] = 'Top 100 Player Ladder';
 $lang['LADDER_GUILD'] = 'Guild';
 $lang['LADDER_STATUS'] = 'Status';
 $lang['LADDER_STATUS_ON'] = 'On';

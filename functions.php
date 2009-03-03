@@ -193,7 +193,7 @@ function moneyformat($string) {
 }
 
 function inject($string) {
-	$permitido = "abcdefghijklmnopqrstuvxzwyABCDEFGHIJKLMNOPQRSTUVXZWY1234567890._@-&$/§*°ºª"; //dicionario de palavras permitidas
+	$permitido = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.@$&-_/§*°ºª"; //dicionario de palavras permitidas
 	for ($i=0; $i<strlen($string); $i++) {
 		if (strpos($permitido, substr($string, $i, 1)) === FALSE) return TRUE;
 	}
