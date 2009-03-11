@@ -36,6 +36,7 @@ $CONFIG['safe_pass']		=	'1';			// Force the use of a safer password with size 6 
 //Admin Area
 $CONFIG['cp_admin']		=	'99';			// CP admin functions
 $CONFIG['gm_level']		=	'70';			// CP GM funtions
+$CONFIG['gm_hide']		=	'40';			// GMs this level and above will be hidden from whoisonline.php
 
 //WOE
 // sun = sunday, mon = monday, tue = tuesday, wed = wednesday, thu = thursday, fri = friday, sun = sunday

@@ -53,7 +53,7 @@ echo "
 if ($result) {
 	while ($line = $result->fetch_row()) {
 		$charname = htmlformat($line[0]);
-		if ($line[9] > 40) {
+		if ($line[9] >= $CONFIG_gm_hide) {
 			if (!isset($_SESSION[$CONFIG_name.'level']) || (isset($_SESSION[$CONFIG_name.'level']) && $_SESSION[$CONFIG_name.'level'] < $line[9]))
 				continue;
 		}

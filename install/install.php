@@ -165,6 +165,7 @@ if (isset($POST_install)) {
 	$buffer .= "//Admin Area\n";
 	$buffer .= "\$CONFIG['cp_admin']		=	'".$POST_cp_adm_lvl."';			// CP admin functions\n";
 	$buffer .= "\$CONFIG['gm_level']		=	'".$POST_cp_gm_lvl."';			// CP GM funtions\n";
+	$buffer .= "\$CONFIG['gm_hide']		=	'".$POST_cp_hide_lvl."';			// GMs this level and above will be hidden from whoisonline.php\n";
 	$buffer .= "\n";
 	$buffer .= "//WOE\n";
 	$buffer .= "// sun = sunday, mon = monday, tue = tuesday, wed = wednesday, thu = thursday, fri = friday, sun = sunday\n";
@@ -328,6 +329,10 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									<tr>
 										<td align="left">GM Level</td>
 										<td align="left"><input type="text" name="cp_gm_lvl" maxlength="2" size="30" value="70"></td>
+									</tr>
+									<tr>
+										<td align="left">Hide from whoisonline.php</td>
+										<td align="left"><input type="text" name="cp_hide_lvl" maxlength="3" size="5" value="40"> (min GM level)</td>
 									</tr>
 								</table>
 							</fieldset>
