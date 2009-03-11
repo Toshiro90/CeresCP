@@ -69,7 +69,7 @@ $CONFIG['max_accounts']		=	'0';			// Max accounts allowed to be in the DB (0 = d
 $CONFIG['password_recover']	=	'0';			// password recover enable = 1, disable = 0
 $CONFIG['reset_enable']		=	'1';			// reset position enable = 1, disable = 0
 $CONFIG['reset_cost']		=	'300';		// reset position cost, disable cost = 0
-$CONFIG['money_transfer']	=	'1';			// money transfer enable = 1, disable = 0
+$CONFIG['money_transfer']	=	'0';			// money transfer enable = 1, disable = 0
 $CONFIG['money_cost']		=	'0';			// money transfer cost (100 = 1%), disable cost = 0
 $CONFIG['set_slot']		=	'1';			// change char slot enable = 1, disable = 0
 $CONFIG['reset_look']		=	'1';			// reset char equips and colors with error enable = 1, disable = 0

@@ -492,7 +492,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Money Transfer</td>
-										<td align="left"><select name="feat_mt"><option value="0">No</option><option selected value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_mt"><option selected value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Money Transfer Cost</td>
