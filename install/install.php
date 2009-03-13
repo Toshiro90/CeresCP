@@ -46,7 +46,7 @@ extract($_POST, EXTR_PREFIX_ALL, "POST");
 
 if (isset($POST_install)) {
 
-	$db = mysqli_connect($POST_sql_host,$POST_sql_user,$POST_sql_pass)
+	$db = mysqli_connect($POST_sql_rag_host,$POST_sql_rag_user,$POST_sql_rag_pass)
 		or die("Can't connect to MySQL server. Press back and check your MySQL host, user, password.");
 
 	mysqli_select_db($db, $POST_sql_rag_db)
@@ -153,12 +153,12 @@ if (isset($POST_install)) {
 	$buffer .= "*/\n";
 	$buffer .= "\n";
 	$buffer .= "//sql connections\n";
-	$buffer .= "\$CONFIG['db_serv']		=	'".$POST_sql_host."';	// SQL Host\n";
-	$buffer .= "\$CONFIG['db_user']		=	'".$POST_sql_user."';		// SQL User\n";
-	$buffer .= "\$CONFIG['db_pass']		=	'".$POST_sql_pass."';		// SQL Password\n";
+	$buffer .= "\$CONFIG['rag_serv']		=	'".$POST_sql_rag_host."';	// SQL Host\n";
+	$buffer .= "\$CONFIG['rag_user']		=	'".$POST_sql_rag_user."';		// SQL User\n";
+	$buffer .= "\$CONFIG['rag_pass']		=	'".$POST_sql_rag_pass."';		// SQL Password\n";
 	$buffer .= "\$CONFIG['rag_db']			=	'".$POST_sql_rag_db."';		// SQL Ragnarok Database name\n";
-	$buffer .= "\$CONFIG['cp_db']			=	'".$POST_sql_cp_db."';			// SQL CP Database name\n";
 	$buffer .= "\$CONFIG['log_db']			=	'".$POST_sql_log_db."';		// SQL Ragnarok Log Database name\n";
+	$buffer .= "\$CONFIG['cp_db']			=	'".$POST_sql_cp_db."';			// SQL CP Database name\n";
 	$buffer .= "\$CONFIG['md5_pass']		=	'".$POST_sql_md5."';			// Use MD5 password (enable = 1, disable = 0)\n";
 	$buffer .= "\$CONFIG['safe_pass']		=	'".$POST_sql_safe_pass."';			// Force the use of a safer password with size 6 and at least 2 letter and 2 numbers (enable = 1, disable = 0)\n";
 	$buffer .= "\n";
@@ -284,27 +284,27 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 								<table border="0" width="400">
 									<tr>
 										<td width="200" align="left"><span title="MySQL host adress">Host</span></td>
-										<td align="left"><input type="text" name="sql_host" size="30" value="localhost"></td>
+										<td align="left"><input type="text" name="sql_rag_host" size="30" value="localhost"></td>
 									</tr>
 									<tr>
 										<td align="left">User</td>
-										<td align="left"><input type="text" name="sql_user" size="30" value="ragnarok"></td>
+										<td align="left"><input type="text" name="sql_rag_user" size="30" value="ragnarok"></td>
 									</tr>
 									<tr>
 										<td align="left">Password</td>
-										<td align="left"><input type="text" name="sql_pass" size="30" value="ragnarok"></td>
+										<td align="left"><input type="text" name="sql_rag_pass" size="30" value="ragnarok"></td>
 									</tr>
 									<tr>
 										<td align="left">Ragnarok DB</td>
 										<td align="left"><input type="text" name="sql_rag_db" size="30" value="ragnarok"></td>
 									</tr>
 									<tr>
-										<td align="left">CeresCP DB</td>
-										<td align="left"><input type="text" name="sql_cp_db" size="30" value="cp"></td>
-									</tr>
-									<tr>
 										<td align="left">Log DB</td>
 										<td align="left"><input type="text" name="sql_log_db" size="30" value="log"></td>
+									</tr>
+									<tr>
+										<td align="left">CeresCP DB</td>
+										<td align="left"><input type="text" name="sql_cp_db" size="30" value="cp"></td>
 									</tr>
 									<tr>
 										<td align="left">MD5 Pass</td>

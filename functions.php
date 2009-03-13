@@ -35,7 +35,7 @@ if (isset($_SESSION[$CONFIG_name.'SERVER'])) {
 	$_SESSION[$CONFIG_name.'SERVER'] = $CONFIG_name;
 }
 
-$mysql = new QueryClass($CONFIG_db_serv, $CONFIG_db_user, $CONFIG_db_pass, $CONFIG_rag_db, $CONFIG_cp_db);
+$mysql = new QueryClass($CONFIG_rag_serv, $CONFIG_rag_user, $CONFIG_rag_pass, $CONFIG_rag_db, $CONFIG_cp_db);
 
 if (!isset($_SESSION[$CONFIG_name.'ipban']) || (isset($_SESSION[$CONFIG_name.'iptime']) && (time() - $_SESSION[$CONFIG_name.'iptime']) > 300)) {
 	include_once 'ipban.php';
@@ -328,7 +328,7 @@ function execute_query($query, $source = 'none.php', $database = 0, $save_report
 }
 
 function add_query_entry($source, $log_query) {
-	global $CONFIG_name, $CONFIG_cp_db, $CONFIG_db_serv, $CONFIG_db_user, $CONFIG_db_pass;
+	global $CONFIG_name, $CONFIG_cp_db, $CONFIG_rag_serv, $CONFIG_rag_user, $CONFIG_rag_pass;
 	if (!empty($_SESSION[$CONFIG_name.'account_id'])) 
 		$log_account = $_SESSION[$CONFIG_name.'account_id'];
 	else

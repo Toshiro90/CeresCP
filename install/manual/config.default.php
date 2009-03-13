@@ -24,12 +24,12 @@ a mail to cerescp@gmail.com
 */
 
 //sql connections
-$CONFIG['db_serv']		=	'localhost';	// SQL Host
-$CONFIG['db_user']		=	'ragnarok';		// SQL User
-$CONFIG['db_pass']		=	'ragnarok';		// SQL Password
+$CONFIG['rag_serv']		=	'localhost';	// SQL Host
+$CONFIG['rag_user']		=	'ragnarok';		// SQL User
+$CONFIG['rag_pass']		=	'ragnarok';		// SQL Password
 $CONFIG['rag_db']			=	'ragnarok';		// SQL Ragnarok Database name
-$CONFIG['cp_db']			=	'cp';			// SQL CP Database name
 $CONFIG['log_db']			=	'log';		// SQL Ragnarok Log Database name
+$CONFIG['cp_db']			=	'cp';			// SQL CP Database name
 $CONFIG['md5_pass']		=	'0';			// Use MD5 password (enable = 1, disable = 0)
 $CONFIG['safe_pass']		=	'1';			// Force the use of a safer password with size 6 and at least 2 letter and 2 numbers (enable = 1, disable = 0)
 
