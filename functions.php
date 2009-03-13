@@ -35,7 +35,7 @@ if (isset($_SESSION[$CONFIG_name.'SERVER'])) {
 	$_SESSION[$CONFIG_name.'SERVER'] = $CONFIG_name;
 }
 
-$mysql = new QueryClass($CONFIG_rag_serv, $CONFIG_rag_user, $CONFIG_rag_pass, $CONFIG_rag_db, $CONFIG_cp_db);
+$mysql = new QueryClass($CONFIG_rag_serv, $CONFIG_rag_user, $CONFIG_rag_pass, $CONFIG_rag_db, $CONFIG_cp_serv, $CONFIG_cp_user, $CONFIG_cp_pass, $CONFIG_cp_db);
 
 if (!isset($_SESSION[$CONFIG_name.'ipban']) || (isset($_SESSION[$CONFIG_name.'iptime']) && (time() - $_SESSION[$CONFIG_name.'iptime']) > 300)) {
 	include_once 'ipban.php';

@@ -46,17 +46,20 @@ extract($_POST, EXTR_PREFIX_ALL, "POST");
 
 if (isset($POST_install)) {
 
-	$db = mysqli_connect($POST_sql_rag_host,$POST_sql_rag_user,$POST_sql_rag_pass)
-		or die("Can't connect to MySQL server. Press back and check your MySQL host, user, password.");
+	$rag_db = mysqli_connect($POST_sql_rag_host,$POST_sql_rag_user,$POST_sql_rag_pass)
+		or die("Can't connect to Ragnarok MySQL server. Press back and check your MySQL host, user, password.");
 
-	mysqli_select_db($db, $POST_sql_rag_db)
+	mysqli_select_db($rag_db, $POST_sql_rag_db)
 		or die("Can't open ".$POST_sql_rag_db." database. Remember to create it before the Control Panel. Press back and check your configurations.");
 
-	if (!mysqli_select_db($db, $POST_sql_cp_db)) {
+	$cp_db = mysqli_connect($POST_sql_cp_host,$POST_sql_cp_user,$POST_sql_cp_pass)
+		or die("Can't connect to Ragnarok MySQL server. Press back and check your MySQL host, user, password.");
+
+	if (!mysqli_select_db($cp_db, $POST_sql_cp_db)) {
 		$query = "CREATE DATABASE ".$POST_sql_cp_db;
-		$result = mysqli_query($db, $query)
+		$result = mysqli_query($cp_db, $query)
 			or die("Can't open or create ".$POST_sql_cp_db." database, press back and check your configurations.");
-		mysqli_select_db($db, $POST_sql_cp_db);
+		mysqli_select_db($cp_db, $POST_sql_cp_db);
 	}
 
 	if ($POST_cp_adm_lvl < $POST_cp_gm_lvl)
@@ -87,39 +90,38 @@ if (isset($POST_install)) {
 
 	//create the tables
 	$query = "DROP TABLE IF EXISTS `cp_bruteforce`;";
-	$result = mysqli_query($db, $query)
+	$result = mysqli_query($cp_db, $query)
 		or die("MySQL: This user doesn't have the DROP privilege on the ".$POST_sql_cp_db." database.");
 
 	$query = "CREATE TABLE `cp_bruteforce` (`action_id` int(11) NOT NULL auto_increment, `user` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `date` int(11) NOT NULL default '0', `ban` int(11) NOT NULL default '0', PRIMARY KEY  (`action_id`), KEY `user` (`user`), KEY `IP` (`IP`)) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
-	$result = mysqli_query($db, $query)
+	$result = mysqli_query($cp_db, $query)
 		or die("MySQL: This user doesn't have the CREATE privilege on the ".$POST_sql_cp_db." database.");
 
 	$query = "DROP TABLE IF EXISTS `cp_links`;";
-	$result = mysqli_query($db, $query);
+	$result = mysqli_query($cp_db, $query);
 
 	$query = "CREATE TABLE `cp_links` (`cod` int(11) NOT NULL auto_increment, `name` varchar(30) NOT NULL, `url` varchar(255) NOT NULL, `desc` text NOT NULL, `size` int(11) default '0', PRIMARY KEY  (`cod`) ) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
-	$result = mysqli_query($db, $query);
+	$result = mysqli_query($cp_db, $query);
 
 	$query = "DROP TABLE IF EXISTS `cp_querylog`;";
-	$result = mysqli_query($db, $query);
+	$result = mysqli_query($cp_db, $query);
 
 	$query = "CREATE TABLE `cp_querylog` (`action_id` int(11) NOT NULL auto_increment, `Date` datetime NOT NULL default '0000-00-00 00:00:00', `User` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `page` varchar(24) NOT NULL default '', `query` text NOT NULL,   PRIMARY KEY  (`action_id`), KEY `action_id` (`action_id`) ) TYPE=MyISAM AUTO_INCREMENT=1 ;";
-	$result = mysqli_query($db, $query);
+	$result = mysqli_query($cp_db, $query);
 
 	$query = "DROP TABLE IF EXISTS `cp_server_status`;";
-	$result = mysqli_query($db, $query);
+	$result = mysqli_query($cp_db, $query);
 
 	$query = "CREATE TABLE `cp_server_status` (`last_checked` datetime NOT NULL default '0000-00-00 00:00:00', `status` tinyint(1) NOT NULL default '0') TYPE=MyISAM;";
-	$result = mysqli_query($db, $query);
+	$result = mysqli_query($cp_db, $query);
 
 	if ($POST_woe_agit) {
-		mysqli_select_db($db, $POST_sql_rag_db);
 		$query = "DROP TABLE IF EXISTS `ragsrvinfo`;";
-		$result = mysqli_query($db, $query)
+		$result = mysqli_query($rag_db, $query)
 			or die("MySQL: This user doesn't have the DROP privilege on the ".$POST_sql_rag_db." database.");
 
 		$query = "CREATE TABLE IF NOT EXISTS `ragsrvinfo` (`index` int(11) NOT NULL default '0', `name` varchar(255) NOT NULL default '', `exp` int(11) unsigned NOT NULL default '0', `jexp` int(11) unsigned NOT NULL default '0', `drop` int(11) unsigned NOT NULL default '0', `agit_status` tinyint(1) unsigned NOT NULL default '0', `motd` varchar(255) NOT NULL default '', KEY `name` (`name`)) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
-		$result = mysqli_query($db, $query)
+		$result = mysqli_query($rag_db, $query)
 			or die("MySQL: This user doesn't have the CREATE privilege on the ".$POST_sql_rag_db." database.");
 	}
 
@@ -153,11 +155,14 @@ if (isset($POST_install)) {
 	$buffer .= "*/\n";
 	$buffer .= "\n";
 	$buffer .= "//sql connections\n";
-	$buffer .= "\$CONFIG['rag_serv']		=	'".$POST_sql_rag_host."';	// SQL Host\n";
-	$buffer .= "\$CONFIG['rag_user']		=	'".$POST_sql_rag_user."';		// SQL User\n";
-	$buffer .= "\$CONFIG['rag_pass']		=	'".$POST_sql_rag_pass."';		// SQL Password\n";
+	$buffer .= "\$CONFIG['rag_serv']		=	'".$POST_sql_rag_host."';	// SQL Ragnarok Host\n";
+	$buffer .= "\$CONFIG['rag_user']		=	'".$POST_sql_rag_user."';		// SQL Ragnarok User\n";
+	$buffer .= "\$CONFIG['rag_pass']		=	'".$POST_sql_rag_pass."';		// SQL Ragnarok Password\n";
 	$buffer .= "\$CONFIG['rag_db']			=	'".$POST_sql_rag_db."';		// SQL Ragnarok Database name\n";
 	$buffer .= "\$CONFIG['log_db']			=	'".$POST_sql_log_db."';		// SQL Ragnarok Log Database name\n";
+	$buffer .= "\$CONFIG['cp_serv']		=	'".$POST_sql_cp_host."';	// SQL CP Host\n";
+	$buffer .= "\$CONFIG['cp_user']		=	'".$POST_sql_cp_user."';		// SQL CP User\n";
+	$buffer .= "\$CONFIG['cp_pass']		=	'".$POST_sql_cp_pass."';		// SQL CP Password\n";
 	$buffer .= "\$CONFIG['cp_db']			=	'".$POST_sql_cp_db."';			// SQL CP Database name\n";
 	$buffer .= "\$CONFIG['md5_pass']		=	'".$POST_sql_md5."';			// Use MD5 password (enable = 1, disable = 0)\n";
 	$buffer .= "\$CONFIG['safe_pass']		=	'".$POST_sql_safe_pass."';			// Force the use of a safer password with size 6 and at least 2 letter and 2 numbers (enable = 1, disable = 0)\n";
@@ -283,15 +288,15 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 								<legend><b>MySQL Settings</b></legend>
 								<table border="0" width="400">
 									<tr>
-										<td width="200" align="left"><span title="MySQL host adress">Host</span></td>
+										<td width="200" align="left"><span title="MySQL host adress">Ragnarok Host</span></td>
 										<td align="left"><input type="text" name="sql_rag_host" size="30" value="localhost"></td>
 									</tr>
 									<tr>
-										<td align="left">User</td>
+										<td align="left">Ragnarok User</td>
 										<td align="left"><input type="text" name="sql_rag_user" size="30" value="ragnarok"></td>
 									</tr>
 									<tr>
-										<td align="left">Password</td>
+										<td align="left">Ragnarok Password</td>
 										<td align="left"><input type="text" name="sql_rag_pass" size="30" value="ragnarok"></td>
 									</tr>
 									<tr>
@@ -301,6 +306,18 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									<tr>
 										<td align="left">Log DB</td>
 										<td align="left"><input type="text" name="sql_log_db" size="30" value="log"></td>
+									</tr>
+									<tr>
+										<td width="200" align="left"><span title="MySQL host adress">CeresCP Host</span></td>
+										<td align="left"><input type="text" name="sql_cp_host" size="30" value="localhost"></td>
+									</tr>
+									<tr>
+										<td align="left">CeresCP User</td>
+										<td align="left"><input type="text" name="sql_cp_user" size="30" value="ragnarok"></td>
+									</tr>
+									<tr>
+										<td align="left">CeresCP Password</td>
+										<td align="left"><input type="text" name="sql_cp_pass" size="30" value="ragnarok"></td>
 									</tr>
 									<tr>
 										<td align="left">CeresCP DB</td>

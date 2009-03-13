@@ -62,29 +62,24 @@ class ResultClass {
 }
 
 class QueryClass {
-	var $rag_table;
-	var $cp_table;
-	var $link;
+	var $rag_link;
+	var $cp_link;
 	var $result;
 
-	function QueryClass($db_addr, $db_username, $db_password, $rag, $cp) {
+	function QueryClass($rag_addr, $rag_username, $rag_password, $rag_db, $cp_addr, $cp_username, $cp_password, $cp_db) {
 		global $lang;
 
-		$this->rag_table = $rag;
-		$this->cp_table = $cp;
-
-		$this->link = mysqli_connect($db_addr,$db_username,$db_password) or die($lang['DB_ERROR']);
+		$this->rag_link = mysqli_connect($rag_addr,$rag_username,$rag_password,$rag_db) or die($lang['DB_ERROR']);
+		$this->cp_link = mysqli_connect($cp_addr,$cp_username,$cp_password,$cp_db) or die($lang['DB_ERROR']);
 	}
 
 	function Query($query, $table = 0) {
 		global $lang;
 
 		if ($table)
-			mysqli_select_db($this->link,$this->cp_table) or die ($lang['DB_ERROR']);
+			$this->result = mysqli_query($this->cp_link, $query);
 		else
-			mysqli_select_db($this->link,$this->rag_table) or die ($lang['DB_ERROR']);
-		
-		$this->result = mysqli_query($this->link, $query);
+			$this->result = mysqli_query($this->rag_link, $query);
 
 		if (strpos($query,"SELECT") === 0)
 			return new ResultClass($this->result);
