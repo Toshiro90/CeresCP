@@ -48,6 +48,7 @@ $CONFIG['agit_check']		=	'0';			// This WILL NOT WORK unless you installed the n
 //server name, rates
 $CONFIG['name']			=	'Ceres Control Panel';	// name of the server
 $CONFIG['rate']			=	'1/1/1';		// rates of the server
+date_default_timezone_set('America/New_York');		// game server Timezone (useful if your webserver's timezone is different than game server).
 $CONFIG['dynamic_info']		=	'0';			// Use info (rates) from the server itself?
 $CONFIG['dynamic_name']		=	'Ceres Control Panel';	// The name of the server in ragsrvinfo's server name column (Used for dynamic info)
 $CONFIG['show_rates']		=	'0';			// Show rates below server status?
