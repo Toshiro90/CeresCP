@@ -32,7 +32,7 @@ DEFINE('BF_ADD', "INSERT INTO `bruteforce` (`user`, `IP`, `date`, `ban`) VALUES(
 
 
 function bf_check_user($username) {
-	$log_ip = $_SERVER['REMOTE_ADDR'];
+	$log_ip = $SERVER_REMOTE_ADDR;
 	$current = time();
 	
 	$query = sprintf(BF_IP, $log_ip, $current - 300, $current);
@@ -72,7 +72,7 @@ function bf_check_user($username) {
 }
 
 function bf_error($username) {
-	$log_ip = $_SERVER['REMOTE_ADDR'];
+	$log_ip = $SERVER_REMOTE_ADDR;
 	$current = time();
 
 	$query = sprintf(BF_ADD, $username, $log_ip, $current, 0);

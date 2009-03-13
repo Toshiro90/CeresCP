@@ -291,7 +291,7 @@ function online_count() {
 }
 
 function check_ban() {
-	$query = sprintf(CHECK_BAN, $_SERVER['REMOTE_ADDR']);
+	$query = sprintf(CHECK_BAN, $SERVER_REMOTE_ADDR);
 	$result = execute_query($query, 'check_ban', 0, 0);
 
 	if ($result->count()) {
@@ -333,7 +333,7 @@ function add_query_entry($source, $log_query) {
 		$log_account = $_SESSION[$CONFIG_name.'account_id'];
 	else
 		$log_account = 0;
-	$log_ip = $_SERVER['REMOTE_ADDR'];
+	$log_ip = $SERVER_REMOTE_ADDR;
 	$log_query = addslashes($log_query);
 	$query = sprintf(ADD_QUERY_ENTRY, $log_account, $log_ip, $source, $log_query);
 
