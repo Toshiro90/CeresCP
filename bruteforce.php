@@ -26,9 +26,9 @@ an e-mail to cerescp@gmail.com
 include_once 'config.php'; // loads config variables
 include_once 'functions.php';
 
-DEFINE('BF_IP', "SELECT `ban`, `user` FROM `bruteforce` WHERE `IP` = '%s' AND (`date` > '%d' OR `ban` > '%d')");
-DEFINE('BF_USER', "SELECT `ban` FROM `bruteforce` WHERE `user` = '%s' AND (`date` > '%d' OR `ban` > '%d')");
-DEFINE('BF_ADD', "INSERT INTO `bruteforce` (`user`, `IP`, `date`, `ban`) VALUES('%s', '%s', '%d', '%d')");
+DEFINE('BF_IP', "SELECT `ban`, `user` FROM `cp_bruteforce` WHERE `IP` = '%s' AND (`date` > '%d' OR `ban` > '%d')");
+DEFINE('BF_USER', "SELECT `ban` FROM `cp_bruteforce` WHERE `user` = '%s' AND (`date` > '%d' OR `ban` > '%d')");
+DEFINE('BF_ADD', "INSERT INTO `cp_bruteforce` (`user`, `IP`, `date`, `ban`) VALUES('%s', '%s', '%d', '%d')");
 
 
 function bf_check_user($username) {

@@ -20,7 +20,7 @@
 # To contact any of the authors about special permissions send
 # an e-mail to cerescp@gmail.com
 
-CREATE TABLE `bruteforce` (
+CREATE TABLE `cp_bruteforce` (
   `action_id` int(11) NOT NULL auto_increment,
   `user` varchar(24) NOT NULL default '',
   `IP` varchar(20) NOT NULL default '',
@@ -31,7 +31,7 @@ CREATE TABLE `bruteforce` (
   KEY `IP` (`IP`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
-CREATE TABLE `links` (
+CREATE TABLE `cp_links` (
   `cod` int(11) NOT NULL auto_increment,
   `name` varchar(30) NOT NULL,
   `url` varchar(255) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `links` (
   PRIMARY KEY  (`cod`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
-CREATE TABLE `query_log` (
+CREATE TABLE `cp_querylog` (
   `action_id` int(11) NOT NULL auto_increment,
   `Date` datetime NOT NULL default '0000-00-00 00:00:00',
   `User` varchar(24) NOT NULL default '',
@@ -51,7 +51,7 @@ CREATE TABLE `query_log` (
   KEY `action_id` (`action_id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
 
-CREATE TABLE `server_status` (
+CREATE TABLE `cp_server_status` (
   `last_checked` datetime NOT NULL default '0000-00-00 00:00:00',
   `status` tinyint(1) NOT NULL default '0'
 ) TYPE=MyISAM;

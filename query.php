@@ -27,11 +27,11 @@ $revision = 46;
 
 //functions.php
 //log queries in querylog
-DEFINE('ADD_QUERY_ENTRY', "INSERT INTO `query_log` (`Date`, `User`, `IP`, `page`, `Query`) VALUES(NOW(), '%s', '%s', '%s', '%s')");
+DEFINE('ADD_QUERY_ENTRY', "INSERT INTO `cp_querylog` (`Date`, `User`, `IP`, `page`, `Query`) VALUES(NOW(), '%s', '%s', '%s', '%s')");
 //Server Status
-DEFINE('CHECK_STATUS', "SELECT `last_checked`,`status`,TIMESTAMPDIFF(SECOND,`last_checked`,NOW()) FROM `server_status`");
-DEFINE('UPDATE_STATUS', "UPDATE `server_status` SET last_checked = NOW(), status = '%d'");
-DEFINE('INSERT_STATUS', "INSERT INTO `server_status` VALUES(NOW(), '0')");
+DEFINE('CHECK_STATUS', "SELECT `last_checked`,`status`,TIMESTAMPDIFF(SECOND,`last_checked`,NOW()) FROM `cp_server_status`");
+DEFINE('UPDATE_STATUS', "UPDATE `cp_server_status` SET last_checked = NOW(), status = '%d'");
+DEFINE('INSERT_STATUS', "INSERT INTO `cp_server_status` VALUES(NOW(), '0')");
 DEFINE('ABOUT_RATES', "SELECT exp, jexp, `drop` FROM `ragsrvinfo` WHERE `name` = '%s'");
 DEFINE('RATES_AGIT', "SELECT exp, jexp, `drop`, agit_status FROM `ragsrvinfo` WHERE `name` = '%s'");
 DEFINE('CHECK_BAN', "SELECT UNIX_TIMESTAMP(`lastlogin`), `unban_time`, `state` FROM `login` WHERE `last_ip` = '%s'");
@@ -154,6 +154,6 @@ AND (`char`.`class` = '%d' OR `char`.`class` = '%d') AND `login`.`state` != '5' 
 ");
 
 //links.php - Links
-DEFINE('GET_LINKS', "SELECT `name`, `url`, `desc`, `size` FROM `links`");
+DEFINE('GET_LINKS', "SELECT `name`, `url`, `desc`, `size` FROM `cp_links`");
 
 ?>
