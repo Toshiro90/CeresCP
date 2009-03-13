@@ -20,10 +20,25 @@
 # To contact any of the authors about special permissions send
 # an e-mail to cerescp@gmail.com
 
-CREATE TABLE `server_status` (
-  `last_checked` datetime NOT NULL default '0000-00-00 00:00:00',
-  `status` tinyint(1) NOT NULL default '0'
-) TYPE=MyISAM;
+CREATE TABLE `bruteforce` (
+  `action_id` int(11) NOT NULL auto_increment,
+  `user` varchar(24) NOT NULL default '',
+  `IP` varchar(20) NOT NULL default '',
+  `date` int(11) NOT NULL default '0',
+  `ban` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`action_id`),
+  KEY `user` (`user`),
+  KEY `IP` (`IP`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
+
+CREATE TABLE `links` (
+  `cod` int(11) NOT NULL auto_increment,
+  `name` varchar(30) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `desc` text NOT NULL,
+  `size` int(11) default '0',
+  PRIMARY KEY  (`cod`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 CREATE TABLE `query_log` (
   `action_id` int(11) NOT NULL auto_increment,
@@ -36,22 +51,7 @@ CREATE TABLE `query_log` (
   KEY `action_id` (`action_id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
 
-CREATE TABLE `links` (
-  `cod` int(11) NOT NULL auto_increment,
-  `name` varchar(30) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `desc` text NOT NULL,
-  `size` int(11) default '0',
-  PRIMARY KEY  (`cod`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 ;
-
-CREATE TABLE `bruteforce` (
-  `action_id` int(11) NOT NULL auto_increment,
-  `user` varchar(24) NOT NULL default '',
-  `IP` varchar(20) NOT NULL default '',
-  `date` int(11) NOT NULL default '0',
-  `ban` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`action_id`),
-  KEY `user` (`user`),
-  KEY `IP` (`IP`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 ;
+CREATE TABLE `server_status` (
+  `last_checked` datetime NOT NULL default '0000-00-00 00:00:00',
+  `status` tinyint(1) NOT NULL default '0'
+) TYPE=MyISAM;

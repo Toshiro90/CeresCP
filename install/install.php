@@ -86,19 +86,13 @@ if (isset($POST_install)) {
 	}
 
 	//create the tables
-	$query = "DROP TABLE IF EXISTS `server_status`;";
+	$query = "DROP TABLE IF EXISTS `bruteforce`;";
 	$result = mysqli_query($db, $query)
 		or die("MySQL: This user doesn't have the DROP privilege on the ".$POST_sql_cp_db." database.");
 
-	$query = "CREATE TABLE `server_status` (`last_checked` datetime NOT NULL default '0000-00-00 00:00:00', `status` tinyint(1) NOT NULL default '0') TYPE=MyISAM;";
+	$query = "CREATE TABLE `bruteforce` (`action_id` int(11) NOT NULL auto_increment, `user` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `date` int(11) NOT NULL default '0', `ban` int(11) NOT NULL default '0', PRIMARY KEY  (`action_id`), KEY `user` (`user`), KEY `IP` (`IP`)) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
 	$result = mysqli_query($db, $query)
 		or die("MySQL: This user doesn't have the CREATE privilege on the ".$POST_sql_cp_db." database.");
-
-	$query = "DROP TABLE IF EXISTS `query_log`;";
-	$result = mysqli_query($db, $query);
-
-	$query = "CREATE TABLE `query_log` (`action_id` int(11) NOT NULL auto_increment, `Date` datetime NOT NULL default '0000-00-00 00:00:00', `User` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `page` varchar(24) NOT NULL default '', `query` text NOT NULL,   PRIMARY KEY  (`action_id`), KEY `action_id` (`action_id`) ) TYPE=MyISAM AUTO_INCREMENT=1 ;";
-	$result = mysqli_query($db, $query);
 
 	$query = "DROP TABLE IF EXISTS `links`;";
 	$result = mysqli_query($db, $query);
@@ -106,10 +100,16 @@ if (isset($POST_install)) {
 	$query = "CREATE TABLE `links` (`cod` int(11) NOT NULL auto_increment, `name` varchar(30) NOT NULL, `url` varchar(255) NOT NULL, `desc` text NOT NULL, `size` int(11) default '0', PRIMARY KEY  (`cod`) ) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
 	$result = mysqli_query($db, $query);
 
-	$query = "DROP TABLE IF EXISTS `bruteforce`;";
+	$query = "DROP TABLE IF EXISTS `query_log`;";
 	$result = mysqli_query($db, $query);
 
-	$query = "CREATE TABLE `bruteforce` (`action_id` int(11) NOT NULL auto_increment, `user` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `date` int(11) NOT NULL default '0', `ban` int(11) NOT NULL default '0', PRIMARY KEY  (`action_id`), KEY `user` (`user`), KEY `IP` (`IP`)) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
+	$query = "CREATE TABLE `query_log` (`action_id` int(11) NOT NULL auto_increment, `Date` datetime NOT NULL default '0000-00-00 00:00:00', `User` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `page` varchar(24) NOT NULL default '', `query` text NOT NULL,   PRIMARY KEY  (`action_id`), KEY `action_id` (`action_id`) ) TYPE=MyISAM AUTO_INCREMENT=1 ;";
+	$result = mysqli_query($db, $query);
+
+	$query = "DROP TABLE IF EXISTS `server_status`;";
+	$result = mysqli_query($db, $query);
+
+	$query = "CREATE TABLE `server_status` (`last_checked` datetime NOT NULL default '0000-00-00 00:00:00', `status` tinyint(1) NOT NULL default '0') TYPE=MyISAM;";
 	$result = mysqli_query($db, $query);
 
 	if ($POST_woe_agit) {
