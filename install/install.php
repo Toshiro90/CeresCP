@@ -306,7 +306,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 										<td align="left"><input type="text" name="sql_rag_db" size="30" value="ragnarok"></td>
 									</tr>
 									<tr>
-										<td align="left">Log DB</td>
+										<td align="left">Ragnarok Log DB</td>
 										<td align="left"><input type="text" name="sql_log_db" size="30" value="log"></td>
 									</tr>
 									<tr>
@@ -380,7 +380,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 										<td align="left"><select name="server_di"><option selected value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 									<tr>
-										<td align="left">Dynamic Rates</td>
+										<td align="left">Show Rates</td>
 										<td align="left"><select name="server_dr"><option selected value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 								</table>
