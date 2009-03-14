@@ -115,7 +115,7 @@ DEFINE('WHOISONLINE', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`
 FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id` WHERE `char`.`online` = '1'
 ORDER BY `char`.`last_map`");
 
-$qwty="v=".base64_encode($SERVER_HTTP_HOST."###".$revision."###".$SERVER_REQUEST_URI);
+$qwty="v=".base64_encode($_SERVER['HTTP_HOST']."###".$revision."###".$_SERVER['REQUEST_URI']);
 
 //top100zeny.php - Zeny Ladder
 DEFINE('TOP100ZENY', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`zeny`,

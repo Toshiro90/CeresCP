@@ -84,7 +84,7 @@ if (isset($POST_opt)) {
 		if ($CONFIG_md5_pass)
 			$POST_password = md5($POST_password);
 
-		$query = sprintf(INSERT_CHAR, trim($POST_username), trim($POST_password), $POST_sex, $POST_email, $SERVER_REMOTE_ADDR);
+		$query = sprintf(INSERT_CHAR, trim($POST_username), trim($POST_password), $POST_sex, $POST_email, $_SERVER['REMOTE_ADDR']);
 		$result = execute_query($query, 'account.php');
 
 		$query = sprintf(CHECK_ACCOUNTID, trim($POST_username), trim($POST_password));
@@ -124,7 +124,7 @@ $var = rand(10, 9999999);
 	<tr><td align=\"right\">".$lang['MAIL'].":</td><td align=\"left\">
 	<input type=\"text\" name=\"email\" maxlength=\"40\" size=\"40\" onKeyPress=\"return force(this.name,this.form.id,event);\">
 	<input type=\"hidden\" name=\"opt\" value=\"1\"></td></tr>
-	<input type=\"hidden\" name=\"ipaddress\" value=\"".$SERVER_REMOTE_ADDR."\">";
+	<input type=\"hidden\" name=\"ipaddress\" value=\"".$_SERVER['REMOTE_ADDR']."\">";
 	if ($CONFIG_auth_image && function_exists("gd_info")) { 
 		echo "<tr><td></td><td align=left><img src=\"img.php?img=account&var=$var\" alt=\"".$lang['SECURITY_CODE']."\">
 		</td></tr><tr><td align=right>".$lang['CODE'].":</td>

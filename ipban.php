@@ -24,7 +24,7 @@ an e-mail to cerescp@gmail.com
 */
 
 function ipban() {
-	$p = split('\.', $SERVER_REMOTE_ADDR);
+	$p = split('\.', $_SERVER['REMOTE_ADDR']);
 
 	$query = sprintf(CHECK_IPBAN, $p[0], $p[0],$p[1], $p[0],$p[1],$p[2], $p[0],$p[1],$p[2],$p[3]);
 	$result = execute_query($query, 'ipban.php', 0, 0);
