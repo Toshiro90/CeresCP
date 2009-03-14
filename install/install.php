@@ -160,10 +160,12 @@ if (isset($POST_install)) {
 	$buffer .= "\$CONFIG['rag_pass']		=	'".$POST_sql_rag_pass."';		// SQL Ragnarok Password\n";
 	$buffer .= "\$CONFIG['rag_db']			=	'".$POST_sql_rag_db."';		// SQL Ragnarok Database name\n";
 	$buffer .= "\$CONFIG['log_db']			=	'".$POST_sql_log_db."';		// SQL Ragnarok Log Database name\n";
+	$buffer .= "\n";
 	$buffer .= "\$CONFIG['cp_serv']		=	'".$POST_sql_cp_host."';	// SQL CP Host\n";
 	$buffer .= "\$CONFIG['cp_user']		=	'".$POST_sql_cp_user."';		// SQL CP User\n";
 	$buffer .= "\$CONFIG['cp_pass']		=	'".$POST_sql_cp_pass."';		// SQL CP Password\n";
 	$buffer .= "\$CONFIG['cp_db']			=	'".$POST_sql_cp_db."';			// SQL CP Database name\n";
+	$buffer .= "\n";
 	$buffer .= "\$CONFIG['md5_pass']		=	'".$POST_sql_md5."';			// Use MD5 password (enable = 1, disable = 0)\n";
 	$buffer .= "\$CONFIG['safe_pass']		=	'".$POST_sql_safe_pass."';			// Force the use of a safer password with size 6 and at least 2 letter and 2 numbers (enable = 1, disable = 0)\n";
 	$buffer .= "\n";
