@@ -39,7 +39,7 @@ if (!isset($_SESSION[$CONFIG_name.'account_id']) && isset($_COOKIE['login_pass']
 			$query = sprintf(LOGIN_USER, trim($_COOKIE['userid']));
 			$result = execute_query($query, 'index.php');
 
-			if($line = $result->fetch_row()) {
+			if($result->count() == 1 && $line = $result->fetch_row()) {
 				if (md5($CONFIG_name.$line[3]) == $_COOKIE['login_pass']) {
 					$_SESSION[$CONFIG_name.'account_id'] = $line[0];
 					$_SESSION[$CONFIG_name.'userid'] = $line[1];
@@ -109,7 +109,7 @@ if (!empty($POST_opt)) {
 		$query = sprintf(LOGIN_USER, trim($POST_username));
 		$result = execute_query($query, 'index.php');
 
-		if($line = $result->fetch_row()) {
+		if($result->count() == 1 && $line = $result->fetch_row()) {
 			if ($CONFIG_md5_pass)
 				$POST_login_pass = md5($POST_login_pass);
 
