@@ -29,7 +29,7 @@ include_once 'query.php'; // imports queries
 include_once 'functions.php';
 include_once 'mail.php';
 
-if (!$CONFIG_password_recover)
+if (!$CONFIG_password_recover || ($CONFIG_password_recover && $CONFIG_md5_pass))
 	redir("motd.php", "main_div", "Disabled");
 
 if (!empty($GET_opt)) {

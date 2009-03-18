@@ -65,6 +65,9 @@ if (isset($POST_install)) {
 	if ($POST_cp_adm_lvl < $POST_cp_gm_lvl)
 		die ("Admin level can't be lower than GM level. Press back and fix it.");
 
+	if ($POST_feat_pr && $POST_sql_md5)
+		die ("Password Recovery will not work if MD5 is enabled. Press back and fix it.");
+
 	$woe = "";
 	if ($POST_woe_sun_start_h > 0 || $POST_woe_sun_end_h > 0) {
 		$woe .= sprintf("sun(%02d%02d, %02d%02d); ", $POST_woe_sun_start_h, $POST_woe_sun_start_m, $POST_woe_sun_end_h, $POST_woe_sun_end_m);
