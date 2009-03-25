@@ -142,7 +142,7 @@ function readitems() {
 		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
 			continue;
 		$item = explode(',', $line, 4);
-		if (isset($item[0]) && isset($item[1])) {
+		if (isset($item[0]) && isset($item[2])) {
 			$resp[$item[0]] = $item[2];
 		}
 	}	
