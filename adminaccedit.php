@@ -45,6 +45,9 @@ if (isset($GET_frm_name) && isset($GET_id)) {
 		if ($GET_level > 99 || $GET_level < 0)
 			$GET_level = $line[4];
 
+		if ($GET_level > $_SESSION[$CONFIG_name.'level'])
+			alert("You can not set a player's GM level higher than your own");
+
 		if ($_SESSION[$CONFIG_name.'level'] <= $line[4] || ($GET_level >= $_SESSION[$CONFIG_name.'level'] && $_SESSION[$CONFIG_name.'level'] != 99))
 			$GET_level = $line[4];
 
