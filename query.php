@@ -23,7 +23,7 @@ To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
 
-$revision = 72;
+$revision = 75;
 
 //functions.php
 //log queries in querylog
@@ -133,7 +133,7 @@ FROM `char` c1 LEFT JOIN `char` c2 ON c1.`partner_id` = c2.`char_id` WHERE c1.`a
 DEFINE('PARTNER_ONLINE', "SELECT `online` FROM `char` WHERE `char_id` = '%d' AND `online` = '1'");
 DEFINE('PARTNER_NULL', "UPDATE `char` SET `partner_id` = '0' WHERE `char_id` = '%d'");
 DEFINE('PARTNER_RING', "DELETE FROM `inventory` WHERE (`nameid` = '2634' OR `nameid` = '2635') AND `char_id` = '%d'");
-DEFINE('PARTNER_BAN', "UPDATE `login` SET `unban_time` = '%d' WHERE `account_id` = '%d' AND `unban_time` = '0'");
+DEFINE('PARTNER_BAN', "UPDATE `login` SET `unban_time` = NOW() + '%d' WHERE `account_id` = '%d' AND `unban_time` = '0'");
 
 //ladder.php - Player Ladders
 DEFINE('LADDER_ALL', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,

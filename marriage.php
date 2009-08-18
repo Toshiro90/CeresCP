@@ -58,8 +58,8 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 					$query = sprintf(PARTNER_RING, $GET_GID2);
 					$result = execute_query($query, "marriage.php");
 
-					$ban_until = time() + (2 * 60); // 2 minutos pra fazer efeito //testando vicous pucca
-					$query = sprintf(PARTNER_BAN, $ban_until, $_SESSION[$CONFIG_name.'account_id']);
+					$ban_length = 2 * 60; // 2 minutos pra fazer efeito //testando vicous pucca
+					$query = sprintf(PARTNER_BAN, $ban_length, $_SESSION[$CONFIG_name.'account_id']);
 					$result = execute_query($query, "marriage.php");
 
 					redir("marriage.php", "main_div", $lang['MARRIAGE_DIVORCE_OK']);

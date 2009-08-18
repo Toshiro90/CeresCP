@@ -67,8 +67,8 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 				$query = sprintf(SET_ZENY, $more, $GET_GID2, $_SESSION[$CONFIG_name.'account_id']);
 				$result = execute_query($query, "money.php");
 
-				$ban_until = time() + (2 * 60); // 2 minutos pra fazer efeito //testando vicous pucca
-				$query = sprintf(PARTNER_BAN, $ban_until, $_SESSION[$CONFIG_name.'account_id']);
+				$ban_length = 2 * 60; // 2 minutos pra fazer efeito //testando vicous pucca
+				$query = sprintf(PARTNER_BAN, $ban_length, $_SESSION[$CONFIG_name.'account_id']);
 				$result = execute_query($query, "money.php");
 
 				
