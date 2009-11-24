@@ -582,9 +582,10 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 					<tr>
 						<td>
 							<fieldset>
+								<legend></legend>
 								<table border="0" width="400">
 									<tr>
-										<td><center><input type="submit" name="install" value="Install"><center></td>
+										<td align="center"><input type="submit" name="install" value="Install"></td>
 									</tr>
 								</table>
 							</fieldset>
