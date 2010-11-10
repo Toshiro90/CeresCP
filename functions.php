@@ -60,7 +60,7 @@ function readcastles() {
 	$handle = fopen("./db/castles.txt", "rt")
 		or die(htmlformat($lang['TXT_ERROR']));
 	while ($line = fgets($handle, 1024)) {
-		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
+		if (($line[0] == '/' && $line[1] == '/') || $line[0] == "\0" || $line[0] == "\n" || $line[0] == "\r")
 			continue;
 		$job = sscanf($line, "%d %s");
 		if (isset($job[0]) && isset($job[1])) {
@@ -139,7 +139,7 @@ function readitems() {
 	if (!($handle = fopen("./db/item_db.txt", "rt")))
 		return $resp;
 	while ($line = fgets($handle, 1024)) {
-		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
+		if (($line[0] == '/' && $line[1] == '/') || $line[0] == "\0" || $line[0] == "\n" || $line[0] == "\r")
 			continue;
 		$item = explode(',', $line, 4);
 		if (isset($item[0]) && isset($item[2])) {
@@ -158,7 +158,7 @@ function readjobs() {
 	$handle = fopen("./db/jobs.txt", "rt")
 		or die(htmlformat($lang['TXT_ERROR']));
 	while ($line = fgets($handle, 1024)) {
-		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
+		if (($line[0] == '/' && $line[1] == '/') || $line[0] == "\0" || $line[0] == "\n" || $line[0] == "\r")
 			continue;
 		$job = sscanf($line, "%s %d");
 		if (isset($job[0]) && isset($job[1])) {
@@ -229,7 +229,7 @@ function thepass($string) {
 	$handle = fopen("./db/passdict.txt", "rt")
 		or die(htmlformat($lang['TXT_ERROR']));
 	while ($line = fgets($handle, 1024)) {
-		if (($line[0] == '/' && $line[1] == '/') || $line[0] == '\0' || $line[0] == '\n' || $line[0] == '\r')
+		if (($line[0] == '/' && $line[1] == '/') || $line[0] == "\0" || $line[0] == "\n" || $line[0] == "\r")
 			continue;
 		if (strcmp(trim($string), trim($line)) === 0) {
 			fclose($handle);
