@@ -1,0 +1,72 @@
+prontera,140,181,5	script	Donation Claims	109,{
+	mes "[Donation Claims]";
+	mes "Hello!  Are you here to claim donation points?";
+	switch(select("Yes:No"))
+	{
+		case 1:
+			next;
+			mes "[Donation Claims]";
+			mes "You should have recieved an email with your donation code.  Please enter it to recieve your points.";
+			input @donatecode$;
+
+			set @dcnt,query_sql("SELECT `id`,`amount`,`claimed` FROM `cpanel`.`donations` WHERE `code`='"+@donatecode$+"'",@id,@amount,@claimed);
+			if(@dcnt == 1)
+			{
+				if(@claimed == 1)
+				{
+					next;
+					mes "[Donation Claims]";
+					mes "I'm sorry, this donation has already been claimed.";
+					close;
+				}
+				else
+				{
+					next;
+					set @points,(@amount/75);
+
+					mes "[Donation Claims]";
+					mes "Okay, let's see...  you're eligable for ^FF0000"+@points+"^000000 donation points.  Would you like to claim them now?";
+					switch(select("Yes:No"))
+					{
+						case 1:
+							next;
+							set @accountid,getcharid(3);
+							query_sql("UPDATE `cpanel`.`donations` SET `claimed`='1', `recipient`='"+@accountid+"' WHERE id='"+@id+"'");
+							set #CASHPOINTS,(#CASHPOINTS+@points);
+
+							mes "[Donation Claims]";
+							mes "Okay, here's your donations points.  You can redeem them at the Donation Shoppe for various goods.";
+							close;
+							break;
+						case 2:
+							next;
+							mes "[Donation Claims]";
+							mes "Very well.  You may claim your points at any time!";
+							close;
+							break;
+					}
+				}		
+			}
+			else if(@dcnt > 1)
+			{
+				next;
+				mes "[Donation Claims]";
+				mes "Oops!  It seems there's a duplicate record!  Please contact a GM for assistance!";
+				close;
+			}
+			else
+			{
+				next;
+				mes "[Donation Claims]";
+				mes "I'm sorry, we don't have that donation on record.  Please make sure that you entered the code properly.";
+				close;
+			}
+			break;
+		case 2:
+			next;
+			mes "[Donation Claims]";
+			mes "Very well.  If you have any donations you wish to claim, feel free to come by any time!";
+			close;
+	}
+	close;
+}

@@ -1,0 +1,233 @@
+//=========================================
+//				PVP System v0.1
+//		Created by Mercurial/Clark Alesna of eAthena.ws
+//=========================================
+//	ChangeLog
+//=========================================
+// v0.1 First Script Release
+//=========================================
+
+prontera,162,190,4	script	PvPLadder	416,{
+	set @ctr,0;
+	query_sql("select char_id,pvp_kills,pvp_deaths,char_name from `"+$@pvpsystable$+"` ORDER BY `pvp_kills`  DESC  LIMIT 100", @charid, @kills, @deaths,@names$);
+	
+	if(getarraysize(.charid))
+	{
+		mes .name$;
+		mes "No entries found.";
+			close;
+	}
+	
+	while(@ctr<getarraysize(@charid))
+	{
+		mes .name$;
+		mes "#    KILLS    DEATHS    NAME";
+		set @start,@ctr;
+		while((@ctr<@start+10) && @charid[@ctr])
+		{
+			mes (@ctr+1)+"    "+@kills[@ctr]+"    "+@deaths[@ctr]+"    "+@names$[@ctr];
+			set @ctr,@ctr+1;
+		
+		}
+		next;
+	}
+	
+	mes .name$;
+	mes "You reached the end of the list.";
+	close;
+OnInit:
+	set .name$,"[PvP Ladder]";
+end;
+}
+
+-	script	PvPCounter	-1,{
+OnPCKillEvent:
+	if($pvpsyson)
+	{
+		if(getcharid(0)!=killedrid)
+		{
+			set @contains,0;
+			for(set @x,0; @x<getarraysize(@killedID); set @x,@x+1)
+			{
+				if(getcharid(0)==@killedID[@x])
+				{
+					set @contains,1;
+					break;
+				}
+			}
+			
+			if(!@contains)
+			{
+				set @pvppoint,rand(1,3);
+				set @pvpkills,@pvpkills+1;
+				dispbottom "Total PvP Points: "+@pvpkills;
+				set @killedID[killCTR],killedrid;
+				set killCTR,killCTR+1;
+				if(killCTR>=$pvpMaxKillCache) set killCTR,0;
+				set @streak,@streak+1;
+				set @multikillCTR,@multikillCTR+1;
+				if(!@multikill)
+				{
+					deltimer "PvPMultiKillTrigger";
+					addtimer 13500,"PvPCounter::OnMultiKillTrigger";
+					set @multikill,1;
+				}
+				else
+				{
+					switch(@multikillCTR)
+					{
+						case 1:
+							break;
+						case 2:
+							announce strcharinfo(0)+" just got a Double Kill on "+strcharinfo(3),bc_blue|bc_all;
+							soundeffectall "Double_Kill.wav",0;
+							set @streak$,"DoubleKill";
+							break;
+						case 3:
+							announce strcharinfo(0)+" just got a Triple Kill on "+strcharinfo(3),bc_blue|bc_all;
+							soundeffectall "triple_kill.wav",0;
+							set @streak$,"TripleKill";
+							break;
+						default:
+							announce strcharinfo(0)+" just got a Triple Kill on "+strcharinfo(3),bc_blue|bc_all;
+							soundeffectall "triple_kill.wav",0;
+							set @streak$,"TripleKill";
+							break;
+					}
+				}
+				
+				switch(@streak)
+				{
+					case 1:
+						mapannounce strcharinfo(3), strcharinfo(0)+" just drew First blood!",bc_map,"0xFFCE00";
+						soundeffect "firstblood.wav",0;
+						break;
+					case 2:
+						break;
+					case 3:
+						mapannounce strcharinfo(3), strcharinfo(0)+"  is on a Killings Spree!",bc_map,"0xFFCE00";
+						soundeffect "Killing_Spree.wav",0;
+						set @streak$,"KillSpree";
+						break;
+					case 4:
+						mapannounce strcharinfo(3), strcharinfo(0)+"  is Dominating",bc_map,"0xFFCE00";
+						soundeffect "Dominating.wav",0;
+						set @streak$,"Dominating";
+						break;
+					case 5:
+						mapannounce strcharinfo(3), strcharinfo(0)+"  is Mega Kill!",bc_map,"0xFFCE00";
+						soundeffect "MegaKill.wav",0;
+						set @streak$,"MegaKill";
+						break;
+					case 6:
+						mapannounce strcharinfo(3), strcharinfo(0)+"  is Unstoppable!",bc_map,"0xFFCE00";
+						soundeffect "Unstoppable.wav",0;
+						set @streak$,"Unstoppable";
+						break;
+					case 7:
+						mapannounce strcharinfo(3), strcharinfo(0)+"  is Wicked Sick!",bc_map,"0xFFCE00";
+						soundeffect "WhickedSick.wav",0;
+						set @streak$,"WhickedSick";
+						break;
+					case 8:
+						mapannounce strcharinfo(3), strcharinfo(0)+"  is Monster Kill!",bc_map,"0xFFCE00";
+						soundeffect "monster_kill.wav",0;
+						set @streak$,"MonsterKill";
+						break;
+					case 9:
+						mapannounce strcharinfo(3), strcharinfo(0)+"  is God Like!",bc_map,"0xFFCE00";
+						soundeffect "GodLike.wav",0;
+						set @streak$,"GodLike";
+						break;
+					case 10:
+						mapannounce strcharinfo(3), strcharinfo(0)+" is Beyond Godlike! Somebody kill him!",bc_map,"0xFFCE00";
+						soundeffect "HolyShit.wav",0;
+						set @streak$,"HolyShit";
+						break;
+					default:
+						mapannounce strcharinfo(3), strcharinfo(0)+" is Beyond Godlike! Somebody kill him!",bc_map,"0xFFCE00";
+						soundeffect "HolyShit.wav",0;
+						set @streak$,"Beyond Godlike";
+						break;
+				}
+				set @streak,@streak+1;
+				mapannounce strcharinfo(3), strcharinfo(0)+" just pawned "+rid2name(killedrid)+" for "+@pvppoint+" Cash Points.",bc_map,"0xFFCE00";
+				set #CASHPOINTS,#CASHPOINTS+@pvppoint;
+			}
+		}
+	}
+	end;
+OnPCDieEvent:
+	if($pvpsyson)
+	{
+		set @pvpdeaths,@pvpdeaths+1;
+		set @streak,0;
+	}
+	end;
+OnPCLoginEvent:
+	if($pvpsyson)
+	{
+		query_sql("select pvp_kills,pvp_deaths from `"+$@pvpsystable$+"` WHERE `char_id`="+getcharid(0)+";", @pvpkills, @pvpdeaths);
+		dispbottom "Total PvP Points: "+@pvpkills;
+		set @streak,0;
+		set @streak$,"None";
+		set @multikill,0;
+		set @multikillCTR,0;
+	}
+	end;
+OnPCLogoutEvent:
+	if($pvpsyson)
+	{
+		query_sql("INSERT INTO `"+$@pvpsystable$+"` (char_id,pvp_kills,pvp_deaths,char_name,streak) VALUES ("+getcharid(0)+","+@pvpkills+","+@pvpdeaths+",'"+strcharinfo(0)+"','None') ON DUPLICATE KEY UPDATE pvp_kills="+@pvpkills+",pvp_deaths="+@pvpdeaths+",streak='"+@streak$+"';");
+	}
+	end;
+OnMultiKillTrigger:
+	set @multikill,0;
+	set @multikillCTR,0;
+end;
+}
+
+
+-	script	PvPSystem	-1,{
+//Initialize Settings here
+OnInit:
+	set $@pvpsystable$,"npc_pvpsys"; //SQL Table Name, don't change this.
+end;
+
+OnWhisperGlobal:
+	if(getgmlevel()>=60)
+	{
+		mes "[PVP System]";
+		mes "Configuration Menu";
+		switch(select("Execute SQL Tables:Reset Tables:Turn On:Turn Off"))
+		{
+			case 1:
+				query_sql "CREATE TABLE  `"+$@pvpsystable$+"` (`char_id` INT NOT NULL ,`pvp_kills` INT NOT NULL ,`pvp_deaths` INT NOT NULL, `char_name` varchar(20) NOT NULL, `streak` varchar(15) NOT NULL,PRIMARY KEY (  `char_id`) )";
+				// Players
+				set $pvpsyson,1;
+				set $pvpMaxKillCache,5;
+				break;
+				
+			case 2:
+				query_sql "DROP TABLE `"+$@pvpsystable$+"`;";
+				query_sql "CREATE TABLE  `"+$@pvpsystable$+"` (`char_id` INT NOT NULL ,`pvp_kills` INT NOT NULL ,`pvp_deaths` INT NOT NULL ,`char_name` varchar(20) NOT NULL ,`streak` varchar(15) NOT NULL,PRIMARY KEY (  `char_id` ) )";
+				break;
+			case 3:
+				set $pvpsyson,1;
+				break;
+			case 4:
+				set $pvpsyson,0;
+				break;
+		}
+		close;
+	}
+	else
+	{
+		if(@whispervar0$=="showpoints")
+		{
+			dispbottom "Total PvP Points: "+@pvpkills;
+			dispbottom "Total Deaths: "+@pvpdeaths;
+		}
+	}
+	end;
+}

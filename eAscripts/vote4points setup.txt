@@ -1,0 +1,69 @@
+Setting up vote4points for Ceres CP by GodLesZ
+*The tables should be already installed, but if not do that manually with phpmyadmin [KaityRoux]
+
+===============================================STEP 1.=====================================================
+Firstly, we have to define some Variable's, so
+look in config.php and search at the end of File something like this:
+CODE
+//DO NOT MESS WITH THIS
+extract($CONFIG, EXTR_PREFIX_ALL, "CONFIG");
+extract($_GET, EXTR_PREFIX_ALL, "GET");
+extract($_POST, EXTR_PREFIX_ALL, "POST");
+extract($_SERVER, EXTR_PREFIX_ALL, "SERVER");
+
+under that, paste this:
+//----
+define('VOTE_TIME', 24 );
+define('VOTE_LINK', serialize( array(
+                                        1 => 'http://www.voteseite1.com?id=123456',
+                                        2 => 'http://www.voteseite2.com?id=123456',
+                                        3 => 'http://www.voteseite3.com?id=123456'
+                            ))
+        );
+//----
+This will now define 1 Variable and 1 Array
+
+define( 'variabel_name', variabel_value );
+VOTE_TIME = the Time in hours for Counting new Points. Most Topsites will count every 24 hours a new Vote so i set them to 24 as default
+VOTE_LINK = the Links from youre Votesites! Just look at the 3 Examples and add/replace them with ur URL.
+Now download the vote.php from the end of this Post and paste them in youre main directory from youre Control Panel!
+We have to create a simple SQL Table. Copy the SQL Code from the vote.php in ur phpMyAdmin Console or something else
+
+Beware:
+Every new vote site after the 3rd will need a new `last_voteX` column there X is the new number.
+If u add a 4th one, the column hast to be `last_vote4`
+
+===============================================STEP 2.====================================================
+		*Save your link urls into vote4points.php [KaityRoux]
+Last part from the Installation is to change ur Vote Links.
+Look at my Example:
+Link before/now:
+CODE
+<a href='http://www.voteseite1.com?id=123456' target='_blank'>Vote 4 Us!</a>
+
+Link after:
+CODE
+<a href='vote.php?site=1' target='_blank'>Vote 4 Us!</a>
+
+Beware!!!!!
+site=1 means the Entry 1 in the Array from the config.php! (VOTE_LINK)
+In my Exmaple, the Array entry is 1 => 'http://www.voteseite1.com?id=123456',, so the Link has to be
+http://www.voteseite1.com?id=123456
+
+
+Save that and you are ready.
+
+
+===============================================STEP 3.=====================================================
+	*the vote script is already in the eAscript folder, you just have to configure it [KaityRoux]
+The NPC
+
+Download now the vote.txt from the end of the Post and open it.
+
+CODE
+    setarray @vote_item[0],            512, 513; // Item ID
+    setarray @vote_item_count[0],    1  , 1; // Item Count wich will be given
+    setarray @vote_cost[0],            1  , 2; // Cost in Vote Points
+    set @min_vote, 0; // minimum count on Vote Points to see the Item List
+
+Edit the settings + NPC Name and location to ur needings and you are ready with all.

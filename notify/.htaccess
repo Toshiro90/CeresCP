@@ -1,0 +1,24 @@
+order deny,allow
+deny from all
+allow from 216.113.188.202
+allow from 216.113.188.203
+allow from 216.113.188.204
+allow from 66.211.170.66
+allow from 66.135.197.163 
+allow from 216.113.169.205 
+allow from 66.135.197.160 
+allow from 66.135.197.162 
+allow from 66.135.197.141 
+allow from 66.135.197.164 
+allow from 64.4.241.16
+allow from 64.4.241.39
+allow from 216.113.188.32
+allow from 216.113.188.33
+allow from 216.113.188.34
+allow from 216.113.188.35
+allow from 216.113.188.64
+allow from 216.113.188.65
+allow from 216.113.188.66
+allow from 216.113.188.67
+allow from 66.211.169.2
+allow from 66.211.169.65
