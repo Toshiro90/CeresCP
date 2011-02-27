@@ -93,9 +93,10 @@ if (isset($POST_opt)) {
 		if ($line = $result->fetch_row()) {
 			erro_de_login(1);
 			redir("motd.php", "main_div", $lang['ACCOUNT_CREATED']);
-		} else
+		} else {
 			erro_de_login(1);
 			redir("motd.php", "main_div", $lang['ACCOUNT_PROBLEM']);
+		}
 
 	}
 }

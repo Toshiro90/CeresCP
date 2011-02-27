@@ -1,1 +1,4 @@
-<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=../index.php">
+<?php
+	header("Location: ../index.php");
+	exit;
+?>
