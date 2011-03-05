@@ -21,8 +21,8 @@
 // an e-mail to cerescp@gmail.com
 
 Novice	0
-Swordman	1
-Magician	2
+Swordsman	1
+Mage	2
 Archer	3
 Acolyte	4
 Merchant	5
@@ -42,19 +42,19 @@ Alchemist	18
 Bard	19
 Dancer	20
 Crusader	21
+Wedding	22
 Super_Novice	23
-Wedding_Class	22
 Gunslinger	24
-Ninja		25
+Ninja	25
 Santa_Costume	26
 
-Novice_High	4001
-Swordsman_High	4002
-Mage_High	4003
-Archer_High	4004
-Acolyte_High	4005
-Merchant_High	4006
-Thief_High	4007
+High_Novice	4001
+High_Swordsman	4002
+High_Mage	4003
+High_Archer	4004
+High_Acolyte	4005
+High_Merchant	4006
+High_Thief	4007
 Lord_Knight	4008
 High_Priest	4009
 High_Wizard	4010
@@ -72,8 +72,8 @@ Gypsy	4021
 Paladin	4022
 
 Baby_Novice	4023
-Baby_Swordman	4024
-Baby_Magician	4025
+Baby_Swordsman	4024
+Baby_Mage	4025
 Baby_Archer	4026
 Baby_Acolyte	4027
 Baby_Merchant	4028
@@ -93,7 +93,7 @@ Baby_Alchemist	4041
 Baby_Bard	4042
 Baby_Dancer	4043
 Baby_Crusader	4044
-Baby_Super_Novice	4045
+Super_Baby	4045
 
 Taekwon	4046
 Star_Gladiator	4047
