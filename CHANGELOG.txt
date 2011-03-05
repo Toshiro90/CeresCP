@@ -1,4 +1,5 @@
-Date
+http://sourceforge.net/apps/trac/cerescp/log/trunk/?mode=follow_copy&verbose=on&format=changelog
+
 
 2008/05/17
 	* Changed password.php and changemail.php to POST method. [BeoWulf]
