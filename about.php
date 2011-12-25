@@ -74,6 +74,10 @@ if ($CONFIG_classlist_show) {
 		if (!isset($class[$i]))
 			$class[$i] = 0;
 	}
+	for ($i = 4054; $i < 4213; $i++) {
+		if (!isset($class[$i]))
+			$class[$i] = 0;
+	}
 
 	$class[7] = $class[7] + $class[13];
 	$class[14] = $class[14] + $class[21];
@@ -82,6 +86,18 @@ if ($CONFIG_classlist_show) {
 	$class[4030] = $class[4030] + $class[4036];
 	$class[4037] = $class[4037] + $class[4044];
 	$class[4047] = $class[4047] + $class[4048];
+	$class[4054] = $class[4054] + $class[4080];
+	$class[4056] = $class[4056] + $class[4084];
+	$class[4058] = $class[4058] + $class[4086];
+	$class[4060] = $class[4060] + $class[4081];
+	$class[4062] = $class[4062] + $class[4085];
+	$class[4064] = $class[4064] + $class[4087];
+	$class[4066] = $class[4066] + $class[4082];
+	$class[4073] = $class[4073] + $class[4083];
+	$class[4096] = $class[4096] + $class[4109];
+	$class[4098] = $class[4098] + $class[4111];
+	$class[4100] = $class[4100] + $class[4112];
+	$class[4102] = $class[4102] + $class[4110];
 }
 opentable($lang['ABOUT_ABOUT']);
 
@@ -128,7 +144,7 @@ echo "
 	if ($CONFIG_classlist_show) {
 	echo "<tr><td align=\"right\">".$lang['ABOUT_TOTAL_CLASS']."</td></tr>";
 	
-			for ($i = 0; $i < 26; $i++) {
+		for ($i = 0; $i < 26; $i++) {
 			$class[$i] = moneyformat($class[$i]);
 			if ($i != 13 && $i != 21 && $i != 22 && $i != 26 && !empty($class[$i]) && !empty($jobs[$i]))
 				echo "<tr><td align=\"right\">$jobs[$i]</td><td>&nbsp;</td><td align=right>$class[$i]</td></tr>";
@@ -136,6 +152,11 @@ echo "
 		for ($i = 4001; $i < 4050; $i++) {
 			$class[$i] = moneyformat($class[$i]);
 			if ($i != 4014 && $i != 4022 && $i != 4036 && $i != 4044 && $i != 4048 && !empty($class[$i]) && !empty($jobs[$i]))
+				echo "<tr><td align=\"right\">$jobs[$i]</td><td>&nbsp;</td><td align=right>$class[$i]</td></tr>";
+		}
+		for ($i = 4054; $i < 4213; $i++) {
+			$class[$i] = moneyformat($class[$i]);
+			if ($i != 4080 && $i != 4081 && $i != 4082 && $i != 4083 && $i != 4084 && $i != 4085 && $i != 4086  && $i != 4087 && $i != 4109 && $i != 4110 && $i != 4111 && $i != 4112 && !empty($class[$i]) && !empty($jobs[$i]))
 				echo "<tr><td align=\"right\">$jobs[$i]</td><td>&nbsp;</td><td align=right>$class[$i]</td></tr>";
 		}
 	}
