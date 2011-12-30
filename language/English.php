@@ -228,7 +228,7 @@ $lang['SEX_FEMALE'] = 'Female';
 $lang['ACCOUNT_CREATED'] = 'Account Created. You may now login.';
 $lang['ACCOUNT_PROBLEM'] = 'Error creating account please try again later.';
 $lang['INTERNAL_STATISTIC'] = '(for internal statistics)';
-$lang['BIRTHDAY'] = 'Birthday';
+$lang['BIRTHDAY'] = 'Birthday (YYYYMMDD)';
 $lang['ACCOUNT_MAX_REACHED'] = 'There are too many accounts registered, please try again later.';
 
 //index.php

@@ -51,7 +51,10 @@ if (isset($GET_frm_name) && isset($GET_id)) {
 		if ($_SESSION[$CONFIG_name.'level'] <= $line[4] || ($GET_level >= $_SESSION[$CONFIG_name.'level'] && $_SESSION[$CONFIG_name.'level'] != 99))
 			$GET_level = $line[4];
 
-		$query = sprintf(ACCEDIT_UPDATE, $GET_login, $GET_password, $GET_sex, $GET_email, $GET_level, trim($GET_id));
+		if (strlen($GET_birthdate) < 10)
+			$GET_birthdate = $line[10];
+			
+		$query = sprintf(ACCEDIT_UPDATE, $GET_login, $GET_password, $GET_sex, $GET_email, $GET_level, $GET_birthdate, trim($GET_id));
 		$result = execute_query($query, 'adminaccedit.php');
 
 		alert("Account Updated");
@@ -92,6 +95,8 @@ if (isset($GET_id)) {
 					</td>
 				</tr><tr>
 					<td align=\"right\">Email</td><td align=\"left\"><input type=\"text\" name=\"email\" value=\"$line[3]\" maxlength=\"60\" size=\"23\"></td>
+				</tr><tr>
+					<td align=\"right\">Birthdate (YYYY-MM-DD)</td><td align=\"left\"><input type=\"text\" name=\"birthdate\" value=\"$line[10]\" maxlength=\"10\" size=\"10\"></td>
 				</tr><tr>
 					<td align=\"right\">Level</td><td align=\"left\"><input type=\"text\" name=\"level\" value=\"$line[4]\" maxlength=\"2\" size=\"2\"></td>
 				</tr><tr>

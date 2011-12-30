@@ -230,7 +230,7 @@ $lang['SEX_FEMALE'] = 'Vrouwelijk';
 $lang['ACCOUNT_CREATED'] = 'Account aangemaakt, je mag nu inloggen.';
 $lang['ACCOUNT_PROBLEM'] = 'Error in het maken van account, probeer later nog eens.';
 $lang['INTERNAL_STATISTIC'] = '(Voor innerlijke Informatie)';
-$lang['BIRTHDAY'] = 'Verjaardag';
+$lang['BIRTHDAY'] = 'Verjaardag (JJJJMMDD)';
 $lang['ACCOUNT_MAX_REACHED'] = 'There are too many accounts registered, please try again later.';
 
 //index.php

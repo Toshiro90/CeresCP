@@ -67,7 +67,7 @@ AND `online` = '0'
 ");
 
 //account.php - Account Creation
-DEFINE('INSERT_CHAR', "INSERT INTO `login` (`userid`, `user_pass`, `sex`, `email`, `last_ip`) VALUES ('%s', '%s', '%s', '%s', '%s')");
+DEFINE('INSERT_CHAR', "INSERT INTO `login` (`userid`, `user_pass`, `sex`, `email`, `birthdate`, `last_ip`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')");
 DEFINE('CHECK_USERID', "SELECT `userid` FROM `login` WHERE userid = '%s'");
 DEFINE('CHECK_ACCOUNTID', "SELECT `account_id` FROM `login` WHERE `userid` = '%s' AND `user_pass` = '%s'");
 DEFINE('MAX_ACCOUNTS', "SELECT COUNT(`account_id`) FROM `login` WHERE `sex` != 'S'");

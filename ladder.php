@@ -49,6 +49,11 @@ include_once 'functions.php';
 				if ($i != 4014 && $i != 4022 && $i != 4036 && $i != 4044 && $i != 4048)
 					echo "<option value=\"$i\">$jobs[$i]</option>";
 			}
+			for ($i = 4054; $i < 4213; $i++)
+			{
+				if ($i != 4080 && $i != 4081 && $i != 4082 && $i != 4083 && $i != 4084 && $i != 4085 && $i != 4086  && $i != 4087 && $i != 4109 && $i != 4110 && $i != 4111 && $i != 4112 && !empty($jobs[$i]))
+					echo "<option value=\"$i\">$jobs[$i]</option>";
+			}
 			echo "
 					</select>
 				</form>
@@ -90,6 +95,42 @@ include_once 'functions.php';
 					break;
 				case 4047:
 					$query = sprintf(LADDER_LKPA, $GET_opt, 4048);
+					break;
+				case 4056:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4084);
+					break;
+				case 4054:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4080);
+					break;
+				case 4058:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4086);
+					break;
+				case 4060:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4081);
+					break;
+				case 4062:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4085);
+					break;
+				case 4064:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4087);
+					break;
+				case 4066:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4082);
+					break;
+				case 4073:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4083);
+					break;
+				case 4096:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4109);
+					break;
+				case 4098:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4111);
+					break;
+				case 4100:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4112);
+					break;
+				case 4102:
+					$query = sprintf(LADDER_LKPA, $_GET_opt, 4110);
 					break;
 				default:
 					$query = sprintf(LADDER_JOB, $GET_opt);

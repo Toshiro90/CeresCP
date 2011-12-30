@@ -226,7 +226,7 @@ $lang['SEX_FEMALE'] = 'Weiblich';
 $lang['ACCOUNT_CREATED'] = 'Account regisriert. Du kannst dich nun einloggen.';
 $lang['ACCOUNT_PROBLEM'] = 'Fehler beim Account erstellen, bitte versuche es zu einem sp‰teren Zeitpunkt erneut.';
 $lang['INTERNAL_STATISTIC'] = '(f¸r interne Statistiken)';
-$lang['BIRTHDAY'] = 'Geburtstag';
+$lang['BIRTHDAY'] = 'Geburtstag (≈≈≈≈MMDD)';
 
 //index.php
 $lang['NEW_ACCOUNT'] = 'Neuer Account';

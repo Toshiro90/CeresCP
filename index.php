@@ -54,7 +54,7 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 
 		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="height:100%" width="780" align=center>
 			<tr>
-				<td valign="top" colspan="5" width="100%" style="background:url(images/ceres.jpg); height:161px">
+				<td valign="top" colspan="5" width="100%" style="background:url(images/ceres.jpg); height:180px">
 				</td>
 			</tr>
 			<tr>
@@ -65,7 +65,7 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 				</td>
 			</tr>
 			<tr>
-				<td style="height:25px" colspan="5" bgcolor="#6186AF"  width="100%">
+				<td style="height:25px" colspan="5" bgcolor="#2C3D50"  width="100%">
 					<div id="sub_menu" style="color:#FFFFFF; font-weight:bold">&nbsp;</div>
 				</td>
 			</tr>
@@ -92,9 +92,9 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 				</td>
 			</tr>
 			<tr>
-				<td colspan="5" bgcolor="#6186AF" style="height:40px" valign="middle" align="center">
+				<td colspan="5" bgcolor="#2C3D50" style="height:40px" valign="middle" align="center">
 					<p style="font-size: 9px; margin-top: 7"><font color="#FFFFFF">
-						Copyright © 2005
+						Copyright © 2005-2012
 						<span style="cursor:pointer" class="copyright_link" onClick="window.open('http://cerescp.sourceforge.net/');">
 						Ceres Control Panel</span> by Beowulf and Dekamaster
 						<BR>

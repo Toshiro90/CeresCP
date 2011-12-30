@@ -230,7 +230,7 @@ $lang['SEX_FEMALE'] = 'Wanita';
 $lang['ACCOUNT_CREATED'] = 'Account anda telah di buat . Selamat Bermain.';
 $lang['ACCOUNT_PROBLEM'] = 'Pembuatan account Gagal silakan coba lagi.';
 $lang['INTERNAL_STATISTIC'] = '(for internal statistics)';
-$lang['BIRTHDAY'] = 'Tgl Lahir';
+$lang['BIRTHDAY'] = 'Tgl Lahir (TTTTBBHH)';
 $lang['ACCOUNT_MAX_REACHED'] = 'There are too many accounts registered, please try again later.';
 
 //index.php

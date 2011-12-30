@@ -69,6 +69,9 @@ if (isset($POST_opt)) {
 
 		if (strlen($POST_email) < 7 || !strstr($POST_email, '@') || !strstr($POST_email, '.'))
 			alert($lang['EMAIL_NEEDED']);
+			
+		if (strlen($POST_birthdate) < 8 || inject($POST_birthday))
+			alert($lang['INVALID_BIRTHDAY']);
 
 		$query = sprintf(CHECK_USERID, trim($POST_username));
 		$result = execute_query($query, 'account.php');
@@ -84,7 +87,7 @@ if (isset($POST_opt)) {
 		if ($CONFIG_md5_pass)
 			$POST_password = md5($POST_password);
 
-		$query = sprintf(INSERT_CHAR, trim($POST_username), trim($POST_password), $POST_sex, $POST_email, $_SERVER['REMOTE_ADDR']);
+		$query = sprintf(INSERT_CHAR, trim($POST_username), trim($POST_password), $POST_sex, $POST_email, $POST_birthdate, $_SERVER['REMOTE_ADDR']);
 		$result = execute_query($query, 'account.php');
 
 		$query = sprintf(CHECK_ACCOUNTID, trim($POST_username), trim($POST_password));
@@ -124,6 +127,8 @@ $var = rand(10, 9999999);
 	<option value=\"0\">".$lang['SEX_MALE']."<option value=\"1\">".$lang['SEX_FEMALE']."</select></td></tr>
 	<tr><td align=\"right\">".$lang['MAIL'].":</td><td align=\"left\">
 	<input type=\"text\" name=\"email\" maxlength=\"40\" size=\"40\" onKeyPress=\"return force(this.name,this.form.id,event);\">
+	<tr><td align=\"right\">".$lang['BIRTHDAY'].":</td><td align=\"left\">
+	<input type=\"text\" name=\"birthdate\" maxlength=\"8\" size=\"8\" onKeyPress=\"return force(this.name,this.form.id,event);\">
 	<input type=\"hidden\" name=\"opt\" value=\"1\"></td></tr>
 	<input type=\"hidden\" name=\"ipaddress\" value=\"".$_SERVER['REMOTE_ADDR']."\">";
 	if ($CONFIG_auth_image && function_exists("gd_info")) { 

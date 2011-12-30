@@ -229,7 +229,7 @@ $lang['SEX_FEMALE'] = 'Femenino';
 $lang['ACCOUNT_CREATED'] = 'Cuenta Creada exitosamente. Usted ya puede ingresar.';
 $lang['ACCOUNT_PROBLEM'] = 'Error al crear la cuenta, por favor intente nuevamente.';
 $lang['INTERNAL_STATISTIC'] = '(para la estadística interna)';
-$lang['BIRTHDAY'] = 'Nacimiento';
+$lang['BIRTHDAY'] = 'Fecha de Nacimiento (AAAAMMDD)';
 $lang['ACCOUNT_MAX_REACHED'] = 'Hay demasiadas cuentas registradas, por favor intente más tarde.';
 
 //index.php
