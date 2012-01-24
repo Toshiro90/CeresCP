@@ -49,9 +49,9 @@ CREATE TABLE `cp_querylog` (
   `query` text NOT NULL,
   PRIMARY KEY  (`action_id`),
   KEY `action_id` (`action_id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 CREATE TABLE `cp_server_status` (
   `last_checked` datetime NOT NULL default '0000-00-00 00:00:00',
   `status` tinyint(1) NOT NULL default '0'
-) TYPE=MyISAM;
+) ENGINE=MyISAM;

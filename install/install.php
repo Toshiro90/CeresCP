@@ -109,13 +109,13 @@ if (isset($POST_install)) {
 	$query = "DROP TABLE IF EXISTS `cp_querylog`;";
 	$result = mysqli_query($cp_db, $query);
 
-	$query = "CREATE TABLE `cp_querylog` (`action_id` int(11) NOT NULL auto_increment, `Date` datetime NOT NULL default '0000-00-00 00:00:00', `User` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `page` varchar(24) NOT NULL default '', `query` text NOT NULL,   PRIMARY KEY  (`action_id`), KEY `action_id` (`action_id`) ) TYPE=MyISAM AUTO_INCREMENT=1 ;";
+	$query = "CREATE TABLE `cp_querylog` (`action_id` int(11) NOT NULL auto_increment, `Date` datetime NOT NULL default '0000-00-00 00:00:00', `User` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `page` varchar(24) NOT NULL default '', `query` text NOT NULL,   PRIMARY KEY  (`action_id`) ) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
 	$result = mysqli_query($cp_db, $query);
 
 	$query = "DROP TABLE IF EXISTS `cp_server_status`;";
 	$result = mysqli_query($cp_db, $query);
 
-	$query = "CREATE TABLE `cp_server_status` (`last_checked` datetime NOT NULL default '0000-00-00 00:00:00', `status` tinyint(1) NOT NULL default '0') TYPE=MyISAM;";
+	$query = "CREATE TABLE `cp_server_status` (`last_checked` datetime NOT NULL default '0000-00-00 00:00:00', `status` tinyint(1) NOT NULL default '0') ENGINE=MyISAM;";
 	$result = mysqli_query($cp_db, $query);
 
 	if ($POST_woe_agit) {
