@@ -47,8 +47,7 @@ CREATE TABLE `cp_querylog` (
   `IP` varchar(20) NOT NULL default '',
   `page` varchar(24) NOT NULL default '',
   `query` text NOT NULL,
-  PRIMARY KEY  (`action_id`),
-  KEY `action_id` (`action_id`)
+  PRIMARY KEY  (`action_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 CREATE TABLE `cp_server_status` (

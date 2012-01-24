@@ -23,7 +23,7 @@ To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
 
-$revision = 104;
+$revision = 116;
 
 //functions.php
 //log queries in querylog
