@@ -23,6 +23,8 @@ a mail to cerescp@gmail.com
 */
 /** CORPO */
 body {
+	font-size: 10px;
+	font-family: verdana,arial;
 	margin-top:0px;
 	margin-bottom:0px
 	background: url(images/background.jpg);
@@ -119,10 +121,6 @@ tr, td {
 }
 
 /** GENERAL */
-body {
-	font-size: 10px;
-	font-family: verdana,arial;
-}
 .head {
 	font-weight: bold;
 }
