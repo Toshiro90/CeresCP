@@ -22,6 +22,82 @@ To contact any of the authors about special permissions send
 a mail to cerescp@gmail.com
 */
 
+/** HEADER */
+#header {
+	width: 780px;
+	height: 180px;
+	background-image: url(images/ceres.jpg);
+	background-repeat: none;
+	margin: 0 auto;
+}
+
+/** MENU */
+#main_menu {
+	width: 780px;
+	height: 25px;
+	line-height: 24px;
+	background: #000;
+	font-family: verdana,arial;
+	font-size: 10px;
+	font-weight: bold;
+	color: #fff;
+	margin: 0 auto;
+}
+
+#sub_menu {
+	width: 780px;
+	height: 25px;
+	line-height: 24px;
+	background: #2C3D50;
+	font-family: verdana,arial;
+	font-size: 10px;
+	font-weight: bold;
+	color: #fff;
+	margin: 0 auto;
+}
+
+/** CONTENT */
+#main_content {
+	width: 780px;
+	background-color: #fff;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+#main_div {
+	margin-left: 30px;
+	padding-left: 15px;
+	padding-right: 5px;
+	padding-top: 10px;
+	float: left;
+}
+
+/** RIGHT SIDEBAR */
+#sidebar {
+	width: 156px;
+	height: 350px;
+	background-color: #D0D9E0;
+	float: right;
+}
+
+#login_div, #status_div, #selectlang_div, #new_div {
+	padding-left: 6px;
+	padding-right: 5px;
+	padding-top: 5px;
+}
+
+/** FOOTER */
+#footer {
+	width: 780px;
+	height: 35px;
+	padding-top: 5px;
+	background-color: #2C3D50;
+	text-align: center;
+	margin: 0 auto;
+	color: #fff;
+}
+
+/** FORMS INPUT */
 input, select, option, textarea { 
 	font-family: verdana,arial;
 	font-size: 10px;
@@ -30,12 +106,18 @@ input, select, option, textarea {
 	border: solid;
 }
 
+/** TABLE TR, TD */
 tr, td {
 	font-size: 10px;
 	FONT-FAMILY: verdana,arial;
 	color: 000000;
 }
 
+/** GENERAL */
+body {
+	font-size: 10px;
+	font-family: verdana,arial;
+}
 .head {
 	font-weight: bold;
 }

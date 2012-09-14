@@ -50,73 +50,56 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 		<script type="text/javascript" language="javascript" src="ceres.js"></script>
 	</head>
 
-	<BODY style="margin-top:0; margin-bottom:0" background="images/background.jpg">
+	<body style="margin-top:0; margin-bottom:0" background="images/background.jpg">
+	
+	<!-- CeresCP Header -->
+	<div id="header"></div>
+	
+	<!-- CeresCP Menu -->
+	<div id="main_menu"></div>
+	<div id="menu_load" style="position:absolute; top:0px; left:0px; visibility:hidden;"></div>
+	
+	<!-- CeresCP Loading Image -->
+	<div id="load_div" style="position:absolute; top:161px; left:790px; height:30px width:25px; visibility:hidden; background-color:#000000; color:#FFFFFF"><img src="images/loading.gif" alt="Loading..."></div>
+	
+	<!-- CeresCP Sub Menu -->
+	<div id="sub_menu"></div>
 
-		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="height:100%" width="780" align=center>
-			<tr>
-				<td valign="top" colspan="5" width="100%" style="background:url(images/ceres.jpg); height:180px">
-				</td>
-			</tr>
-			<tr>
-				<td style="height:25px" colspan="5" bgcolor="#000000" width="100%">
-					<div id="main_menu" style="color:#FFFFFF; font-weight:bold"></div>
-					<div id="load_div" style="position:absolute; top:161px; left:790px; height:30px width:25px; visibility:hidden; background-color:#000000; color:#FFFFFF"><img src="images/loading.gif" alt="Loading..."></div>
-					<div id="menu_load" style="position:absolute; top:0px; left:0px; visibility:hidden;"></div>
-				</td>
-			</tr>
-			<tr>
-				<td style="height:25px" colspan="5" bgcolor="#2C3D50"  width="100%">
-					<div id="sub_menu" style="color:#FFFFFF; font-weight:bold">&nbsp;</div>
-				</td>
-			</tr>
-			<tr valign=top>
-				<td height="100%">
-					<table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="height:350px">
-						<tr style="height:100%">
-							<td valign="top" bgcolor="#FFFFFF" colspan="2" width="600" style="height:100%">
-								<div id="main_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
-								</div>
-							</td>
-							<td bgcolor="#D0D9E0" valign="top" width="156" rowspan="5" style="height:100%">
-								<div id="login_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
-								</div>
-								<div id="new_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
-								</div>
-								<div id="status_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
-								</div>
-								<div id="selectlang_div" style="padding-left: 15; padding-right: 5; padding-top: 10">
-								</div>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="5" bgcolor="#2C3D50" style="height:40px" valign="middle" align="center">
-					<p style="font-size: 9px; margin-top: 7"><font color="#FFFFFF">
-						Copyright © 2005-2012
-						<span style="cursor:pointer" class="copyright_link" onClick="window.open('http://cerescp.sourceforge.net/');">
-						Ceres Control Panel</span> by Beowulf and Dekamaster
-						<BR>
-						Powered by <span style="cursor:pointer" onClick="window.open('http://en.wikipedia.org/wiki/KISS_principle');">
-							<img src="images/kiss.png" alt="Keep It Simple Stupid! Technology" border="0" align=bottom>
-						</span> <span style="cursor:pointer" onClick="window.open('http://validator.w3.org/check?uri='+document.URL);">
-							<img src="http://cerescp.sourceforge.net/ceres/img.php?<?echo $qwty?>" alt="w3c" style="visibility:hidden">
-							<img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="15" width="43">
-						</span>
-						</font>
-					</p>
-				</td>
-			</tr>
-		</table>
-		<script type="text/javascript">
+	<!-- CeresCP Content -->
+	<div id="main_content">
+		<div id="main_div"></div>
+		<!-- CeresCP Sidebar -->
+		<div id="sidebar">
+			<div id="login_div"></div>
+			<div id="new_div"></div>
+			<div id="status_div"></div>
+			<div id="selectlang_div"></div>
+		</div>
+	</div>
+	
+	<!-- CeresCP Footer -->
+	<div id="footer">
+			<font color="#FFFFFF">
+				Copyright © 2005-2012
+				<span style="cursor:pointer" class="copyright_link" onClick="window.open('http://cerescp.sourceforge.net/');">
+					Ceres Control Panel</span> by Beowulf and Dekamaster
+					<BR>
+					Powered by <span style="cursor:pointer" onClick="window.open('http://en.wikipedia.org/wiki/KISS_principle');">
+					<img src="images/kiss.png" alt="Keep It Simple Stupid! Technology" border="0" align=bottom>
+				</span> <span style="cursor:pointer" onClick="window.open('http://validator.w3.org/check?uri='+document.URL);">
+					<img src="http://cerescp.sourceforge.net/ceres/img.php?<?echo $qwty?>" alt="w3c" style="visibility:hidden">
+					<img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="15" width="43">
+				</span>
+			</font>
+	</div>
+	<script type="text/javascript">
 			load_menu();
 			LINK_ajax('motd.php', 'main_div');
 			LINK_ajax('login.php', 'login_div');
 			login_hide(2);
 			server_status()
 			LINK_ajax('selectlang.php', 'selectlang_div');
-		</script>
+	</script>
 	</body>
 </html>
 
