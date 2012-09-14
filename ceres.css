@@ -21,7 +21,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 To contact any of the authors about special permissions send
 a mail to cerescp@gmail.com
 */
-
+/** CORPO */
+body {
+	margin-top:0px;
+	margin-bottom:0px
+	background: url(images/background.jpg);
+}
 /** HEADER */
 #header {
 	width: 780px;

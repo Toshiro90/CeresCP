@@ -50,7 +50,7 @@ $_SESSION[$CONFIG_name.'jobs'] = readjobs();
 		<script type="text/javascript" language="javascript" src="ceres.js"></script>
 	</head>
 
-	<body style="margin-top:0; margin-bottom:0" background="images/background.jpg">
+	<body>
 	
 	<!-- CeresCP Header -->
 	<div id="header"></div>
