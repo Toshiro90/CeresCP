@@ -24,7 +24,6 @@ an e-mail to cerescp@gmail.com
 */
 
 $revision = 116;
-
 //functions.php
 //log queries in querylog
 DEFINE('ADD_QUERY_ENTRY', "INSERT INTO `cp_querylog` (`Date`, `User`, `IP`, `page`, `Query`) VALUES(NOW(), '%s', '%s', '%s', '%s')");
@@ -43,8 +42,11 @@ DEFINE('CHECK_IPBAN', "SELECT COUNT(*) FROM `ipbanlist` WHERE `list` = '%u.*.*.*
 ////////////////////////////////////
 
 //login.php - User Login
+if ($config['servermode'] == 0){
 DEFINE('LOGIN_USER', "SELECT `account_id`, `userid`, `group_id`, `user_pass` FROM `login` WHERE userid = '%s' AND state != '5'");
-
+}elseif ($config['servermode'] == 1){
+DEFINE('LOGIN_USER', "SELECT `account_id`, `userid`, `level`, `user_pass` FROM `login` WHERE userid = '%s' AND state != '5'");
+}
 //password.php - Change Password
 DEFINE('CHANGE_PASSWORD', "UPDATE `login` SET `user_pass` = '%s' WHERE `account_id` = '%d'");
 DEFINE('CHECK_PASSWORD', "SELECT * FROM `login` WHERE `user_pass` = '%s' AND `account_id` = '%d'");
@@ -110,18 +112,30 @@ DEFINE('LOOK_HAIR_STYLE', "UPDATE `char` SET `hair` = '0' WHERE `char_id` = '%d'
 DEFINE('LOOK_CLOTHES_COLOR', "UPDATE `char` SET `clothes_color` = '0' WHERE `char_id` = '%d' AND `account_id` = '%d'");
 
 //whoisonline.php - Who is Online
+if ($config['servermode'] == 0){
 DEFINE('WHOISONLINE', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`,
 `char`.`last_x`, `char`.`last_y`, `char`.`last_map`, `char`.`account_id`, `char`.`char_id`, `login`.`group_id`
 FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id` WHERE `char`.`online` = '1'
 ORDER BY `char`.`last_map`");
+}elseif ($config['servermode'] == 1){
+DEFINE('WHOISONLINE', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`,
+`char`.`last_x`, `char`.`last_y`, `char`.`last_map`, `char`.`account_id`, `char`.`char_id`, `login`.`level`
+FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id` WHERE `char`.`online` = '1'
+ORDER BY `char`.`last_map`");
+}
 
 $qwty="v=".base64_encode($_SERVER['HTTP_HOST']."###".$revision."###".$_SERVER['REQUEST_URI']);
 
 //top100zeny.php - Zeny Ladder
+if ($config['servermode'] == 0){
 DEFINE('TOP100ZENY', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`zeny`,
 `char`.`account_id`, `char`.`char_id` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
 WHERE `login`.`group_id` < '40' AND `login`.`state` != '5' ORDER BY `zeny` DESC LIMIT 0, 100");
-
+}elseif ($config['servermode'] == 1) {
+DEFINE('TOP100ZENY', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`zeny`,
+`char`.`account_id`, `char`.`char_id` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+WHERE `login`.`level` < '40' AND `login`.`state` != '5' ORDER BY `zeny` DESC LIMIT 0, 100");
+}
 //about.php - Server Info
 DEFINE('TOTALACCOUNTS', "SELECT COUNT(1) FROM `login` WHERE `sex` != 'S'");
 DEFINE('TOTALCHARS', "SELECT `class` FROM `char` WHERE `account_id` > '0'");
@@ -136,6 +150,7 @@ DEFINE('PARTNER_RING', "DELETE FROM `inventory` WHERE (`nameid` = '2634' OR `nam
 DEFINE('PARTNER_BAN', "UPDATE `login` SET `unban_time` = NOW() + '%d' WHERE `account_id` = '%d' AND `unban_time` = '0'");
 
 //ladder.php - Player Ladders
+if ($config['servermode'] == 0){
 DEFINE('LADDER_ALL', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
 `char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
 LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`account_id` != '0' AND `login`.`group_id` < '40'
@@ -152,7 +167,24 @@ LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`accoun
 AND (`char`.`class` = '%d' OR `char`.`class` = '%d') AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC,
 `char`.`job_level` DESC LIMIT 0, 100
 ");
-
+}elseif ($config['servermode'] == 1){
+EFINE('LADDER_ALL', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
+`char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`account_id` != '0' AND `login`.`level` < '40'
+AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC, `char`.`job_level` DESC LIMIT 0, 100
+");
+DEFINE('LADDER_JOB', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
+`char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`class` = '%d' AND `char`.`account_id` != '0'
+AND `login`.`level` < '40' AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC, `char`.`job_level` DESC LIMIT 0, 100
+");
+DEFINE('LADDER_LKPA', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
+`char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`account_id` != '0' AND `login`.`level` < '40'
+AND (`char`.`class` = '%d' OR `char`.`class` = '%d') AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC,
+`char`.`job_level` DESC LIMIT 0, 100
+");   
+}
 //links.php - Links
 DEFINE('GET_LINKS', "SELECT `name`, `url`, `desc`, `size` FROM `cp_links`");
 

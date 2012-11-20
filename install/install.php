@@ -216,6 +216,7 @@ if (isset($POST_install)) {
 	$buffer .= "\$CONFIG['reset_look']		=	'".$POST_feat_rl."';			// reset char equips and colors with error enable = 1, disable = 0\n";
 	$buffer .= "\$CONFIG['marry_enable']		=	'".$POST_feat_divorce."';			// enable marriage view and divorce\n";
 	$buffer .= "\$CONFIG['prison_map']		=	'".$POST_feat_pm."';		// Name of the map that is used as your jail (mapname.gat)\n";
+	$buffer .= "\$config['servermode'] = '".$POST_feat_server."'; // For use the right query with rA or eA \n";
 	$buffer .= "\n";
 	$buffer .= "//About Information\n";
 	$buffer .= "\$CONFIG['classlist_show']	=	'".$POST_feat_acl."';			// Show the class list on about.php? (disable = 0, enable = 1)\n";
@@ -228,6 +229,7 @@ if (isset($POST_install)) {
 	$buffer .= "\$CONFIG['smtp_password']	=	'".$POST_smtp_password."';			// the password of the smtp server\n";
 	$buffer .= "\n";
 	$buffer .= "\n";
+	$buffer .= "\n";	
 	$buffer .= "//DO NOT MESS WITH THIS\n";
 	$buffer .= "extract(\$CONFIG, EXTR_PREFIX_ALL, \"CONFIG\");\n";
 	$buffer .= "extract(\$_GET, EXTR_PREFIX_ALL, \"GET\");\n";
@@ -545,6 +547,10 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									<tr>
 										<td align="left">Prison Map</td>
 										<td align="left"><input type="text" name="feat_pm" size="30" value="sec_pri"></td>
+									</tr>
+									<tr>
+										<td align="left">Server</td>
+										<td align="left"><select name="feat_server"><option selected value="0">rAthena</option><option value="1">eAthena</option></select></td>
 									</tr>
 								</table>
 							</fieldset>

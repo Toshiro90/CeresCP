@@ -26,6 +26,7 @@ an e-mail to cerescp@gmail.com
 $revision = 0;
 
 //adminaccounts
+if ($config['servermode'] == 0){
 DEFINE('ACCOUNTS_SEARCH_ACCOUNT_ID', "SELECT `account_id`, `userid`, `sex`, `email`, `group_id`, `last_ip`, `unban_time`, `state`, 
 `user_pass`, `lastlogin`, `birthdate` FROM `login` WHERE `account_id` = '%d'");
 DEFINE('ACCOUNTS_SEARCH_EMAIL', "SELECT `account_id`, `userid`, `sex`, `email`, `group_id`, `last_ip`, `unban_time`, `state`, `user_pass`
@@ -36,12 +37,28 @@ DEFINE('ACCOUNTS_SEARCH_USERID', "SELECT `account_id`, `userid`, `sex`, `email`,
 FROM `login` WHERE `userid` LIKE '%%%s%%'");
 DEFINE('ACCOUNTS_BROWSE', "SELECT `account_id`, `userid`, `sex`, `email`, `group_id`, `last_ip`, `unban_time`, `state`, `user_pass`
 FROM `login` ORDER BY `account_id` LIMIT %d, 100");
-
+}elseif ($config['servermode'] == 1){
+DEFINE('ACCOUNTS_SEARCH_ACCOUNT_ID', "SELECT `account_id`, `userid`, `sex`, `email`, `level`, `last_ip`, `unban_time`, `state`, 
+`user_pass`, `lastlogin`, `birthdate` FROM `login` WHERE `account_id` = '%d'");
+DEFINE('ACCOUNTS_SEARCH_EMAIL', "SELECT `account_id`, `userid`, `sex`, `email`, `level`, `last_ip`, `unban_time`, `state`, `user_pass`
+FROM `login` WHERE `email` LIKE '%%%s%%'");
+DEFINE('ACCOUNTS_SEARCH_IP', "SELECT `account_id`, `userid`, `sex`, `email`, `level`, `last_ip`, `unban_time`, `state`, `user_pass`
+FROM `login` WHERE `last_ip` LIKE '%%%s%%'");
+DEFINE('ACCOUNTS_SEARCH_USERID', "SELECT `account_id`, `userid`, `sex`, `email`, `level`, `last_ip`, `unban_time`, `state`, `user_pass`
+FROM `login` WHERE `userid` LIKE '%%%s%%'");
+DEFINE('ACCOUNTS_BROWSE', "SELECT `account_id`, `userid`, `sex`, `email`, `level`, `last_ip`, `unban_time`, `state`, `user_pass`
+FROM `login` ORDER BY `account_id` LIMIT %d, 100");   
+}
 //adminaccedit
+if ($config['servermode'] == 0){
 DEFINE('ACCEDIT_UPDATE', "UPDATE `login` SET `userid` = '%s', `user_pass` = '%s', `sex` = '%s', `email` = '%s', `group_id` = '%d', `birthdate` = '%s'
 WHERE `account_id` = '%d'
 ");
-
+}elseif ($config['servermode'] == 1){
+DEFINE('ACCEDIT_UPDATE', "UPDATE `login` SET `userid` = '%s', `user_pass` = '%s', `sex` = '%s', `email` = '%s', `level` = '%d', `birthdate` = '%s'
+WHERE `account_id` = '%d'
+");
+}
 //adminaccchars
 DEFINE('ACCCHARS_ID', "SELECT `char_id`, `char_num`, `name`, `class`, `base_level`, `job_level`, `online`, `last_map`, `last_x`, `last_y`
 FROM `char` WHERE `account_id` = '%d' ORDER BY `char_num`
