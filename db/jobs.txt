@@ -21,7 +21,7 @@
 // an e-mail to cerescp@gmail.com
 
 Novice	0
-Swordsman	1
+Swordman	1
 Mage	2
 Archer	3
 Acolyte	4
@@ -43,13 +43,15 @@ Bard	19
 Dancer	20
 Crusader	21
 Wedding	22
-Super_Novice	23
+SuperNovice	23
 Gunslinger	24
 Ninja	25
 Santa_Costume	26
+Summer_Suit	27
+Hanbok	28
 
 High_Novice	4001
-High_Swordsman	4002
+High_Swordman	4002
 High_Mage	4003
 High_Archer	4004
 High_Acolyte	4005
@@ -72,7 +74,7 @@ Gypsy	4021
 Paladin	4022
 
 Baby_Novice	4023
-Baby_Swordsman	4024
+Baby_Swordman	4024
 Baby_Mage	4025
 Baby_Archer	4026
 Baby_Acolyte	4027
@@ -89,6 +91,7 @@ Baby_Crusader	4037
 Baby_Monk	4038
 Baby_Sage	4039
 Baby_Rogue	4040
+Baby_Alchem	4041
 Baby_Alchemist	4041
 Baby_Bard	4042
 Baby_Dancer	4043
@@ -100,18 +103,24 @@ Star_Gladiator	4047
 Star_Gladiator	4048
 Soul_Linker	4049
 
+Gangsi	4050
+Death_Knight	4051
+Dark_Collector	4052
+
 Rune_Knight	4054
 Warlock	4055
 Ranger	4056
-Archbishop	4057
+Arch_Bishop	4057
 Mechanic	4058
 Guillotine_Cross	4059
+
 Rune_Knight	4060
 Warlock	4061
 Ranger	4062
-Archbishop	4063
+Arch_Bishop	4063
 Mechanic	4064
 Guillotine_Cross	4065
+
 Royal_Guard	4066
 Sorcerer	4067
 Minstrel	4068
@@ -119,6 +128,7 @@ Wanderer	4069
 Sura	4070
 Genetic	4071
 Shadow_Chaser	4072
+
 Royal_Guard	4073
 Sorcerer	4074
 Minstrel	4075
@@ -126,6 +136,7 @@ Wanderer	4076
 Sura	4077
 Genetic	4078
 Shadow_Chaser	4079
+
 Rune_Knight	4080
 Rune_Knight	4081
 Royal_Guard	4082
@@ -134,6 +145,7 @@ Ranger	4084
 Ranger	4085
 Mechanic	4086
 Mechanic	4087
+
 Baby_Rune	4096
 Baby_Warlock	4097
 Baby_Ranger	4098
