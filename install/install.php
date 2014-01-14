@@ -378,7 +378,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left"><a href="http://www.php.net/timezones" target="_blank">Time Zone</a></td>
-										<td align="left"><input type="text" name="timezone" size="30" value="America/New_York"></td>
+										<td align="left"><input type="text" name="timezone" size="30" value="<?php $tz = @date_default_timezone_get(); print $tz?$tz:'America/New_York'; ?>"></td>
 									</tr>
 									<tr>
 										<td align="left">Dynamic Info</td>
