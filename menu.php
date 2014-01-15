@@ -28,132 +28,55 @@ include_once 'config.php'; // loads config variables
 include_once 'query.php'; // imports queries
 include_once 'functions.php';
 
-$mainmenu[0][0] = $lang['MENU_HOME'];
-$mainmenu[0][1] = -1;
+// Category name, required gm level
+$mainmenu[0] = array($lang['MENU_HOME'],		-1);
+$mainmenu[1] = array($lang['MENU_MYACCOUNT'],	 0);
+$mainmenu[2] = array($lang['MENU_MYCHARS'],		 0);
+$mainmenu[3] = array($lang['MENU_RANKING'],		-1);
+$mainmenu[4] = array($lang['MENU_INFORMATION'],	-1);
+$mainmenu[5] = array($lang['MENU_PROBLEMS'],	 0);
+$mainmenu[6] = array("Administration",			$CONFIG['cp_admin']);
 
-$mainmenu[1][0] = $lang['MENU_MYACCOUNT'];
-$mainmenu[1][1] = 0;
-
-$mainmenu[2][0] = $lang['MENU_MYCHARS'];
-$mainmenu[2][1] = 0;
-
-$mainmenu[3][0] = $lang['MENU_RANKING'];
-$mainmenu[3][1] = -1;
-
-$mainmenu[4][0] = $lang['MENU_INFORMATION'];
-$mainmenu[4][1] = -1;
-
-$mainmenu[5][0] = $lang['MENU_PROBLEMS'];
-$mainmenu[5][1] = 0;
-
-$mainmenu[6][0] = "Administration";
-$mainmenu[6][1] = $CONFIG['cp_admin'];
-
-$submenu[0][0] = $lang['MENU_MESSAGE'];
-$submenu[0][1] = "motd.php";
-$submenu[0][2] = 0;
-
-$submenu[1][0] = $lang['MENU_CHANGEPASS'];
-$submenu[1][1] = "password.php";
-$submenu[1][2] = 1;
-
-$submenu[2][0] = $lang['MENU_CHANGEMAIL'];
-$submenu[2][1] = "changemail.php";
-$submenu[2][2] = 1;
-
-$submenu[3][0] = $lang['MENU_TRANFMONEY'];
-$submenu[3][1] = "money.php";
-if ($CONFIG_money_transfer)
-	$submenu[3][2] = 2;
-else
-	$submenu[3][2] = -1;
-
-$submenu[4][0] = $lang['MENU_CHANGESLOT'];
-$submenu[4][1] = "slot.php";
-if ($CONFIG_set_slot)
-	$submenu[4][2] = 2;
-else
-	$submenu[4][2] = -1;
-
-$submenu[5][0] = $lang['MENU_MARRIAGE'];
-$submenu[5][1] = "marriage.php";
-$submenu[5][2] = 2;
-
-$submenu[6][0] = $lang['MENU_PLAYERLADDER'];
-$submenu[6][1] = "ladder.php";
-$submenu[6][2] = 3;
-
-$submenu[7][0] = $lang['MENU_GUILDLADDER'];
-$submenu[7][1] = "guild.php";
-$submenu[7][2] = 3;
-
-$submenu[8][0] = $lang['MENU_ZENYLADDER'];
-$submenu[8][1] = "top100zeny.php";
-$submenu[8][2] = 3;
-
-$submenu[9][0] = $lang['MENU_WHOSONLINE'];
-$submenu[9][1] = "whoisonline.php";
-$submenu[9][2] = 4;
-
-$submenu[10][0] = $lang['MENU_ABOUT'];
-$submenu[10][1] = "about.php";
-$submenu[10][2] = 4;
-
-$submenu[11][0] = $lang['MENU_RESETPOS'];
-$submenu[11][1] = "position.php";
-if ($CONFIG_reset_enable)
-	$submenu[11][2] = 5;
-else
-	$submenu[11][2] = -1;
-
-$submenu[12][0] = $lang['MENU_RESETLOOK'];
-$submenu[12][1] = "resetlook.php";
-if ($CONFIG_reset_look)
-	$submenu[12][2] = 5;
-else
-	$submenu[12][2] = -1;
-
-$submenu[13][0] = $lang['MENU_OTHER'];
-$submenu[13][1] = "sendmail.php";
-$submenu[13][2] = 5;
-
-$submenu[14][0] = $lang['MENU_LINKS'];
-$submenu[14][1] = "links.php";
-$submenu[14][2] = 0;
-
-$submenu[15][0] = "Accounts";
-$submenu[15][1] = "adminaccounts.php";
-$submenu[15][2] = 6;
-
-$submenu[16][0] = "Chars";
-$submenu[16][1] = "adminchars.php";
-$submenu[16][2] = 6;
-
-//$submenu[17][0] = "Bans/Blocks";
-//$submenu[17][1] = "";
-//$submenu[17][2] = 6;
+// Page name, page link, category id
+$submenu[] = array($lang['MENU_MESSAGE'],		'motd.php',				0);
+$submenu[] = array($lang['MENU_CHANGEPASS'],	'password.php',			1);
+$submenu[] = array($lang['MENU_CHANGEMAIL'],	'changemail.php',		1);
+$submenu[] = array($lang['MENU_TRANFMONEY'],	'money.php',			$CONFIG_money_transfer?2:-1);
+$submenu[] = array($lang['MENU_CHANGESLOT'],	'slot.php',				$CONFIG_set_slot?2:-1);
+$submenu[] = array($lang['MENU_MARRIAGE'],		'marriage.php',			2);
+$submenu[] = array($lang['MENU_PLAYERLADDER'],	'ladder.php',			3);
+$submenu[] = array($lang['MENU_GUILDLADDER'],	'guild.php',			3);
+$submenu[] = array($lang['MENU_ZENYLADDER'],	'top100zeny.php',		3);
+$submenu[] = array($lang['MENU_WHOSONLINE'],	'whoisonline.php',		4);
+$submenu[] = array($lang['MENU_ABOUT'],			'about.php',			4);
+$submenu[] = array($lang['MENU_RESETPOS'],		'position.php',			$CONFIG_reset_enable?5:-1);
+$submenu[] = array($lang['MENU_RESETLOOK'],		'resetlook.php',		$CONFIG_reset_look?5:-1);
+$submenu[] = array($lang['MENU_LINKS'],			'links.php',			0);
+$submenu[] = array('Accounts',					'adminaccounts.php',	6);
+$submenu[] = array('Chars',						'adminchars.php',		6);
+//$submenu[] = array('Bans/Blocks',				'',						6);
 
 
 $pos = 0;
-$menu = "var mainmenu = new Array(";
-$sub  = "var submenu = new Array(\"\", \"\", -1";
+$menu = 'var mainmenu = new Array(';
+$sub  = 'var submenu = new Array("", "", -1';
 
-for ($i = 0; isset($mainmenu[$i][0]); $i++) {
-	if ($mainmenu[$i][1] < 0 || (isset($_SESSION[$CONFIG_name.'level']) && $_SESSION[$CONFIG_name.'level'] >= $mainmenu[$i][1])) {
+foreach ($mainmenu as $i => $mainmenudata) {
+	if ($mainmenudata[1] < 0 || (isset($_SESSION[$CONFIG_name.'level']) && $_SESSION[$CONFIG_name.'level'] >= $mainmenudata[1])) {
 		if ($pos > 0)
-			$menu = $menu.", ";
-		$menu = $menu."\"".$mainmenu[$i][0]."\"";
-		for ($j = 0; isset($submenu[$j][0]); $j++) {
-			if ($submenu[$j][2] == $i) {
-				$sub = $sub.", \"".$submenu[$j][0]."\"".", \"".$submenu[$j][1]."\", ".$pos;
+			$menu = $menu.', ';
+		$menu = $menu."\"".$mainmenudata[0].'"';
+		foreach ($submenu as $j => $submenudata) {
+			if ($submenudata[2] == $i) {
+				$sub = $sub.', "'.$submenudata[0].'"'.', "'.$submenudata[1].'", '.$pos;
 			}
 		}
 		$pos++;
 	}
 }
 
-$menu = $menu.");";
-$sub  = $sub.");";
+$menu = $menu.');';
+$sub  = $sub.');';
 
 echo $menu."\n";
 echo $sub."\n";
