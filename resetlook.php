@@ -74,65 +74,65 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 		$result = execute_query($query, "resetlook.php");
 
 		if ($result->count() < 1)
-			redir("motd.php", "main_div", $lang['ONE_CHAR']);
+			redir('motd.php', 'main_div', $lang['ONE_CHAR']);
 
 		opentable($lang['RESETLOOK_RESETLOOK']);
-		echo "
-		<table width=\"595\">
+		echo '
+		<table width="595">
 		<tr>
-			<td align=\"right\" class=\"head\">".$lang['SLOT']."</td>
-			<td align=\"left\" class=\"head\">".$lang['NAME']."</td>
+			<td align="right" class="head">'.$lang['SLOT'].'</td>
+			<td align="left" class="head">'.$lang['NAME'].'</td>
 		</tr>
-		";
+		';
 		while ($line = $result->fetch_row()) {
 			$GID = $line[0];
 			$slot = $line[1];
 			$charname = htmlformat($line[2]);
-			echo "    
+			echo '    
 			<tr>
-				<td align=\"right\">$slot</td>
-				<td align=\"left\">$charname</td>
-				<td align=\"center\">
-					<form id=\"equip$slot\" onsubmit=\"return GET_ajax('resetlook.php','main_div','equip$slot')\">
-						<input type=\"hidden\" name=\"equip\" value = 1>
-						<input type=\"hidden\" name=\"charnum\" value=\"$slot\">
-						<input type=\"hidden\" name=\"opt\" value=\"1\">
-						<input type=\"hidden\" name=\"GID1\" value=\"$GID\">
-						<input type=\"submit\" value=\"equip\">
+				<td align="right">'.$slot.'</td>
+				<td align="left">'.$charname.'</td>
+				<td align="center">
+					<form id="equip'.$slot.'" onsubmit="return GET_ajax(\'resetlook.php\',\'main_div\',\'equip'.$slot.'\')">
+						<input type="hidden" name="equip" value = 1>
+						<input type="hidden" name="charnum" value="'.$slot.'">
+						<input type="hidden" name="opt" value="1">
+						<input type="hidden" name="GID1" value="'.$GID.'">
+						<input type="submit" value="equip">
 					</form>
-				</td><td align=\"center\">
-					<form id=\"hair_style$slot\" onsubmit=\"return GET_ajax('resetlook.php','main_div','hair_style$slot')\">
-						<input type=\"hidden\" name=\"hair_style\" value = 1>
-						<input type=\"hidden\" name=\"charnum\" value=\"$slot\">
-						<input type=\"hidden\" name=\"opt\" value=\"1\">
-						<input type=\"hidden\" name=\"GID1\" value=\"$GID\">
-						<input type=\"submit\" value=\"Hair Style\">
+				</td><td align="center">
+					<form id="hair_style'.$slot.'" onsubmit="return GET_ajax(\'resetlook.php\',\'main_div\',\'hair_style'.$slot.'\')">
+						<input type="hidden" name="hair_style" value = 1>
+						<input type="hidden" name="charnum" value="'.$slot.'">
+						<input type="hidden" name="opt" value="1">
+						<input type="hidden" name="GID1" value="'.$GID.'">
+						<input type="submit" value="Hair Style">
 					</form>
-				</td><td align=\"center\">
-					<form id=\"clothes_color$slot\" onsubmit=\"return GET_ajax('resetlook.php','main_div','clothes_color$slot')\">
-						<input type=\"hidden\" name=\"clothes_color\" value = 1>
-						<input type=\"hidden\" name=\"charnum\" value=\"$slot\">
-						<input type=\"hidden\" name=\"opt\" value=\"1\">
-						<input type=\"hidden\" name=\"GID1\" value=\"$GID\">
-						<input type=\"submit\" value=\"Clothes Color\">
+				</td><td align="center">
+					<form id="clothes_color'.$slot.'" onsubmit="return GET_ajax(\'resetlook.php\',\'main_div\',\'clothes_color'.$slot.'\')">
+						<input type="hidden" name="clothes_color" value = 1>
+						<input type="hidden" name="charnum" value="'.$slot.'">
+						<input type="hidden" name="opt" value="1">
+						<input type="hidden" name="GID1" value="'.$GID.'">
+						<input type="submit" value="Clothes Color">
 					</form>
-				</td><td align=\"center\">
-					<form id=\"hair_color$slot\" onsubmit=\"return GET_ajax('resetlook.php','main_div','hair_color$slot')\">
-						<input type=\"hidden\" name=\"hair_color\" value = 1>
-						<input type=\"hidden\" name=\"charnum\" value=\"$slot\">
-						<input type=\"hidden\" name=\"opt\" value=\"1\">
-						<input type=\"hidden\" name=\"GID1\" value=\"$GID\">
-						<input type=\"submit\" value=\"Hair Color\">
+				</td><td align="center">
+					<form id="hair_color'.$slot.'" onsubmit="return GET_ajax(\'resetlook.php\',\'main_div\',\'hair_color'.$slot.'\')">
+						<input type="hidden" name="hair_color" value = 1>
+						<input type="hidden" name="charnum" value="'.$slot.'">
+						<input type="hidden" name="opt" value="1">
+						<input type="hidden" name="GID1" value="'.$GID.'">
+						<input type="submit" value="Hair Color">
 					</form>
 				</td>
 			</tr>
-			";
+			';
 		}
-		echo "</table>";
+		echo '</table>';
 		closetable();
 	}
 	fim();
 }
 
-redir("motd.php", "main_div", $lang['NEED_TO_LOGIN']);
+redir('motd.php', 'main_div', $lang['NEED_TO_LOGIN']);
 ?>

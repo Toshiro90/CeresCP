@@ -101,66 +101,65 @@ if ($CONFIG_classlist_show) {
 }
 opentable($lang['ABOUT_ABOUT']);
 
-echo "
-<table align=\"center\" width = \"300\">
+echo '
+<table align="center" width="300">
 	<tr>
 	<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td align=\"right\">".$lang['ABOUT_SERVER_NAME']."</td><td>&nbsp;</td><td align=\"left\">$CONFIG_name</td>
-	</tr>";
+		<td align="right">'.$lang['ABOUT_SERVER_NAME'].'</td><td>&nbsp;</td><td align="left">'.$CONFIG_name.'</td>
+	</tr>';
 
 	if ($CONFIG_dynamic_info)
-		echo "<td align=\"right\">".$lang['ABOUT_RATE']."</td><td>&nbsp;</td><td align=\"left\">".$rate_base."/".$rate_job."/".$rate_drop."</td>";
+		echo '<td align="right">'.$lang['ABOUT_RATE'].'</td><td>&nbsp;</td><td align="left">'.$rate_base.'/'.$rate_job.'/'.$rate_drop.'</td>';
 	else
-		echo "<td align=\"right\">".$lang['ABOUT_RATE']."</td><td>&nbsp;</td><td align=\"left\">$CONFIG_rate</td>";
-echo "
+		echo '<td align="right">'.$lang['ABOUT_RATE'].'</td><td>&nbsp;</td><td align="left">'.$CONFIG_rate.'</td>';
+echo '
 	</tr>
 	<tr>
 	<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td align=\"right\">".$lang['ABOUT_WOE_TIMES']."</td>
-	</tr>
-	";
+		<td align="right">'.$lang['ABOUT_WOE_TIMES'].'</td>
+	</tr>';
 	ret_woe_times();
 	
-echo "
+echo '
 	<tr>
 	<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td align=\"right\">".$lang['ABOUT_TOTAL_ACCOUNTS']."</td><td>&nbsp;</td><td align=right>$accounts</td>
+		<td align="right">'.$lang['ABOUT_TOTAL_ACCOUNTS'].'</td><td>&nbsp;</td><td align="right">'.$accounts.'</td>
 	</tr>
 	<tr>
-		<td align=\"right\">".$lang['ABOUT_TOTAL_CHAR']."</td><td>&nbsp;</td><td align=right>$chars</td>
+		<td align="right">'.$lang['ABOUT_TOTAL_CHAR'].'</td><td>&nbsp;</td><td align="right">'.$chars.'</td>
 	</tr>
 	<tr>
-		<td align=\"right\">".$lang['ABOUT_TOTAL_ZENY']."</td><td>&nbsp;</td><td align=right>$zeny</td>
+		<td align="right">'.$lang['ABOUT_TOTAL_ZENY'].'</td><td>&nbsp;</td><td align="right">'.$zeny.'</td>
 	</tr>
 	<tr>
 	<td>&nbsp;</td>
-	</tr>";
+	</tr>';
 	if ($CONFIG_classlist_show) {
-	echo "<tr><td align=\"right\">".$lang['ABOUT_TOTAL_CLASS']."</td></tr>";
+	echo '<tr><td align="right">'.$lang['ABOUT_TOTAL_CLASS'].'</td></tr>';
 	
 		for ($i = 0; $i < 26; $i++) {
 			$class[$i] = moneyformat($class[$i]);
 			if ($i != 13 && $i != 21 && $i != 22 && $i != 26 && !empty($class[$i]) && !empty($jobs[$i]))
-				echo "<tr><td align=\"right\">$jobs[$i]</td><td>&nbsp;</td><td align=right>$class[$i]</td></tr>";
+				echo '<tr><td align="right">'.$jobs[$i].'</td><td>&nbsp;</td><td align="right">'.$class[$i].'</td></tr>';
 		}
 		for ($i = 4001; $i < 4050; $i++) {
 			$class[$i] = moneyformat($class[$i]);
 			if ($i != 4014 && $i != 4022 && $i != 4036 && $i != 4044 && $i != 4048 && !empty($class[$i]) && !empty($jobs[$i]))
-				echo "<tr><td align=\"right\">$jobs[$i]</td><td>&nbsp;</td><td align=right>$class[$i]</td></tr>";
+				echo '<tr><td align="right">'.$jobs[$i].'</td><td>&nbsp;</td><td align="right">'.$class[$i].'</td></tr>';
 		}
 		for ($i = 4054; $i < 4213; $i++) {
 			$class[$i] = moneyformat($class[$i]);
 			if ($i != 4080 && $i != 4081 && $i != 4082 && $i != 4083 && $i != 4084 && $i != 4085 && $i != 4086  && $i != 4087 && $i != 4109 && $i != 4110 && $i != 4111 && $i != 4112 && !empty($class[$i]) && !empty($jobs[$i]))
-				echo "<tr><td align=\"right\">$jobs[$i]</td><td>&nbsp;</td><td align=right>$class[$i]</td></tr>";
+				echo '<tr><td align="right">'.$jobs[$i].'</td><td>&nbsp;</td><td align="right">'.$class[$i].'</td></tr>';
 		}
 	}
-echo "</table>";
+echo '</table>';
 closetable();
 fim();
 ?>

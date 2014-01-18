@@ -64,50 +64,50 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_set_slot) {
 			redir("slot.php", "main_div", $lang['ONE_CHAR']);
 
 		opentable($lang['SLOT_CHANGE_SLOT']);
-		echo "
-		<table width=\"400\">
+		echo '
+		<table width="400">
 		<tr>
-			<td align=\"right\" class=\"head\">".$lang['SLOT']."</td>
-			<td align=\"left\" class=\"head\">".$lang['NAME']."</td>
-			<td align=\"center\" class=\"head\">".$lang['SLOT_NEW_SLOT']."</td>
+			<td align="right" class="head">'.$lang['SLOT'].'</td>
+			<td align="left" class="head">'.$lang['NAME'].'</td>
+			<td align="center" class="head">'.$lang['SLOT_NEW_SLOT'].'</td>
 		</tr>
-		";
+		';
 		for ($j = 0; $line = $result->fetch_row(); $j++) {
 			$GID = $line[0];
 			$slot = $line[1];
 			$charname = htmlformat($line[2]);
-			echo "
+			echo '
 			<tr>
-				<td align=\"right\">$slot</td>
-				<td align=\"left\">$charname</td>
-				<td align=\"center\">
-				<form id=\"slot$j\" onsubmit=\"return GET_ajax('slot.php','main_div','slot$j')\">
-					<select name=\"newslot\">";
+				<td align="right">'.$slot.'</td>
+				<td align="left">'.$charname.'</td>
+				<td align="center">
+				<form id="slot'.$j.'" onsubmit="return GET_ajax(\'slot.php\',\'main_div\',\'slot'.$j.'\')">
+					<select name="newslot">';
 			for ($i = 0; $i < 9; $i++) {
 				if ($slot == $i)
-					echo "<option value=\"$i\" selected>$i";
+					echo '<option value="'.$i.'" selected>'.$i;
 				else
-					echo "<option value=\"$i\">$i";
+					echo '<option value="'.$i.'">'.$i;
 			}
-			echo "</select>
-						<input type=\"submit\" value=\"".$lang['CHANGE']."\">
-						<input type=\"hidden\" name=\"opt\" value=\"1\">
-						<input type=\"hidden\" name=\"slot\" value=\"$slot\">
-						<input type=\"hidden\" name=\"char_id\" value=\"$GID\">
+			echo '</select>
+						<input type="submit" value="'.$lang['CHANGE'].'">
+						<input type="hidden" name="opt" value="1">
+						<input type="hidden" name="slot" value="'.$slot.'">
+						<input type="hidden" name="char_id" value="'.$GID.'">
 				</form>
 				</td>
 			</tr>
-			";
+			';
 		}
-		echo "</table>
+		echo '</table>
 			<table>
-				<tr><td align=\"left\">".$lang['SLOT_PS1']."</td></tr>
-				<tr><td align=\"left\">".$lang['SLOT_PS2']."</td></tr>
-			</table>";
+				<tr><td align="left">'.$lang['SLOT_PS1'].'</td></tr>
+				<tr><td align="left">'.$lang['SLOT_PS2'].'</td></tr>
+			</table>';
 		closetable();
 	}
 	fim();
 }
 
-redir("motd.php", "main_div", $lang['NEED_TO_LOGIN']);
+redir('motd.php', 'main_div', $lang['NEED_TO_LOGIN']);
 ?>

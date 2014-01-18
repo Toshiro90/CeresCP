@@ -60,19 +60,19 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 		$result = execute_query($query, "position.php");
 
 		if ($result->count() < 1)
-			redir("motd.php", "main_div", $lang['ONE_CHAR']);
+			redir('motd.php', 'main_div', $lang['ONE_CHAR']);
 
 		opentable($lang['POSITION_TITLE']);
-		echo "
-		<table width=\"400\">
+		echo '
+		<table width="400">
 		<tr>
-			<td align=\"right\" class=\"head\">".$lang['SLOT']."</td>
-			<td align=\"left\" class=\"head\">".$lang['NAME']."</td>
-			<td align=\"center\" class=\"head\">".$lang['POSITION_LEVEL']."</td>
-			<td align=\"left\" class=\"head\">".$lang['MAP']."</td>
-			<td align=\"center\" class=\"head\">".$lang['POSITION_SELECT']."</td>
+			<td align="right" class="head">'.$lang['SLOT'].'</td>
+			<td align="left" class="head">'.$lang['NAME'].'</td>
+			<td align="center" class="head">'.$lang['POSITION_LEVEL'].'</td>
+			<td align="left" class="head">'.$lang['MAP'].'</td>
+			<td align="center" class="head">'.$lang['POSITION_SELECT'].'</td>
 		</tr>
-		";
+		';
 		while ($line = $result->fetch_row()) {
 			$GID = $line[0];
 			$slot = $line[1];
@@ -80,36 +80,36 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 			$clevel = $line[4];
 			$joblevel = $line[5];
 			$lastmap = $line[6];
-			echo "    
+			echo '    
 			<tr>
-				<td align=\"right\">$slot</td>
-				<td align=\"left\">$charname</td>
-				<td align=\"center\">$clevel/$joblevel</td>
-				<td align=\"left\">$lastmap</td>
-				<td align=\"center\">
-				<form id=\"position$slot\" onsubmit=\"return GET_ajax('position.php','main_div','position$slot')\">
-					<input type=\"submit\" value=\"".$lang['POSITION_RESET']."\">
-					<input type=\"hidden\" name=\"charnum\" value=\"$slot\">
-					<input type=\"hidden\" name=\"opt\" value=\"1\">
-					<input type=\"hidden\" name=\"GID1\" value=\"$GID\">
+				<td align="right">'.$slot.'</td>
+				<td align="left">'.$charname.'</td>
+				<td align="center">'.$clevel.'/'.$joblevel.'</td>
+				<td align="left">'.$lastmap.'</td>
+				<td align="center">
+				<form id="position'.$slot.'" onsubmit="return GET_ajax(\'position.php\',\'main_div\',\'position'.$slot.'\')">
+					<input type="submit" value="'.$lang['POSITION_RESET'].'">
+					<input type="hidden" name="charnum" value="'.$slot.'">
+					<input type="hidden" name="opt" value="1">
+					<input type="hidden" name="GID1" value="'.$GID.'">
 				</form>
 				</td>
 			</tr>
-			";
+			';
 		}
-		echo "</table>";
+		echo '</table>';
 		if ($CONFIG_reset_cost) {
 			$lang['POSITION_PS1'] = sprintf($lang['POSITION_PS1'], $CONFIG_reset_cost);
-			echo "
+			echo '
 				<table>
-					<tr><td align=\"left\">".$lang['POSITION_PS1']."</td></tr>
+					<tr><td align="left">'.$lang['POSITION_PS1'].'</td></tr>
 				</table>
-			";
+			';
 		}
 		closetable();
 	}
 	fim();
 }
 
-redir("motd.php", "main_div", $lang['NEED_TO_LOGIN']);
+redir('motd.php', 'main_div', $lang['NEED_TO_LOGIN']);
 ?>

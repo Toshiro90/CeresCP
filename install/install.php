@@ -278,9 +278,9 @@ closedir($langdir);
 <?php
 for ($i = 0; isset($idiom[$i]); $i++) {
 	if (strcmp("English", $idiom[$i]) === 0)
-		echo "<option selected value=\"$idiom[$i]\">$idiom[$i]</option>"; 
+		echo '<option selected="selected" value="'.$idiom[$i].'">'.$idiom[$i].'</option>'; 
 	else
-		echo "<option value=\"$idiom[$i]\">$idiom[$i]</option>";
+		echo '<option value="'.$idiom[$i].'">'.$idiom[$i].'</option>';
 }
 ?>
 										</select></td>
@@ -332,11 +332,11 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">MD5 Pass</td>
-										<td align="left"><select name="sql_md5"><option selected value="0">No</option><option value="1">Yes</option></select></td>
+										<td align="left"><select name="sql_md5"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Safe Pass</td>
-										<td align="left"><select name="sql_safe_pass"><option value="0">No</option><option selected value="1">Yes</option></select></td>
+										<td align="left"><select name="sql_safe_pass"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
 									</tr>
 								</table>
 							</fieldset>
@@ -382,11 +382,11 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Dynamic Info</td>
-										<td align="left"><select name="server_di"><option selected value="0">No</option><option value="1">Yes</option></select></td>
+										<td align="left"><select name="server_di"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Show Rates</td>
-										<td align="left"><select name="server_dr"><option selected value="0">No</option><option value="1">Yes</option></select></td>
+										<td align="left"><select name="server_dr"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 								</table>
 							</fieldset>
@@ -485,7 +485,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">WoE Status</td>
-										<td align="left"><select name="woe_agit"><option selected value="0">No</option><option value="1">Yes</option></select></td>
+										<td align="left"><select name="woe_agit"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 								</table>
 							</fieldset>
@@ -498,11 +498,11 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 								<table border="0" width="400">
 									<tr>
 										<td width="200" align="left">Disable Account Creation</td>
-										<td align="left"><select name="feat_acc"><option selected value="0">No</option><option value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_acc"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Verification Code</td>
-										<td align="left"><select name="feat_vc"><option value="0">No</option><option  selected value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_vc"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Max Accounts Allowed</td>
@@ -510,15 +510,15 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">About Class List</td>
-										<td align="left"><select name="feat_acl"><option value="0">No</option><option  selected value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_acl"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Password Recover</td>
-										<td align="left"><select name="feat_pr"><option selected value="0">No</option><option value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_pr"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Reset Position</td>
-										<td align="left"><select name="feat_rp"><option value="0">No</option><option selected 			value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_rp"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Reset Position Cost</td>
@@ -526,7 +526,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Money Transfer</td>
-										<td align="left"><select name="feat_mt"><option selected value="0">No</option><option value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_mt"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Money Transfer Cost</td>
@@ -534,15 +534,15 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Change Slot</td>
-										<td align="left"><select name="feat_cs"><option value="0">No</option><option selected value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_cs"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Reset Look</td>
-										<td align="left"><select name="feat_rl"><option value="0">No</option><option selected value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_rl"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Divorce</td>
-										<td align="left"><select name="feat_divorce"><option value="0">No</option><option selected value="1">Yes</option></select></td>
+										<td align="left"><select name="feat_divorce"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Prison Map</td>
@@ -550,7 +550,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Server</td>
-										<td align="left"><select name="feat_server"><option selected value="0">rAthena</option><option value="1">eAthena</option></select></td>
+										<td align="left"><select name="feat_server"><option selected="selected" value="0">rAthena</option><option value="1">eAthena</option></select></td>
 									</tr>
 								</table>
 							</fieldset>

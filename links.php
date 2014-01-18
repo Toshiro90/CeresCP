@@ -33,7 +33,7 @@ include_once 'functions.php';
 
 
 	opentable($lang['LINKS_LINKS']);
-echo "<table>";
+echo '<table>';
 
 for ($i = 1; $i < 10; $i++) {
 			if (!($clinks = $result->fetch_row()))
@@ -45,22 +45,22 @@ for ($i = 1; $i < 10; $i++) {
 	$size = $clinks[3];
 
 	if ($size==0) {
-		$size="";
-		$url=" <a href=$url class=\"link\" target=_blank>$name</a> $size";
+		$size='';
+		$url=' <a href='.$url.' class="link" target=_blank>'.$name.'</a> '.$size;
 		}
 	else{
-		$size=" ($size Mb)";
-		$url=" <a href=$url class=\"link\">$name</a> $size";
+		$size=' ('.$size.' Mb)';
+		$url=' <a href='.$url.' class="link">'.$name.'</a> '.$size;
 		};
 
-			echo "
-				<tr><td align=\"left\"><b>".$lang['LINKS_NAME']."</b>:</td><td align=\"left\">$url</td></tr>
-				<tr><td align=\"left\">&nbsp;</td><td align=\"left\">$desc</td></tr>
-				<tr><td align=\"left\">&nbsp;</td></tr>
-				";
+			echo '
+				<tr><td align="left"><b>'.$lang['LINKS_NAME'].'</b>:</td><td align="left">'.$url.'</td></tr>
+				<tr><td align="left">&nbsp;</td><td align="left">'.$desc.'</td></tr>
+				<tr><td align="left">&nbsp;</td></tr>
+				';
 }
 
-		echo "</table>";
+		echo '</table>';
 	closetable();
 	fim();
 

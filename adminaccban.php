@@ -30,7 +30,7 @@ include_once 'adminquery.php';
 include_once 'functions.php';
 
 if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] < $CONFIG['cp_admin'])
-	die ("Not Authorized");
+	die ('Not Authorized');
 
 if (isset($GET_frm_name) && isset($GET_id)) {
 	$query = sprintf(ACCOUNTS_SEARCH_ACCOUNT_ID, trim($GET_id));
@@ -60,15 +60,15 @@ if (isset($GET_frm_name) && isset($GET_id)) {
 		$query = sprintf(ACCBAN_UPDATE, $ban, $GET_block, trim($GET_id));
 		$result = execute_query($query, 'adminaccban.php');
 
-		alert("Account Updated");
+		alert('Account Updated');
 	}
 }
 
-opentable("Account BAN/BLOCK");
+opentable('Account BAN/BLOCK');
 
 if (isset($GET_back)) {
 	$back = base64_decode($GET_back);
-	echo "<span title=\"Back\" style=\"cursor:pointer\" onMouseOver=\"this.style.color='#FF3300'\" onMouseOut=\"this.style.color='#000000'\" onClick=\"return LINK_ajax('adminaccounts.php?$back','accounts_div');\">&lt;-back</span>";
+	echo '<span title="Back" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span>';
 }
 
 
@@ -79,19 +79,19 @@ if (isset($GET_id)) {
 	$query = sprintf(ACCOUNTS_SEARCH_ACCOUNT_ID, trim($GET_id));
 	$result = execute_query($query, 'adminaccban.php');
 	if ($line = $result->fetch_row()) {
-		echo "
-		<form id=\"accban\" onSubmit=\"return GET_ajax('adminaccban.php','accounts_div','accban');\">
-			<table width=\"500\">
+		echo '
+		<form id="accban" onSubmit="return GET_ajax(\'adminaccban.php\',\'accounts_div\',\'accban\');">
+			<table width="500">
 				<tr>
-					<td align=\"right\">Account_id:</td><td align=\"left\">$line[0]<input type=\"hidden\" name=\"id\" value=\"$line[0]\"></td>
+					<td align="right">Account_id:</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
 				</tr><tr>
-					<td align=\"right\">Login:</td><td align=\"left\">$line[1]</td>
+					<td align="right">Login:</td><td align="left">'.$line[1].'</td>
 				</tr><tr>
-					<td align=\"right\">Last Login:</td><td align=\"left\">$line[9]</td>
+					<td align="right">Last Login:</td><td align="left">'.$line[9].'</td>
 				</tr><tr>
 
-					<td align=\"right\">Ban untill:</td><td align=\"left\"><select name=\"bday\">
-		";
+					<td align="right">Ban untill:</td><td align="left"><select name="bday">
+		';
 
 		if ($line[6] > 0)
 			$today = getdate($line[6]);
@@ -100,91 +100,91 @@ if (isset($GET_id)) {
 
 		for ($i = 1; $i < 32; $i++) {
 			if ($today['mday'] == $i)
-				echo "<option selected value=$i>$i";
+				echo '<option selected="selected" value='.$i.'>'.$i;
 			else
-				echo "<option value=$i>$i";
+				echo '<option value='.$i.'>'.$i;
 		}
 
 		$i = $today['mon'];
-		echo "
-					</select>&nbsp;&nbsp;<select name=\"bmonth\" id=\"selemes\">";
+		echo '
+					</select>&nbsp;&nbsp;<select name="bmonth" id="selemes">';
 		if ($i == 1)
-			echo "<option selected value=\"1\">".$lang['JANUARY'];
+			echo '<option selected="selected" value="1">'.$lang['JANUARY'];
 		else
-			echo "<option value=\"1\">".$lang['JANUARY'];
+			echo '<option value="1">'.$lang['JANUARY'];
 		if ($i == 2)
-			echo "<option selected value=\"2\">".$lang['FEBRUARY'];
+			echo '<option selected="selected" value="2">'.$lang['FEBRUARY'];
 		else
-			echo "<option value=\"2\">".$lang['FEBRUARY'];
+			echo '<option value="2">'.$lang['FEBRUARY'];
 		if ($i == 3)
-			echo "<option selected value=\"3\">".$lang['MARCH'];
+			echo '<option selected="selected" value="3">'.$lang['MARCH'];
 		else
-			echo "<option value=\"3\">".$lang['MARCH'];
+			echo '<option value="3">'.$lang['MARCH'];
 		if ($i == 4)
-			echo "<option selected value=\"4\">".$lang['APRIL'];
+			echo '<option selected="selected" value="4">'.$lang['APRIL'];
 		else
-			echo "<option value=\"4\">".$lang['APRIL'];
+			echo '<option value="4">'.$lang['APRIL'];
 		if ($i == 5)
-			echo "<option selected value=\"5\">".$lang['MAY'];
+			echo '<option selected="selected" value="5">'.$lang['MAY'];
 		else
-			echo "<option value=\"5\">".$lang['MAY'];
+			echo '<option value="5">'.$lang['MAY'];
 		if ($i == 6)
-			echo "<option selected value=\"6\">".$lang['JUNE'];
+			echo '<option selected="selected" value="6">'.$lang['JUNE'];
 		else
-			echo "<option value=\"6\">".$lang['JUNE'];
+			echo '<option value="6">'.$lang['JUNE'];
 		if ($i == 7)
-			echo "<option selected value=\"7\">".$lang['JULY'];
+			echo '<option selected="selected" value="7">'.$lang['JULY'];
 		else
-			echo "<option value=\"7\">".$lang['JULY'];
+			echo '<option value="7">'.$lang['JULY'];
 		if ($i == 8)
-			echo "<option selected value=\"8\">".$lang['AUGUST'];
+			echo '<option selected="selected" value="8">'.$lang['AUGUST'];
 		else
-			echo "<option value=\"8\">".$lang['AUGUST'];
+			echo '<option value="8">'.$lang['AUGUST'];
 		if ($i == 9)
-			echo "<option selected value=\"9\">".$lang['SEPTEMBER'];
+			echo '<option selected="selected" value="9">'.$lang['SEPTEMBER'];
 		else
-			echo "<option value=\"9\">".$lang['SEPTEMBER'];
+			echo '<option value="9">'.$lang['SEPTEMBER'];
 		if ($i == 10)
-			echo "<option selected value=\"10\">".$lang['OCTOBER'];
+			echo '<option selected="selected" value="10">'.$lang['OCTOBER'];
 		else
-			echo "<option value=\"10\">".$lang['OCTOBER'];
+			echo '<option value="10">'.$lang['OCTOBER'];
 		if ($i == 11)
-			echo "<option selected value=\"11\">".$lang['NOVEMBER'];
+			echo '<option selected="selected" value="11">'.$lang['NOVEMBER'];
 		else
-			echo "<option value=\"11\">".$lang['NOVEMBER'];
+			echo '<option value="11">'.$lang['NOVEMBER'];
 		if ($i == 12)
-			echo "<option selected value=\"12\">".$lang['DECEMBER'];
+			echo '<option selected="selected" value="12">'.$lang['DECEMBER'];
 		else
-			echo "<option value=\"12\">".$lang['DECEMBER'];
+			echo '<option value="12">'.$lang['DECEMBER'];
 			
 		
-		echo "</select>&nbsp;&nbsp;<select name=\"byear\">";
+		echo '</select>&nbsp;&nbsp;<select name="byear">';
 		
 //		$today = getdate();
 		for ($i = $today['year']; $i < ($today['year'] + 5); $i++)
-			echo "<option value=\"$i\">$i";
-		echo "
+			echo '<option value="$i">'.$i;
+		echo '
 					</select></td>
 
 				</tr><tr>
-					<td align=\"right\">Block:</td><td align=\"left\">
-					<select name=\"block\">";
+					<td align="right">Block:</td><td align="left">
+					<select name="block">';
 		if ($line[7] == 5)
-			echo "<option selected value=\"5\">Block <option value=\"0\">Unblock";
+			echo '<option selected="selected" value="5">Block <option value="0">Unblock';
 		else
-			echo "<option value=\"5\">Block <option selected value=\"0\">Unblock";
+			echo '<option value="5">Block <option selected="selected" value="0">Unblock';
 
-		echo "
+		echo '
 					</seletc></td>
 				</tr><tr>
-					<td>&nbsp;</td><td align=\"left\"><input type=\"submit\" value=\"".$lang['CHANGEMAIL_CHANGE']."\">
+					<td>&nbsp;</td><td align="left"><input type="submit" value="'.$lang['CHANGEMAIL_CHANGE'].'">
 				</td></tr>
 			</table>
 		</form>
-		";
+		';
 	}
 
-} else echo "Not Found";
+} else echo 'Not Found';
 
 closetable();
 

@@ -23,8 +23,8 @@ To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
 
-is_file("../config.php")
-	or die("CeresCP is not installed. <a href=\"../install/install.php\">Run Installation Script</a>");
+is_file('../config.php')
+	or die('CeresCP is not installed. <a href="../install/install.php">Run Installation Script</a>');
 
 include_once '../config.php'; // loads OLD config variables
 
@@ -33,8 +33,8 @@ isset($CONFIG_gm_hide,		// added in r53
       $CONFIG_rag_serv, $CONFIG_rag_user, $CONFIG_rag_pass,		// added in r55
       $CONFIG_cp_serv, $CONFIG_cp_user, $CONFIG_cp_pass		// added in r59
 }
-	or die("<a href=\"./upgrade_svn60.php\">Upgrade config.php to SVN r60.</a>");
+	or die('<a href="./upgrade_svn60.php">Upgrade config.php to SVN r60.</a>');
 
-echo "No upgrades necessary.";
+echo 'No upgrades necessary.';
 
 ?>

@@ -35,22 +35,22 @@ include_once 'functions.php';
 		$result = execute_query($query, "guild.php");
 
 		opentable($lang['GUILD_TOP50']);
-		echo "
-		<table width=\"550\">
+		echo '
+		<table width="550">
 		<tr>
-			<td align=\"right\" class=\"head\">".$lang['POS']."</td>
-			<td align=\"center\" class=\"head\">".$lang['GUILD_EMBLEM']."</td>
+			<td align="right" class="head">'.$lang['POS'].'</td>
+			<td align="center" class="head">'.$lang['GUILD_EMBLEM'].'</td>
 			<td>&nbsp;</td>
-			<td align=\"left\" class=\"head\">".$lang['GUILD_GNAME']."</td>
+			<td align="left" class="head">'.$lang['GUILD_GNAME'].'</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
-			<td align=\"left\" class=\"head\">".$lang['GUILD_GLEVEL']."</td>
-			<td align=\"right\" class=\"head\">".$lang['GUILD_GEXPERIENCE']."</td>
+			<td align="left" class="head">'.$lang['GUILD_GLEVEL'].'</td>
+			<td align="right" class="head">'.$lang['GUILD_GEXPERIENCE'].'</td>
 			<td>&nbsp;</td>
-			<td align=\"center\" class=\"head\">".$lang['GUILD_MEMBERS']."</td>
-			<td align=\"right\" class=\"head\">".$lang['GUILD_GAVLEVEL']."</td>
+			<td align="center" class="head">'.$lang['GUILD_MEMBERS'].'</td>
+			<td align="right" class="head">'.$lang['GUILD_GAVLEVEL'].'</td>
 		</tr>
-		";
+		';
 		for ($i = 1; $i < 51; $i++) {
 			if (!($line = $result->fetch_row()))
 				break;
@@ -58,22 +58,22 @@ include_once 'functions.php';
 			$gname = htmlformat($line[0]);
 			$emblems[$line[4]] = $line[1];
 			$experience = moneyformat($line[3]);
-			echo "
+			echo '
 			<tr>
-				<td align=\"right\">$i</td>
-				<td align=\"center\"><img src=\"emblema.php?data=$line[4]\" alt=\"$gname\"></td>
+				<td align="right">'.$i.'</td>
+				<td align="center"><img src="emblema.php?data='.$line[4].'" alt="'.$gname.'"></td>
 				<td>&nbsp;</td>
-				<td align=\"left\">$gname</td>
+				<td align="left">'.$gname.'</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td align=\"left\">$line[2]</td>
-				<td align=\"right\">$experience</td>
+				<td align="left">'.$line[2].'</td>
+				<td align="right">'.$experience.'</td>
 				<td>&nbsp;</td>
-				<td align=\"center\">$line[6]</td>
-				<td align=\"right\">$line[5]</td>
-			</tr>";
+				<td align="center">'.$line[6].'</td>
+				<td align="right">'.$line[5].'</td>
+			</tr>';
 		}
-		echo "</table>";
+		echo '</table>';
 		closetable();
 
 		if (is_woe()) {
@@ -85,17 +85,17 @@ include_once 'functions.php';
 			$result = execute_query($query, "guild.php");
 			opentable($lang['GUILD_GCASTLES']);
 			$castles = $_SESSION[$CONFIG_name.'castles'];
-			echo "
+			echo '
 			<table>
 			<tr>
-				<td align=\"center\" class=\"head\">".$lang['GUILD_EMBLEM']."</td>
+				<td align="center" class="head">'.$lang['GUILD_EMBLEM'].'</td>
 				<td>&nbsp;</td>
-				<td align=\"left\" class=\"head\">".$lang['GUILD_GNAME']."</td>
+				<td align="left" class="head">'.$lang['GUILD_GNAME'].'</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td align=\"left\" class=\"head\">".$lang['GUILD_GCASTLE']."</td>
+				<td align="left" class="head">'.$lang['GUILD_GCASTLE'].'</td>
 				</tr>
-			";
+			';
 			for ($i = $i; $line = $result->fetch_row(); $i++) {
 				$gname = htmlformat($line[0]);
 				if (isset($castles[$line[2]]))
@@ -103,17 +103,17 @@ include_once 'functions.php';
 				else 
 					continue;
 				$emblems[$line[3]] = $line[1];
-				echo "
+				echo '
 				<tr>
-					<td align=\"center\"><img src=\"emblema.php?data=$line[3]\" alt=\"$gname\"></td>
+					<td align="center"><img src="emblema.php?data='.$line[3].'" alt="'.$gname.'"></td>
 					<td>&nbsp;</td>
-					<td align=\"left\">$gname</td>
+					<td align="left">'.$gname.'</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					<td align=\"left\">$cname</td>
-				</tr>";
+					<td align="left">'.$cname.'</td>
+				</tr>';
 			}
-			echo "</table>";
+			echo '</table>';
 			closetable();
 		}
 		if (isset($emblems))

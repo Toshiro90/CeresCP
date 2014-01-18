@@ -120,23 +120,23 @@ function ret_woe_times() {
 
 	$woe_times = explode(";", $CONFIG_woe_time);
 	for ($i = 0; isset($woe_times[$i]); $i++) {
-		$woe_times[$i] = str_replace("(", ",", $woe_times[$i]);
-		$woe_times[$i] = str_replace(")", "", $woe_times[$i]);
-		$woe_times[$i] = str_replace(" ", "", $woe_times[$i]);
-		$woe_times[$i] = explode(",", $woe_times[$i]);
+		$woe_times[$i] = str_replace('(', ',', $woe_times[$i]);
+		$woe_times[$i] = str_replace(')', '', $woe_times[$i]);
+		$woe_times[$i] = str_replace(' ', '', $woe_times[$i]);
+		$woe_times[$i] = explode(',', $woe_times[$i]);
 		if (!isset($woe_times[$i][2]))
 			continue;
 
 		$day = $week_day[$woe_times[$i][0]];
 		$start = $woe_times[$i][1];
 		$end = $woe_times[$i][2];
-		echo "<tr><td align=\"right\">$day</td><td>&nbsp;</td><td align=\"left\">$start - $end</td></tr>";
+		echo '<tr><td align="right">'.$day.'</td><td>&nbsp;</td><td align="left">'.$start.' - '.$end.'</td></tr>';
 	}
 }
 
 function readitems() {
-	$resp[] = "unknown";
-	if (!($handle = fopen("./db/item_db.txt", "rt")))
+	$resp[] = 'unknown';
+	if (!($handle = fopen('./db/item_db.txt', 'rt')))
 		return $resp;
 	while ($line = fgets($handle, 1024)) {
 		if (($line[0] == '/' && $line[1] == '/') || $line[0] == "\0" || $line[0] == "\n" || $line[0] == "\r")
@@ -146,7 +146,7 @@ function readitems() {
 			$resp[$item[0]] = $item[2];
 		}
 	}	
-	$resp[0] = " ";
+	$resp[0] = ' ';
 	fclose($handle);
 	return $resp;
 }
@@ -154,13 +154,13 @@ function readitems() {
 function readjobs() {
 	global $lang;
 
-	$resp[] = "unknown";
-	$handle = fopen("./db/jobs.txt", "rt")
+	$resp[] = 'unknown';
+	$handle = fopen('./db/jobs.txt', 'rt')
 		or die(htmlformat($lang['TXT_ERROR']));
 	while ($line = fgets($handle, 1024)) {
 		if (($line[0] == '/' && $line[1] == '/') || $line[0] == "\0" || $line[0] == "\n" || $line[0] == "\r")
 			continue;
-		$job = sscanf($line, "%s %d");
+		$job = sscanf($line, '%s %d');
 		if (isset($job[0]) && isset($job[1])) {
 			for($i = 1; isset($job[0][$i]); $i++)
 				if ($job[0][$i] == '_') $job[0][$i] = ' ';
@@ -172,20 +172,20 @@ function readjobs() {
 }
 
 function htmlformat($string) {
-	$resp = "";
+	$resp = '';
 	for ($i = 0; isset($string[$i]) && ord($string[$i]) > 0; $i++)
-		$resp .= "&#".ord($string[$i]).";";
+		$resp .= '&#'.ord($string[$i]).';';
 	return $resp;
 }
 
 function moneyformat($string) {
 	$string = trim($string);
-	$return = "";
+	$return = '';
 	$len = strlen($string) - 1;
 
 	for ($i = 0; $i < strlen($string); $i++) {
 		if ($i > 0 && $i % 3 == 0)
-			$return = ",".$return;
+			$return = ','.$return;
 		$return = $string[$len - $i].$return;
 	}
 
@@ -193,7 +193,7 @@ function moneyformat($string) {
 }
 
 function inject($string) {
-	$permitido = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.@$&-_/§*°ºª"; //dicionario de palavras permitidas
+	$permitido = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.@$&-_/§*°ºª'; //dicionario de palavras permitidas
 	for ($i=0; $i<strlen($string); $i++) {
 		if (strpos($permitido, substr($string, $i, 1)) === FALSE) return TRUE;
 	}
@@ -201,7 +201,7 @@ function inject($string) {
 }
 
 function notnumber($string) {
-	$permitido = "1234567890"; //numeros
+	$permitido = '1234567890'; //numeros
 	for ($i=0; $i<strlen($string); $i++) {
 		if (strpos($permitido, substr($string, $i, 1)) === FALSE) return TRUE;
 	}
@@ -226,7 +226,7 @@ function thepass($string) {
 	if ((strlen($string) - $numero) < 2)
 		return TRUE;
 
-	$handle = fopen("./db/passdict.txt", "rt")
+	$handle = fopen('./db/passdict.txt', 'rt')
 		or die(htmlformat($lang['TXT_ERROR']));
 	while ($line = fgets($handle, 1024)) {
 		if (($line[0] == '/' && $line[1] == '/') || $line[0] == "\0" || $line[0] == "\n" || $line[0] == "\r")
@@ -269,7 +269,7 @@ function is_online() {
 	global $CONFIG_name, $lang;
 
 	if (empty($_SESSION[$CONFIG_name.'account_id'])) 
-		redir("motd.php", "main_div", htmlformat($lang['NEED_TO_LOGIN_F']));
+		redir('motd.php', 'main_div', htmlformat($lang['NEED_TO_LOGIN_F']));
 
 	$log_account = $_SESSION[$CONFIG_name.'account_id'];
 
@@ -348,10 +348,10 @@ function server_status() {
 	global $CONFIG_accip,$CONFIG_accport,$CONFIG_charip,$CONFIG_charport,$CONFIG_mapip,$CONFIG_mapport;
 
 	$query = CHECK_STATUS;
-	$result = execute_query($query, "server_status", 1, 0);
+	$result = execute_query($query, 'server_status', 1, 0);
 	if (!($line = $result->fetch_row())) {
 		$query = INSERT_STATUS;
-		$result = execute_query($query, "server_status", 1, 0);
+		$result = execute_query($query, 'server_status', 1, 0);
 		$line[0] = 0;
 	}
 	$retorno = 0;
@@ -372,9 +372,9 @@ function server_status() {
 }
 
 function redir($page, $div, $msg) {
-	opentable("Status");
-	echo "<tr><td><span style=\"cursor:pointer\" onMouseOver=\"this.style.color='#FF3300'\" onMouseOut=\"this.style.color='#000000'\"
-	onClick=\"return LINK_ajax('$page','$div')\"><b>".$msg."</span></tr></td>";
+	opentable('Status');
+	echo '<tr><td><span style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'"
+	onClick="return LINK_ajax(\''.$page.'\',\''.$div.'\')"><b>'.$msg."</span></tr></td>";
 	closetable();
 	fim();
 }
@@ -384,7 +384,7 @@ function alert($alertmsg) {
 	$trans_tbl = array_flip ($trans_tbl);
 	$alertmsg = strtr ($alertmsg, $trans_tbl);
 
-	echo "ALERT|".utf8_encode($alertmsg)."|ENDALERT";
+	echo 'ALERT|'.utf8_encode($alertmsg).'|ENDALERT';
 	fim();
 }
 
@@ -395,31 +395,31 @@ function fim() {
 }
 
 function opentable($titulo) {
-	echo "
-<center><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
+	echo '
+<center><table border="0" cellpadding="0" cellspacing="0">
 	<tbody>
 		<tr>
-			<th height=\"28\" class=\"title\">".$titulo."</th>
+			<th height="28" class="title">'.$titulo.'</th>
 		</tr>
 		<tr>
 			<td>
-	";
+	';
 }
 
 function closetable() {
-	echo "
+	echo '
 			</td>
 		</tr>
 	</tbody>
 </table></center>
-	";
+	';
 }
 
 function read_maildef($file) {
 	global $lang;
-	$handle = fopen("./language/mail/".$file.".txt", "rt")
+	$handle = fopen('./language/mail/'.$file.'.txt', 'rt')
 		or die(htmlformat($lang['TXT_ERROR']));
-	$maildef="";
+	$maildef='';
 	while ($line = fgets($handle, 1024)) {
 		if ($line[0] == '/' && $line[1] == '/')
 			continue;
@@ -431,14 +431,14 @@ function read_maildef($file) {
 
 function erro_de_login($i = 0) {
 	session_destroy();
-	setcookie("login_pass", "", time() - 3600);
-	setcookie("userid", "", time() - 3600);
+	setcookie('login_pass', '', time() - 3600);
+	setcookie('userid', '', time() - 3600);
 	session_start();
-	echo "<script type=\"text/javascript\">";
-	echo "LINK_ajax('login.php', 'login_div');";
+	echo '<script type="text/javascript">
+		LINK_ajax(\'login.php\', \'login_div\');';
 	if (!$i)
-		echo "LINK_ajax('motd.php','main_div');";
-	echo "</script>";
+		echo 'LINK_ajax(\'motd.php\',\'main_div\');';
+	echo '</script>';
 }
 
 ?>

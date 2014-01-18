@@ -80,29 +80,33 @@ $lang['THURSDAY'] = 'Thursday';
 $lang['FRIDAY'] = 'Friday';
 $lang['SATURDAY'] = 'Saturday';
 $lang['BLOCKED'] = 'You have been blocked, try again in %d min';
+// Following entries still need translations
+$lang['LEVEL'] = 'Level';
+$lang['GMLEVEL'] = 'GM Level';
+$lang['SHOW_ALL'] = 'Show All';
 
 //menu.php
-$lang['MENU_HOME'] = "Home";
-$lang['MENU_MYACCOUNT'] = "My Account";
-$lang['MENU_MYCHARS'] = "My Chars";
-$lang['MENU_RANKING'] = "Ranking";
-$lang['MENU_INFORMATION'] = "Information";
-$lang['MENU_PROBLEMS'] = "Problems";
-$lang['MENU_MESSAGE'] = "Message";
-$lang['MENU_CHANGEPASS'] = "Change Password";
-$lang['MENU_CHANGEMAIL'] = "Change e-mail";
-$lang['MENU_TRANFMONEY'] = "Transfer Money";
-$lang['MENU_CHANGESLOT'] = "Change Slot";
-$lang['MENU_MARRIAGE'] = "Marriage";
-$lang['MENU_PLAYERLADDER'] = "Player Ladder";
-$lang['MENU_GUILDLADDER'] = "Guild Ladder";
-$lang['MENU_ZENYLADDER'] = "Zeny Ladder";
-$lang['MENU_WHOSONLINE'] = "Who Is Online";
-$lang['MENU_ABOUT'] = "About";
-$lang['MENU_RESETPOS'] = "Reset Position";
-$lang['MENU_RESETLOOK'] = "Reset look";
-$lang['MENU_OTHER'] = "Other";
-$lang['MENU_LINKS'] = "Links";
+$lang['MENU_HOME'] = 'Home';
+$lang['MENU_MYACCOUNT'] = 'My Account';
+$lang['MENU_MYCHARS'] = 'My Chars';
+$lang['MENU_RANKING'] = 'Ranking';
+$lang['MENU_INFORMATION'] = 'Information';
+$lang['MENU_PROBLEMS'] = 'Problems';
+$lang['MENU_MESSAGE'] = 'Message';
+$lang['MENU_CHANGEPASS'] = 'Change Password';
+$lang['MENU_CHANGEMAIL'] = 'Change e-mail';
+$lang['MENU_TRANFMONEY'] = 'Transfer Money';
+$lang['MENU_CHANGESLOT'] = 'Change Slot';
+$lang['MENU_MARRIAGE'] = 'Marriage';
+$lang['MENU_PLAYERLADDER'] = 'Player Ladder';
+$lang['MENU_GUILDLADDER'] = 'Guild Ladder';
+$lang['MENU_ZENYLADDER'] = 'Zeny Ladder';
+$lang['MENU_WHOSONLINE'] = 'Who Is Online';
+$lang['MENU_ABOUT'] = 'About';
+$lang['MENU_RESETPOS'] = 'Reset Position';
+$lang['MENU_RESETLOOK'] = 'Reset look';
+$lang['MENU_OTHER'] = 'Other';
+$lang['MENU_LINKS'] = 'Links';
 
 //common
 $lang['NAME'] = 'Name';
