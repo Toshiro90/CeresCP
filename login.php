@@ -202,7 +202,7 @@ if ($CONFIG_auth_image && function_exists("gd_info")) {
 		<td align=left>'.$lang['CODE'].':</td>
 	</tr>
 	<tr>
-		<td align=left><img src="img.php?img=login&var=$var" alt="'.$lang['SECURITY_CODE'].'"></td>
+		<td align=left><img src="img.php?img=login&var='.$var.'" alt="'.$lang['SECURITY_CODE'].'"></td>
 	</tr>';
 }
 echo '

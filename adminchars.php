@@ -151,7 +151,7 @@ if ($pages) {
 	}
 
 	echo '
-				<span title="'.$pages.'" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminchars.php?page=$pages\',\'accounts_div\');">&gt;&gt;</span>
+				<span title="'.$pages.'" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminchars.php?page='.$pages.'\',\'accounts_div\');">&gt;&gt;</span>
 			</td>
 		</tr>
 	</table>';
