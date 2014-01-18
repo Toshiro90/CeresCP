@@ -50,7 +50,7 @@ if (isset($GET_id)) {
 	<table class="maintable">
 	<tr>
 		<th align="right">'.$lang['SLOT'].'</th>
-		<th>&nbsp;</th>
+		<th align="left">Char_id</th>
 		<th align="left">'.$lang['NAME'].'</th>
 		<th align="left">'.$lang['CLASS'].'</th>
 		<th align="center">'.$lang['BLVLJLVL'].'</th>
@@ -60,10 +60,15 @@ if (isset($GET_id)) {
 	</tr>
 	';
 	while ($line = $result->fetch_row()) {
+		if ($line[6] != 0)
+			$online = '<font color="green">on</font>';
+		else
+			$online = '<font color="red">off</font>';
+
 		echo '
 		<tr>
 			<td align="right">'.$line[1].'</td>
-			<td>&nbsp;</td>
+			<td align="right">'.$line[0].'</td>
 			<td align="left">'.htmlformat($line[2]).'</td>
 			<td align="left">
 		';
@@ -74,7 +79,7 @@ if (isset($GET_id)) {
 		echo '
 			</td>
 			<td align="center">'.$line[4].'/'.$line[5].'</td>
-			<td align="center">'.$line[6].'</td>
+			<td align="center">'.$online.'</td>
 			<td align="center">'.$line[7].'</td>
 			<td align="center">'.$line[8].','.$line[9].'</td>
 			<td align="left">

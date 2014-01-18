@@ -101,10 +101,11 @@ echo '
 	<tr>
 		<th align="right">Account_id</th>
 		<th align="right">Char_id</th>
-		<th align="left">Name</th>
-		<th align="left">Class</th>
-		<th align="center">Base/Job</th>
+		<th align="left">'.$lang['NAME'].'</th>
+		<th align="left">'.$lang['CLASS'].'</th>
+		<th align="center">'.$lang['BLVLJLVL'].'</th>
 		<th align="left">Online</th>
+		<th>&nbsp;</th>
 	</tr>
 	';
 
@@ -129,6 +130,9 @@ while ($line = $result->fetch_row()) {
 		<td align="left">'.$job.'</td>
 		<td align="center">'.$line[4].'/'.$line[5].'</td>
 		<td align="center">'.$online.'</td>
+		<td align="center">
+			<span title="Detailed Info" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="window.open(\'admincharinfo.php?id='.$line[1].'\', \'_blank\', \'height = 600, width = 800, menubar = no, status = no, titlebar = no, scrollbars = yes\');">Detail</span>
+		</td>
 
 	</tr>
 	';
