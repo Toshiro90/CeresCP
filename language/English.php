@@ -143,9 +143,10 @@ $lang['SERVERSTATUS_MAP'] = 'Map Server';
 $lang['SERVERSTATUS_ONLINE'] = 'Online';
 $lang['SERVERSTATUS_OFFLINE'] = 'Offline';
 $lang['SERVERSTATUS_USERSONLINE'] = 'Users Online';
-$LANG['AGIT'] = 'WoE';
-$LANG['AGIT_OFF'] = 'Off';
-$LANG['AGIT_ON'] = 'On';
+$lang['AGIT'] = 'WoE';
+$lang['AGIT_OFF'] = 'Off';
+$lang['AGIT_ON'] = 'On';
+
 //resetlook.php
 $lang['RESETLOOK_RESET_LOOK'] = 'Reset Look Failed.';
 $lang['RESETLOOK_EQUIP_OK'] = 'Equipment has been reset.';

@@ -139,6 +139,9 @@ $lang['SERVERSTATUS_MAP'] = 'Map Server';
 $lang['SERVERSTATUS_ONLINE'] = 'Online';
 $lang['SERVERSTATUS_OFFLINE'] = 'Offline';
 $lang['SERVERSTATUS_USERSONLINE'] = 'Spieler Online';
+$lang['AGIT'] = 'WoE';
+$lang['AGIT_OFF'] = 'Off';
+$lang['AGIT_ON'] = 'On';
 
 //resetlook.php
 $lang['RESETLOOK_RESET_LOOK'] = 'Aussehen zurücksetzten fehlgeschlagen.';
