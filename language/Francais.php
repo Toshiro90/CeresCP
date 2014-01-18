@@ -182,7 +182,7 @@ $lang['MONEY_CHANGE'] = 'Changer';
 $lang['MONEY_TWO_CHAR'] = 'Tu dois avoir au moins 2 characters.';
 $lang['MONEY_TRANSFER_FROM'] = 'Transferer l\'argent de';
 $lang['MONEY_TRANSFER_TO'] = 'Transferer l\'argent à';
-$lang['MONEY_PS1'] = '*Il y aura un prix de %d%% du montant transferée pour cette fonction';
+$lang['MONEY_PS1'] = '*Il y aura un prix de %.2f%% du montant transferée pour cette fonction';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Marriage';

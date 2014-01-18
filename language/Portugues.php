@@ -181,7 +181,7 @@ $lang['MONEY_CHANGE'] = 'Transferir';
 $lang['MONEY_TWO_CHAR'] = 'Você deve possuir ao menos dois personagens.';
 $lang['MONEY_TRANSFER_FROM'] = 'Transferir Zeny De';
 $lang['MONEY_TRANSFER_TO'] = 'Transferir Zeny Para';
-$lang['MONEY_PS1'] = '*Haverá um custo de %d%%, do montante transferido, para utilização deste serviço';
+$lang['MONEY_PS1'] = '*Haverá um custo de %.2f%%, do montante transferido, para utilização deste serviço';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Casamento';

@@ -182,7 +182,7 @@ $lang['MONEY_CHANGE'] = 'Transfer';
 $lang['MONEY_TWO_CHAR'] = 'Setidaknya anda harus ada dua Karacters.';
 $lang['MONEY_TRANSFER_FROM'] = 'Transfer Zeny Dari';
 $lang['MONEY_TRANSFER_TO'] = 'Transfer Zeny Untuk';
-$lang['MONEY_PS1'] = '*Ini akan dikenakan biaya %d%%, dati total transfered zeny anda, dalam penggunaan fasilital ini';
+$lang['MONEY_PS1'] = '*Ini akan dikenakan biaya %.2f%%, dati total transfered zeny anda, dalam penggunaan fasilital ini';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Marriage';

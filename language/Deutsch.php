@@ -178,7 +178,7 @@ $lang['MONEY_CHANGE'] = 'Transfer';
 $lang['MONEY_TWO_CHAR'] = 'Du musst min. 2 Charakter besitzen.';
 $lang['MONEY_TRANSFER_FROM'] = 'Transferiere Zeny von';
 $lang['MONEY_TRANSFER_TO'] = 'Transferiere Zeny zu';
-$lang['MONEY_PS1'] = '*Es wird dich %d%%, von den transferierten Zenys kosten, um diesen Dienst nutzen zu können.';
+$lang['MONEY_PS1'] = '*Es wird dich %.2f%%, von den transferierten Zenys kosten, um diesen Dienst nutzen zu können.';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Scheidung';
