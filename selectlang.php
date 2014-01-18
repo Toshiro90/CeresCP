@@ -56,11 +56,13 @@ if (isset($GET_language)) {
 	$selected = $GET_language;
 }
 
-opentable('');
+caption('Language');
 echo '
 <form id="selectlang">
-	<select name="language" onChange="javascript:GET_ajax(\'selectlang.php\', \'selectlang_div\', \'selectlang\');">
-	';
+<table class="maintable">
+	<tr>
+		<td align="center">
+			<select name="language" onChange="javascript:GET_ajax(\'selectlang.php\', \'selectlang_div\', \'selectlang\');">';
 
 for ($i = 0; isset($idiom[$i]); $i++) {
 	if (strcmp($selected, $idiom[$i]) === 0)
@@ -70,9 +72,12 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 }
 
 echo '
-	</select>
+			</select>
+		</td>
+	</tr>
+</table>
 </form>
 ';
-closetable();
+
 fim();
 ?>

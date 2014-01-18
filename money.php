@@ -82,28 +82,37 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 				redir('money.php', "main_div", $lang['MONEY_OK']);
 			}
 			if ($GET_opt == 2) {
-				opentable($lang['MONEY_AMMOUNT']);
+				caption($lang['MONEY_AMMOUNT']);
 				echo '
-				<form id="money" onsubmit="return GET_ajax(\'money.php\',\'main_div\',\'money\')"><table>
-				<tr><td align="right">'.$lang['MONEY_AVAILABLE'].':</td><td align="left">'.$GET_zeny1.'</td></tr>
-				<tr><td align="right">'.$lang['MONEY_TRANSFER'].':</td><td align="left">
-					<input type=text name=zeny maxlength=23 size=23></td></tr>
+				<form id="money" onsubmit="return GET_ajax(\'money.php\',\'main_div\',\'money\')">
+				<table class="maintable">
+					<tr>
+						<td align="right">'.$lang['MONEY_AVAILABLE'].':</td>
+						<td align="left">'.$GET_zeny1.'</td>
+					</tr>
+					<tr>
+						<td align="right">'.$lang['MONEY_TRANSFER'].':</td>
+						<td align="left"><input type=text name=zeny maxlength=23 size=23></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><input type="submit" value="'.$lang['MONEY_CHANGE'].'"></td>
+					</tr>
+				</table>
 				<input type="hidden" name="GID1" value="'.$GET_GID1.'">
 				<input type="hidden" name="GID2" value="'.$GET_GID2.'">
 				<input type="hidden" name="opt" value="3">
-				<tr><td>&nbsp;</td><td><input type="submit" value="'.$lang['MONEY_CHANGE'].'"></td></tr>
-				</table></form>
+				</form>
 				';
 				if ($CONFIG_money_cost) {
 					$cost = $CONFIG_money_cost / 100;
 					$lang['MONEY_PS1'] = sprintf($lang['MONEY_PS1'], $cost);
 					echo '
-						<table>
+						<table class="maintable">
 							<tr><td align="left">'.$lang['MONEY_PS1'].'</td></tr>
 						</table>
 					';
 				}
-				closetable();
 				fim();
 			}
 			if ($GET_opt == 1) {
@@ -113,23 +122,23 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 				if ($result->count() < 2)
 					redir('motd.php', 'main_div', $lang['MONEY_TWO_CHAR']);
 
-				opentable($lang['MONEY_TRANSFER_TO']);
+				caption($lang['MONEY_TRANSFER_TO']);
 				echo '
-				<table width="400">
+				<table class="maintable">
 				<tr>
-					<td align="left" class="head">'.$lang['SLOT'].'</td>
-					<td align="left" class="head">'.$lang['NAME'].'</td>
-					<td align="right" class="head">'.$lang['ZENY'].'</td>
+					<th align="left">'.$lang['SLOT'].'</th>
+					<th align="left">'.$lang['NAME'].'</th>
+					<th align="right">'.$lang['ZENY'].'</th>
 				</tr>
 				';
 				while ($line = $result->fetch_row()) {
 					$GID = $line[0];
 					$slot = $line[1];
 					$charname = htmlformat($line[2]);
-					$zeny = $line[3];
+					$zeny = moneyformat($line[3]);
 					$clevel = $line[4];
 					if ($GID != $GET_GID1) {
-						echo '    
+						echo '
 						<tr>
 						<td align="left">'.$slot.'</td>
 						<td align="left">'.$charname.'</td>
@@ -158,12 +167,11 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 					$cost = $CONFIG_money_cost / 100;
 					$lang['MONEY_PS1'] = sprintf($lang['MONEY_PS1'], $cost);
 					echo '
-						<table>
+						<table class="maintable">
 							<tr><td align="left">'.$lang['MONEY_PS1'].'</td></tr>
 						</table>
 					';
 				}
-				closetable();
 				fim();
 			}
 		}
@@ -173,13 +181,13 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 		if ($result->count() < 2)
 			redir('motd.php', 'main_div', $lang['MONEY_TWO_CHAR']);
 
-		opentable($lang['MONEY_TRANSFER_FROM']);
+		caption($lang['MONEY_TRANSFER_FROM']);
 		echo '
-		<table width="400">
+		<table class="maintable">
 		<tr>
-			<td align="left" class="head">'.$lang['SLOT'].'</td>
-			<td align="left" class="head">'.$lang['NAME'].'</td>
-			<td align="right" class="head">'.$lang['ZENY'].'</td>
+			<th align="left">'.$lang['SLOT'].'</th>
+			<th align="left">'.$lang['NAME'].'</th>
+			<th align="right">'.$lang['ZENY'].'</th>
 		</tr>
 		';
 		while ($line = $result->fetch_row()) {
@@ -215,12 +223,11 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 			$cost = $CONFIG_money_cost / 100;
 			$lang['MONEY_PS1'] = sprintf($lang['MONEY_PS1'], $cost);
 			echo '
-				<table>
+				<table class="maintable">
 					<tr><td align="left">'.$lang['MONEY_PS1'].'</td></tr>
 				</table>
 			';
 		}
-		closetable();
 	}
 	fim();
 }

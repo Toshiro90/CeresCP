@@ -52,40 +52,39 @@ if ($CONFIG_dynamic_info || $CONFIG_agit_check) {
 }
 
 
-opentable($CONFIG_name);
+caption($CONFIG_name);
 
-echo '<table border="0" cellpadding="0" cellspacing="0">';
+echo '<table class="maintable">';
 if ($servers & 1) 
-	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_LOGIN'].'&nbsp;</b></td><td> <font color="green">'.$lang['SERVERSTATUS_ONLINE'].'</font></td></td></tr>';
+	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_LOGIN'].'&nbsp;</b></td><td align="right"><font color="green">'.$lang['SERVERSTATUS_ONLINE'].'</font></td></td></tr>';
 else 
-	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_LOGIN'].'&nbsp;</b></td><td> <font color="red">'.$lang['SERVERSTATUS_OFFLINE'].'</font></td></td></tr>';
+	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_LOGIN'].'&nbsp;</b></td><td align="right"><font color="red">'.$lang['SERVERSTATUS_OFFLINE'].'</font></td></td></tr>';
 
 if ($servers & 2)
-	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_CHAR'].'&nbsp;</b></td><td> <font color="green">'.$lang['SERVERSTATUS_ONLINE'].'</font></td></td></tr>';
+	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_CHAR'].'&nbsp;</b></td><td align="right"><font color="green">'.$lang['SERVERSTATUS_ONLINE'].'</font></td></td></tr>';
 else
-	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_CHAR'].'&nbsp;</b></td><td> <font color="red">'.$lang['SERVERSTATUS_OFFLINE'].'</font></td></td></tr>';
+	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_CHAR'].'&nbsp;</b></td><td align="right"><font color="red">'.$lang['SERVERSTATUS_OFFLINE'].'</font></td></td></tr>';
 
 if ($servers & 4) 
-	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_MAP'].'&nbsp;</b></td><td> <font color="green">'.$lang['SERVERSTATUS_ONLINE'].'</font></td></td></tr>';
+	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_MAP'].'&nbsp;</b></td><td align="right"><font color="green">'.$lang['SERVERSTATUS_ONLINE'].'</font></td></td></tr>';
 else
-	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_MAP'].'&nbsp;</b></td><td> <font color="red">'.$lang['SERVERSTATUS_OFFLINE'].'</font></td></tr>';
+	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_MAP'].'&nbsp;</b></td><td align="right"><font color="red">'.$lang['SERVERSTATUS_OFFLINE'].'</font></td></tr>';
 
 if ($CONFIG_show_rates) {
 	if ($CONFIG_dynamic_info)
-		echo '<tr><td = align="left"><b>'.$lang['ABOUT_RATE'].'&nbsp;</b></td><td align="right">'.$rate_base.'/'.$rate_job.'/'.$rate_drop.'</td></tr>';
+		echo '<tr><td align="left"><b>'.$lang['ABOUT_RATE'].'&nbsp;</b></td><td align="right">'.$rate_base.'/'.$rate_job.'/'.$rate_drop.'</td></tr>';
 	else
-		echo '<tr><td = align="left"><b>'.$lang['ABOUT_RATE'].'&nbsp;</b></td><td align="right">'.$CONFIG_rate.'</td></tr>';
+		echo '<tr><td align="left"><b>'.$lang['ABOUT_RATE'].'&nbsp;</b></td><td align="right">'.$CONFIG_rate.'</td></tr>';
 }
 
 if ($CONFIG_agit_check)
-	echo '<tr><td = align="left"><b>'.$lang['AGIT'].'&nbsp;</b></td><td>'.$agit_status.'</td></tr>';
+	echo '<tr><td align="left"><b>'.$lang['AGIT'].'&nbsp;</b></td><td>'.$agit_status.'</td></tr>';
 if ($quantos)
-	echo '<tr><td align="right"><b><span title="See who is online" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="LINK_ajax(\'whoisonline.php\',\'main_div\');">'.$lang['SERVERSTATUS_USERSONLINE'].'&nbsp;</span></b></td><td align="right">'.$quantos.'</td></tr>';
+	echo '<tr><td align="left"><b><span title="See who is online" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="LINK_ajax(\'whoisonline.php\',\'main_div\');">'.$lang['SERVERSTATUS_USERSONLINE'].'&nbsp;</span></b></td><td align="right">'.$quantos.'</td></tr>';
 else
-	echo '<tr><td align="right"><b>'.$lang['SERVERSTATUS_USERSONLINE'].'&nbsp;</b></td><td align="right">'.$quantos.'</td></tr>';
+	echo '<tr><td align="left"><b>'.$lang['SERVERSTATUS_USERSONLINE'].'&nbsp;</b></td><td align="right">'.$quantos.'</td></tr>';
 
 echo '</table>';
-closetable();
 
 fim();
 ?>

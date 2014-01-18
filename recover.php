@@ -67,26 +67,35 @@ $session['recover'] = rand(12345, 99999);
 $_SESSION[$CONFIG_name.'sessioncode'] = $session;
 $var = rand(10, 9999999);
 
-opentable($lang['RECOVER_RECOVER']);
+caption($lang['RECOVER_RECOVER']);
 echo '
-<form id="recover" onsubmit="return GET_ajax(\'recover.php\',\'main_div\',\'recover\')"><table>
-<tr><td align="right">'.$lang['MAIL'].':</td><td align="left">
-<input type="text" name="email" maxlength="40" size="40" onKeyPress="return force(this.name,this.form.id,event);">
-<input type="hidden" name="opt" value="1"></td></tr>';
+<form id="recover" onsubmit="return GET_ajax(\'recover.php\',\'main_div\',\'recover\')">
+<table class="maintable">
+	<tr>
+		<td align="right">'.$lang['MAIL'].':</td>
+		<td align="left"><input type="text" name="email" maxlength="40" size="40" onKeyPress="return force(this.name,this.form.id,event);"></td>
+	</tr>';
 
 if ($CONFIG_auth_image && function_exists('gd_info')) {
-	echo '<tr><td></td><td align=left><img src="img.php?img=recover&var='.$var.'" alt="'.$lang['SECURITY_CODE'].'">
-	</td></tr><tr><td align=right>'.$lang['CODE'].':</td>
-	<td align="left">
-	<input type="text" name="code" maxlength="6" size="6" onKeyPress="return force(this.name,this.form.id,event);">
-	&nbsp;</td></tr>';
+	echo '
+	<tr>
+		<td></td>
+		<td align=left><img src="img.php?img=recover&var='.$var.'" alt="'.$lang['SECURITY_CODE'].'"></td>
+	</tr>
+	<tr>
+		<td align=right>'.$lang['CODE'].':</td>
+		<td align="left"><input type="text" name="code" maxlength="6" size="6" onKeyPress="return force(this.name,this.form.id,event);"></td>
+	</tr>';
 }
 
 echo '
-<tr><td>&nbsp;</td><td><input type="submit" value="'.$lang['RECOVER'].'"></td></tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><input type="submit" value="'.$lang['RECOVER'].'"></td>
+	</tr>
 </table>
-';
-closetable();
+<input type="hidden" name="opt" value="1">
+</form>';
 
 fim();
 ?>

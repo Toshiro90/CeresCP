@@ -28,12 +28,13 @@ include_once 'config.php'; // loads config variables
 include_once 'query.php'; // imports queries
 include_once 'functions.php';
 
-opentable($lang['NEWS_MESSAGE']);
+caption($lang['NEWS_MESSAGE']);
 ?>
-<table width="504">
-Welcome to Ceres Control Panel
+<table class="maintable">
+	<tr>
+		<td>Welcome to Ceres Control Panel</td>
+	</tr>
 </table>
 <?php
-closetable();
 fim();
 ?>

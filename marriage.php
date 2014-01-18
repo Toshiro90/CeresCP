@@ -75,13 +75,13 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 		if ($result->count() < 1)
 			redir('motd.php', 'main_div', $lang['ONE_CHAR']);
 
-		opentable($lang['MARRIAGE']);
+		caption($lang['MARRIAGE']);
 		echo '
-		<table width="400">
+		<table class="maintable">
 		<tr>
-			<td align="left" class="head">'.$lang['NAME'].'</td>
-			<td align="left" class="head">'.$lang['MARRIAGE_PARTNER'].'</td>
-			<td align="center" class="head">'.$lang['MARRIAGE_DIVORCE'].'</td>
+			<th align="left">'.$lang['NAME'].'</th>
+			<th align="left">'.$lang['MARRIAGE_PARTNER'].'</th>
+			<th align="center">'.$lang['MARRIAGE_DIVORCE'].'</th>
 		</tr>
 		';
 		while ($line = $result->fetch_row()) {
@@ -114,13 +114,12 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 		echo '</table>';
 		if ($CONFIG_marry_enable)
 			echo '
-			<table>
+			<table class="maintable">
 				<tr><td align="left">'.$lang['MARRIAGE_PS1'].'</td></tr>
 				<tr><td align="left">'.$lang['MARRIAGE_PS2'].'</td></tr>
 			</table>';
 //				<tr><td align="left">'.$lang['MARRIAGE_PS3'].'</td></tr>
 
-		closetable();
 	}
 	fim();
 }

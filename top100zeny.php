@@ -33,46 +33,49 @@ $jobs = $_SESSION[$CONFIG_name.'jobs'];
 $query = sprintf(TOP100ZENY);
 $result = execute_query($query, "top100zeny.php");
 
-opentable($lang['TOP100ZENY_TOP100ZENY']);
+caption($lang['TOP100ZENY_TOP100ZENY']);
 echo '
-<table width="400">
+<table class="maintable">
 <tr>
-	<td align="right" class="head">'.$lang['POS'].'</td>
-	<td>&nbsp;</td>
-	<td align="left" class="head">'.$lang['NAME'].'</td>
-	<td align="left" class="head">'.$lang['CLASS'].'</td>
-	<td align="right" class="head">'.$lang['ZENY'].'</td>
+	<th align="right">'.$lang['POS'].'</th>
+	<th>&nbsp;</th>
+	<th align="left">'.$lang['NAME'].'</th>
+	<th align="left">'.$lang['CLASS'].'</th>
+	<th align="right">'.$lang['ZENY'].'</th>
 </tr>
 ';
 $nusers = 0;
 if ($result) {
 	while ($line = $result->fetch_row()) {
-				$nusers++;
-				if ($nusers > 100)
-					break;
+		$nusers++;
+		if ($nusers > 100)
+			break;
 
-				$zeny = moneyformat($line[4]);
-				$charname = htmlformat($line[0]);
+		$zeny = moneyformat($line[4]);
+		$charname = htmlformat($line[0]);
 
-				echo '    
-				<tr>
-					<td align="right">'.$nusers.'</td>
-					<td>&nbsp;</td>
-					<td align="left">'.$charname.'</td>
-					<td align="left">
-				';
-				if (isset($jobs[$line[1]]))
-					echo $jobs[$line[1]];
-				else
-					echo $lang['UNKNOWN'];
-				echo '
-					</td>
-					<td align="right">'.$zeny.'</td>
-				</tr>
-				';
+		if (isset($_SESSION[$CONFIG_name.'account_id']) && $line[5] == $_SESSION[$CONFIG_name.'account_id'])
+			echo '<tr class="highlight">';
+		else
+			echo '<tr>';
+		echo '
+			<td align="right">'.$nusers.'</td>
+			<td>&nbsp;</td>
+			<td align="left">'.$charname.'</td>
+			<td align="left">
+		';
+		if (isset($jobs[$line[1]]))
+			echo $jobs[$line[1]];
+		else
+			echo $lang['UNKNOWN'];
+		echo '
+			</td>
+			<td align="right">'.$zeny.'</td>
+		</tr>
+		';
 	}
 }
 echo '</table>';
-closetable();
+
 fim();
 ?>

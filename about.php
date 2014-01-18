@@ -99,7 +99,7 @@ if ($CONFIG_classlist_show) {
 	$class[4100] = $class[4100] + $class[4112];
 	$class[4102] = $class[4102] + $class[4110];
 }
-opentable($lang['ABOUT_ABOUT']);
+caption($lang['ABOUT_ABOUT']);
 
 echo '
 <table align="center" width="300">
@@ -160,6 +160,6 @@ echo '
 		}
 	}
 echo '</table>';
-closetable();
+
 fim();
 ?>

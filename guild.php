@@ -34,21 +34,21 @@ include_once 'functions.php';
 		$query = sprintf(GUILD_LADDER);
 		$result = execute_query($query, "guild.php");
 
-		opentable($lang['GUILD_TOP50']);
+		caption($lang['GUILD_TOP50']);
 		echo '
-		<table width="550">
+		<table class="maintable">
 		<tr>
-			<td align="right" class="head">'.$lang['POS'].'</td>
-			<td align="center" class="head">'.$lang['GUILD_EMBLEM'].'</td>
-			<td>&nbsp;</td>
-			<td align="left" class="head">'.$lang['GUILD_GNAME'].'</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td align="left" class="head">'.$lang['GUILD_GLEVEL'].'</td>
-			<td align="right" class="head">'.$lang['GUILD_GEXPERIENCE'].'</td>
-			<td>&nbsp;</td>
-			<td align="center" class="head">'.$lang['GUILD_MEMBERS'].'</td>
-			<td align="right" class="head">'.$lang['GUILD_GAVLEVEL'].'</td>
+			<th align="right">'.$lang['POS'].'</th>
+			<th align="center">'.$lang['GUILD_EMBLEM'].'</th>
+			<th>&nbsp;</th>
+			<th align="left">'.$lang['GUILD_GNAME'].'</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th align="left">'.$lang['GUILD_GLEVEL'].'</th>
+			<th align="right">'.$lang['GUILD_GEXPERIENCE'].'</th>
+			<th>&nbsp;</th>
+			<th align="center">'.$lang['GUILD_MEMBERS'].'</th>
+			<th align="right">'.$lang['GUILD_GAVLEVEL'].'</th>
 		</tr>
 		';
 		for ($i = 1; $i < 51; $i++) {
@@ -74,27 +74,25 @@ include_once 'functions.php';
 			</tr>';
 		}
 		echo '</table>';
-		closetable();
 
 		if (is_woe()) {
-			opentable($lang['WOE_TIME']);
-			closetable();
+			caption($lang['WOE_TIME']);
 		} else {
 
 			$query = sprintf(GUILD_CASTLE);
 			$result = execute_query($query, "guild.php");
-			opentable($lang['GUILD_GCASTLES']);
+			caption($lang['GUILD_GCASTLES']);
 			$castles = $_SESSION[$CONFIG_name.'castles'];
 			echo '
-			<table>
+			<table class="maintable">
 			<tr>
-				<td align="center" class="head">'.$lang['GUILD_EMBLEM'].'</td>
-				<td>&nbsp;</td>
-				<td align="left" class="head">'.$lang['GUILD_GNAME'].'</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td align="left" class="head">'.$lang['GUILD_GCASTLE'].'</td>
-				</tr>
+				<th align="center">'.$lang['GUILD_EMBLEM'].'</th>
+				<th>&nbsp;</th>
+				<th align="left">'.$lang['GUILD_GNAME'].'</th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th align="left">'.$lang['GUILD_GCASTLE'].'</th>
+			</tr>
 			';
 			for ($i = $i; $line = $result->fetch_row(); $i++) {
 				$gname = htmlformat($line[0]);
@@ -114,7 +112,6 @@ include_once 'functions.php';
 				</tr>';
 			}
 			echo '</table>';
-			closetable();
 		}
 		if (isset($emblems))
 			$_SESSION[$CONFIG_name.'emblems'] = $emblems;

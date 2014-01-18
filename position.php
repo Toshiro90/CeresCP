@@ -62,15 +62,15 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 		if ($result->count() < 1)
 			redir('motd.php', 'main_div', $lang['ONE_CHAR']);
 
-		opentable($lang['POSITION_TITLE']);
+		caption($lang['POSITION_TITLE']);
 		echo '
-		<table width="400">
+		<table class="maintable">
 		<tr>
-			<td align="right" class="head">'.$lang['SLOT'].'</td>
-			<td align="left" class="head">'.$lang['NAME'].'</td>
-			<td align="center" class="head">'.$lang['POSITION_LEVEL'].'</td>
-			<td align="left" class="head">'.$lang['MAP'].'</td>
-			<td align="center" class="head">'.$lang['POSITION_SELECT'].'</td>
+			<th align="right">'.$lang['SLOT'].'</th>
+			<th align="left">'.$lang['NAME'].'</th>
+			<th align="center">'.$lang['POSITION_LEVEL'].'</th>
+			<th align="left">'.$lang['MAP'].'</th>
+			<th align="center">'.$lang['POSITION_SELECT'].'</th>
 		</tr>
 		';
 		while ($line = $result->fetch_row()) {
@@ -101,12 +101,11 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 		if ($CONFIG_reset_cost) {
 			$lang['POSITION_PS1'] = sprintf($lang['POSITION_PS1'], $CONFIG_reset_cost);
 			echo '
-				<table>
+				<table class="maintable">
 					<tr><td align="left">'.$lang['POSITION_PS1'].'</td></tr>
 				</table>
 			';
 		}
-		closetable();
 	}
 	fim();
 }

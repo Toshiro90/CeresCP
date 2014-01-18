@@ -34,11 +34,11 @@ if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] <
 
 
 if (isset($GET_id)) {
-	opentable("Account - $GET_id");
+	caption('Account - '.$GET_id);
 	
 	if (isset($GET_back)) {
 		$back = base64_decode($GET_back);
-		echo '<span title="View Chars" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span>';
+		echo '<center><span title="View Chars" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span></center>';
 	}
 	
 	$jobs = $_SESSION[$CONFIG_name.'jobs'];
@@ -47,16 +47,16 @@ if (isset($GET_id)) {
 	$result = execute_query($query, 'adminaccchars.php');
 
 	echo '
-	<table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+	<table class="maintable">
 	<tr>
-		<td align="right" class="head">'.$lang['SLOT'].'</td>
-		<td>&nbsp;</td>
-		<td align="left" class="head">'.$lang['NAME'].'</td>
-		<td align="left" class="head">'.$lang['CLASS'].'</td>
-		<td align="center" class="head">'.$lang['BLVLJLVL'].'</td>
-		<td align="center" class="head">online</td>
-		<td align="center" class="head">'.$lang['MAP'].'</td>
-		<td align="center" class="head">coords</td>
+		<th align="right">'.$lang['SLOT'].'</th>
+		<th>&nbsp;</th>
+		<th align="left">'.$lang['NAME'].'</th>
+		<th align="left">'.$lang['CLASS'].'</th>
+		<th align="center">'.$lang['BLVLJLVL'].'</th>
+		<th align="center">online</th>
+		<th align="center">'.$lang['MAP'].'</th>
+		<th align="center">coords</th>
 	</tr>
 	';
 	while ($line = $result->fetch_row()) {
@@ -85,11 +85,9 @@ if (isset($GET_id)) {
 		';
 	}
 	echo '</table>';
-} else opentable('Account - Not Found');
+} else caption('Account - Not Found');
 //			return LINK_ajax('admincharinfo.php?id='.$line[0],'chars_div');
 echo '<div id="chars_div" style="color:#000000"></div>';
-
-closetable();
 
 fim();
 ?>

@@ -63,13 +63,13 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_set_slot) {
 		if ($result->count() < 1)
 			redir("slot.php", "main_div", $lang['ONE_CHAR']);
 
-		opentable($lang['SLOT_CHANGE_SLOT']);
+		caption($lang['SLOT_CHANGE_SLOT']);
 		echo '
-		<table width="400">
+		<table class="maintable">
 		<tr>
-			<td align="right" class="head">'.$lang['SLOT'].'</td>
-			<td align="left" class="head">'.$lang['NAME'].'</td>
-			<td align="center" class="head">'.$lang['SLOT_NEW_SLOT'].'</td>
+			<th align="right">'.$lang['SLOT'].'</th>
+			<th align="left">'.$lang['NAME'].'</th>
+			<th align="center">'.$lang['SLOT_NEW_SLOT'].'</th>
 		</tr>
 		';
 		for ($j = 0; $line = $result->fetch_row(); $j++) {
@@ -104,7 +104,6 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_set_slot) {
 				<tr><td align="left">'.$lang['SLOT_PS1'].'</td></tr>
 				<tr><td align="left">'.$lang['SLOT_PS2'].'</td></tr>
 			</table>';
-		closetable();
 	}
 	fim();
 }

@@ -76,12 +76,12 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 		if ($result->count() < 1)
 			redir('motd.php', 'main_div', $lang['ONE_CHAR']);
 
-		opentable($lang['RESETLOOK_RESETLOOK']);
+		caption($lang['RESETLOOK_RESETLOOK']);
 		echo '
-		<table width="595">
+		<table class="maintable">
 		<tr>
-			<td align="right" class="head">'.$lang['SLOT'].'</td>
-			<td align="left" class="head">'.$lang['NAME'].'</td>
+			<th align="right">'.$lang['SLOT'].'</th>
+			<th align="left">'.$lang['NAME'].'</th>
 		</tr>
 		';
 		while ($line = $result->fetch_row()) {
@@ -128,8 +128,6 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 			</tr>
 			';
 		}
-		echo '</table>';
-		closetable();
 	}
 	fim();
 }

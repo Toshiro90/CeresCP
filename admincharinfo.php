@@ -47,7 +47,8 @@ echo '
 
 <body>';
 
-opentable("Char Detail");
+echo '<div style="background-color: #ffffff; width: 770px; margin: 0 auto;">';
+caption("Char Detail");
 
 if (isset($GET_id) && !notnumber($GET_id)) {
 	$jobs = $_SESSION[$CONFIG_name.'jobs'];
@@ -55,15 +56,15 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 	$query = sprintf(CHARINFO_CHAR, trim($GET_id));
 	$answere = execute_query($query, 'admincharinfo.php');
 	echo '
-		<table border="0" cellspacing="0" cellpadding="0" align="center" width="400">
+		<table class="maintable" style="width: 500px">
 	';
 	if ($result = $answere->fetch_row()) {
 		$acc_id = $result[1];
 		$class = $result[4];
 		echo '
 			<tr>
-				<td align="right" class="head">Name:&nbsp;</td><td align="left">'.$result[3].'</td>
-				<td align="right" class="head">Job:&nbsp;</td><td align="left">
+				<th align="right">Name:</th><td align="left">'.$result[3].'</td>
+				<th align="right">Job:</th><td align="left">
 			';
 		if (isset($jobs[$result[4]]))
 			echo $jobs[$result[4]];
@@ -72,39 +73,34 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 		echo '
 			</tr>
 			<tr>
-				<td align="right" class="head">Level:&nbsp;</td><td align="left">'.$result[5].'/'.$result[6].'</td>
-				<td align="right" class="head">Zeny:&nbsp;</td><td align="left">'.$result[9].'</td>
+				<th align="right">Level:</th><td align="left">'.$result[5].'/'.$result[6].'</td>
+				<th align="right">Zeny:</th><td align="left">'.$result[9].'</td>
 			<tr>
-				<td align="right" class="head">STR:&nbsp;</td><td align="left">'.$result[10].'</td>
-				<td align="right" class="head">AGI:&nbsp;</td><td align="left">'.$result[11].'</td>
-				<td align="right" class="head">VIT:&nbsp;</td><td align="left">'.$result[12].'</td>
+				<th align="right">STR:</th><td align="left">'.$result[10].'</td>
+				<th align="right">AGI:</th><td align="left">'.$result[11].'</td>
+				<th align="right">VIT:</th><td align="left">'.$result[12].'</td>
 			</tr>
 			<tr>
-				<td align="right" class="head">INT:&nbsp;</td><td align="left">'.$result[13].'</td>
-				<td align="right" class="head">DEX:&nbsp;</td><td align="left">'.$result[14].'</td>
-				<td align="right" class="head">LUK:&nbsp;</td><td align="left">'.$result[15].'</td>
+				<th align="right">INT:</th><td align="left">'.$result[13].'</td>
+				<th align="right">DEX:</th><td align="left">'.$result[14].'</td>
+				<th align="right">LUK:</th><td align="left">'.$result[15].'</td>
 			</tr>
 			</table>
 		';
 	}
 	$query = sprintf(CHARINFO_INVENTORY, trim($GET_id));
 	$answere = execute_query($query, 'admincharinfo.php');
+	caption('INVENTORY');
 	echo '
-		<table border="0" cellspacing="0" cellpadding="0" align="center" width="700">
+		<table class="maintable" style="width: 750px">
 		<tr>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="head">INVENTORY</td>
-		</tr>
-		<tr>
-			<td align="center" class="head">Item</td>
-			<td align="center" class="head">Amount</td>
-			<td align="center" class="head">Refine</td>
-			<td align="center" class="head">Card0</td>
-			<td align="center" class="head">Card1</td>
-			<td align="center" class="head">Card2</td>
-			<td align="center" class="head">Card3</td>
+			<th align="center">Item</th>
+			<th align="center" style="width: 50px;">Amount</th>
+			<th align="center" style="width: 50px;">Refine</th>
+			<th align="center" style="width: 100px;">Card0</th>
+			<th align="center" style="width: 100px;">Card1</th>
+			<th align="center" style="width: 100px;">Card2</th>
+			<th align="center" style="width: 100px;">Card3</th>
 		</tr>
 	';
 	while ($result = $answere->fetch_row()) {
@@ -173,24 +169,21 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 			</tr>
 		';
 	}
+	echo '</table>';
 
 	$query = sprintf(CHARINFO_STORAGE, trim($acc_id));
 	$answere = execute_query($query, 'admincharinfo.php');
+	caption('STORAGE');
 	echo '
+		<table class="maintable" style="width: 750px">
 		<tr>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="head">STORAGE</td>
-		</tr>
-		<tr>
-			<td align="center" class="head">Item</td>
-			<td align="center" class="head">Amount</td>
-			<td align="center" class="head">Refine</td>
-			<td align="center" class="head">Card0</td>
-			<td align="center" class="head">Card1</td>
-			<td align="center" class="head">Card2</td>
-			<td align="center" class="head">Card3</td>
+			<th align="center">Item</th>
+			<th align="center" style="width: 50px;">Amount</th>
+			<th align="center" style="width: 50px;">Refine</th>
+			<th align="center" style="width: 100px;">Card0</th>
+			<th align="center" style="width: 100px;">Card1</th>
+			<th align="center" style="width: 100px;">Card2</th>
+			<th align="center" style="width: 100px;">Card3</th>
 		</tr>
 	';
 	while ($result = $answere->fetch_row()) {
@@ -259,6 +252,7 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 			</tr>
 		';
 	}
+	echo '</table>';
 
 	switch ($class) {
 		case 5:
@@ -272,21 +266,17 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 		case 4041:
 			$query = sprintf(CHARINFO_CART, trim($GET_id));
 			$answere = execute_query($query, 'admincharinfo.php');
-			echo '
+		caption('STORAGE');
+		echo '
+		<table class="maintable" style="width: 750px">
 		<tr>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="head">CART</td>
-		</tr>
-		<tr>
-			<td align="center" class="head">Item</td>
-			<td align="center" class="head">Amount</td>
-			<td align="center" class="head">Refine</td>
-			<td align="center" class="head">Card0</td>
-			<td align="center" class="head">Card1</td>
-			<td align="center" class="head">Card2</td>
-			<td align="center" class="head">Card3</td>
+			<th align="center">Item</th>
+			<th align="center" style="width: 50px;">Amount</th>
+			<th align="center" style="width: 50px;">Refine</th>
+			<th align="center" style="width: 100px;">Card0</th>
+			<th align="center" style="width: 100px;">Card1</th>
+			<th align="center" style="width: 100px;">Card2</th>
+			<th align="center" style="width: 100px;">Card3</th>
 		</tr>
 			';
 			while ($result = $answere->fetch_row()) {
@@ -359,13 +349,12 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 			break;
 	}
 
-	echo '</table>';
-
 } else echo 'Not Found';
 
-echo '<table width="500"><tr><td align="center"><span title="Close this window" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="window.close();"><b>CLOSE</b></span></td></tr></table>';
+echo '<center style="margin: 20px;"><span title="Close this window" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="window.close();"><b>CLOSE</b></span></center>';
 
-closetable();
+echo '</div>';
+	
 echo '</body></html>';
 fim();
 ?>

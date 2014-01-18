@@ -32,9 +32,9 @@ include_once 'functions.php';
 //	if ($_SESSION[$CONFIG_name.'account_id'] > 0) {
 		$jobs = $_SESSION[$CONFIG_name.'jobs'];
 		if (!isset($GET_opt)) {
-			opentable($lang['LADDER_TOP100']);
+			caption($lang['LADDER_TOP100']);
 			echo '
-			<table width="70%">
+			<table class="maintable">
 			<tr>
 				<td align=center>
 				<form id="ladder">
@@ -61,7 +61,7 @@ include_once 'functions.php';
 			</tr>
 			</table>
 	
-			<div id="ladder_div" style="color:#000000">
+			<div id="ladder_div">
 			';
 			$begin = 1;
 			$GET_opt = 0;
@@ -143,17 +143,17 @@ include_once 'functions.php';
 
 		$result = execute_query($query, 'ladder.php');
 		echo '
-		<table width="500">
+		<table class="maintable">
 		<tr>
-			<td align="right" class="head">'.$lang['POS'].'</td>
-			<td>&nbsp;</td>
-			<td align="left" class="head">'.$lang['NAME'].'</td>
-			<td>&nbsp;&nbsp;&nbsp;</td>
-			<td align="left" class="head">'.$lang['CLASS'].'</td>
-			<td>&nbsp;&nbsp;&nbsp;</td>
-			<td align="center" class="head">'.$lang['BLVLJLVL'].'</td>
-			<td align="left" class="head">'.$lang['LADDER_GUILD'].'</td>
-			<td align="center" class="head">'.$lang['LADDER_STATUS'].'</td>
+			<th align="right">'.$lang['POS'].'</th>
+			<th>&nbsp;</th>
+			<th align="left">'.$lang['NAME'].'</th>
+			<th>&nbsp;&nbsp;&nbsp;</th>
+			<th align="left">'.$lang['CLASS'].'</th>
+			<th>&nbsp;&nbsp;&nbsp;</th>
+			<th align="center">'.$lang['BLVLJLVL'].'</th>
+			<th align="left">'.$lang['LADDER_GUILD'].'</th>
+			<th align="center">'.$lang['LADDER_STATUS'].'</th>
 		</tr>
 		';
 		for ($i = 1; $i < 101; $i++) {
@@ -165,19 +165,10 @@ include_once 'functions.php';
 			$job = 'unknown';
 			if (isset($jobs[$line[1]]))
 				$job = $jobs[$line[1]];
-			echo '
-			<tr>';
-			if (isset($_SESSION[$CONFIG_name.'account_id']) && $line[5] == $_SESSION[$CONFIG_name.'account_id']) {
-				echo '
-				<td align="right"><b>'.$i.'</b></td>
-				<td>&nbsp;</td>
-				<td align="left"><b>'.$charname.'</b></td>
-				<td>&nbsp;</td>
-				<td align="left"><b>'.$job.'</b></td>
-				<td>&nbsp;</td>
-				<td align="center"><b>'.$line[2].'/'.$line[3].'</b></td>
-				<td align="center"><b>'.$gname.'</b></td>';
-			} else {
+			if (isset($_SESSION[$CONFIG_name.'account_id']) && $line[5] == $_SESSION[$CONFIG_name.'account_id'])
+				echo '<tr class="highlight">';
+			else
+				echo '<tr>';
 			echo '
 				<td align="right">'.$i.'</td>
 				<td>&nbsp;</td>
@@ -187,7 +178,6 @@ include_once 'functions.php';
 				<td>&nbsp;</td>
 				<td align="center">'.$line[2].'/'.$line[3].'</td>
 				<td align="left">'.$gname.'</td>';
-			}
 
 			if ($line[4])
 				echo '<td align="center"><font color="green">'.$lang['LADDER_STATUS_ON'].'</font></td>';
@@ -199,7 +189,6 @@ include_once 'functions.php';
 		echo '</table>';
 		if (isset($begin)) {
 			echo '</div>';
-			closetable();
 		}
 
 //	}

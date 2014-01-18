@@ -110,38 +110,60 @@ $session['account'] = rand(12345, 99999);
 $_SESSION[$CONFIG_name.'sessioncode'] = $session;
 $var = rand(10, 9999999);
 
-	opentable($lang['NEW_ACCOUNT']);
+	caption($lang['NEW_ACCOUNT']);
 	echo '
-	<form id="account" onSubmit="return POST_ajax(\'account.php\',\'main_div\',\'account\');"><table>
-	<tr><td align="right">'.$lang['USERNAME'].':</td><td align="left">
-	<input type="text" name="username" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);">
-	</td></tr>
-	<tr><td align="right">'.$lang['PASSWORD'].':</td><td align="left">
-	<input type=password name="password" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);">
-	</td></tr>
-	<tr><td align="right">'.$lang['CONFIRM'].':</td><td align="left">
-	<input type=password name="confirm" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);">
-	</td></tr>
-	<tr><td align="right">'.$lang['SEX'].':</td><td align="left">
-	<select name="sex" onKeyPress="return force(this.name,this.form.id,event);">
-	<option value="0">'.$lang['SEX_MALE'].'<option value="1">'.$lang['SEX_FEMALE'].'</select></td></tr>
-	<tr><td align="right">'.$lang['MAIL'].':</td><td align="left">
-	<input type="text" name="email" maxlength="40" size="40" onKeyPress="return force(this.name,this.form.id,event);">
-	<tr><td align="right">'.$lang['BIRTHDAY'].':</td><td align="left">
-	<input type="text" name="birthdate" maxlength="8" size="8" onKeyPress="return force(this.name,this.form.id,event);">
-	<input type="hidden" name="opt" value="1"></td></tr>
-	<input type="hidden" name="ipaddress" value="'.$_SERVER['REMOTE_ADDR'].'">';
-	if ($CONFIG_auth_image && function_exists("gd_info")) { 
-		echo '<tr><td></td><td align=left><img src="img.php?img=account&var='.$var.'" alt="'.$lang['SECURITY_CODE'].'">
-		</td></tr><tr><td align=right>'.$lang['CODE'].':</td>
+	<form id="account" onSubmit="return POST_ajax(\'account.php\',\'main_div\',\'account\');">
+	<table class="maintable">
+		<tr>
+			<td align="right">'.$lang['USERNAME'].':</td>
+			<td align="left"><input type="text" name="username" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);"></td>
+	</tr>
+	<tr>
+		<td align="right">'.$lang['PASSWORD'].':</td>
+		<td align="left"><input type=password name="password" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);"></td>
+	</tr>
+	<tr>
+		<td align="right">'.$lang['CONFIRM'].':</td>
+		<td align="left"><input type=password name="confirm" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);"></td>
+	</tr>
+	<tr>
+		<td align="right">'.$lang['SEX'].':</td>
 		<td align="left">
-		<input type="text" name="code" maxlength="6" size="6" onKeyPress="return force(this.name,this.form.id,event);">
-		&nbsp;</td></tr>';
+			<select name="sex" onKeyPress="return force(this.name,this.form.id,event);">
+				<option value="0">'.$lang['SEX_MALE'].'
+				<option value="1">'.$lang['SEX_FEMALE'].'
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right">'.$lang['MAIL'].':</td>
+		<td align="left"><input type="text" name="email" maxlength="40" size="40" onKeyPress="return force(this.name,this.form.id,event);"></td>
+	</tr>
+	<tr>
+		<td align="right">'.$lang['BIRTHDAY'].':</td>
+		<td align="left">
+			<input type="text" name="birthdate" maxlength="8" size="8" onKeyPress="return force(this.name,this.form.id,event);">
+		</td>
+	</tr>';
+	if ($CONFIG_auth_image && function_exists("gd_info")) { 
+		echo '
+	<tr>
+		<td></td>
+		<td align=left><img src="img.php?img=account&var='.$var.'" alt="'.$lang['SECURITY_CODE'].'"></td>
+	</tr>
+	<tr>
+		<td align=right>'.$lang['CODE'].':</td>
+		<td align="left"><input type="text" name="code" maxlength="6" size="6" onKeyPress="return force(this.name,this.form.id,event);"></td>
+	</tr>';
 	}
 
 	echo '
-	<tr><td>&nbsp;</td><td><input type="submit" name="create" value="'.$lang['CREATE'].'"></td></tr>
-	</table></form>
-	';
-	closetable();
+	<tr>
+		<td>&nbsp;</td>
+		<td><input type="submit" name="create" value="'.$lang['CREATE'].'"></td>
+	</tr>
+	</table>
+	<input type="hidden" name="opt" value="1">
+	</form>';
+
 ?>

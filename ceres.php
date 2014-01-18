@@ -28,9 +28,9 @@ include_once 'config.php'; // loads config variables
 include_once 'query.php'; // imports queries
 include_once 'functions.php';
 
-opentable($lang['CERES_TITLE']);
+caption($lang['CERES_TITLE']);
 ?>
-<table width="504">
+<table class="maintable">
 <br>
 Ceres Control Panel was originally created by Beowulf and Nightroad.
 Entwined is further developing and maintaining the Ceres Control Panel with the use of <a href="http://subversion.tigris.org/">SVN</a>
@@ -39,6 +39,5 @@ Control Panel Links<ul><li><a href="http://cerescp.sourceforge.net/">http://cere
 Contact Information<ul><li>cerescp@gmail.com</li><li>Entwined@digital-deception.org</li></ul>
 </table>
 <?php
-closetable();
 fim();
 ?>

@@ -64,11 +64,11 @@ if (isset($GET_frm_name) && isset($GET_id)) {
 	}
 }
 
-opentable('Account BAN/BLOCK');
+caption('Account BAN/BLOCK');
 
 if (isset($GET_back)) {
 	$back = base64_decode($GET_back);
-	echo '<span title="Back" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span>';
+	echo '<center><span title="Back" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span></center>';
 }
 
 
@@ -81,7 +81,7 @@ if (isset($GET_id)) {
 	if ($line = $result->fetch_row()) {
 		echo '
 		<form id="accban" onSubmit="return GET_ajax(\'adminaccban.php\',\'accounts_div\',\'accban\');">
-			<table width="500">
+			<table class="maintable">
 				<tr>
 					<td align="right">Account_id:</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
 				</tr><tr>
@@ -185,9 +185,6 @@ if (isset($GET_id)) {
 	}
 
 } else echo 'Not Found';
-
-closetable();
-
 
 fim();
 ?>

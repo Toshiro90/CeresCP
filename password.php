@@ -69,24 +69,31 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 			}
 		}
 
-	opentable($lang['CHANGE_PASSWORD']);
+	caption($lang['CHANGE_PASSWORD']);
 		echo '
-		<form id="password" onsubmit="return POST_ajax(\'password.php\',\'main_div\',\'password\')"><table>
-		<tr><td align=right>'.$lang['PASSWORD'].':</td><td>
-			<input type="password" name="login_pass" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);">
-			</td></tr>
-		<tr><td align=right>'.$lang['NEW_PASSWORD'].':</td><td>
-			<input type="password" name="newpass" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);">
-			</td></tr>
-		<tr><td align=right>'.$lang['NEW_PASSWORD'].':</td><td>
-			<input type="password" name="confirm" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);">
-			</td></tr>
+		<form id="password" onsubmit="return POST_ajax(\'password.php\',\'main_div\',\'password\')">
+		<table class="maintable">
+			<tr>
+				<td align=right>'.$lang['PASSWORD'].':</td>
+				<td><input type="password" name="login_pass" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);"></td>
+			</tr>
+			<tr>
+				<td align=right>'.$lang['NEW_PASSWORD'].':</td>
+				<td><input type="password" name="newpass" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);"></td>
+			</tr>
+			<tr>
+				<td align=right>'.$lang['NEW_PASSWORD'].':</td>
+				<td><input type="password" name="confirm" maxlength="23" size="23" onKeyPress="return force(this.name,this.form.id,event);"></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" value='.$lang['CHANGE'].'></td>
+			</tr>
+		</table>
 		<input type="hidden" name="opt" value="1">
-		<tr><td>&nbsp;</td><td><input type="submit" value='.$lang['CHANGE'].'></td></tr>
-		</table></form>
+		</form>
 		';
-	closetable();
-	fim();
+		fim();
 	}
 }
 redir('motd.php', 'main_div', $lang['NEED_TO_LOGIN']);

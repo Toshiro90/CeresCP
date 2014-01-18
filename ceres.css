@@ -72,17 +72,21 @@ body {
 }
 
 #main_div {
-	margin-left: 30px;
-	padding-left: 15px;
-	padding-right: 5px;
-	padding-top: 10px;
+	width: 600px;
+	padding: 10px;
 	float: left;
+}
+
+.maintable {
+	width: 100%;
+	border: none;
+	margin: 5px auto;
 }
 
 /** RIGHT SIDEBAR */
 #sidebar {
-	width: 156px;
-	height: 350px;
+	width: 160px;
+	height: 470px;
 	background-color: #D0D9E0;
 	float: right;
 }
@@ -117,7 +121,18 @@ input, select, option, textarea {
 tr, td {
 	font-size: 10px;
 	FONT-FAMILY: verdana,arial;
-	color: 000000;
+	color: #000000;
+}
+
+th {
+	font-size: 10px;
+	FONT-FAMILY: verdana,arial;
+	color: #000000;
+	font-weight: bold;
+}
+
+.highlight {
+	font-weight: bold;
 }
 
 /** GENERAL */
@@ -130,6 +145,7 @@ tr, td {
 	font-size: 12px;
 	font-weight: bold;
 	color: #000000;
+	text-align: center;
 }
 
 .link {

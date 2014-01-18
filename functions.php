@@ -372,10 +372,15 @@ function server_status() {
 }
 
 function redir($page, $div, $msg) {
-	opentable('Status');
-	echo '<tr><td><span style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'"
-	onClick="return LINK_ajax(\''.$page.'\',\''.$div.'\')"><b>'.$msg."</span></tr></td>";
-	closetable();
+	caption('Status');
+	echo '
+	<table class="maintable">
+		<tr>
+			<td>
+				<span style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\''.$page.'\',\''.$div.'\')"><b>'.$msg.'</span>
+			</td>
+		</tr>
+	</table>';
 	fim();
 }
 
@@ -394,25 +399,8 @@ function fim() {
 	exit(0);
 }
 
-function opentable($titulo) {
-	echo '
-<center><table border="0" cellpadding="0" cellspacing="0">
-	<tbody>
-		<tr>
-			<th height="28" class="title">'.$titulo.'</th>
-		</tr>
-		<tr>
-			<td>
-	';
-}
-
-function closetable() {
-	echo '
-			</td>
-		</tr>
-	</tbody>
-</table></center>
-	';
+function caption($s) {
+	print '<h3 class="title">'.$s.'</h3>';
 }
 
 function read_maildef($file) {

@@ -36,18 +36,18 @@ if (is_woe())
 $query = sprintf(WHOISONLINE);
 $result = execute_query($query, "whoisonline.php");
 
-opentable($lang['WHOISONLINE_WHOISONLINE']);
+caption($lang['WHOISONLINE_WHOISONLINE']);
 echo '
-<table width="500">
+<table class="maintable">
 <tr>
-	<td align="left" class="head">'.$lang['NAME'].'</td>
-	<td align="left" class="head">'.$lang['CLASS'].'</td>
-	<td align="center" class="head">'.$lang['BLVLJLVL'].'</td>
+	<th align="left">'.$lang['NAME'].'</th>
+	<th align="left">'.$lang['CLASS'].'</th>
+	<th align="center">'.$lang['BLVLJLVL'].'</th>
 	';
-	if (isset($_SESSION[$CONFIG_name.'level']) && $_SESSION[$CONFIG_name.'level'] >= $CONFIG['cp_admin'])
-	echo '<td align="center" class="head">'.$lang['WHOISONLINE_COORDS'].'</td>';
+if (isset($_SESSION[$CONFIG_name.'level']) && $_SESSION[$CONFIG_name.'level'] >= $CONFIG['cp_admin'])
+	echo '<th align="center">'.$lang['WHOISONLINE_COORDS'].'</th>';
 	echo '
-	<td align="left" class="head">'.$lang['MAP'].'</td>
+	<th align="left">'.$lang['MAP'].'</th>
 </tr>
 ';
 if ($result) {
@@ -79,6 +79,6 @@ if ($result) {
 	}
 }
 echo '</table>';
-closetable();
+
 fim();
 ?>
