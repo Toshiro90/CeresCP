@@ -64,7 +64,7 @@ if (isset($GET_frm_name) && isset($GET_id)) {
 caption('Account Edit');
 if (isset($GET_back)) {
 	$back = base64_decode($GET_back);
-	echo '<center><span title="Back" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span></center>';
+	echo '<center><span title="Back" class="link" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span></center>';
 }
 
 if (isset($GET_id)) {

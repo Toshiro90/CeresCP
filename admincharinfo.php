@@ -351,7 +351,7 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 
 } else echo 'Not Found';
 
-echo '<center style="margin: 20px;"><span title="Close this window" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="window.close();"><b>CLOSE</b></span></center>';
+echo '<center style="margin: 20px;"><span title="Close this window" class="link" onClick="window.close();"><b>CLOSE</b></span></center>';
 
 echo '</div>';
 	

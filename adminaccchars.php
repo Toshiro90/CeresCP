@@ -38,7 +38,7 @@ if (isset($GET_id)) {
 	
 	if (isset($GET_back)) {
 		$back = base64_decode($GET_back);
-		echo '<center><span title="View Chars" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span></center>';
+		echo '<center><span title="View Chars" class="link" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span></center>';
 	}
 	
 	$jobs = $_SESSION[$CONFIG_name.'jobs'];
@@ -83,7 +83,7 @@ if (isset($GET_id)) {
 			<td align="center">'.$line[7].'</td>
 			<td align="center">'.$line[8].','.$line[9].'</td>
 			<td align="left">
-			<span title="Detailed Info" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="window.open(\'admincharinfo.php?id='.$line[0].'\', \'_blank\', \'height = 600, width = 800, menubar = no, status = no, titlebar = no, scrollbars = yes\');">Detail</span>
+			<span title="Detailed Info" class="link" onClick="window.open(\'admincharinfo.php?id='.$line[0].'\', \'_blank\', \'height = 600, width = 800, menubar = no, status = no, titlebar = no, scrollbars = yes\');">Detail</span>
 
 			</td>
 		</tr>

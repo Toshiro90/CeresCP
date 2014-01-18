@@ -165,7 +165,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 			<tr>
 				<td align="center">
 					'.$lang['LOGIN_HELLO'].', '.$userid.'.<br /><br />
-					<span title="Logoff the server and, if any, reset the cookies" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="LINK_ajax(\'login.php?opt=2\',\'login_div\');">Logoff</span>
+					<span title="Logoff the server and, if any, reset the cookies" class="link" onClick="LINK_ajax(\'login.php?opt=2\',\'login_div\');">Logoff</span>
 				</td>
 			</tr>
 		</table>';

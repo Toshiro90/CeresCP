@@ -46,11 +46,11 @@ for ($i = 1; $i < 10; $i++) {
 
 	if ($size==0) {
 		$size='';
-		$url=' <a href='.$url.' class="link" target=_blank>'.$name.'</a> '.$size;
+		$url=' <a href="'.$url.'" target="_blank">'.$name.'</a> '.$size;
 	}
 	else {
 		$size=' ('.$size.' Mb)';
-		$url=' <a href='.$url.' class="link">'.$name.'</a> '.$size;
+		$url=' <a href="'.$url.'">'.$name.'</a> '.$size;
 	}
 
 	echo '

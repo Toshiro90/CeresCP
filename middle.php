@@ -29,7 +29,7 @@ include_once 'functions.php';
 
 if (!$CONFIG_disable_account) {
 ?>
-<span title="Create a new account" style="cursor:pointer" onMouseOver="this.style.color='#FF3300'" onMouseOut="this.style.color='#000000'" onClick="return LINK_ajax('account.php','main_div');">
+<span title="Create a new account" class="link" onClick="return LINK_ajax('account.php','main_div');">
 <b><?php echo $lang['NEW_ACCOUNT'] ?></b>
 </span>
 <?php
@@ -39,7 +39,7 @@ if (!$CONFIG_disable_account) {
 <?php
 if ($CONFIG_password_recover) {
 ?>
-<span title="Send the account info to your e-mail" style="cursor:pointer" onMouseOver="this.style.color='#FF3300'" onMouseOut="this.style.color='#000000'" onClick="return LINK_ajax('recover.php','main_div');">
+<span title="Send the account info to your e-mail" class="link" onClick="return LINK_ajax('recover.php','main_div');">
 <b><?php echo $lang['RECOVER_PASSWORD'] ?></b>
 </span>
 <?php

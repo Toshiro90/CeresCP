@@ -86,7 +86,7 @@ function main_menu() {
 	var the_menu = " | ";
 
 	for (i = 0; i < mainmenu.length; i++)
-		the_menu = the_menu + "<span style=\"cursor:pointer\" onMouseOver=\"this.style.color='#FF3300'\" onMouseOut=\"this.style.color='#FFFFFF'\" onClick=\"return sub_menu(" + i + ");\">" + mainmenu[i] + "</span> | ";
+		the_menu = the_menu + "<span class=\"link\" onClick=\"return sub_menu(" + i + ");\">" + mainmenu[i] + "</span> | ";
 
 	document.getElementById('main_menu').innerHTML = the_menu;
 	document.getElementById('sub_menu').innerHTML = " ";
@@ -99,7 +99,7 @@ function sub_menu(index) {
 	
 	for (i = 0; i < submenu.length; i = i + 3) {
 		if (submenu[i + 2] == index)
-		the_menu = the_menu + "<span style=\"cursor:pointer\" onMouseOver=\"this.style.color='#FF3300'\" onMouseOut=\"this.style.color='#FFFFFF'\" onClick=\"return LINK_ajax('" + submenu[i + 1] + "','main_div');\">" + submenu[i] + "</span> | ";
+		the_menu = the_menu + "<span class=\"link\" onClick=\"return LINK_ajax('" + submenu[i + 1] + "','main_div');\">" + submenu[i] + "</span> | ";
 	}
 
 	document.getElementById('sub_menu').innerHTML = the_menu;

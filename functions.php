@@ -377,7 +377,7 @@ function redir($page, $div, $msg) {
 	<table class="maintable">
 		<tr>
 			<td>
-				<span style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\''.$page.'\',\''.$div.'\')"><b>'.$msg.'</span>
+				<span class="link" onClick="return LINK_ajax(\''.$page.'\',\''.$div.'\')"><b>'.$msg.'</span>
 			</td>
 		</tr>
 	</table>';

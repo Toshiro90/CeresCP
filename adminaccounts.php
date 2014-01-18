@@ -47,7 +47,7 @@ if (!isset($GET_frm_name) && !isset($GET_page)) {
 				<option value="4">IP
 				</select></td><td>
 				<input type="submit" name="search" value="search"></td>
-				<td><span title="Show All" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?page=0\',\'accounts_div\');">Show All</span></td>
+				<td><span title="Show All" class="link" onClick="return LINK_ajax(\'adminaccounts.php?page=0\',\'accounts_div\');">Show All</span></td>
 			</tr>
 		</table>
 	</form>
@@ -137,11 +137,11 @@ while ($line = $result->fetch_row()) {
 		<td align="left">'.$line[5].'</td>
 		<td align="center">'.$ban.'</td>
 		<td align="center">
-		<span title="Edit" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccedit.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">Edit</span></td>
+		<span title="Edit" class="link" onClick="return LINK_ajax(\'adminaccedit.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">Edit</span></td>
 		<td align="center">
-		<span title="View Chars" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccchars.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">Chars</span></td>
+		<span title="View Chars" class="link" onClick="return LINK_ajax(\'adminaccchars.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">Chars</span></td>
 		<td align="center">
-		<span title="Ban, Block, Unban or Unblock" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccban.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">(Un)Ban</span></td>
+		<span title="Ban, Block, Unban or Unblock" class="link" onClick="return LINK_ajax(\'adminaccban.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">(Un)Ban</span></td>
 	</tr>
 	';
 }
@@ -152,18 +152,18 @@ if ($pages) {
 	<table class="maintable">
 		<tr>
 			<td>
-				<span title="0" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?page=0\',\'accounts_div\');">&lt;&lt;</span>';
+				<span title="0" class="link" onClick="return LINK_ajax(\'adminaccounts.php?page=0\',\'accounts_div\');">&lt;&lt;</span>';
 
 	for ($i = ($GET_page - 10); $i <= ($GET_page + 10); $i++) {
 		echo ' ';
 		if ($i >= 0 && $i != $GET_page && $i <= $pages)
-			echo '<span title="'.$i.'" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?page='.$i.'\',\'accounts_div\');">'.$i.'</span>';
+			echo '<span title="'.$i.'" class="link" onClick="return LINK_ajax(\'adminaccounts.php?page='.$i.'\',\'accounts_div\');">'.$i.'</span>';
 		else if ($i == $GET_page)
 			echo '<b>'.$i.'</b>';
 	}
 
 	echo '
-				<span title="'.$pages.'" style="cursor:pointer" onMouseOver="this.style.color=\'#FF3300\'" onMouseOut="this.style.color=\'#000000\'" onClick="return LINK_ajax(\'adminaccounts.php?page='.$pages.'\',\'accounts_div\');">&gt;&gt;</span>
+				<span title="'.$pages.'" class="link" onClick="return LINK_ajax(\'adminaccounts.php?page='.$pages.'\',\'accounts_div\');">&gt;&gt;</span>
 			</td>
 		</tr>
 	</table>';
