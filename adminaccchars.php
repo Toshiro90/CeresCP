@@ -64,7 +64,7 @@ if (isset($GET_id)) {
 		<tr>
 			<td align="right">'.$line[1].'</td>
 			<td>&nbsp;</td>
-			<td align="left">'.$line[2].'</td>
+			<td align="left">'.htmlformat($line[2]).'</td>
 			<td align="left">
 		';
 		if (isset($jobs[$line[3]]))

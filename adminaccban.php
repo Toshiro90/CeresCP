@@ -85,7 +85,7 @@ if (isset($GET_id)) {
 				<tr>
 					<td align="right">Account_id:</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
 				</tr><tr>
-					<td align="right">Login:</td><td align="left">'.$line[1].'</td>
+					<td align="right">Login:</td><td align="left">'.htmlformat($line[1]).'</td>
 				</tr><tr>
 					<td align="right">Last Login:</td><td align="left">'.$line[9].'</td>
 				</tr><tr>

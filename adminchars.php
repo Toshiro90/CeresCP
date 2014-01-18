@@ -125,7 +125,7 @@ while ($line = $result->fetch_row()) {
 	<tr>
 		<td align="right">'.$line[0].'</td>
 		<td align="right">'.$line[1].'</td>
-		<td align="left">'.$line[2].'</td>
+		<td align="left">'.htmlformat($line[2]).'</td>
 		<td align="left">'.$job.'</td>
 		<td align="center">'.$line[4].'/'.$line[5].'</td>
 		<td align="center">'.$online.'</td>

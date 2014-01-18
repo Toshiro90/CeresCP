@@ -63,7 +63,7 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 		$class = $result[4];
 		echo '
 			<tr>
-				<th align="right">Name:</th><td align="left">'.$result[3].'</td>
+				<th align="right">Name:</th><td align="left">'.htmlformat($result[3]).'</td>
 				<th align="right">Job:</th><td align="left">
 			';
 		if (isset($jobs[$result[4]]))

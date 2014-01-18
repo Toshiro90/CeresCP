@@ -130,9 +130,9 @@ while ($line = $result->fetch_row()) {
 	echo '
 	<tr>
 		<td align="right">'.$line[0].'</td>
-		<td align="left">'.$line[1].'</td>
+		<td align="left">'.htmlformat($line[1]).'</td>
 		<td align="center">'.$line[2].'</td>
-		<td align="left"><span title="'.$line[3].'" style="cursor:pointer">'.$email.'</span></td>
+		<td align="left"><span title="'.htmlformat($line[3]).'" style="cursor:pointer">'.htmlformat($email).'</span></td>
 		<td align="center">'.$line[4].'</td>
 		<td align="left">'.$line[5].'</td>
 		<td align="center">'.$ban.'</td>

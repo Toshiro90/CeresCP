@@ -78,9 +78,9 @@ if (isset($GET_id)) {
 				<tr>
 					<td align="right">Account_id</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
 				</tr><tr>
-					<td align="right">'.$lang['USERNAME'].'</td><td align="left"><input type="text" name="login" value="'.$line[1].'" maxlength="23" size="23"></td>
+					<td align="right">'.$lang['USERNAME'].'</td><td align="left"><input type="text" name="login" value="'.htmlformat($line[1]).'" maxlength="23" size="23"></td>
 				</tr><tr>
-					<td align="right">'.$lang['PASSWORD'].'</td><td align="left"><input type="text" name="password" value="'.$line[8].'" maxlength="32" size="23"></td>
+					<td align="right">'.$lang['PASSWORD'].'</td><td align="left"><input type="text" name="password" value="'.htmlformat($line[8]).'" maxlength="32" size="23"></td>
 				</tr><tr>
 					<td align="right">'.$lang['SEX'].'</td>
 					<td align="left">
@@ -94,7 +94,7 @@ if (isset($GET_id)) {
 						</select>
 					</td>
 				</tr><tr>
-					<td align="right">'.$lang['MAIL'].'</td><td align="left"><input type="text" name="email" value="'.$line[3].'" maxlength="60" size="23"></td>
+					<td align="right">'.$lang['MAIL'].'</td><td align="left"><input type="text" name="email" value="'.htmlformat($line[3]).'" maxlength="60" size="23"></td>
 				</tr><tr>
 					<td align="right">'.$lang['BIRTHDAY'].'</td><td align="left"><input type="text" name="birthdate" value="'.$line[10].'" maxlength="10" size="10"></td>
 				</tr><tr>
