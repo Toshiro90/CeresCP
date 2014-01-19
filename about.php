@@ -38,7 +38,9 @@ $accounts = moneyformat($result->row(0));
 $query = sprintf(TOTALZENY);
 $result = execute_query($query, 'about.php');
 $result->fetch_row();
-$zeny = moneyformat($result->row(0));
+if (!($zeny = $result->row(0)))
+	$zeny = 0;
+$zeny = moneyformat($zeny);
 
 if ($CONFIG_dynamic_info || $CONFIG_agit_check) {
 	if ($CONFIG_agit_check)
@@ -54,18 +56,20 @@ if ($CONFIG_dynamic_info || $CONFIG_agit_check) {
 		$agit_status = $line[3];
 
 }
+
 $query = sprintf(TOTALCHARS);
 $result = execute_query($query, 'about.php');
 
-for ($chars = 0; $line = $result->fetch_row(); $chars++) {
-	if (isset($class[$line[0]]))
-		$class[$line[0]]++;
-	else
-		$class[$line[0]] = 1;
-}
+$result->fetch_row();
+$chars = moneyformat($result->row(0));
 
-$chars = moneyformat($chars);
 if ($CONFIG_classlist_show) {
+	$query = sprintf(TOTALCLASSES);
+	$result = execute_query($query, 'about.php');
+	while ($line = $result->fetch_row()) {
+		$class[$line[0]] = $line[1];
+	}
+
 	for ($i = 0; $i < 27; $i++) {
 		if (!isset($class[$i]))
 			$class[$i] = 0;

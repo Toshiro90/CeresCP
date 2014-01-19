@@ -138,7 +138,8 @@ WHERE `login`.`level` < '40' AND `login`.`state` != '5' ORDER BY `zeny` DESC LIM
 }
 //about.php - Server Info
 DEFINE('TOTALACCOUNTS', "SELECT COUNT(1) FROM `login` WHERE `sex` != 'S'");
-DEFINE('TOTALCHARS', "SELECT `class` FROM `char` WHERE `account_id` > '0'");
+DEFINE('TOTALCHARS', "SELECT COUNT(1) FROM `char` WHERE `account_id` > '0'");
+DEFINE('TOTALCLASSES', "SELECT `class`, COUNT(1) FROM `char` WHERE `account_id` > '0' GROUP BY `class`");
 DEFINE('TOTALZENY', "SELECT SUM(`zeny`) FROM `char` WHERE `account_id` > '0'");
 
 //marriage.php - Divorce
