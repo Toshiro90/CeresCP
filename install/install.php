@@ -220,6 +220,7 @@ if (isset($POST_install)) {
 	$buffer .= "\n";
 	$buffer .= "//About Information\n";
 	$buffer .= "\$CONFIG['classlist_show']	=	'".$POST_feat_acl."';			// Show the class list on about.php? (disable = 0, enable = 1)\n";
+	$buffer .= "\$CONFIG['classlist_hide_zero']	=	'".$POST_feat_aclz."';			// Hide class entries with zero amount? (disable = 1, enable = 0)\n";
 	$buffer .= "\n";
 	$buffer .= "//Mail\n";
 	$buffer .= "\$CONFIG['smtp_server']		=	'".$POST_smtp_server."';	// the smtp server, the cp will use to send mails\n";
@@ -262,7 +263,7 @@ closedir($langdir);
 
 ?>
 		<form action="./install.php" method="post">
-			<center><table border="0" cellpadding="0" cellspacing="0">
+			<table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
 				<tbody>
 					<tr>
 						<th height="28" style="font-size: 36px; font-weight: bold; color: #000000;">CeresCP Install Script</th>
@@ -271,9 +272,9 @@ closedir($langdir);
 						<td>
 							<fieldset>
 								<legend><b>Control Panel Language</b></legend>
-								<table border="0" width="400">
+								<table border="0" width="500">
 									<tr>
-										<td width="185" align="left">Default Language</td>
+										<td width="250" align="left">Default Language</td>
 										<td align="left"><select name="cp_language">
 <?php
 for ($i = 0; isset($idiom[$i]); $i++) {
@@ -293,9 +294,9 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 						<td>
 							<fieldset>
 								<legend><b>MySQL Settings</b></legend>
-								<table border="0" width="400">
+								<table border="0" width="500">
 									<tr>
-										<td width="200" align="left"><span title="MySQL host adress">Ragnarok Host</span></td>
+										<td width="250" align="left"><span title="MySQL host adress">Ragnarok Host</span></td>
 										<td align="left"><input type="text" name="sql_rag_host" size="30" value="localhost"></td>
 									</tr>
 									<tr>
@@ -346,9 +347,9 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 						<td>
 							<fieldset>
 								<legend><b>Control Panel Admin Access</b></legend>
-								<table border="0" width="400">
+								<table border="0" width="500">
 									<tr>
-										<td width="200" align="left">Admin Level</td>
+										<td width="250" align="left">Admin Level</td>
 										<td align="left"><input type="text" name="cp_adm_lvl" maxlength="2" size="30" value="99"></td>
 									</tr>
 									<tr>
@@ -367,9 +368,9 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 						<td>
 							<fieldset>
 								<legend><b>Server Info Settings</b></legend>
-								<table border="0" width="400">
+								<table border="0" width="500">
 									<tr>
-										<td width="200" align="left">Name</td>
+										<td width="250" align="left">Name</td>
 										<td align="left"><input type="text" name="server_name" size="30" value="Ceres Control Panel"></td>
 									</tr>
 									<tr>
@@ -396,9 +397,9 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 						<td>
 							<fieldset>
 								<legend><b>Server Status Settings</b></legend>
-								<table border="0" width="400">
+								<table border="0" width="500">
 									<tr>
-										<td width="200" align="left">Login IP</td>
+										<td width="250" align="left">Login IP</td>
 										<td><input type="text" name="server_lip" size="30" value="127.0.0.1"></td>
 									</tr>
 									<tr>
@@ -429,9 +430,9 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 						<td>
 							<fieldset>
 								<legend><b>WoE Settings</b></legend>
-								<table border="0" width="400">
+								<table border="0" width="500">
 									<tr>
-										<td width="190" align="left">Weekday</td>
+										<td width="250" align="left">Weekday</td>
 										<td align="left">Start</td>
 										<td align="left">Stop</td>
 									<tr>
@@ -495,9 +496,9 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 						<td>
 							<fieldset>
 								<legend><b>Control Panel Features</b></legend>
-								<table border="0" width="400">
+								<table border="0" width="500">
 									<tr>
-										<td width="200" align="left">Disable Account Creation</td>
+										<td width="250" align="left">Disable Account Creation</td>
 										<td align="left"><select name="feat_acc"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 									<tr>
@@ -511,6 +512,10 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									<tr>
 										<td align="left">About Class List</td>
 										<td align="left"><select name="feat_acl"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
+									</tr>
+									<tr>
+										<td align="left">About Class List (Hide zero entries)</td>
+										<td align="left"><select name="feat_aclz"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
 									</tr>
 									<tr>
 										<td align="left">Password Recover</td>
@@ -560,9 +565,9 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 						<td>
 							<fieldset>
 								<legend><b>Control Panel Mail Send</b></legend>
-								<table border="0" width="400">
+								<table border="0" width="500">
 									<tr>
-										<td width="200" align="left">Smtp Server</td>
+										<td width="250" align="left">Smtp Server</td>
 										<td align="left"><input type="text" name="smtp_server" size="30" value="localhost"></td>
 									</tr>
 									<tr>
@@ -589,7 +594,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 						<td>
 							<fieldset>
 								<legend></legend>
-								<table border="0" width="400">
+								<table border="0" width="500">
 									<tr>
 										<td align="center"><input type="submit" name="install" value="Install"></td>
 									</tr>
@@ -598,7 +603,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 						</td>
 					</tr>
 				</tbody>
-			</table></center>
+			</table>
 		</form>
 	</BODY>
 </html>

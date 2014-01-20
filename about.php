@@ -70,7 +70,7 @@ if ($CONFIG_classlist_show) {
 		$class[$line[0]] = $line[1];
 	}
 
-	for ($i = 0; $i < 27; $i++) {
+	for ($i = 0; $i < 26; $i++) {
 		if (!isset($class[$i]))
 			$class[$i] = 0;
 	}
@@ -147,20 +147,19 @@ echo '
 	if ($CONFIG_classlist_show) {
 	echo '<tr><td align="right">'.$lang['ABOUT_TOTAL_CLASS'].'</td></tr>';
 	
-		for ($i = 0; $i < 26; $i++) {
-			$class[$i] = moneyformat($class[$i]);
-			if ($i != 13 && $i != 21 && $i != 22 && $i != 26 && !empty($class[$i]) && !empty($jobs[$i]))
-				echo '<tr><td align="right">'.$jobs[$i].'</td><td>&nbsp;</td><td align="right">'.$class[$i].'</td></tr>';
-		}
-		for ($i = 4001; $i < 4050; $i++) {
-			$class[$i] = moneyformat($class[$i]);
-			if ($i != 4014 && $i != 4022 && $i != 4036 && $i != 4044 && $i != 4048 && !empty($class[$i]) && !empty($jobs[$i]))
-				echo '<tr><td align="right">'.$jobs[$i].'</td><td>&nbsp;</td><td align="right">'.$class[$i].'</td></tr>';
-		}
-		for ($i = 4054; $i < 4213; $i++) {
-			$class[$i] = moneyformat($class[$i]);
-			if ($i != 4080 && $i != 4081 && $i != 4082 && $i != 4083 && $i != 4084 && $i != 4085 && $i != 4086  && $i != 4087 && $i != 4109 && $i != 4110 && $i != 4111 && $i != 4112 && !empty($class[$i]) && !empty($jobs[$i]))
-				echo '<tr><td align="right">'.$jobs[$i].'</td><td>&nbsp;</td><td align="right">'.$class[$i].'</td></tr>';
+		foreach ($class as $i => $c) {
+			if ($i == 13 || $i == 21 || $i == 22 || $i == 26 || $i == 4014 || $i == 4022 || $i == 4036 || $i == 4044 || $i == 4048 || ($i >= 4080 && $i <= 4087) || ($i >= 4109 && $i <= 4112))
+				continue;
+			if (empty($jobs[$i]))
+				continue;
+			$c = moneyformat($c);
+			if ($c == 0) {
+				if ($CONFIG_classlist_hide_zero)
+					continue;
+				echo '<tr><td class="disabled" align="right">'.$jobs[$i].'</td><td>&nbsp;</td><td class="disabled" align="right">'.$c.'</td></tr>';
+			}
+			else
+				echo '<tr><td align="right">'.$jobs[$i].'</td><td>&nbsp;</td><td align="right">'.$c.'</td></tr>';
 		}
 	}
 echo '</table>';

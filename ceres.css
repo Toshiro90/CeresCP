@@ -140,6 +140,9 @@ th {
 .highlight {
 	font-weight: bold;
 }
+.disabled {
+	color: #AAAAAA;
+}
 
 /** GENERAL */
 .head {
