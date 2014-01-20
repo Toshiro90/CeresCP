@@ -305,11 +305,13 @@ function check_ban() {
 }
 
 function forger($hint, $lint) {
-	$result = 0;
-	$result = $lint * 65536;
-	if ($hint > 0)
-		return ($result + $lint);
-	return ($result + 65536 + $hint);
+	if ($hint<0)
+		$hint = 0xFFFF+1+$hint;
+	$result = ($hint)|($lint << 0x10);
+	return $result;
+}
+function petegg($hint) {
+	return forger($hint, 0);
 }
 
 function execute_query($query, $source = 'none.php', $database = 0, $save_report = 1) {
@@ -427,6 +429,98 @@ function erro_de_login($i = 0) {
 	if (!$i)
 		echo 'LINK_ajax(\'motd.php\',\'main_div\');';
 	echo '</script>';
+}
+
+function print_items($result) {
+	global $items;
+	echo '
+		<table class="maintable" style="width: 750px">
+		<tr>
+			<th style="width: 25px;"></th>
+			<th align="center">Item</th>
+			<th align="center" style="width: 50px;">Amount</th>
+			<th align="center" style="width: 50px;">Refine</th>
+			<th align="center" style="width: 100px;">Card0</th>
+			<th align="center" style="width: 100px;">Card1</th>
+			<th align="center" style="width: 100px;">Card2</th>
+			<th align="center" style="width: 100px;">Card3</th>
+		</tr>
+	';
+	while ($item = $result->fetch_row()) {
+		echo '
+			<tr>
+				<td align="center">'.($item[7]?'Eq.':'').'</td>
+				<td align="center">
+		';
+		if (isset($items[$item[0]]))
+			echo $items[$item[0]];
+		else
+			echo $item[0];
+		echo '
+				</td>
+				<td align="center">'.$item[1].'</td>
+				<td align="center">'.$item[6].'</td>
+		';
+
+		if ($item[2] == 254) {
+			$query2 = sprintf(GET_CHARNAME, forger($item[4], $item[5]));
+			$result2 = execute_query($query2, 'admincharinfo.php');
+			$result2->fetch_row();
+
+			if ($result2->count())
+				$chname = htmlformat($result2->row(0));
+			else
+				$chname = '<i class="disabled">Unknown</i>';
+
+			echo '
+				<td align="center">signed</td>
+				<td align="center">'.$chname.' ('.forger($item[4], $item[5]).')</td>
+				<td align="center"></td>
+				<td align="center"></td>';
+		}
+		else if ($item[2] == 255) {
+			$query2 = sprintf(GET_CHARNAME, forger($item[4], $item[5]));
+			$result2 = execute_query($query2, 'admincharinfo.php');
+			$result2->fetch_row();
+
+			if ($result2->count())
+				$chname = htmlformat($result2->row(0));
+			else
+				$chname = '<i class="disabled">Unknown</i>';
+
+			echo '
+				<td align="center">forged</td>
+				<td align="center">'.$chname.' ('.forger($item[4], $item[5]).')</td>
+				<td align="center"></td>
+				<td align="center"></td>';
+		}
+		else if ($item[2] == -256) {
+			$query2 = sprintf(GET_PETNAME, petegg($item[3]));
+			$result2 = execute_query($query2, 'admincharinfo.php');
+			$result2->fetch_row();
+			
+			if ($result2->count())
+				$petname = htmlformat($result2->row(0));
+			else
+				$petname = '<i class="disabled">Unknown</i>';
+			echo '
+				<td align="center">Pet</td>
+				<td align="center">'.$petname.' ('.petegg($item[3]).')</td>
+				<td align="center"></td>
+				<td align="center"></td>
+				<td align="center"></td>';
+		}
+		else {
+			echo '
+			<td align="center">'.((isset($items[$item[2]]))?$items[$item[2]]:$item[2]).'</td>
+			<td align="center">'.((isset($items[$item[3]]))?$items[$item[3]]:$item[3]).'</td>
+			<td align="center">'.((isset($items[$item[4]]))?$items[$item[4]]:$item[4]).'</td>
+			<td align="center">'.((isset($items[$item[5]]))?$items[$item[5]]:$item[5]).'</td>';
+		}
+		echo '
+		</tr>';
+	}
+	echo '</table>';
 }
 
 ?>

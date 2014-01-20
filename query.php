@@ -189,4 +189,8 @@ AND (`char`.`class` = '%d' OR `char`.`class` = '%d') AND `login`.`state` != '5' 
 //links.php - Links
 DEFINE('GET_LINKS', "SELECT `name`, `url`, `desc`, `size` FROM `cp_links`");
 
+
+DEFINE('GET_CHARNAME', "SELECT `name` FROM `char` WHERE `char_id`='%d' LIMIT 1");
+DEFINE('GET_PETNAME', "SELECT `name` FROM `pet` WHERE `pet_id`='%d' LIMIT 1");
+
 ?>
