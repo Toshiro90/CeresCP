@@ -83,9 +83,9 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_set_slot) {
 				<td align="center">
 				<form id="slot'.$j.'" onsubmit="return GET_ajax(\'slot.php\',\'main_div\',\'slot'.$j.'\')">
 					<select name="newslot">';
-			for ($i = 0; $i < 9; $i++) {
+			for ($i = 0; $i < $CONFIG_max_chars; $i++) {
 				if ($slot == $i)
-					echo '<option value="'.$i.'" selected>'.$i;
+					echo '<option value="'.$i.'" selected="selected">'.$i;
 				else
 					echo '<option value="'.$i.'">'.$i;
 			}

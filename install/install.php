@@ -213,6 +213,7 @@ if (isset($POST_install)) {
 	$buffer .= "\$CONFIG['money_transfer']	=	'".$POST_feat_mt."';			// money transfer enable = 1, disable = 0\n";
 	$buffer .= "\$CONFIG['money_cost']		=	'".$POST_feat_mc."';			// money transfer cost (100 = 1%), disable cost = 0\n";
 	$buffer .= "\$CONFIG['set_slot']		=	'".$POST_feat_cs."';			// change char slot enable = 1, disable = 0\n";
+	$buffer .= "\$CONFIG['max_chars']		=	'".$POST_feat_cc."';			// Max amount of chars (set this to what's set for MAX_CHARS in your emulators src/common/mmo.h)\n";
 	$buffer .= "\$CONFIG['reset_look']		=	'".$POST_feat_rl."';			// reset char equips and colors with error enable = 1, disable = 0\n";
 	$buffer .= "\$CONFIG['marry_enable']		=	'".$POST_feat_divorce."';			// enable marriage view and divorce\n";
 	$buffer .= "\$CONFIG['prison_map']		=	'".$POST_feat_pm."';		// Name of the map that is used as your jail (mapname.gat)\n";
@@ -540,6 +541,10 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									<tr>
 										<td align="left">Change Slot</td>
 										<td align="left"><select name="feat_cs"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
+									</tr>
+									<tr>
+										<td align="left">Max Chars (MAX_CHARS in src/common/mmo.h)</td>
+										<td align="left"><input type="text" name="feat_cc" maxlength="3" size="30" value="9"></td>
 									</tr>
 									<tr>
 										<td align="left">Reset Look</td>
