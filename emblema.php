@@ -116,7 +116,7 @@ function imagecreatefrombmpstring($im) { // Credits to [Lebref] and [Magical Tux
 
 if (isset($_SESSION[$CONFIG_name.'emblems'])) {
 	$emblems = $_SESSION[$CONFIG_name.'emblems'];
-	if (isset($_GET['data']) && $_GET['data'] > 0 && $emblems[$_GET['data']] != "") {
+	if (isset($_GET['data']) && $_GET['data'] > 0 && isset($emblems[$_GET['data']]) && $emblems[$_GET['data']] != "") {
 		$ebm = @gzuncompress(pack('H*', $emblems[$_GET['data']]));
 		if (function_exists("gd_info")) {
 			$im = imagecreatefrombmpstring($ebm);

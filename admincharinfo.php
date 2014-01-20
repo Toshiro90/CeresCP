@@ -61,6 +61,7 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 	if ($result = $answere->fetch_row()) {
 		$acc_id = $result[1];
 		$class = $result[4];
+		$gname = htmlformat($result[54]);
 		echo '
 			<tr>
 				<th align="right">Name:</th><td align="left">'.htmlformat($result[3]).'</td>
@@ -70,11 +71,20 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 			echo $jobs[$result[4]];
 		else
 			echo 'unknown';
+		echo '<th align="right">'.$lang['LADDER_GUILD'].':&nbsp;</th><td align="left">';
+
+		$_SESSION[$CONFIG_name.'emblems'][$result[26]] = $result[55];
+
+		if ($result[26] > 0)
+			echo '<img src="emblema.php?data='.$result[26].'" alt="'.$gname.'" style="vertical-align: middle;" /> '.$gname.'';
+
 		echo '
+				</td>
 			</tr>
 			<tr>
 				<th align="right">Level:</th><td align="left">'.$result[5].'/'.$result[6].'</td>
 				<th align="right">Zeny:</th><td align="left">'.$result[9].'</td>
+				<th></th><td></td>
 			<tr>
 				<th align="right">STR:</th><td align="left">'.$result[10].'</td>
 				<th align="right">AGI:</th><td align="left">'.$result[11].'</td>
