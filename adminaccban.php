@@ -53,8 +53,7 @@ if (isset($GET_frm_name) && isset($GET_id)) {
 			$ban = 0;
 
 		if ($_SESSION[$CONFIG_name.'level'] <= $line[4] || ($line[4] >= $_SESSION[$CONFIG_name.'level'] && $_SESSION[$CONFIG_name.'level'] != 99)) {
-			$ban = $line[6];
-			$GET_block = $line[7];
+			alert('Unable to update account.');
 		}
 
 		$query = sprintf(ACCBAN_UPDATE, $ban, $GET_block, trim($GET_id));
@@ -162,7 +161,7 @@ if (isset($GET_id)) {
 		
 //		$today = getdate();
 		for ($i = $today['year']; $i < ($today['year'] + 5); $i++)
-			echo '<option value="$i">'.$i;
+			echo '<option value="'.$i.'">'.$i;
 		echo '
 					</select></td>
 

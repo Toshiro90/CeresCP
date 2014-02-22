@@ -117,8 +117,10 @@ while ($line = $result->fetch_row()) {
 	if (strcmp($line[2], "S") === 0)
 		continue;
 
-	if ($line[6] > time() || $line[7] > 0)
-		$ban = '<font color="red">#</font>';
+	if ($line[7] > 0)
+		$ban = '<span style="color:#f00;">#</font>';
+	elseif ($line[6] > time())
+		$ban = '<span style="color:#fa0;">#</font>';
 	else
 		$ban = '-';
 	
