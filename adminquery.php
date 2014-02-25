@@ -90,4 +90,15 @@ DEFINE('CHARS_BROWSE', "SELECT `account_id`, `char_id`, `name`, `class`, `base_l
 FROM `char` ORDER BY `account_id` LIMIT %d, 100");
 DEFINE('CHARS_TOTAL', "SELECT COUNT(1) FROM `char` WHERE `account_id` > '0'");
 
+//logs
+DEFINE('LOGS_ATCOMMAND', "SELECT SQL_CALC_FOUND_ROWS `atcommandlog`.*, `login`.`group_id` FROM `atcommandlog` JOIN `%s`.`login` USING (`account_id`) WHERE `login`.`group_id`<=%d ORDER BY `atcommand_date` ASC LIMIT %d, %d");
+DEFINE('LOGS_BRANCH', "SELECT SQL_CALC_FOUND_ROWS `branchlog`.*, `login`.`group_id` FROM `branchlog` JOIN `%s`.`login` USING (`account_id`) ORDER BY `branch_date` ASC LIMIT %d, %d");
+DEFINE('LOGS_LOGIN', "SELECT SQL_CALC_FOUND_ROWS * FROM `loginlog` ORDER BY `time` ASC LIMIT %d, %d");
+DEFINE('LOGS_MVP', "SELECT SQL_CALC_FOUND_ROWS * FROM `mvplog` ORDER BY `mvp_date` ASC LIMIT %d, %d");
+DEFINE('LOGS_NPC', "SELECT SQL_CALC_FOUND_ROWS `npclog`.*, `login`.`group_id` FROM `npclog` LEFT JOIN `%s`.`login` USING (`account_id`) ORDER BY `npc_date` ASC LIMIT %d, %d");
+DEFINE('LOGS_ZENY', "SELECT SQL_CALC_FOUND_ROWS * FROM `zenylog` ORDER BY `time` ASC LIMIT %d, %d");
+DEFINE('LOGS_CASH', "SELECT SQL_CALC_FOUND_ROWS * FROM `cashlog` ORDER BY `time` ASC LIMIT %d, %d");
+DEFINE('LOGS_ITEMS', "SELECT SQL_CALC_FOUND_ROWS `picklog`.*, `char`.`name` as `char_name`, `login`.`account_id`, `login`.`group_id` FROM `picklog` JOIN `%s`.`char` USING (`char_id`) JOIN `%s`.`login` ON (`char`.`account_id`=`login`.`account_id`) WHERE `login`.`group_id`<=%d ORDER BY `time` ASC LIMIT %d, %d");
+DEFINE('LOGS_CHAR', "SELECT SQL_CALC_FOUND_ROWS `charlog`.*, `login`.`group_id` FROM `charlog` JOIN `login` USING (`account_id`) WHERE `login`.`group_id`<=%d ORDER BY `time` ASC LIMIT %d, %d");
+
 ?>
