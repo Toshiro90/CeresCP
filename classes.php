@@ -40,6 +40,14 @@ class ResultClass {
 		return $this->row;
 	}
 
+	function fetch_assoc() {
+		if ($this->result !== TRUE && $this->result !== FALSE)
+			$this->row = mysqli_fetch_assoc($this->result);
+		else
+			$this->row = FALSE;
+		return $this->row;
+	}
+
 	function count() {
 		if ($this->result)
 			return mysqli_num_rows($this->result);
@@ -64,22 +72,31 @@ class ResultClass {
 class QueryClass {
 	var $rag_link;
 	var $cp_link;
+	var $log_link;
 	var $result;
 
-	function QueryClass($rag_addr, $rag_username, $rag_password, $rag_db, $cp_addr, $cp_username, $cp_password, $cp_db) {
+	function QueryClass($rag_addr, $rag_username, $rag_password, $rag_db, $cp_addr, $cp_username, $cp_password, $cp_db, $log_db) {
 		global $lang;
 
 		$this->rag_link = mysqli_connect($rag_addr,$rag_username,$rag_password,$rag_db) or die($lang['DB_ERROR']);
 		$this->cp_link = mysqli_connect($cp_addr,$cp_username,$cp_password,$cp_db) or die($lang['DB_ERROR']);
+		$this->log_link = mysqli_connect($rag_addr,$rag_username,$rag_password,$log_db) or die($lang['DB_ERROR']);
 	}
 
 	function Query($query, $table = 0) {
 		global $lang;
 
-		if ($table)
-			$this->result = mysqli_query($this->cp_link, $query);
-		else
+		switch ($table) {
+		case 0:
 			$this->result = mysqli_query($this->rag_link, $query);
+			break;
+		case 1:
+			$this->result = mysqli_query($this->cp_link, $query);
+			break;
+		case 2:
+			$this->result = mysqli_query($this->log_link, $query);
+			break;
+		}
 
 		if (strpos($query,"SELECT") === 0)
 			return new ResultClass($this->result);
