@@ -41,7 +41,7 @@ if (!is_file("./language/".$load) || strpos($load, "..") !== false || inject($lo
 include($load);
 
 while (list($key, $val) = each($lang)) {  
-	$lang[$key] = htmlentities($val);
+	$lang[$key] = htmlentities($val, ENT_COMPAT | ENT_HTML401, 'ISO-8859-1');
 }
 
 ?>
