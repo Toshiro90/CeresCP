@@ -391,7 +391,7 @@ function alert($alertmsg) {
 	$trans_tbl = array_flip ($trans_tbl);
 	$alertmsg = strtr ($alertmsg, $trans_tbl);
 
-	echo 'ALERT|'.utf8_encode($alertmsg).'|ENDALERT';
+	echo 'ALERT|'.$alertmsg.'|ENDALERT';
 	fim();
 }
 
