@@ -65,7 +65,7 @@ FROM `char` WHERE `account_id` = '%d' ORDER BY `char_num`
 ");
 
 //admincharinfo
-DEFINE('CHARINFO_CHAR', "SELECT `char`.*, `guild`.`name`, `guild`.`emblem_data` FROM `char` LEFT JOIN `guild` USING (`guild_id`) WHERE `char`.`char_id` = '%d'");
+DEFINE('CHARINFO_CHAR', "SELECT `char`.*, `guild`.`name` as `guild_name`, `guild`.`emblem_data` FROM `char` LEFT JOIN `guild` USING (`guild_id`) WHERE `char`.`char_id` = '%d'");
 DEFINE('CHARINFO_INVENTORY', "SELECT `nameid`, `amount`, `card0`, `card1`, `card2`, `card3`, `refine`, `equip` FROM `inventory`
 WHERE `char_id` = '%d'
 ");
