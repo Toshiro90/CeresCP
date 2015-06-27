@@ -49,6 +49,7 @@ $submenu[] = array($lang['MENU_PLAYERLADDER'],	'ladder.php',			3);
 $submenu[] = array($lang['MENU_GUILDLADDER'],	'guild.php',			3);
 $submenu[] = array($lang['MENU_ZENYLADDER'],	'top100zeny.php',		3);
 $submenu[] = array($lang['MENU_WHOSONLINE'],	'whoisonline.php',		4);
+$submenu[] = array('Vending',					'vending.php',			$config['servermode']==0?4:-1);
 $submenu[] = array($lang['MENU_ABOUT'],			'about.php',			4);
 $submenu[] = array($lang['MENU_RESETPOS'],		'position.php',			$CONFIG_reset_enable?5:-1);
 $submenu[] = array($lang['MENU_RESETLOOK'],		'resetlook.php',		$CONFIG_reset_look?5:-1);

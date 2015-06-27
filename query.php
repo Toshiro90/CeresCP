@@ -189,6 +189,17 @@ AND (`char`.`class` = '%d' OR `char`.`class` = '%d') AND `login`.`state` != '5' 
 //links.php - Links
 DEFINE('GET_LINKS', "SELECT `name`, `url`, `desc`, `size` FROM `cp_links`");
 
+//vending.php - Vending
+DEFINE('VENDING_GET','SELECT 
+ `v`.*,
+ `vi`.*,
+ `ci`.*,
+ `c`.`name` as `char_name`
+FROM `vendings` as `v`
+LEFT JOIN `vending_items` as `vi` ON (`v`.`id`=`vending_id`)
+LEFT JOIN `cart_inventory` as `ci` ON (`vi`.`cartinventory_id`=`ci`.`id`)
+LEFT JOIN `char` as `c` ON (`v`.`char_id`=`c`.`char_id`)
+ORDER BY `name`, `vi`.`index` ASC');
 
 DEFINE('GET_CHARNAME', "SELECT `name` FROM `char` WHERE `char_id`='%d' LIMIT 1");
 DEFINE('GET_PETNAME', "SELECT `name` FROM `pet` WHERE `pet_id`='%d' LIMIT 1");
