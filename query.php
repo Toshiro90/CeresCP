@@ -201,6 +201,16 @@ LEFT JOIN `cart_inventory` as `ci` ON (`vi`.`cartinventory_id`=`ci`.`id`)
 LEFT JOIN `char` as `c` ON (`v`.`char_id`=`c`.`char_id`)
 ORDER BY `name`, `vi`.`index` ASC');
 
+//purchasing.php - Purchasing Store
+DEFINE('PURCHASING_GET','SELECT 
+ `b`.*,
+ `bi`.*,
+ `c`.`name` as `char_name`
+FROM `buyingstores` as `b`
+LEFT JOIN `buyingstore_items` as `bi` ON (`b`.`id`=`buyingstore_id`)
+LEFT JOIN `char` as `c` ON (`b`.`char_id`=`c`.`char_id`)
+ORDER BY `name`, `bi`.`index` ASC');
+
 DEFINE('GET_CHARNAME', "SELECT `name` FROM `char` WHERE `char_id`='%d' LIMIT 1");
 DEFINE('GET_PETNAME', "SELECT `name` FROM `pet` WHERE `pet_id`='%d' LIMIT 1");
 DEFINE('FOUND_ROWS', "SELECT FOUND_ROWS()");
