@@ -28,8 +28,6 @@ include_once 'config.php'; // loads config variables
 include_once 'query.php'; // imports queries
 include_once 'functions.php';
 
-caption('Vending');
-
 if ($config['servermode']!=0) {
 	redir('motd.php', 'main_div', 'This is not available on your server.');
 }
@@ -43,7 +41,9 @@ if (!$result)
 	redir('motd.php', 'main_div', 'An error occured, please try again later.');
 
 if ($result->count() < 1)
-	redir('motd.php', 'main_div', 'You don\'t have a character using vending.');
+	redir('vending.php', 'main_div', 'There is currently no character using vending.', 'Vending');
+
+caption('Vending');
 
 $num = 0;
 $previd = 0;

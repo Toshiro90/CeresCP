@@ -373,8 +373,10 @@ function server_status() {
 	return $retorno;
 }
 
-function redir($page, $div, $msg) {
-	caption('Status');
+function redir($page, $div, $msg, $title='Status') {
+	if ($title != '')
+		caption($title);
+
 	echo '
 	<table class="maintable">
 		<tr>
