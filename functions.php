@@ -496,7 +496,7 @@ function print_items($result) {
 				<td align="center"></td>
 				<td align="center"></td>';
 		}
-		else if ($item[2] == -256) {
+		else if ($item[2] == -256 || $item[2] == 256) {
 			$query2 = sprintf(GET_PETNAME, petegg($item[3]));
 			$result2 = execute_query($query2, 'admincharinfo.php');
 			$result2->fetch_row();
