@@ -25,8 +25,8 @@ an e-mail to cerescp@gmail.com
 
 session_start();
 include_once 'config.php'; // loads config variables
-include_once 'query.php'; // imports queries
-include_once 'functions.php';
+include_once 'lib/query.php'; // imports queries
+include_once 'lib/functions.php';
 
 if ($CONFIG_disable_account || check_ban())
 	redir('motd.php', 'main_div', 'Disabled');

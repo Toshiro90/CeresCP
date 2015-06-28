@@ -26,8 +26,8 @@ an e-mail to cerescp@gmail.com
 session_start();
 
 include_once 'config.php'; // loads config variables
-include_once 'query.php'; // imports queries
-include_once 'functions.php';
+include_once 'lib/query.php'; // imports queries
+include_once 'lib/functions.php';
 
 //if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 //	if ($_SESSION[$CONFIG_name.'account_id'] > 0) {

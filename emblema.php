@@ -25,7 +25,7 @@ an e-mail to cerescp@gmail.com
 
 session_start();
 include_once 'config.php'; // loads config variables
-include_once 'functions.php';
+include_once 'lib/functions.php';
 
 function imagecreatefrombmpstring($im) { // Credits to [Lebref] and [Magical Tux] found in Freya forum
 	$header = unpack("vtype/Vsize/v2reserved/Voffset", substr($im, 0, 14));

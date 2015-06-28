@@ -157,6 +157,8 @@ if (isset($POST_install)) {
 	$buffer .= "This file was generated using install.php\n";
 	$buffer .= "*/\n";
 	$buffer .= "\n";
+	$buffer .= "include_once 'lib/commonconfig.php';\n";
+	$buffer .= "\n";
 	$buffer .= "//sql connections\n";
 	$buffer .= "\$CONFIG['rag_serv']		=	'".$POST_sql_rag_host."';	// SQL Ragnarok Host\n";
 	$buffer .= "\$CONFIG['rag_user']		=	'".$POST_sql_rag_user."';		// SQL Ragnarok User\n";
@@ -217,7 +219,7 @@ if (isset($POST_install)) {
 	$buffer .= "\$CONFIG['reset_look']		=	'".$POST_feat_rl."';			// reset char equips and colors with error enable = 1, disable = 0\n";
 	$buffer .= "\$CONFIG['marry_enable']		=	'".$POST_feat_divorce."';			// enable marriage view and divorce\n";
 	$buffer .= "\$CONFIG['prison_map']		=	'".$POST_feat_pm."';		// Name of the map that is used as your jail (mapname.gat)\n";
-	$buffer .= "\$config['servermode'] = '".$POST_feat_server."'; // For use the right query with rA or eA \n";
+	$buffer .= "\$CONFIG['servermode'] = '".$POST_feat_server."'; // For use the right query with rA or eA \n";
 	$buffer .= "\n";
 	$buffer .= "//About Information\n";
 	$buffer .= "\$CONFIG['classlist_show']	=	'".$POST_feat_acl."';			// Show the class list on about.php? (disable = 0, enable = 1)\n";

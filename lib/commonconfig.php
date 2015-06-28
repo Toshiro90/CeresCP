@@ -2,8 +2,8 @@
 /*
 Ceres Control Panel
 
-This is a control pannel program for Athena and Freya
-Copyright (C) 2005 by Beowulf and Nightroad
+This is a control panel program for eAthena and other Athena SQL based servers
+Copyright (C) 2005 by Beowulf and Dekamaster
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -23,27 +23,8 @@ To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
 
-session_start();
-include_once 'config.php'; // loads config variables
-include_once 'lib/functions.php';
+DEFINE('SERVER_RATHENA', 0); // rAthena
+DEFINE('SERVER_EATHENA', 1); // eAthena
+DEFINE('SERVER_HERCULES', 2); // Hercules
 
-if (!$CONFIG_disable_account) {
-?>
-<span title="Create a new account" class="link" onClick="return LINK_ajax('account.php','main_div');">
-<b><?php echo $lang['NEW_ACCOUNT'] ?></b>
-</span>
-<?php
-}
-?>
-<br>
-<?php
-if ($CONFIG_password_recover) {
-?>
-<span title="Send the account info to your e-mail" class="link" onClick="return LINK_ajax('recover.php','main_div');">
-<b><?php echo $lang['RECOVER_PASSWORD'] ?></b>
-</span>
-<?php
-}
-
-fim();
 ?>

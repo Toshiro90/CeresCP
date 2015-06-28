@@ -25,7 +25,7 @@ an e-mail to cerescp@gmail.com
 
 session_start();
 include_once 'config.php'; // loads config variables
-include_once 'functions.php';
+include_once 'lib/functions.php';
 
 $langdir = opendir ('language/');
 while ($file = readdir($langdir)) {

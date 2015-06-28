@@ -25,9 +25,9 @@ an e-mail to cerescp@gmail.com
 
 session_start();
 include_once 'config.php'; // loads config variables
-include_once 'query.php'; // imports queries
-include_once 'functions.php';
-include_once 'mail.php';
+include_once 'lib/query.php'; // imports queries
+include_once 'lib/functions.php';
+include_once 'lib/mail.php';
 
 if (!$CONFIG_password_recover || ($CONFIG_password_recover && $CONFIG_md5_pass))
 	redir('motd.php', 'main_div', "Disabled");

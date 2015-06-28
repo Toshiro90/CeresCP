@@ -31,8 +31,8 @@ is_file("./config.php")
 
 session_start();
 include_once 'config.php'; // loads config variables
-include_once 'query.php'; // imports queries
-include_once 'functions.php';
+include_once 'lib/query.php'; // imports queries
+include_once 'lib/functions.php';
 
 $_SESSION[$CONFIG_name.'castles'] = readcastles();
 $_SESSION[$CONFIG_name.'jobs'] = readjobs();

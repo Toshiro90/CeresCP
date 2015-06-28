@@ -25,9 +25,9 @@ an e-mail to cerescp@gmail.com
 
 session_start();
 include_once 'config.php'; // loads config variables
-include_once 'query.php'; // imports queries
-include_once 'adminquery.php';
-include_once 'functions.php';
+include_once 'lib/query.php'; // imports queries
+include_once 'lib/adminquery.php';
+include_once 'lib/functions.php';
 
 if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] < $CONFIG['cp_admin'])
 	die ('Not Authorized');
