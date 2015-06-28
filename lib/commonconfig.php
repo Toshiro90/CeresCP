@@ -23,8 +23,24 @@ To contact any of the authors about special permissions send
 an e-mail to cerescp@gmail.com
 */
 
-DEFINE('SERVER_RATHENA', 0); // rAthena
+DEFINE('SERVER_UNKNOWN', 0); // Unknown
 DEFINE('SERVER_EATHENA', 1); // eAthena
-DEFINE('SERVER_HERCULES', 2); // Hercules
+DEFINE('SERVER_RATHENA', 2); // rAthena
+DEFINE('SERVER_HERCULES', 3); // Hercules
+
+function servertype_by_value($s) {
+	switch ((int)$s) {
+		default:
+		case SERVER_UNKNOWN:
+			return 'SERVER_UNKNOWN';
+		case SERVER_EATHENA:
+			return 'SERVER_EATHENA';
+		case SERVER_RATHENA:
+			return 'SERVER_RATHENA';
+		case SERVER_HERCULES:
+			return 'SERVER_HERCULES';
+	}
+}
+
 
 ?>

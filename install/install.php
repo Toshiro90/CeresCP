@@ -33,72 +33,84 @@ To contact any of the authors about special permissions send
 a mail to cerescp@gmail.com
 */
 
+include_once('../lib/commonconfig.php');
+
 extension_loaded('mysqli')
-	or die ("Mysqli extension not loaded. Please verify your PHP configuration.");
+	or die ('Mysqli extension not loaded. Please verify your PHP configuration.');
 
-if (is_file("../config.php"))
-	die("Already installed. Please remove this directory or rename the install folder.");
+if (is_file('../config.php'))
+	die('Already installed. Please remove this directory or rename the install folder.');
 
-if (is_file("./config.php"))
-	die("Installation Complete. Move config.php to your Control Panel root and delete or rename the install folder.");
+if (is_file('./config.php'))
+	die('Installation Complete. Move config.php to your Control Panel root and delete or rename the install folder.');
 
-extract($_POST, EXTR_PREFIX_ALL, "POST");
+extract($_POST, EXTR_PREFIX_ALL, 'POST');
+
+function config_bool($s) {
+	return $s ? 'true' : 'false';
+}
+function config_int($s) {
+	return (int)$s;
+}
+function config_string($s) {
+	return '\''.$s.'\'';
+}
 
 if (isset($POST_install)) {
 
 	$rag_db = mysqli_connect($POST_sql_rag_host,$POST_sql_rag_user,$POST_sql_rag_pass)
-		or die("Can't connect to Ragnarok MySQL server. Press back and check your MySQL host, user, password.");
+		or die('Can\'t connect to Ragnarok MySQL server. Press back and check your MySQL host, user, password.');
 
 	mysqli_select_db($rag_db, $POST_sql_rag_db)
-		or die("Can't open ".$POST_sql_rag_db." database. Remember to create it before the Control Panel. Press back and check your configurations.");
+		or die('Can\'t open '.$POST_sql_rag_db.' database. Remember to create it before the Control Panel. Press back and check your configurations.');
 
 	$cp_db = mysqli_connect($POST_sql_cp_host,$POST_sql_cp_user,$POST_sql_cp_pass)
-		or die("Can't connect to Ragnarok MySQL server. Press back and check your MySQL host, user, password.");
+		or die('Can\'t connect to Ragnarok MySQL server. Press back and check your MySQL host, user, password.');
 
 	if (!mysqli_select_db($cp_db, $POST_sql_cp_db)) {
 		$query = "CREATE DATABASE ".$POST_sql_cp_db;
 		$result = mysqli_query($cp_db, $query)
-			or die("Can't open or create ".$POST_sql_cp_db." database, press back and check your configurations.");
+			or die('Can\'t open or create '.$POST_sql_cp_db.' database, press back and check your configurations.');
 		mysqli_select_db($cp_db, $POST_sql_cp_db);
 	}
 
 	if ($POST_cp_adm_lvl < $POST_cp_gm_lvl)
-		die ("Admin level can't be lower than GM level. Press back and fix it.");
+		die ('Admin level Can\'t be lower than GM level. Press back and fix it.');
 
 	if ($POST_feat_pr && $POST_sql_md5)
-		die ("Password Recovery will not work if MD5 is enabled. Press back and fix it.");
+		die ('Password Recovery will not work if MD5 is enabled. Press back and fix it.');
 
-	$woe = "";
+	$woe = '';
 	if ($POST_woe_sun_start_h > 0 || $POST_woe_sun_end_h > 0) {
-		$woe .= sprintf("sun(%02d%02d, %02d%02d); ", $POST_woe_sun_start_h, $POST_woe_sun_start_m, $POST_woe_sun_end_h, $POST_woe_sun_end_m);
+		$woe .= sprintf('sun(%02d%02d, %02d%02d); ', $POST_woe_sun_start_h, $POST_woe_sun_start_m, $POST_woe_sun_end_h, $POST_woe_sun_end_m);
 	}
 	if ($POST_woe_mon_start_h > 0 || $POST_woe_mon_end_h > 0) {
-		$woe .= sprintf("mon(%02d%02d, %02d%02d); ", $POST_woe_mon_start_h, $POST_woe_mon_start_m, $POST_woe_mon_end_h, $POST_woe_mon_end_m);
+		$woe .= sprintf('mon(%02d%02d, %02d%02d); ', $POST_woe_mon_start_h, $POST_woe_mon_start_m, $POST_woe_mon_end_h, $POST_woe_mon_end_m);
 	}
 	if ($POST_woe_tue_start_h > 0 || $POST_woe_tue_end_h > 0) {
-		$woe .= sprintf("tue(%02d%02d, %02d%02d); ", $POST_woe_tue_start_h, $POST_woe_tue_start_m, $POST_woe_tue_end_h, $POST_woe_tue_end_m);
+		$woe .= sprintf('tue(%02d%02d, %02d%02d); ', $POST_woe_tue_start_h, $POST_woe_tue_start_m, $POST_woe_tue_end_h, $POST_woe_tue_end_m);
 	}
 	if ($POST_woe_wed_start_h > 0 || $POST_woe_wed_end_h > 0) {
-		$woe .= sprintf("wed(%02d%02d, %02d%02d); ", $POST_woe_wed_start_h, $POST_woe_wed_start_m, $POST_woe_wed_end_h, $POST_woe_wed_end_m);
+		$woe .= sprintf('wed(%02d%02d, %02d%02d); ', $POST_woe_wed_start_h, $POST_woe_wed_start_m, $POST_woe_wed_end_h, $POST_woe_wed_end_m);
 	}
 	if ($POST_woe_thu_start_h > 0 || $POST_woe_thu_end_h > 0) {
-		$woe .= sprintf("thu(%02d%02d, %02d%02d); ", $POST_woe_thu_start_h, $POST_woe_thu_start_m, $POST_woe_thu_end_h, $POST_woe_thu_end_m);
+		$woe .= sprintf('thu(%02d%02d, %02d%02d); ', $POST_woe_thu_start_h, $POST_woe_thu_start_m, $POST_woe_thu_end_h, $POST_woe_thu_end_m);
 	}
 	if ($POST_woe_fri_start_h > 0 || $POST_woe_fri_end_h > 0) {
-		$woe .= sprintf("fri(%02d%02d, %02d%02d); ", $POST_woe_fri_start_h, $POST_woe_fri_start_m, $POST_woe_fri_end_h, $POST_woe_fri_end_m);
+		$woe .= sprintf('fri(%02d%02d, %02d%02d); ', $POST_woe_fri_start_h, $POST_woe_fri_start_m, $POST_woe_fri_end_h, $POST_woe_fri_end_m);
 	}
 	if ($POST_woe_sat_start_h > 0 || $POST_woe_sat_end_h > 0) {
-		$woe .= sprintf("sat(%02d%02d, %02d%02d); ", $POST_woe_sat_start_h, $POST_woe_sat_start_m, $POST_woe_sat_end_h, $POST_woe_sat_end_m);
+		$woe .= sprintf('sat(%02d%02d, %02d%02d); ', $POST_woe_sat_start_h, $POST_woe_sat_start_m, $POST_woe_sat_end_h, $POST_woe_sat_end_m);
 	}
 
 	//create the tables
 	$query = "DROP TABLE IF EXISTS `cp_bruteforce`;";
 	$result = mysqli_query($cp_db, $query)
-		or die("MySQL: This user doesn't have the DROP privilege on the ".$POST_sql_cp_db." database.");
+		or die('MySQL: This user doesn\'t have the DROP privilege on the '.$POST_sql_cp_db.' database.');
 
 	$query = "CREATE TABLE `cp_bruteforce` (`action_id` int(11) NOT NULL auto_increment, `user` varchar(24) NOT NULL default '', `IP` varchar(20) NOT NULL default '', `date` int(11) NOT NULL default '0', `ban` int(11) NOT NULL default '0', PRIMARY KEY  (`action_id`), KEY `user` (`user`), KEY `IP` (`IP`)) ENGINE=MyISAM AUTO_INCREMENT=1 ;";
 	$result = mysqli_query($cp_db, $query)
-		or die("MySQL: This user doesn't have the CREATE privilege on the ".$POST_sql_cp_db." database.");
+		or die('MySQL: This user doesn\'t have the CREATE privilege on the '.$POST_sql_cp_db.' database.');
 
 	$query = "DROP TABLE IF EXISTS `cp_links`;";
 	$result = mysqli_query($cp_db, $query);
@@ -121,135 +133,135 @@ if (isset($POST_install)) {
 	if ($POST_woe_agit) {
 		$query = "DROP TABLE IF EXISTS `ragsrvinfo`;";
 		$result = mysqli_query($rag_db, $query)
-			or die("MySQL: This user doesn't have the DROP privilege on the ".$POST_sql_rag_db." database.");
+			or die('MySQL: This user doesn\'t have the DROP privilege on the '.$POST_sql_rag_db.' database.');
 
 		$query = "CREATE TABLE IF NOT EXISTS `ragsrvinfo` (`index` int(11) NOT NULL default '0', `name` varchar(255) NOT NULL default '', `exp` int(11) unsigned NOT NULL default '0', `jexp` int(11) unsigned NOT NULL default '0', `drop` int(11) unsigned NOT NULL default '0', `agit_status` tinyint(1) unsigned NOT NULL default '0', `motd` varchar(255) NOT NULL default '', KEY `name` (`name`)) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
 		$result = mysqli_query($rag_db, $query)
-			or die("MySQL: This user doesn't have the CREATE privilege on the ".$POST_sql_rag_db." database.");
+			or die('MySQL: This user doesn\'t have the CREATE privilege on the '.$POST_sql_rag_db.' database.');
 	}
 
 
 	//write the config.php file
-	$buffer = "<?php\n";
-	$buffer .= "/*\n";
-	$buffer .= "Ceres Control Panel\n";
-	$buffer .= "\n";
-	$buffer .= "This is a control pannel program for Athena and Freya\n";
-	$buffer .= "Copyright (C) 2005 by Beowulf and Nightroad\n";
-	$buffer .= "\n";
-	$buffer .= "This program is free software; you can redistribute it and/or\n";
-	$buffer .= "modify it under the terms of the GNU General Public License\n";
-	$buffer .= "as published by the Free Software Foundation; either version 2\n";
-	$buffer .= "of the License, or (at your option) any later version.\n";
-	$buffer .= "\n";
-	$buffer .= "This program is distributed in the hope that it will be useful,\n";
-	$buffer .= "but WITHOUT ANY WARRANTY; without even the implied warranty of\n";
-	$buffer .= "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n";
-	$buffer .= "GNU General Public License for more details.\n";
-	$buffer .= "\n";
-	$buffer .= "You should have received a copy of the GNU General Public License\n";
-	$buffer .= "along with this program; if not, write to the Free Software\n";
-	$buffer .= "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n";
-	$buffer .= "\n";
-	$buffer .= "To contact any of the authors about special permissions send\n";
-	$buffer .= "a mail to cerescp@gmail.com\n";
-	$buffer .= "\n";
-	$buffer .= "This file was generated using install.php\n";
-	$buffer .= "*/\n";
-	$buffer .= "\n";
-	$buffer .= "include_once 'lib/commonconfig.php';\n";
-	$buffer .= "\n";
-	$buffer .= "//sql connections\n";
-	$buffer .= "\$CONFIG['rag_serv']		=	'".$POST_sql_rag_host."';	// SQL Ragnarok Host\n";
-	$buffer .= "\$CONFIG['rag_user']		=	'".$POST_sql_rag_user."';		// SQL Ragnarok User\n";
-	$buffer .= "\$CONFIG['rag_pass']		=	'".$POST_sql_rag_pass."';		// SQL Ragnarok Password\n";
-	$buffer .= "\$CONFIG['rag_db']			=	'".$POST_sql_rag_db."';		// SQL Ragnarok Database name\n";
-	$buffer .= "\$CONFIG['log_db']			=	'".$POST_sql_log_db."';		// SQL Ragnarok Log Database name\n";
-	$buffer .= "\n";
-	$buffer .= "\$CONFIG['cp_serv']		=	'".$POST_sql_cp_host."';	// SQL CP Host\n";
-	$buffer .= "\$CONFIG['cp_user']		=	'".$POST_sql_cp_user."';		// SQL CP User\n";
-	$buffer .= "\$CONFIG['cp_pass']		=	'".$POST_sql_cp_pass."';		// SQL CP Password\n";
-	$buffer .= "\$CONFIG['cp_db']			=	'".$POST_sql_cp_db."';			// SQL CP Database name\n";
-	$buffer .= "\n";
-	$buffer .= "\$CONFIG['md5_pass']		=	'".$POST_sql_md5."';			// Use MD5 password (enable = 1, disable = 0)\n";
-	$buffer .= "\$CONFIG['safe_pass']		=	'".$POST_sql_safe_pass."';			// Force the use of a safer password with size 6 and at least 2 letter and 2 numbers (enable = 1, disable = 0)\n";
-	$buffer .= "\n";
-	$buffer .= "//Admin Area\n";
-	$buffer .= "\$CONFIG['cp_admin']		=	'".$POST_cp_adm_lvl."';			// CP admin functions\n";
-	$buffer .= "\$CONFIG['gm_level']		=	'".$POST_cp_gm_lvl."';			// CP GM funtions\n";
-	$buffer .= "\$CONFIG['gm_hide']		=	'".$POST_cp_hide_lvl."';			// GMs this level and above will be hidden from whoisonline.php\n";
-	$buffer .= "\n";
-	$buffer .= "//WOE\n";
-	$buffer .= "// sun = sunday, mon = monday, tue = tuesday, wed = wednesday, thu = thursday, fri = friday, sun = sunday\n";
-	$buffer .= "// place week_day(start_time, end_time) and a ';' between the times the freya default woe times is set as an example\n";
-	$buffer .= "// there is no limit you can place as many as you want, no spaces are needed, but using it you can understand.\n";
-	$buffer .= "\$CONFIG['woe_time']		=	'".$woe."';\n";
-	$buffer .= "\$CONFIG['agit_check']		=	'".$POST_woe_agit."';			// This WILL NOT WORK unless you installed the npc script AND you updated your ragsrvinfo table, read the installation notes for more info.\n";
-	$buffer .= "\n";
-	$buffer .= "//server name, rates\n";
-	$buffer .= "\$CONFIG['name']			=	'".$POST_server_name."';	// name of the server\n";
-	$buffer .= "\$CONFIG['rate']			=	'".$POST_server_rate."';		// rates of the server\n";
-	$buffer .= "date_default_timezone_set('".$POST_timezone."');		// game server Timezone (useful if your webserver's timezone is different than game server).\n";
-	$buffer .= "\$CONFIG['dynamic_info']		=	'".$POST_server_di."';			// Use info (rates) from the server itself?\n";
-	$buffer .= "\$CONFIG['dynamic_name']		=	'".$POST_server_name."';	// The name of the server in ragsrvinfo's server name column (Used for dynamic info)\n";
-	$buffer .= "\$CONFIG['show_rates']		=	'".$POST_server_dr."';			// Show rates below server status?\n";
-	$buffer .= "\n";
-	$buffer .= "//map,char,login servers settings\n";
-	$buffer .= "\$CONFIG['accip']			=	'".$POST_server_lip."';	// Account/Login Server IP\n";
-	$buffer .= "\$CONFIG['accport']		=	'".$POST_server_lport."';		// Account/Login Server Port\n";
-	$buffer .= "\$CONFIG['charip']			=	'".$POST_server_cip."';	// Char Server IP\n";
-	$buffer .= "\$CONFIG['charport']		=	'".$POST_server_cport."';		// Char Server Port\n";
-	$buffer .= "\$CONFIG['mapip']			=	'".$POST_server_mip."';	// Zone/Map Server IP\n";
-	$buffer .= "\$CONFIG['mapport']		=	'".$POST_server_mport."';		// Zone/Map Server Port\n";
-	$buffer .= "\n";
-	$buffer .= "//default language\n";
-	$buffer .= "\$CONFIG['language']		=	'".$POST_cp_language."';		// default language (remember to check if the translation exist before set)\n";
-	$buffer .= "\n";
-	$buffer .= "//cp features\n";
-	$buffer .= "\$CONFIG['disable_account']	=	'".$POST_feat_acc."';			// disable the account creation disable = 1, enable = 0\n";
-	$buffer .= "\$CONFIG['auth_image']		=	'".$POST_feat_vc."';			// enable the verification code image, to check if it's a real person using the cp, instead of a bot (brute-force atack) - Recommended, but requires gd library (enable = 1 disable = 0)\n";
-	$buffer .= "\$CONFIG['max_accounts']		=	'".$POST_feat_maa."';			// Max accounts allowed to be in the DB (0 = disabled)\n";
-	$buffer .= "\$CONFIG['password_recover']	=	'".$POST_feat_pr."';			// password recover enable = 1, disable = 0\n";
-	$buffer .= "\$CONFIG['reset_enable']		=	'".$POST_feat_rp."';			// reset position enable = 1, disable = 0\n";
-	$buffer .= "\$CONFIG['reset_cost']		=	'".$POST_feat_rc."';		// reset position cost, disable cost = 0\n";
-	$buffer .= "\$CONFIG['money_transfer']	=	'".$POST_feat_mt."';			// money transfer enable = 1, disable = 0\n";
-	$buffer .= "\$CONFIG['money_cost']		=	'".$POST_feat_mc."';			// money transfer cost (100 = 1%), disable cost = 0\n";
-	$buffer .= "\$CONFIG['set_slot']		=	'".$POST_feat_cs."';			// change char slot enable = 1, disable = 0\n";
-	$buffer .= "\$CONFIG['max_chars']		=	'".$POST_feat_cc."';			// Max amount of chars (set this to what's set for MAX_CHARS in your emulators src/common/mmo.h)\n";
-	$buffer .= "\$CONFIG['reset_look']		=	'".$POST_feat_rl."';			// reset char equips and colors with error enable = 1, disable = 0\n";
-	$buffer .= "\$CONFIG['marry_enable']		=	'".$POST_feat_divorce."';			// enable marriage view and divorce\n";
-	$buffer .= "\$CONFIG['prison_map']		=	'".$POST_feat_pm."';		// Name of the map that is used as your jail (mapname.gat)\n";
-	$buffer .= "\$CONFIG['servermode'] = '".$POST_feat_server."'; // For use the right query with rA or eA \n";
-	$buffer .= "\n";
-	$buffer .= "//About Information\n";
-	$buffer .= "\$CONFIG['classlist_show']	=	'".$POST_feat_acl."';			// Show the class list on about.php? (disable = 0, enable = 1)\n";
-	$buffer .= "\$CONFIG['classlist_hide_zero']	=	'".$POST_feat_aclz."';			// Hide class entries with zero amount? (disable = 1, enable = 0)\n";
-	$buffer .= "\n";
-	$buffer .= "//Mail\n";
-	$buffer .= "\$CONFIG['smtp_server']		=	'".$POST_smtp_server."';	// the smtp server, the cp will use to send mails\n";
-	$buffer .= "\$CONFIG['smtp_port']		=	'".$POST_smtp_port."';			// the smtp server port\n";
-	$buffer .= "\$CONFIG['smtp_mail']		=	'".$POST_smtp_mail."';		// the email of the admin\n";
-	$buffer .= "\$CONFIG['smtp_username']	=	'".$POST_smtp_username."';			// the username of the smtp server\n";
-	$buffer .= "\$CONFIG['smtp_password']	=	'".$POST_smtp_password."';			// the password of the smtp server\n";
-	$buffer .= "\n";
-	$buffer .= "\n";
-	$buffer .= "\n";	
-	$buffer .= "//DO NOT MESS WITH THIS\n";
-	$buffer .= "extract(\$CONFIG, EXTR_PREFIX_ALL, \"CONFIG\");\n";
-	$buffer .= "extract(\$_GET, EXTR_PREFIX_ALL, \"GET\");\n";
-	$buffer .= "extract(\$_POST, EXTR_PREFIX_ALL, \"POST\");\n";
-	$buffer .= "extract(\$_SERVER, EXTR_PREFIX_ALL, \"SERVER\");\n";
-	$buffer .= "error_reporting(0);\n";
-	$buffer .= "?>\n";
+	$buffer = "<?php".PHP_EOL;
+	$buffer .= "/*".PHP_EOL;
+	$buffer .= "Ceres Control Panel".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "This is a control pannel program for Athena and Freya".PHP_EOL;
+	$buffer .= "Copyright (C) 2005 by Beowulf and Nightroad".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "This program is free software; you can redistribute it and/or".PHP_EOL;
+	$buffer .= "modify it under the terms of the GNU General Public License".PHP_EOL;
+	$buffer .= "as published by the Free Software Foundation; either version 2".PHP_EOL;
+	$buffer .= "of the License, or (at your option) any later version.".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "This program is distributed in the hope that it will be useful,".PHP_EOL;
+	$buffer .= "but WITHOUT ANY WARRANTY; without even the implied warranty of".PHP_EOL;
+	$buffer .= "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the".PHP_EOL;
+	$buffer .= "GNU General Public License for more details.".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "You should have received a copy of the GNU General Public License".PHP_EOL;
+	$buffer .= "along with this program; if not, write to the Free Software".PHP_EOL;
+	$buffer .= "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "To contact any of the authors about special permissions send".PHP_EOL;
+	$buffer .= "a mail to cerescp@gmail.com".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "This file was generated using install.php".PHP_EOL;
+	$buffer .= "*/".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "include_once 'lib/commonconfig.php';".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "//sql connections".PHP_EOL;
+	$buffer .= "\$CONFIG['rag_serv']				=	".config_string($POST_sql_rag_host).";	// SQL Ragnarok Host".PHP_EOL;
+	$buffer .= "\$CONFIG['rag_user']				=	".config_string($POST_sql_rag_user).";	// SQL Ragnarok User".PHP_EOL;
+	$buffer .= "\$CONFIG['rag_pass']				=	".config_string($POST_sql_rag_pass).";	// SQL Ragnarok Password".PHP_EOL;
+	$buffer .= "\$CONFIG['rag_db']				=	".config_string($POST_sql_rag_db).";	// SQL Ragnarok Database name".PHP_EOL;
+	$buffer .= "\$CONFIG['log_db']				=	".config_string($POST_sql_log_db).";	// SQL Ragnarok Log Database name".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "\$CONFIG['cp_serv']				=	".config_string($POST_sql_cp_host).";	// SQL CP Host".PHP_EOL;
+	$buffer .= "\$CONFIG['cp_user']				=	".config_string($POST_sql_cp_user).";		// SQL CP User".PHP_EOL;
+	$buffer .= "\$CONFIG['cp_pass']				=	".config_string($POST_sql_cp_pass).";		// SQL CP Password".PHP_EOL;
+	$buffer .= "\$CONFIG['cp_db']				=	".config_string($POST_sql_cp_db).";			// SQL CP Database name".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "\$CONFIG['md5_pass']				=	".config_bool($POST_sql_md5).";			// Use MD5 password (enable = true, disable = false)".PHP_EOL;
+	$buffer .= "\$CONFIG['safe_pass']			=	".config_bool($POST_sql_safe_pass).";			// Force the use of a safer password with size 6 and at least 2 letter and 2 numbers (enable = true, disable = false)".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "//Admin Area".PHP_EOL;
+	$buffer .= "\$CONFIG['cp_admin']				=	".config_int($POST_cp_adm_lvl).";			// CP admin functions".PHP_EOL;
+	$buffer .= "\$CONFIG['gm_level']				=	".config_int($POST_cp_gm_lvl).";			// CP GM funtions".PHP_EOL;
+	$buffer .= "\$CONFIG['gm_hide']				=	".config_int($POST_cp_hide_lvl).";			// GMs this level and above will be hidden from whoisonline.php".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "//WOE".PHP_EOL;
+	$buffer .= "// sun = sunday, mon = monday, tue = tuesday, wed = wednesday, thu = thursday, fri = friday, sun = sunday".PHP_EOL;
+	$buffer .= "// place week_day(start_time, end_time) and a ';' between the times the freya default woe times is set as an example".PHP_EOL;
+	$buffer .= "// there is no limit you can place as many as you want, no spaces are needed, but using it you can understand.".PHP_EOL;
+	$buffer .= "\$CONFIG['woe_time']				=	".config_string($woe).";".PHP_EOL;
+	$buffer .= "\$CONFIG['agit_check']			=	".config_bool($POST_woe_agit).";			// This WILL NOT WORK unless you installed the npc script AND you updated your ragsrvinfo table, read the installation notes for more info.".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "//server name, rates".PHP_EOL;
+	$buffer .= "\$CONFIG['name']					=	".config_string($POST_server_name).";	// name of the server".PHP_EOL;
+	$buffer .= "\$CONFIG['rate']					=	".config_string($POST_server_rate).";		// rates of the server".PHP_EOL;
+	$buffer .= "date_default_timezone_set(".config_string($POST_timezone).");		// game server Timezone (useful if your webserver's timezone is different than game server).".PHP_EOL;
+	$buffer .= "\$CONFIG['dynamic_info']			=	".config_bool($POST_server_di).";			// Use info (rates) from the server itself?".PHP_EOL;
+	$buffer .= "\$CONFIG['dynamic_name']			=	".config_string($POST_server_name).";	// The name of the server in ragsrvinfo's server name column (Used for dynamic info)".PHP_EOL;
+	$buffer .= "\$CONFIG['show_rates']			=	".config_bool($POST_server_dr).";			// Show rates below server status?".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "//map,char,login servers settings".PHP_EOL;
+	$buffer .= "\$CONFIG['accip']				=	".config_string($POST_server_lip).";	// Account/Login Server IP".PHP_EOL;
+	$buffer .= "\$CONFIG['accport']				=	".config_int($POST_server_lport).";		// Account/Login Server Port".PHP_EOL;
+	$buffer .= "\$CONFIG['charip']				=	".config_string($POST_server_cip).";	// Char Server IP".PHP_EOL;
+	$buffer .= "\$CONFIG['charport']				=	".config_int($POST_server_cport).";		// Char Server Port".PHP_EOL;
+	$buffer .= "\$CONFIG['mapip']				=	".config_string($POST_server_mip).";	// Zone/Map Server IP".PHP_EOL;
+	$buffer .= "\$CONFIG['mapport']				=	".config_int($POST_server_mport).";		// Zone/Map Server Port".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "//default language".PHP_EOL;
+	$buffer .= "\$CONFIG['language']				=	".config_string($POST_cp_language).";		// default language (remember to check if the translation exist before set)".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "//cp features".PHP_EOL;
+	$buffer .= "\$CONFIG['disable_account']		=	".config_bool($POST_feat_acc).";			// disable the account creation disable = 1, enable = 0".PHP_EOL;
+	$buffer .= "\$CONFIG['auth_image']			=	".config_bool($POST_feat_vc).";			// enable the verification code image, to check if it's a real person using the cp, instead of a bot (brute-force atack) - Recommended, but requires gd library (enable = 1 disable = 0)".PHP_EOL;
+	$buffer .= "\$CONFIG['max_accounts']			=	".config_int($POST_feat_maa).";			// Max accounts allowed to be in the DB (0 = disabled)".PHP_EOL;
+	$buffer .= "\$CONFIG['password_recover']		=	".config_bool($POST_feat_pr).";			// password recover enable = 1, disable = 0".PHP_EOL;
+	$buffer .= "\$CONFIG['reset_enable']			=	".config_bool($POST_feat_rp).";			// reset position enable = 1, disable = 0".PHP_EOL;
+	$buffer .= "\$CONFIG['reset_cost']			=	".config_int($POST_feat_rc).";		// reset position cost, disable cost = 0".PHP_EOL;
+	$buffer .= "\$CONFIG['money_transfer']		=	".config_bool($POST_feat_mt).";			// money transfer enable = 1, disable = 0".PHP_EOL;
+	$buffer .= "\$CONFIG['money_cost']			=	".config_int($POST_feat_mc).";			// money transfer cost (100 = 1%), disable cost = 0".PHP_EOL;
+	$buffer .= "\$CONFIG['set_slot']				=	".config_bool($POST_feat_cs).";			// change char slot enable = 1, disable = 0".PHP_EOL;
+	$buffer .= "\$CONFIG['max_chars']			=	".config_int($POST_feat_cc).";			// Max amount of chars (set this to what's set for MAX_CHARS in your emulators src/common/mmo.h)".PHP_EOL;
+	$buffer .= "\$CONFIG['reset_look']			=	".config_bool($POST_feat_rl).";			// reset char equips and colors with error enable = 1, disable = 0".PHP_EOL;
+	$buffer .= "\$CONFIG['marry_enable']			=	".config_bool($POST_feat_divorce).";			// enable marriage view and divorce".PHP_EOL;
+	$buffer .= "\$CONFIG['prison_map']			=	".config_string($POST_feat_pm).";		// Name of the map that is used as your jail (mapname.gat)".PHP_EOL;
+	$buffer .= "\$CONFIG['servermode']			=	".servertype_by_value($POST_feat_server).";	// For use the right query with rA or eA ".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "//About Information".PHP_EOL;
+	$buffer .= "\$CONFIG['classlist_show']		=	".config_bool($POST_feat_acl).";			// Show the class list on about.php? (disable = 0, enable = 1)".PHP_EOL;
+	$buffer .= "\$CONFIG['classlist_hide_zero']	=	".config_bool($POST_feat_aclz).";			// Hide class entries with zero amount? (disable = 1, enable = 0)".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "//Mail".PHP_EOL;
+	$buffer .= "\$CONFIG['smtp_server']			=	".config_string($POST_smtp_server).";	// the smtp server, the cp will use to send mails".PHP_EOL;
+	$buffer .= "\$CONFIG['smtp_port']			=	".config_int($POST_smtp_port).";			// the smtp server port".PHP_EOL;
+	$buffer .= "\$CONFIG['smtp_mail']			=	".config_string($POST_smtp_mail).";		// the email of the admin".PHP_EOL;
+	$buffer .= "\$CONFIG['smtp_username']		=	".config_string($POST_smtp_username).";			// the username of the smtp server".PHP_EOL;
+	$buffer .= "\$CONFIG['smtp_password']		=	".config_string($POST_smtp_password).";			// the password of the smtp server".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "".PHP_EOL;
+	$buffer .= "".PHP_EOL;	
+	$buffer .= "//DO NOT MESS WITH THIS".PHP_EOL;
+	$buffer .= "extract(\$CONFIG, EXTR_PREFIX_ALL, \"CONFIG\");".PHP_EOL;
+	$buffer .= "extract(\$_GET, EXTR_PREFIX_ALL, \"GET\");".PHP_EOL;
+	$buffer .= "extract(\$_POST, EXTR_PREFIX_ALL, \"POST\");".PHP_EOL;
+	$buffer .= "extract(\$_SERVER, EXTR_PREFIX_ALL, \"SERVER\");".PHP_EOL;
+	$buffer .= "error_reporting(0);".PHP_EOL;
+	$buffer .= "?>".PHP_EOL;
 
 	$handle = fopen ("config.php", "w")
-		or die("Can't create config.php. Check your permissions and press back.");
+		or die("Can\'t create config.php. Check your permissions and press back.");
 	fwrite($handle, $buffer);
 	fclose($handle);
 
-	echo "Installation Complete. Move config.php to your Control Panel root and delete the install folder.\n";
+	echo "Installation Complete. Move config.php to your Control Panel root and delete the install folder.".PHP_EOL;
 	if ($POST_woe_agit)
-		echo "<br>Agit Status: Copy ./install/npc/agit_status.txt to your rag npc folder and enable it.\n";
+		echo "<br>Agit Status: Copy ./install/npc/agit_status.txt to your rag npc folder and enable it.".PHP_EOL;
 	echo "</body></html>";
 	die();
 }
@@ -353,15 +365,15 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 								<table border="0" width="500">
 									<tr>
 										<td width="250" align="left">Admin Level</td>
-										<td align="left"><input type="text" name="cp_adm_lvl" maxlength="2" size="30" value="99"></td>
+										<td align="left"><input type="number" name="cp_adm_lvl" maxlength="2" style="width: 50px; text-align: right;" min="0" max="99" step="1" value="99"></td>
 									</tr>
 									<tr>
 										<td align="left">GM Level</td>
-										<td align="left"><input type="text" name="cp_gm_lvl" maxlength="2" size="30" value="70"></td>
+										<td align="left"><input type="number" name="cp_gm_lvl" maxlength="2" style="width: 50px; text-align: right;" min="0" max="99" step="1" value="70"></td>
 									</tr>
 									<tr>
 										<td align="left">Hide from whoisonline.php</td>
-										<td align="left"><input type="text" name="cp_hide_lvl" maxlength="3" size="5" value="40"> (min GM level)</td>
+										<td align="left"><input type="number" name="cp_hide_lvl" maxlength="3" style="width: 50px; text-align: right;" min="0" max="100" step="1" value="40"> (min GM level to hide)</td>
 									</tr>
 								</table>
 							</fieldset>
@@ -402,28 +414,28 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 								<legend><b>Server Status Settings</b></legend>
 								<table border="0" width="500">
 									<tr>
-										<td width="250" align="left">Login IP</td>
+										<td width="250" align="left">Login IP or Hostname</td>
 										<td><input type="text" name="server_lip" size="30" value="127.0.0.1"></td>
 									</tr>
 									<tr>
 										<td align="left">Login Port</td>
-										<td align="left"><input type="text" name="server_lport" size="30" value="6900"></td>
+										<td align="left"><input type="number" name="server_lport" style="width: 70px; text-align: right;" min="0"step="1" value="6900"></td>
 									</tr>
 									<tr>
-										<td align="left">Char IP</td>
+										<td align="left">Char IP or Hostname</td>
 										<td align="left"><input type="text" name="server_cip" size="30" value="127.0.0.1"></td>
 									</tr>
 									<tr>
 										<td align="left">Char Port</td>
-										<td align="left"><input type="text" name="server_cport" size="30" value="6121"></td>
+										<td align="left"><input type="number" name="server_cport" style="width: 70px; text-align: right;" min="0"step="1" value="6121"></td>
 									</tr>
 									<tr>
-										<td align="left">Map IP</td>
+										<td align="left">Map IP or Hostname</td>
 										<td align="left"><input type="text" name="server_mip" size="30" value="127.0.0.1"></td>
 									</tr>
 									<tr>
 										<td align="left">Map Port</td>
-										<td align="left"><input type="text" name="server_mport" size="30" value="5121"></td>
+										<td align="left"><input type="number" name="server_mport" style="width: 70px; text-align: right;" min="0"step="1" value="5121"></td>
 									</tr>
 								</table>
 							</fieldset>
@@ -440,56 +452,89 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 										<td align="left">Stop</td>
 									<tr>
 										<td align="left">Sunday</td>
-										<td align="left"><input type="text" name="woe_sun_start_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_sun_start_m" maxlength="2" size="2" value="00"></td>
-										<td align="left"><input type="text" name="woe_sun_end_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_sun_end_m" maxlength="2" size="2" value="00"></td>
+										<td align="left">
+											<input type="number" name="woe_sun_start_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_sun_start_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
+										<td align="left">
+											<input type="number" name="woe_sun_end_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_sun_end_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
 									</tr>
 									<tr>
 										<td align="left">Monday</td>
-										<td align="left"><input type="text" name="woe_mon_start_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_mon_start_m" maxlength="2" size="2" value="00"></td>
-										<td align="left"><input type="text" name="woe_mon_end_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_mon_end_m" maxlength="2" size="2" value="00"></td>
+										<td align="left">
+											<input type="number" name="woe_mon_start_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_mon_start_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
+										<td align="left">
+											<input type="number" name="woe_mon_end_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_mon_end_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
 									</tr>
 									<tr>
 										<td align="left">Tuesday</td>
-										<td align="left"><input type="text" name="woe_tue_start_h" maxlength="2" size="2" value="21">:
-										<input type="text" name="woe_tue_start_m" maxlength="2" size="2" value="00"></td>
-										<td align="left"><input type="text" name="woe_tue_end_h" maxlength="2" size="2" value="23">:
-										<input type="text" name="woe_tue_end_m" maxlength="2" size="2" value="00"></td>
+										<td align="left">
+											<input type="number" name="woe_tue_start_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_tue_start_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
+										<td align="left">
+											<input type="number" name="woe_tue_end_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_tue_end_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
 									</tr>
 									<tr>
 										<td align="left">Wednesday</td>
-										<td align="left"><input type="text" name="woe_wed_start_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_wed_start_m" maxlength="2" size="2" value="00"></td>
-										<td align="left"><input type="text" name="woe_wed_end_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_wed_end_m" maxlength="2" size="2" value="00"></td>
+										<td align="left">
+											<input type="number" name="woe_wed_start_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_wed_start_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
+										<td align="left">
+											<input type="number" name="woe_wed_end_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_wed_end_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
 									</tr>
 									<tr>
 										<td align="left">Thursday</td>
-										<td align="left"><input type="text" name="woe_thu_start_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_thu_start_m" maxlength="2" size="2" value="00"></td>
-										<td align="left"><input type="text" name="woe_thu_end_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_thu_end_m" maxlength="2" size="2" value="00"></td>
+										<td align="left">
+											<input type="number" name="woe_thu_start_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_thu_start_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
+										<td align="left">
+											<input type="number" name="woe_thu_end_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_thu_end_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
 									</tr>
 									<tr>
 										<td align="left">Friday</td>
-										<td align="left"><input type="text" name="woe_fri_start_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_fri_start_m" maxlength="2" size="2" value="00"></td>
-										<td align="left"><input type="text" name="woe_fri_end_h" maxlength="2" size="2" value="00">:
-										<input type="text" name="woe_fri_end_m" maxlength="2" size="2" value="00"></td>
+										<td align="left">
+											<input type="number" name="woe_fri_start_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_fri_start_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
+										<td align="left">
+											<input type="number" name="woe_fri_end_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_fri_end_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
 									</tr>
 									<tr>
 										<td align="left">Saturday</td>
-										<td align="left"><input type="text" name="woe_sat_start_h" maxlength="2" size="2" value="16">:
-										<input type="text" name="woe_sat_start_m" maxlength="2" size="2" value="00"></td>
-										<td align="left"><input type="text" name="woe_sat_end_h" maxlength="2" size="2" value="18">:
-										<input type="text" name="woe_sat_end_m" maxlength="2" size="2" value="00"></td>
+										<td align="left">
+											<input type="number" name="woe_sat_start_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_sat_start_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
+										<td align="left">
+											<input type="number" name="woe_sat_end_h" style="width: 40px; text-align: right;" min="0" max="24" step="1" value="00">:
+											<input type="number" name="woe_sat_end_m" style="width: 40px; text-align: right;" min="0" max="59" step="1" value="00">
+										</td>
 									</tr>
 									<tr>
 										<td align="left">WoE Status</td>
-										<td align="left"><select name="woe_agit"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></td>
+										<td align="left">
+											<select name="woe_agit">
+												<option selected="selected" value="0">No</option>
+												<option value="1">Yes</option>
+											</select>
+										</td>
 									</tr>
 								</table>
 							</fieldset>
@@ -510,7 +555,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Max Accounts Allowed</td>
-										<td align="left"><input type="text" name="feat_maa" size="30" value="0"></td>
+										<td align="left"><input type="number" name="feat_maa" style="width: 100px; text-align: right;" min="0" step="1" value="0"></td>
 									</tr>
 									<tr>
 										<td align="left">About Class List</td>
@@ -530,7 +575,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Reset Position Cost</td>
-										<td align="left"><input type="text" name="feat_rc" size="30" value="300"></td>
+										<td align="left"><input type="number" name="feat_rc" style="width: 100px; text-align: right;" min="0" step="1" value="300"></td>
 									</tr>
 									<tr>
 										<td align="left">Money Transfer</td>
@@ -538,7 +583,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Money Transfer Cost</td>
-										<td align="left"><input type="text" name="feat_mc" maxlength="2" size="30" value="0"></td>
+										<td align="left"><input type="number" name="feat_mc" style="width: 100px; text-align: right;" min="0" step="1" value="0"></td>
 									</tr>
 									<tr>
 										<td align="left">Change Slot</td>
@@ -546,7 +591,7 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Max Chars (MAX_CHARS in src/common/mmo.h)</td>
-										<td align="left"><input type="text" name="feat_cc" maxlength="3" size="30" value="9"></td>
+										<td align="left"><input type="number" name="feat_cc" style="width: 100px; text-align: right;" min="0" step="1" value="9"></td>
 									</tr>
 									<tr>
 										<td align="left">Reset Look</td>
@@ -562,7 +607,12 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									</tr>
 									<tr>
 										<td align="left">Server</td>
-										<td align="left"><select name="feat_server"><option selected="selected" value="0">rAthena</option><option value="1">eAthena</option></select></td>
+										<td align="left">
+											<label><input type="radio" name="feat_server" value="0" checked /> Unknown</label><br />
+											<label><input type="radio" name="feat_server" value="1" /> eAthena</label> (<a href="http://eathena.ws/forum/" target="_blank">eathena.ws</a>)<br />
+											<label><input type="radio" name="feat_server" value="2" /> rAthena</label> (<a href="https://rathena.org/board/" target="_blank">rathena.org</a>)<br />
+											<label><input type="radio" name="feat_server" value="3" /> Hercules</label> (<a href="http://herc.ws/board/" target="_blank">herc.ws</a>)<br />
+										</td>
 									</tr>
 								</table>
 							</fieldset>
@@ -574,23 +624,23 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 								<legend><b>Control Panel Mail Send</b></legend>
 								<table border="0" width="500">
 									<tr>
-										<td width="250" align="left">Smtp Server</td>
+										<td width="250" align="left">SMTP Server</td>
 										<td align="left"><input type="text" name="smtp_server" size="30" value="localhost"></td>
 									</tr>
 									<tr>
-										<td align="left">Smtp Port</td>
-										<td align="left"><input type="text" name="smtp_port" size="30" value="25"></td>
+										<td align="left">SMTP Port</td>
+										<td align="left"><input type="number" name="smtp_port" style="width: 70px; text-align: right;" min="0"step="1" value="25"></td>
 									</tr>
 									<tr>
 										<td align="left">Admin e-Mail</td>
 										<td align="left"><input type="text" name="smtp_mail" size="30" value="gamemaster@youremail.com"></td>
 									</tr>
 									<tr>
-										<td align="left">Username</td>
+										<td align="left">SMTP Username</td>
 										<td align="left"><input type="text" name="smtp_username" size="30"></td>
 									</tr>
 									<tr>
-										<td align="left">Password</td>
+										<td align="left">SMTPPassword</td>
 										<td align="left"><input type="text" name="smtp_password" size="30"></td>
 									</tr>
 								</table>
