@@ -26,7 +26,7 @@ an e-mail to cerescp@gmail.com
 $revision = 0;
 
 //adminaccounts
-if ($config['servermode'] == 0){
+if ($CONFIG_servermode == 0){
 DEFINE('ACCOUNTS_SEARCH_ACCOUNT_ID', "SELECT `account_id`, `userid`, `sex`, `email`, `group_id`, `last_ip`, `unban_time`, `state`, 
 `user_pass`, `lastlogin`, `birthdate` FROM `login` WHERE `account_id` = '%d'");
 DEFINE('ACCOUNTS_SEARCH_EMAIL', "SELECT `account_id`, `userid`, `sex`, `email`, `group_id`, `last_ip`, `unban_time`, `state`, `user_pass`
@@ -37,7 +37,7 @@ DEFINE('ACCOUNTS_SEARCH_USERID', "SELECT `account_id`, `userid`, `sex`, `email`,
 FROM `login` WHERE `userid` LIKE '%%%s%%'");
 DEFINE('ACCOUNTS_BROWSE', "SELECT `account_id`, `userid`, `sex`, `email`, `group_id`, `last_ip`, `unban_time`, `state`, `user_pass`
 FROM `login` ORDER BY `account_id` LIMIT %d, 100");
-}elseif ($config['servermode'] == 1){
+}elseif ($CONFIG_servermode == 1){
 DEFINE('ACCOUNTS_SEARCH_ACCOUNT_ID', "SELECT `account_id`, `userid`, `sex`, `email`, `level`, `last_ip`, `unban_time`, `state`, 
 `user_pass`, `lastlogin`, `birthdate` FROM `login` WHERE `account_id` = '%d'");
 DEFINE('ACCOUNTS_SEARCH_EMAIL', "SELECT `account_id`, `userid`, `sex`, `email`, `level`, `last_ip`, `unban_time`, `state`, `user_pass`
@@ -50,11 +50,11 @@ DEFINE('ACCOUNTS_BROWSE', "SELECT `account_id`, `userid`, `sex`, `email`, `level
 FROM `login` ORDER BY `account_id` LIMIT %d, 100");   
 }
 //adminaccedit
-if ($config['servermode'] == 0){
+if ($CONFIG_servermode == 0){
 DEFINE('ACCEDIT_UPDATE', "UPDATE `login` SET `userid` = '%s', `user_pass` = '%s', `sex` = '%s', `email` = '%s', `group_id` = '%d', `birthdate` = '%s'
 WHERE `account_id` = '%d'
 ");
-}elseif ($config['servermode'] == 1){
+}elseif ($CONFIG_servermode == 1){
 DEFINE('ACCEDIT_UPDATE', "UPDATE `login` SET `userid` = '%s', `user_pass` = '%s', `sex` = '%s', `email` = '%s', `level` = '%d', `birthdate` = '%s'
 WHERE `account_id` = '%d'
 ");

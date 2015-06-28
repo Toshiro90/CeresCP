@@ -39,7 +39,7 @@ if (!isset($GET_page))
 else if (notnumber($GET_page))
 	alert($lang['INCORRECT_CHARACTER']);
 
-if ($config['servermode']!=0) {
+if ($CONFIG_servermode!=0) {
 	redir('motd.php', 'main_div', 'This is not available on your server.');
 }
 

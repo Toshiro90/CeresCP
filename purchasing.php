@@ -28,7 +28,7 @@ include_once 'config.php'; // loads config variables
 include_once 'query.php'; // imports queries
 include_once 'functions.php';
 
-if ($config['servermode']!=0) {
+if ($CONFIG_servermode!=0) {
 	redir('motd.php', 'main_div', 'This is not available on your server.');
 }
 
