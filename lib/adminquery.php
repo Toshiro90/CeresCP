@@ -62,12 +62,24 @@ WHERE `account_id` = '%d'
 ");
 }
 //adminaccchars
+if ($CONFIG_servermode == SERVER_HERCULES) {
+DEFINE('ACCCHARS_ID', "SELECT `char_id`, `char_num`, `name`, `class`, `base_level`, `job_level`, `online`, `last_map`, `last_x`, `last_y`, `sex`
+FROM `char` WHERE `account_id` = '%d' ORDER BY `char_num`
+");
+}
+else {
 DEFINE('ACCCHARS_ID', "SELECT `char_id`, `char_num`, `name`, `class`, `base_level`, `job_level`, `online`, `last_map`, `last_x`, `last_y`
 FROM `char` WHERE `account_id` = '%d' ORDER BY `char_num`
 ");
+}
 
 //admincharinfo
+if ($CONFIG_servermode == SERVER_HERCULES) {
+DEFINE('CHARINFO_CHAR', "SELECT `char`.*, `guild`.`name` as `guild_name`, `guild`.`emblem_data`, `sex` FROM `char` LEFT JOIN `guild` USING (`guild_id`) WHERE `char`.`char_id` = '%d'");
+}
+else {
 DEFINE('CHARINFO_CHAR', "SELECT `char`.*, `guild`.`name` as `guild_name`, `guild`.`emblem_data` FROM `char` LEFT JOIN `guild` USING (`guild_id`) WHERE `char`.`char_id` = '%d'");
+}
 DEFINE('CHARINFO_INVENTORY', "SELECT `nameid`, `amount`, `card0`, `card1`, `card2`, `card3`, `refine`, `equip` FROM `inventory`
 WHERE `char_id` = '%d'
 ");
@@ -82,6 +94,17 @@ WHERE char_id = '%d'
 DEFINE('ACCBAN_UPDATE', "UPDATE `login` SET `unban_time` = '%d', `state` = '%d' WHERE `account_id` = '%d'");
 
 //adminchars
+if ($CONFIG_servermode == SERVER_HERCULES) {
+DEFINE('CHARS_SEARCH_ACCOUNT_ID', "SELECT `account_id`, `char_id`, `name`, `class`, `base_level`, `job_level`, `online`, `sex`
+FROM `char` WHERE `account_id` = '%d' ORDER BY `account_id`");
+DEFINE('CHARS_SEARCH_CHAR_ID', "SELECT `account_id`, `char_id`, `name`, `class`, `base_level`, `job_level`, `online`, `sex`
+FROM `char` WHERE `char_id` = '%d' ORDER BY `account_id`");
+DEFINE('CHARS_SEARCH_NAME', "SELECT `account_id`, `char_id`, `name`, `class`, `base_level`, `job_level`, `online`, `sex`
+FROM `char` WHERE `name` LIKE '%%%s%%' ORDER BY `account_id`");
+DEFINE('CHARS_BROWSE', "SELECT `account_id`, `char_id`, `name`, `class`, `base_level`, `job_level`, `online`, `sex`
+FROM `char` ORDER BY `account_id` LIMIT %d, 100");
+}
+else {
 DEFINE('CHARS_SEARCH_ACCOUNT_ID', "SELECT `account_id`, `char_id`, `name`, `class`, `base_level`, `job_level`, `online`
 FROM `char` WHERE `account_id` = '%d' ORDER BY `account_id`");
 DEFINE('CHARS_SEARCH_CHAR_ID', "SELECT `account_id`, `char_id`, `name`, `class`, `base_level`, `job_level`, `online`
@@ -90,6 +113,7 @@ DEFINE('CHARS_SEARCH_NAME', "SELECT `account_id`, `char_id`, `name`, `class`, `b
 FROM `char` WHERE `name` LIKE '%%%s%%' ORDER BY `account_id`");
 DEFINE('CHARS_BROWSE', "SELECT `account_id`, `char_id`, `name`, `class`, `base_level`, `job_level`, `online`
 FROM `char` ORDER BY `account_id` LIMIT %d, 100");
+}
 DEFINE('CHARS_TOTAL', "SELECT COUNT(1) FROM `char` WHERE `account_id` > '0'");
 
 //logs

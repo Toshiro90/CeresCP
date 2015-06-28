@@ -64,6 +64,17 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 		$gname = htmlformat($result['guild_name']);
 		echo '
 			<tr>
+				<th align="right">Account ID:</th><td align="left">'.$result['account_id'].'</td>
+				<th align="right">Char ID:</th><td align="left">'.$result['char_id'].'</td>';
+		if ($CONFIG_servermode == SERVER_HERCULES) {
+			echo '<th align="right">Sex:</th><td>'.$result['sex'].'</td>';
+		}
+		else {
+			echo '<th></th><td></td>';
+		}
+		echo '
+			</tr>
+			<tr>
 				<th align="right">Name:</th><td align="left">'.htmlformat($result['name']).'</td>
 				<th align="right">Job:</th><td align="left">
 			';
@@ -71,7 +82,7 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 			echo $jobs[$result['class']];
 		else
 			echo 'unknown';
-		echo '<th align="right">'.$lang['LADDER_GUILD'].':&nbsp;</th><td align="left">';
+		echo '<th align="right">'.$lang['LADDER_GUILD'].':</th><td align="left">';
 
 		$_SESSION[$CONFIG_name.'emblems'][$result['guild_id']] = $result['emblem_data'];
 
@@ -85,6 +96,7 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 				<th align="right">Level:</th><td align="left">'.$result['base_level'].'/'.$result['job_level'].'</td>
 				<th align="right">Zeny:</th><td align="left">'.$result['zeny'].'</td>
 				<th></th><td></td>
+			</tr>
 			<tr>
 				<th align="right">STR:</th><td align="left">'.$result['str'].'</td>
 				<th align="right">AGI:</th><td align="left">'.$result['agi'].'</td>

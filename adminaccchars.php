@@ -50,7 +50,11 @@ if (isset($GET_id)) {
 	<table class="maintable">
 	<tr>
 		<th align="right">'.$lang['SLOT'].'</th>
-		<th align="left">Char_id</th>
+		<th align="left">Char ID</th>';
+if ($CONFIG_servermode == SERVER_HERCULES) {
+	echo '<th align="center">'.$lang['SEX'].'</th>';
+}		
+echo '
 		<th align="left">'.$lang['NAME'].'</th>
 		<th align="left">'.$lang['CLASS'].'</th>
 		<th align="center">'.$lang['BLVLJLVL'].'</th>
@@ -68,7 +72,11 @@ if (isset($GET_id)) {
 		echo '
 		<tr>
 			<td align="right">'.$line[1].'</td>
-			<td align="right">'.$line[0].'</td>
+			<td align="right">'.$line[0].'</td>';
+if ($CONFIG_servermode == SERVER_HERCULES) {
+	echo '<td align="center">'.$line[10].'</th>';
+}		
+echo '
 			<td align="left">'.htmlformat($line[2]).'</td>
 			<td align="left">
 		';

@@ -99,8 +99,12 @@ $result = execute_query($query, 'adminchars.php');
 echo '
 <table class="maintable">
 	<tr>
-		<th align="right">Account_id</th>
-		<th align="right">Char_id</th>
+		<th align="right">Account ID</th>
+		<th align="right">Char ID</th>';
+if ($CONFIG_servermode == SERVER_HERCULES) {
+	echo '<th align="center">'.$lang['SEX'].'</th>';
+}		
+echo '
 		<th align="left">'.$lang['NAME'].'</th>
 		<th align="left">'.$lang['CLASS'].'</th>
 		<th align="center">'.$lang['BLVLJLVL'].'</th>
@@ -125,7 +129,11 @@ while ($line = $result->fetch_row()) {
 	echo '
 	<tr>
 		<td align="right">'.$line[0].'</td>
-		<td align="right">'.$line[1].'</td>
+		<td align="right">'.$line[1].'</td>';
+if ($CONFIG_servermode == SERVER_HERCULES) {
+	echo '<td align="center">'.$line[7].'</th>';
+}		
+echo '
 		<td align="left">'.htmlformat($line[2]).'</td>
 		<td align="left">'.$job.'</td>
 		<td align="center">'.$line[4].'/'.$line[5].'</td>

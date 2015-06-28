@@ -79,7 +79,7 @@ if (isset($GET_id)) {
 		<form id="accedit" onSubmit="return GET_ajax(\'adminaccedit.php\',\'accounts_div\',\'accedit\');">
 			<table class="maintable">
 				<tr>
-					<td align="right">Account_id</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
+					<td align="right">Account ID</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
 				</tr><tr>
 					<td align="right">'.$lang['USERNAME'].'</td><td align="left"><input type="text" name="login" value="'.htmlformat($line[1]).'" maxlength="23" size="23"></td>
 				</tr><tr>
