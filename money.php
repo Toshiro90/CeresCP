@@ -31,6 +31,8 @@ include_once 'lib/functions.php';
 if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 	if ($_SESSION[$CONFIG_name.'account_id'] > 0) {
 
+		$jobs = $_SESSION[$CONFIG_name.'jobs'];
+
 		if (is_online())
 			redir('motd.php', 'main_div', $lang['NEED_TO_LOGOUT_F']);
 
@@ -128,6 +130,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 				<tr>
 					<th align="left">'.$lang['SLOT'].'</th>
 					<th align="left">'.$lang['NAME'].'</th>
+					<th align="left">'.$lang['CLASS'].'</th>
 					<th align="right">'.$lang['ZENY'].'</th>
 				</tr>
 				';
@@ -137,12 +140,18 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 					$charname = htmlformat($line[2]);
 					$zeny = moneyformat($line[3]);
 					$clevel = $line[4];
+
+					$job = 'unknown';
+					if (isset($jobs[$line[5]]))
+						$job = $jobs[$line[5]];
+
 					if ($GID != $GET_GID1) {
 						echo '
 						<tr>
-						<td align="left">'.$slot.'</td>
-						<td align="left">'.$charname.'</td>
-						<td align="right">'.$zeny.'</td>
+							<td align="left">'.$slot.'</td>
+							<td align="left">'.$charname.'</td>
+							<td align="left">'.$job.'</td>
+							<td align="right">'.$zeny.'</td>
 						<td>
 						';
 						if ($clevel >= 20) {
@@ -187,6 +196,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 		<tr>
 			<th align="left">'.$lang['SLOT'].'</th>
 			<th align="left">'.$lang['NAME'].'</th>
+			<th align="left">'.$lang['CLASS'].'</th>
 			<th align="right">'.$lang['ZENY'].'</th>
 		</tr>
 		';
@@ -196,10 +206,16 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 			$charname = htmlformat($line[2]);
 			$zeny = moneyformat($line[3]);
 			$clevel = $line[4];
+
+			$job = 'unknown';
+			if (isset($jobs[$line[5]]))
+				$job = $jobs[$line[5]];
+		
 			echo ' 
 			<tr>
 				<td align="left">'.$slot.'</td>
 				<td align="left">'.$charname.'</td>
+				<td align="left">'.$job.'</td>
 				<td align="right">'.$zeny.'</td>
 				<td>
 			';

@@ -79,7 +79,7 @@ DEFINE('MAX_ACCOUNTS', "SELECT COUNT(`account_id`) FROM `login` WHERE `sex` != '
 DEFINE('RECOVER_PASSWORD', "SELECT `userid`, `user_pass`, `email` FROM `login` WHERE `email` = '%s' AND state != '5'");
 
 //money.php - Money Transfer
-DEFINE('GET_ZENY', "SELECT `char_id`, `char_num`, `name`, `zeny`, `base_level` FROM `char` 
+DEFINE('GET_ZENY', "SELECT `char_id`, `char_num`, `name`, `zeny`, `base_level`, `class` FROM `char` 
 WHERE `account_id` = '%d' ORDER BY `char_num`");
 DEFINE('SET_ZENY', "UPDATE `char` SET `zeny` = '%d' WHERE `char_id` = '%d' AND `account_id` = '%d'");
 DEFINE('CHECK_ZENY', "SELECT `zeny` FROM `char` WHERE `char_id` = '%d' AND `account_id` = '%d'");
@@ -96,7 +96,7 @@ ORDER BY (`guild_castle`.`castle_id` * 1)
 ");
 
 //slot.php - Change Slot
-DEFINE('GET_SLOT', "SELECT `char_id`, `char_num`, `name` FROM `char` WHERE `account_id` = '%d' ORDER BY `char_num`");
+DEFINE('GET_SLOT', "SELECT `char_id`, `char_num`, `name`, `class` FROM `char` WHERE `account_id` = '%d' ORDER BY `char_num`");
 DEFINE('CHECK_SLOT', "SELECT char_id FROM `char` WHERE `char_num` = '%d' AND `account_id` = '%d' ORDER BY `char_num`");
 DEFINE('CHANGE_SLOT', "UPDATE `char` SET `char_num` = '%d' WHERE `char_id` = '%d' AND `account_id` = '%d'");
 

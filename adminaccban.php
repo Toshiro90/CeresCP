@@ -82,7 +82,7 @@ if (isset($GET_id)) {
 		<form id="accban" onSubmit="return GET_ajax(\'adminaccban.php\',\'accounts_div\',\'accban\');">
 			<table class="maintable">
 				<tr>
-					<td align="right">Account_id:</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
+					<td align="right">Account ID:</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
 				</tr><tr>
 					<td align="right">Login:</td><td align="left">'.htmlformat($line[1]).'</td>
 				</tr><tr>
