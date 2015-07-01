@@ -190,3 +190,10 @@ span.link {
 span.link:hover {
 	color: #FF3300;
 }
+
+.item {
+	vertical-align: middle;
+	height: 24px;
+	width: 24px;
+	margin-right: 4px;
+}

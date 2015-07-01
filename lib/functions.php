@@ -481,7 +481,7 @@ function print_items($result) {
 		echo '
 			<tr>
 				<td align="center">'.(isset($item['equip'])&&$item['equip']?'Eq.':'').'</td>
-				<td align="left">'.$itemname.'</td>
+				<td align="left">'.get_item_icon($item['nameid']).$itemname.'</td>
 				<td align="right">'.$item['amount'].'</td>
 		';
 
@@ -516,15 +516,30 @@ function print_items($result) {
 		}
 		else {
 			echo '
-			<td align="center">'.get_item_name($item['card0']).'</td>
-			<td align="center">'.get_item_name($item['card1']).'</td>
-			<td align="center">'.get_item_name($item['card2']).'</td>
-			<td align="center">'.get_item_name($item['card3']).'</td>';
+			<td align="center">'.get_item_icon($item['card0']).get_item_name($item['card0']).'</td>
+			<td align="center">'.get_item_icon($item['card1']).get_item_name($item['card1']).'</td>
+			<td align="center">'.get_item_icon($item['card2']).get_item_name($item['card2']).'</td>
+			<td align="center">'.get_item_icon($item['card3']).get_item_name($item['card3']).'</td>';
 		}
 		echo '
 		</tr>';
 	}
 	echo '</table>';
+}
+
+function get_item_icon($id) {
+	global $CONFIG_item_icon_path;
+	if (isset($CONFIG_item_icon_path) && $CONFIG_item_icon_path != '') {
+		if ($id > 0) {
+			return '<img src="'.sprintf($CONFIG_item_icon_path, $id).'" class="item" />';
+		}
+		else {
+			// Empty block to not mess up layout
+			return '<div class="item"></div>';
+		}
+	}
+	else
+		return '';
 }
 
 ?>

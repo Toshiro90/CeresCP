@@ -51,7 +51,7 @@ $previd = 0;
 while ($result && $row = $result->fetch_assoc()) {
 	$num++;
 	
-	$row['item_name'] = isset($items[$row['item_id']]) ? $items[$row['item_id']] : $row['item_id'];
+	$row['item_name'] = get_item_name($row['item_id']);
 	//if ($row['slots'] > 0)
 	//	$row['item_name'] .= ' ['.$row['slots'].']';
 
@@ -67,7 +67,7 @@ while ($result && $row = $result->fetch_assoc()) {
 	}
 
 	print '<tr>
-			<td style="text-align: left;">'.$row['item_name'].'</td>
+			<td style="text-align: left;">'.get_item_icon($row['item_id']).$row['item_name'].'</td>
 			<td align="right" width="70px">'.$row['amount'].'</td>
 			<td align="right" width="100px">'.number_format($row['price'], 0).' Zeny</td>
 		   </tr>';

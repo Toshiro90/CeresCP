@@ -232,6 +232,7 @@ if (isset($POST_install)) {
 	$buffer .= "\$CONFIG['marry_enable']			=	".config_bool($POST_feat_divorce).";			// enable marriage view and divorce".PHP_EOL;
 	$buffer .= "\$CONFIG['prison_map']			=	".config_string($POST_feat_pm).";		// Name of the map that is used as your jail (mapname.gat)".PHP_EOL;
 	$buffer .= "\$CONFIG['servermode']			=	".servertype_by_value($POST_feat_server).";	// For use the right query with rA or eA ".PHP_EOL;
+	$buffer .= "\$CONFIG['item_icon_path']		=	".config_string($POST_feat_iip).";	// Path to item icon images, use %d as placeholder for the id. Example: images/icon/%d.png".PHP_EOL;
 	$buffer .= "".PHP_EOL;
 	$buffer .= "//About Information".PHP_EOL;
 	$buffer .= "\$CONFIG['classlist_show']		=	".config_bool($POST_feat_acl).";			// Show the class list on about.php? (disable = 0, enable = 1)".PHP_EOL;
@@ -613,6 +614,10 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 											<label><input type="radio" name="feat_server" value="2" /> rAthena</label> (<a href="https://rathena.org/board/" target="_blank">rathena.org</a>)<br />
 											<label><input type="radio" name="feat_server" value="3" /> Hercules</label> (<a href="http://herc.ws/board/" target="_blank">herc.ws</a>)<br />
 										</td>
+									</tr>
+									<tr>
+										<td align="left">Item Icon Path (<code><b>%d</b></code> as id placeholder)</td>
+										<td align="left"><input type="text" name="feat_iip" value=""></td>
 									</tr>
 								</table>
 							</fieldset>
