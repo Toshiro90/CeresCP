@@ -75,12 +75,13 @@ body {
 	background-color: #fff;
 	overflow: hidden;
 	margin: 0 auto;
+	display: table;
 }
 
 #main_div {
 	width: 600px;
 	padding: 10px;
-	float: left;
+	display: table-cell;
 }
 
 .maintable {
@@ -91,10 +92,11 @@ body {
 
 /** RIGHT SIDEBAR */
 #sidebar {
+	min-width: 160px;
 	width: 160px;
 	height: 470px;
 	background-color: #D0D9E0;
-	float: right;
+	display: table-cell;
 }
 
 #login_div, #status_div, #selectlang_div, #new_div {
