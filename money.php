@@ -141,7 +141,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 					$zeny = moneyformat($line[3]);
 					$clevel = $line[4];
 
-					$job = 'unknown';
+					$job = $lang['UNKNOWN'];
 					if (isset($jobs[$line[5]]))
 						$job = $jobs[$line[5]];
 
@@ -207,7 +207,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 			$zeny = moneyformat($line[3]);
 			$clevel = $line[4];
 
-			$job = 'unknown';
+			$job = $lang['UNKNOWN'];
 			if (isset($jobs[$line[5]]))
 				$job = $jobs[$line[5]];
 		

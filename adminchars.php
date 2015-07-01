@@ -121,7 +121,7 @@ while ($line = $result->fetch_row()) {
 	else
 		$online = '<font color="red">off</font>';
 	
-	$job = 'unknown';
+	$job = $lang['UNKNOWN'];
 	if (isset($jobs[$line[3]]))
 		$job = $jobs[$line[3]];
 

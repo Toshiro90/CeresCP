@@ -131,13 +131,15 @@ $qwty="v=".base64_encode($_SERVER['HTTP_HOST']."###".$revision."###".$_SERVER['R
 //top100zeny.php - Zeny Ladder
 if ($CONFIG_servermode == SERVER_RATHENA || $CONFIG_servermode == SERVER_HERCULES) {
 DEFINE('TOP100ZENY', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`zeny`,
-`char`.`account_id`, `char`.`char_id` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
-WHERE `login`.`group_id` < '40' AND `login`.`state` != '5' ORDER BY `zeny` DESC LIMIT 0, 100");
+`char`.`account_id`, `char`.`char_id`, `char`.`guild_id`, `guild`.`name` as `guild_name`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+LEFT JOIN `guild` ON (`guild`.`guild_id`=`char`.`guild_id`)
+WHERE `login`.`group_id` < %d AND `login`.`state` != '5' ORDER BY `zeny` DESC LIMIT 0, 100");
 }
 elseif ($CONFIG_servermode == SERVER_EATHENA || $CONFIG_servermode == SERVER_UNKNOWN) {
 DEFINE('TOP100ZENY', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`zeny`,
-`char`.`account_id`, `char`.`char_id` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
-WHERE `login`.`level` < '40' AND `login`.`state` != '5' ORDER BY `zeny` DESC LIMIT 0, 100");
+`char`.`account_id`, `char`.`char_id`, `char`.`guild_id`, `guild`.`name` as `guild_name`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+LEFT JOIN `guild` ON (`guild`.`guild_id`=`char`.`guild_id`)
+WHERE `login`.`level` < %d AND `login`.`state` != '5' ORDER BY `zeny` DESC LIMIT 0, 100");
 }
 //about.php - Server Info
 DEFINE('TOTALACCOUNTS', "SELECT COUNT(1) FROM `login` WHERE `sex` != 'S'");
@@ -156,17 +158,17 @@ DEFINE('PARTNER_BAN', "UPDATE `login` SET `unban_time` = NOW() + '%d' WHERE `acc
 //ladder.php - Player Ladders
 if ($CONFIG_servermode == SERVER_RATHENA || $CONFIG_servermode == SERVER_HERCULES) {
 DEFINE('LADDER_ALL', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
-`char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+`char`.`account_id`, `guild`.`name` as `guild_name`, `char`.`guild_id`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
 LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`account_id` != '0' AND `login`.`group_id` < '40'
 AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC, `char`.`job_level` DESC LIMIT 0, 100
 ");
 DEFINE('LADDER_JOB', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
-`char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+`char`.`account_id`, `guild`.`name` as `guild_name`, `char`.`guild_id`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
 LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`class` = '%d' AND `char`.`account_id` != '0'
 AND `login`.`group_id` < '40' AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC, `char`.`job_level` DESC LIMIT 0, 100
 ");
 DEFINE('LADDER_LKPA', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
-`char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+`char`.`account_id`, `guild`.`name` as `guild_name`, `char`.`guild_id`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
 LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`account_id` != '0' AND `login`.`group_id` < '40'
 AND (`char`.`class` = '%d' OR `char`.`class` = '%d') AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC,
 `char`.`job_level` DESC LIMIT 0, 100
@@ -174,17 +176,17 @@ AND (`char`.`class` = '%d' OR `char`.`class` = '%d') AND `login`.`state` != '5' 
 }
 elseif ($CONFIG_servermode == SERVER_EATHENA || $CONFIG_servermode == SERVER_UNKNOWN) {
 EFINE('LADDER_ALL', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
-`char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+`char`.`account_id`, `guild`.`name` as `guild_name`, `char`.`guild_id`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
 LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`account_id` != '0' AND `login`.`level` < '40'
 AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC, `char`.`job_level` DESC LIMIT 0, 100
 ");
 DEFINE('LADDER_JOB', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
-`char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+`char`.`account_id`, `guild`.`name` as `guild_name`, `char`.`guild_id`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
 LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`class` = '%d' AND `char`.`account_id` != '0'
 AND `login`.`level` < '40' AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC, `char`.`job_level` DESC LIMIT 0, 100
 ");
 DEFINE('LADDER_LKPA', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`online`,
-`char`.`account_id`, `guild`.`name` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+`char`.`account_id`, `guild`.`name` as `guild_name`, `char`.`guild_id`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
 LEFT JOIN `guild` ON `guild`.`guild_id` = `char`.`guild_id` WHERE `char`.`account_id` != '0' AND `login`.`level` < '40'
 AND (`char`.`class` = '%d' OR `char`.`class` = '%d') AND `login`.`state` != '5' ORDER BY `char`.`base_level` DESC,
 `char`.`job_level` DESC LIMIT 0, 100

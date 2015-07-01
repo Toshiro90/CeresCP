@@ -86,7 +86,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_set_slot) {
 			$slot = $line['char_num'];
 			$charname = htmlformat($line['name']);
 
-			$job = 'unknown';
+			$job = $lang['UNKNOWN'];
 			if (isset($jobs[$line['class']]))
 				$job = $jobs[$line['class']];
 

@@ -190,10 +190,14 @@ span.link {
 span.link:hover {
 	color: #FF3300;
 }
-
-.item {
+ 
+.item, .emblem{
 	vertical-align: middle;
 	height: 24px;
 	width: 24px;
 	margin-right: 4px;
+}
+.tiny {
+	height: 10px;
+	width: 10px;
 }

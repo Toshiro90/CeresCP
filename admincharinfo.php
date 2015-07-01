@@ -81,7 +81,7 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 		if (isset($jobs[$result['class']]))
 			echo $jobs[$result['class']];
 		else
-			echo 'unknown';
+			echo $lang['UNKNOWN'];
 		echo '<th align="right">'.$lang['LADDER_GUILD'].':</th><td align="left">';
 
 		$_SESSION[$CONFIG_name.'emblems'][$result['guild_id']] = $result['emblem_data'];

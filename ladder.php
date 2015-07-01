@@ -136,7 +136,7 @@ include_once 'lib/functions.php';
 					$query = sprintf(LADDER_JOB, $GET_opt);
 					break;
 			}
-			$string = 'unknown';
+			$string = $lang['UNKNOWN'];
 			if (isset($jobs[$GET_opt]))
 				$string = $jobs[$GET_opt];
 		}
@@ -157,15 +157,17 @@ include_once 'lib/functions.php';
 		</tr>
 		';
 		for ($i = 1; $i < 101; $i++) {
-			if (!($line = $result->fetch_row()))
+			if (!($line = $result->fetch_assoc()))
 				break;
 
-			$charname = htmlformat($line[0]);
-			$gname = htmlformat($line[6]);
-			$job = 'unknown';
-			if (isset($jobs[$line[1]]))
-				$job = $jobs[$line[1]];
-			if (isset($_SESSION[$CONFIG_name.'account_id']) && $line[5] == $_SESSION[$CONFIG_name.'account_id'])
+			$_SESSION[$CONFIG_name.'emblems'][$line['guild_id']] = $line['emblem_data'];
+
+			$charname = htmlformat($line['name']);
+			$gname = htmlformat($line['guild_name']);
+			$job = $lang['UNKNOWN'];
+			if (isset($jobs[$line['class']]))
+				$job = $jobs[$line['class']];
+			if (isset($_SESSION[$CONFIG_name.'account_id']) && $line['account_id'] == $_SESSION[$CONFIG_name.'account_id'])
 				echo '<tr class="highlight">';
 			else
 				echo '<tr>';
@@ -176,10 +178,14 @@ include_once 'lib/functions.php';
 				<td>&nbsp;</td>
 				<td align="left">'.$job.'</td>
 				<td>&nbsp;</td>
-				<td align="center">'.$line[2].'/'.$line[3].'</td>
-				<td align="left">'.$gname.'</td>';
+				<td align="center">'.$line['base_level'].'/'.$line['job_level'].'</td>';
+			
+			if ($line['guild_id'] > 0)
+				echo '<td align="left"><img src="emblema.php?data='.$line['guild_id'].'" alt="'.$gname.'" class="emblem" />'.$gname.'</td>';
+			else
+				echo '<td align="left"><div class="emblem"></div></td>';
 
-			if ($line[4])
+			if ($line['online'])
 				echo '<td align="center"><font color="green">'.$lang['LADDER_STATUS_ON'].'</font></td>';
 			else 
 				echo '<td align="center"><font color="red">'.$lang['LADDER_STATUS_OFF'].'</font></td>';

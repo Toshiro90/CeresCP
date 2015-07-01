@@ -30,7 +30,7 @@ include_once 'lib/functions.php';
 
 $jobs = $_SESSION[$CONFIG_name.'jobs'];
 
-$query = sprintf(TOP100ZENY);
+$query = sprintf(TOP100ZENY, $CONFIG_gm_level);
 $result = execute_query($query, "top100zeny.php");
 
 caption($lang['TOP100ZENY_TOP100ZENY']);
@@ -38,38 +38,41 @@ echo '
 <table class="maintable">
 <tr>
 	<th align="right">'.$lang['POS'].'</th>
-	<th>&nbsp;</th>
 	<th align="left">'.$lang['NAME'].'</th>
 	<th align="left">'.$lang['CLASS'].'</th>
+	<th align="left">'.$lang['LADDER_GUILD'].'</th>
 	<th align="right">'.$lang['ZENY'].'</th>
 </tr>
 ';
 $nusers = 0;
 if ($result) {
-	while ($line = $result->fetch_row()) {
+	while ($line = $result->fetch_assoc()) {
 		$nusers++;
 		if ($nusers > 100)
 			break;
 
-		$zeny = moneyformat($line[4]);
-		$charname = htmlformat($line[0]);
+		$_SESSION[$CONFIG_name.'emblems'][$line['guild_id']] = $line['emblem_data'];
 
-		if (isset($_SESSION[$CONFIG_name.'account_id']) && $line[5] == $_SESSION[$CONFIG_name.'account_id'])
+		$zeny = moneyformat($line['zeny']);
+		$charname = htmlformat($line['name']);
+		$gname = htmlformat($line['guild_name']);
+
+		if (isset($_SESSION[$CONFIG_name.'account_id']) && $line['account_id'] == $_SESSION[$CONFIG_name.'account_id'])
 			echo '<tr class="highlight">';
 		else
 			echo '<tr>';
 		echo '
 			<td align="right">'.$nusers.'</td>
-			<td>&nbsp;</td>
 			<td align="left">'.$charname.'</td>
 			<td align="left">
 		';
-		if (isset($jobs[$line[1]]))
-			echo $jobs[$line[1]];
+		if (isset($jobs[$line['class']]))
+			echo $jobs[$line['class']];
 		else
 			echo $lang['UNKNOWN'];
 		echo '
 			</td>
+			<td align="left">'.($line['guild_id']>0?('<img src="emblema.php?data='.$line['guild_id'].'" alt="'.$gname.'" class="emblem" />'.$gname):'<div class="emblem"></div>').'</td>
 			<td align="right">'.$zeny.'</td>
 		</tr>
 		';

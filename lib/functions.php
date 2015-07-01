@@ -135,7 +135,8 @@ function ret_woe_times() {
 }
 
 function readitems() {
-	$resp[] = 'unknown';
+	global $lang;
+	$resp[] = $lang['UNKNOWN'];
 	if (!($handle = fopen('./db/item_db.txt', 'rt')))
 		return $resp;
 	while ($line = fgets($handle, 1024)) {
@@ -154,7 +155,7 @@ function readitems() {
 function readjobs() {
 	global $lang;
 
-	$resp[] = 'unknown';
+	$resp[] = $lang['UNKNOWN'];
 	$handle = fopen('./db/jobs.txt', 'rt')
 		or die(htmlformat($lang['TXT_ERROR']));
 	while ($line = fgets($handle, 1024)) {
@@ -446,18 +447,20 @@ function item_has_signed_data($card0) {
 }
 
 function get_item_name($id) {
-	global $items;
+	global $lang, $items;
 
 	$name = '';
 	if (isset($items[$id]) && $items[$id]!='')
 		$name = $items[$id];
 	else if ($id > 0)
-		$name = '<span style="color: #777777; font-style: italic">(Unknown, #'.$id.')</span>';
+		$name = '<span style="color: #777777; font-style: italic">('.$lang['UNKNOWN'].', #'.$id.')</span>';
 	
 	return $name;
 }
 
 function print_items($result) {
+	global $lang;
+
 	echo '
 		<table class="maintable" style="width: 610px">
 		<tr>
@@ -489,8 +492,8 @@ function print_items($result) {
 			$query2 = sprintf(GET_CHARNAME, $charid=forger($item['card2'], $item['card3']));
 			$result2 = execute_query($query2, 'storage.php');
 			if ($result2->count())
-				list($chname) = $result2->fetch_row();
-			else $chname = '<span style="color: #777777; font-style: italic">(Unknown, #'.$charid.')</span>';
+				$chname = htmlformat($result2->row(0));
+			else $chname = '<span style="color: #777777; font-style: italic">('.$lang['UNKNOWN'].', #'.$charid.')</span>';
 
 			echo '
 				<td colspan="4" style="text-align: center">
@@ -506,7 +509,7 @@ function print_items($result) {
 			if ($result2->count())
 				$petname = htmlformat($result2->row(0));
 			else
-				$petname = '<span style="color: #777777; font-style: italic">(Unknown, #'.$petid.')</span>';
+				$petname = '<span style="color: #777777; font-style: italic">('.$lang['UNKNOWN'].', #'.$petid.')</span>';
 			
 			echo '
 				<td colspan="4" style="text-align: center">

@@ -83,7 +83,7 @@ echo '
 		if (isset($jobs[$line[3]]))
 			echo $jobs[$line[3]];
 		else
-			echo 'unknown';
+			echo $lang['UNKNOWN'];
 		echo '
 			</td>
 			<td align="center">'.$line[4].'/'.$line[5].'</td>
