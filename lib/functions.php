@@ -433,91 +433,93 @@ function erro_de_login($i = 0) {
 	echo '</script>';
 }
 
-function print_items($result) {
+function item_has_pet_data($card0) {
+	return ($card0 == -256 || $card0 == 256 || $card0 == 65280);
+}
+
+function item_has_forge_data($card0) {
+	return ($card0 == 255);
+}
+
+function item_has_signed_data($card0) {
+	return ($card0 == 254);
+}
+
+function get_item_name($id) {
 	global $items;
+
+	$name = '';
+	if (isset($items[$id]) && $items[$id]!='')
+		$name = $items[$id];
+	else if ($id > 0)
+		$name = '<span style="color: #777777; font-style: italic">(Unknown, #'.$id.')</span>';
+	
+	return $name;
+}
+
+function print_items($result) {
 	echo '
-		<table class="maintable" style="width: 750px">
+		<table class="maintable" style="width: 610px">
 		<tr>
-			<th style="width: 25px;"></th>
-			<th align="center">Item</th>
-			<th align="center" style="width: 50px;">Amount</th>
-			<th align="center" style="width: 50px;">Refine</th>
-			<th align="center" style="width: 100px;">Card0</th>
-			<th align="center" style="width: 100px;">Card1</th>
-			<th align="center" style="width: 100px;">Card2</th>
-			<th align="center" style="width: 100px;">Card3</th>
+			<th></th>
+			<th align="center">Item Name</th>
+			<th align="center">Amount</th>
+			<th align="center">Card0</th>
+			<th align="center">Card1</th>
+			<th align="center">Card2</th>
+			<th align="center">Card3</th>
 		</tr>
 	';
-	while ($item = $result->fetch_row()) {
+	while ($item = $result->fetch_assoc()) {
+
+		$itemname = '';
+		if ($item['refine'] > 0)
+			$itemname .= '+'.$item['refine'].' ';
+
+		$itemname .= get_item_name($item['nameid']);
+
 		echo '
 			<tr>
-				<td align="center">'.($item[7]?'Eq.':'').'</td>
-				<td align="center">
-		';
-		if (isset($items[$item[0]]))
-			echo $items[$item[0]];
-		else
-			echo $item[0];
-		echo '
-				</td>
-				<td align="center">'.$item[1].'</td>
-				<td align="center">'.$item[6].'</td>
+				<td align="center">'.(isset($item['equip'])&&$item['equip']?'Eq.':'').'</td>
+				<td align="left">'.$itemname.'</td>
+				<td align="right">'.$item['amount'].'</td>
 		';
 
-		if ($item[2] == 254) {
-			$query2 = sprintf(GET_CHARNAME, forger($item[4], $item[5]));
-			$result2 = execute_query($query2, 'admincharinfo.php');
-			$result2->fetch_row();
-
+		if (item_has_signed_data($item['card0']) || item_has_forge_data($item['card0'])) {
+			$query2 = sprintf(GET_CHARNAME, $charid=forger($item['card2'], $item['card3']));
+			$result2 = execute_query($query2, 'storage.php');
 			if ($result2->count())
-				$chname = htmlformat($result2->row(0));
-			else
-				$chname = '<i class="disabled">Unknown</i>';
+				list($chname) = $result2->fetch_row();
+			else $chname = '<span style="color: #777777; font-style: italic">(Unknown, #'.$charid.')</span>';
 
 			echo '
-				<td align="center">signed</td>
-				<td align="center">'.$chname.' ('.forger($item[4], $item[5]).')</td>
-				<td align="center"></td>
-				<td align="center"></td>';
+				<td colspan="4" style="text-align: center">
+					'.(item_has_signed_data($item['card0'])?'signed':'forged').' by '.$chname.'</td>
+				</tr>
+			';
 		}
-		else if ($item[2] == 255) {
-			$query2 = sprintf(GET_CHARNAME, forger($item[4], $item[5]));
-			$result2 = execute_query($query2, 'admincharinfo.php');
-			$result2->fetch_row();
-
-			if ($result2->count())
-				$chname = htmlformat($result2->row(0));
-			else
-				$chname = '<i class="disabled">Unknown</i>';
-
-			echo '
-				<td align="center">forged</td>
-				<td align="center">'.$chname.' ('.forger($item[4], $item[5]).')</td>
-				<td align="center"></td>
-				<td align="center"></td>';
-		}
-		else if ($item[2] == -256 || $item[2] == 256 || $item[2] == 65280) {
-			$query2 = sprintf(GET_PETNAME, petegg($item[3]));
+		else if (item_has_pet_data($item['card0'])) {
+			$query2 = sprintf(GET_PETNAME, $petid=forger($item['card1'], $item['card2']));
 			$result2 = execute_query($query2, 'admincharinfo.php');
 			$result2->fetch_row();
 			
 			if ($result2->count())
 				$petname = htmlformat($result2->row(0));
 			else
-				$petname = '<i class="disabled">Unknown</i>';
+				$petname = '<span style="color: #777777; font-style: italic">(Unknown, #'.$petid.')</span>';
+			
 			echo '
-				<td align="center">Pet</td>
-				<td align="center">'.$petname.' ('.petegg($item[3]).')</td>
-				<td align="center"></td>
-				<td align="center"></td>
-				<td align="center"></td>';
+				<td colspan="4" style="text-align: center">
+					Pet: '.$petname.'</td>
+				</tr>
+			';
 		}
 		else {
 			echo '
-			<td align="center">'.((isset($items[$item[2]]))?$items[$item[2]]:$item[2]).'</td>
-			<td align="center">'.((isset($items[$item[3]]))?$items[$item[3]]:$item[3]).'</td>
-			<td align="center">'.((isset($items[$item[4]]))?$items[$item[4]]:$item[4]).'</td>
-			<td align="center">'.((isset($items[$item[5]]))?$items[$item[5]]:$item[5]).'</td>';
+			<td align="center">'.get_item_name($item['card0']).'</td>
+			<td align="center">'.get_item_name($item['card1']).'</td>
+			<td align="center">'.get_item_name($item['card2']).'</td>
+			<td align="center">'.get_item_name($item['card3']).'</td>';
 		}
 		echo '
 		</tr>';

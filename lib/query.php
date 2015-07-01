@@ -193,6 +193,10 @@ AND (`char`.`class` = '%d' OR `char`.`class` = '%d') AND `login`.`state` != '5' 
 //links.php - Links
 DEFINE('GET_LINKS', "SELECT `name`, `url`, `desc`, `size` FROM `cp_links`");
 
+// storage.php
+DEFINE('ACCOUNT_STORAGE', "SELECT `nameid`, `amount`, `card0`, `card1`, `card2`, `card3`, `refine` FROM `storage`
+WHERE `account_id` = '%d' ORDER BY `nameid` ASC");
+
 //vending.php - Vending
 DEFINE('VENDING_GET','SELECT 
  `v`.*,
@@ -215,6 +219,7 @@ LEFT JOIN `buyingstore_items` as `bi` ON (`b`.`id`=`buyingstore_id`)
 LEFT JOIN `char` as `c` ON (`b`.`char_id`=`c`.`char_id`)
 ORDER BY `name`, `bi`.`index` ASC');
 
+//general
 DEFINE('GET_CHARNAME', "SELECT `name` FROM `char` WHERE `char_id`='%d' LIMIT 1");
 DEFINE('GET_PETNAME', "SELECT `name` FROM `pet` WHERE `pet_id`='%d' LIMIT 1");
 DEFINE('FOUND_ROWS', "SELECT FOUND_ROWS()");
