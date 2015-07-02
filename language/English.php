@@ -356,7 +356,3 @@ $lang['ADMIN_ACCBAN_LAST_LOGIN'] = 'Last Login';
 $lang['ADMIN_ACCBAN_BAN_UNTIL'] = 'Ban until';
 $lang['ADMIN_ACCBAN_BLOCK'] = 'Block';
 $lang['ADMIN_ACCBAN_UNBLOCK'] = 'Unlock';
-
-foreach ($lang as &$l) {
-	$l = preg_replace('/./', '#', $l);
-}
