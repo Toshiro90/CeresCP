@@ -165,7 +165,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 			<tr>
 				<td align="center">
 					'.$lang['LOGIN_HELLO'].', '.$userid.'.<br /><br />
-					<span title="Logoff the server and, if any, reset the cookies" class="link" onClick="LINK_ajax(\'login.php?opt=2\',\'login_div\');">Logoff</span>
+					<span title="'.$lang['LOGOFF_EXPL'].'" class="link" onClick="LINK_ajax(\'login.php?opt=2\',\'login_div\');">'.$lang['LOGOFF'].'</span>
 				</td>
 			</tr>
 		</table>';
@@ -179,7 +179,7 @@ $session['login'] = rand(12345, 99999);
 $_SESSION[$CONFIG_name.'sessioncode'] = $session;
 $var = rand(10, 9999999);
 
-caption('Login');
+caption($lang['LOGIN']);
 echo '
 <form id="login" onSubmit="return POST_ajax(\'login.php\',\'login_div\',\'login\');">
 <table class="maintable">
@@ -208,7 +208,7 @@ if ($CONFIG_auth_image && function_exists("gd_info")) {
 echo '
 		<tr>
 			<td align=left><input type="text" name="code" maxlength="6" size="6" onKeyPress="return force(this.name,this.form.id,event);">
-				<input type="submit" value="login">
+				<input type="submit" value="'.$lang['LOGIN'].'">
 			</td>
 		</tr>
 		<tr>

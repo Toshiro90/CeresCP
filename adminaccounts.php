@@ -33,21 +33,21 @@ if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] <
 	die ('Not Authorized');
 
 if (!isset($GET_frm_name) && !isset($GET_page)) {
-	caption('View Accounts');
+	caption($lang['ADMIN_ACCS']);
 	echo '
 	<form id="accounts" onSubmit="return GET_ajax(\'adminaccounts.php\',\'accounts_div\',\'accounts\');">
 		<table class="maintable" style="width: auto">
 			<tr>
-				<td>Search</td><td>
+				<td>'.$lang['SEARCH'].'</td><td>
 				<input type="text" name="termo" maxlength="23" size="23">
 				<select name="tipo">
-				<option value="1">account_id
-				<option selected="selected" value="2">'.$lang['USERNAME'].'
-				<option value="3">'.$lang['MAIL'].'
-				<option value="4">IP
+					<option value="1">'.$lang['ACCOUNT_ID'].'</option>
+					<option selected="selected" value="2">'.$lang['USERNAME'].'</option>
+					<option value="3">'.$lang['MAIL'].'</option>
+					<option value="4">'.$lang['IP_ADDRESS'].'</option>
 				</select></td><td>
-				<input type="submit" name="search" value="search"></td>
-				<td><span title="Show All" class="link" onClick="return LINK_ajax(\'adminaccounts.php?page=0\',\'accounts_div\');">Show All</span></td>
+				<input type="submit" name="search" value="'.$lang['SEARCH'].'"></td>
+				<td><span title="'.$lang['SHOW_ALL'].'" class="link" onClick="return LINK_ajax(\'adminaccounts.php?page=0\',\'accounts_div\');">'.$lang['SHOW_ALL'].'</span></td>
 			</tr>
 		</table>
 	</form>
@@ -61,7 +61,7 @@ if (isset($GET_tipo)) {
 		alert($lang['INCORRECT_CHARACTER']);
 
 	if (strlen($GET_termo) < 3)
-		alert('Please type at least 3 chars');
+		alert(sprintf($lang['ADMIN_TYPE_MIN_CHARS'], 3));
 
 	switch($GET_tipo) {
 		case 1:
@@ -103,12 +103,12 @@ $result = execute_query($query, 'adminaccounts.php');
 echo '
 <table class="maintable">
 	<tr>
-		<th align="right">ID</th>
-		<th align="left">Login</th>
-		<th align="center">Sex</th>
-		<th align="left">Email</th>
-		<th align="center">Level</th>
-		<th align="left">IP</th>
+		<th align="right">'.$lang['ACCOUNT_ID'].'</th>
+		<th align="left">'.$lang['USERNAME'].'</th>
+		<th align="center">'.$lang['SEX'].'</th>
+		<th align="left">'.$lang['MAIL'].'</th>
+		<th align="center">'.$lang['LEVEL'].'</th>
+		<th align="left">'.$lang['IP_ADDRESS'].'</th>
 		<th align="center">BAN</th>
 	</tr>
 	';
@@ -139,11 +139,11 @@ while ($line = $result->fetch_row()) {
 		<td align="left">'.$line[5].'</td>
 		<td align="center">'.$ban.'</td>
 		<td align="center">
-		<span title="Edit" class="link" onClick="return LINK_ajax(\'adminaccedit.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">Edit</span></td>
+		<span title="'.$lang['EDIT'].'" class="link" onClick="return LINK_ajax(\'adminaccedit.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">'.$lang['EDIT'].'</span></td>
 		<td align="center">
-		<span title="View Chars" class="link" onClick="return LINK_ajax(\'adminaccchars.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">Chars</span></td>
+		<span title="'.$lang['ADMIN_ACCS_CHARS_EXPL'].'" class="link" onClick="return LINK_ajax(\'adminaccchars.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">'.$lang['ADMIN_ACCS_CHARS'].'</span></td>
 		<td align="center">
-		<span title="Ban, Block, Unban or Unblock" class="link" onClick="return LINK_ajax(\'adminaccban.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">(Un)Ban</span></td>
+		<span title="'.$lang['ADMIN_ACCS_BAN_UNBAN_EXPL'].'" class="link" onClick="return LINK_ajax(\'adminaccban.php?id='.$line[0].'&back='.$back.'\',\'accounts_div\');">'.$lang['ADMIN_ACCS_BAN_UNBAN'].'</span></td>
 	</tr>
 	';
 }

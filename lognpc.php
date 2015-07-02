@@ -34,7 +34,7 @@ if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] <
 
 $items = readitems();
 
-caption('NPC Logs');
+caption($lang['MENU_LOG_NPC']);
 
 if (!isset($GET_page))
 	$GET_page = 0;
@@ -78,17 +78,17 @@ if ($pages) {
 }
 
 echo $pagestring;
-echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'lognpc.php?page='.$GET_page.'\',\'main_div\');">Refresh</span></td></tr></table>';
+echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'lognpc.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 
 echo '
 <table class="maintable">
 	<tr>
-		<th style="text-align: center; width: 100px;">Time</th>
-		<th style="text-align: center; width: 100px;">AccID</th>
-		<th style="text-align: center; width:  50px;">CharID</th>
-		<th style="text-align: center; width: 100px;">Name</th>
-		<th style="text-align: center; width:  40px;">Map</th>
-		<th style="text-align: center; width:  100%;">Log</th>
+		<th style="text-align: center; width: 100px;">'.$lang['TIME'].'</th>
+		<th style="text-align: center; width: 100px;">'.$lang['ACCOUNT_ID'].'</th>
+		<th style="text-align: center; width:  50px;">'.$lang['CHAR_ID'].'</th>
+		<th style="text-align: center; width: 100px;">'.$lang['NAME'].'</th>
+		<th style="text-align: center; width:  40px;">'.$lang['MAP'].'</th>
+		<th style="text-align: center; width:  100%;">'.$lang['MESSAGE'].'</th>
 	</tr>';
 
 while ($line = $result->fetch_assoc()) {
@@ -103,7 +103,7 @@ while ($line = $result->fetch_assoc()) {
 }
 echo '</table>';
 
-echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'lognpc.php?page='.$GET_page.'\',\'main_div\');">Refresh</span></td></tr></table>';
+echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'lognpc.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 echo $pagestring;
 
 fim();

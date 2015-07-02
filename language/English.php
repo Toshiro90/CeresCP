@@ -80,7 +80,6 @@ $lang['THURSDAY'] = 'Thursday';
 $lang['FRIDAY'] = 'Friday';
 $lang['SATURDAY'] = 'Saturday';
 $lang['BLOCKED'] = 'You have been blocked, try again in %d min';
-// Following entries still need translations
 $lang['LEVEL'] = 'Level';
 $lang['GMLEVEL'] = 'GM Level';
 $lang['SHOW_ALL'] = 'Show All';
@@ -107,6 +106,22 @@ $lang['MENU_RESETPOS'] = 'Reset Position';
 $lang['MENU_RESETLOOK'] = 'Reset look';
 $lang['MENU_OTHER'] = 'Other';
 $lang['MENU_LINKS'] = 'Links';
+$lang['MENU_STORAGE'] = 'Storage';
+$lang['MENU_VENDING'] = 'Vending';
+$lang['MENU_PURCHASING'] = 'Purchasing';
+$lang['MENU_LOGS'] = 'Logs';
+$lang['MENU_LOG_ATCOMMAND'] = 'Atcommand Logs';
+$lang['MENU_LOG_CASH'] = 'Cash Logs';
+$lang['MENU_LOG_CHAR'] = 'Char Logs';
+$lang['MENU_LOG_BRANCH'] = 'Dead Branch Logs';
+$lang['MENU_LOG_ITEM'] = 'Item Logs';
+$lang['MENU_LOG_LOGIN'] = 'Login Logs';
+$lang['MENU_LOG_MVP'] = 'MVP Logs';
+$lang['MENU_LOG_NPC'] = 'NPC Logs';
+$lang['MENU_LOG_ZENY'] = 'Zeny Logs';
+$lang['MENU_ADMIN'] = 'Administration';
+$lang['MENU_ADMIN_ACC'] = 'Accounts';
+$lang['MENU_ADMIN_CHAR'] = 'Chars';
 
 //common
 $lang['NAME'] = 'Name';
@@ -119,6 +134,37 @@ $lang['ZENY'] = 'Zeny';
 $lang['SLOT'] = 'Slot';
 $lang['ONE_CHAR'] = 'You must have at least one character.';
 $lang['WOE_TIME'] = 'You can\'t see this function during WoE time.';
+$lang['SEARCH'] = 'Search';
+$lang['DETAIL'] = 'Detail';
+$lang['ACCOUNT_ID'] = 'Account ID';
+$lang['CHAR_ID'] = 'Char ID';
+$lang['MOB_ID'] = 'Mob ID';
+$lang['TIME'] = 'Time';
+$lang['REFRESH_PAGE'] = 'Refresh';
+$lang['MESSAGE'] = 'Message';
+$lang['COMMAND'] = 'Command';
+$lang['TYPE'] = 'Type';
+$lang['EXP'] = 'Experience';
+$lang['ABR_EXP'] = 'Exp';
+$lang['HAIR_COLOR'] = 'Hair Color';
+$lang['HAIR_STYLE'] = 'Hair Style';
+$lang['IP_ADDRESS'] = 'IP';
+$lang['EDIT'] = 'Edit';
+$lang['STATUS'] = 'Status';
+$lang['STATUS_ON'] = 'On';
+$lang['STATUS_OFF'] = 'Off';
+$lang['LINK_BACK'] = 'Back';
+
+
+//items
+$lang['ITEM_NAME'] = 'Item Name';
+$lang['ITEM_AMOUNT'] = 'Amount';
+$lang['ITEM_CARD'] = 'Card';
+$lang['ITEM_SIGNED_BY'] = 'signed by';
+$lang['ITEM_FORGED_BY'] = 'forged by';
+$lang['ITEM_PET'] = 'Pet';
+$lang['ITEM_TYPE'] = 'Type';
+$lang['CASH_TYPE'] = 'Cash Type';
 
 //whoisonline.php
 $lang['WHOISONLINE_WHOISONLINE'] = 'Who is online';
@@ -155,6 +201,10 @@ $lang['RESETLOOK_HAIRS_OK'] = 'Hair Style has been reset.';
 $lang['RESETLOOK_CLOTHESC_OK'] = 'Clothes Color has been reset.';
 $lang['RESETLOOK_SELECT'] = 'Select at least one look to reset.';
 $lang['RESETLOOK_RESETLOOK'] = 'Reset Look';
+$lang['RESETLOOK_EQUIP'] = 'Equipment';
+$lang['RESETLOOK_HAIRC'] = 'Hair Color';
+$lang['RESETLOOK_HAIRS'] = 'Hair Style';
+$lang['RESETLOOK_CLOTHESC'] = 'Clothes Color';
 
 //recover.php
 $lang['RECOVER_RECOVER'] = 'Recover Password';
@@ -186,6 +236,7 @@ $lang['MONEY_TWO_CHAR'] = 'You must have at least two characters.';
 $lang['MONEY_TRANSFER_FROM'] = 'Transfer Zeny From';
 $lang['MONEY_TRANSFER_TO'] = 'Transfer Zeny To';
 $lang['MONEY_PS1'] = '*There will be a cost of %.2f%%, from the transferred amount, to use this service';
+$lang['MONEY_SELECT'] = 'Select';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Marriage';
@@ -200,8 +251,8 @@ $lang['MARRIAGE_PS2'] = '*You can only change one char at time';
 $lang['MARRIAGE_PS3'] = '*You will be banned for 2 minutes to save the changes';
 
 //ladder.php
-$lang['LADDER_TOP100'] = 'Top 100 Player Ladder';
 $lang['LADDER_GUILD'] = 'Guild';
+$lang['LADDER_TOP100'] = 'Top 100 Player Ladder';
 $lang['LADDER_STATUS'] = 'Status';
 $lang['LADDER_STATUS_ON'] = 'On';
 $lang['LADDER_STATUS_OFF'] = 'Off';
@@ -236,18 +287,23 @@ $lang['INTERNAL_STATISTIC'] = '(for internal statistics)';
 $lang['BIRTHDAY'] = 'Birthday (YYYYMMDD)';
 $lang['ACCOUNT_MAX_REACHED'] = 'There are too many accounts registered, please try again later.';
 
-//index.php
+//middle.php
 $lang['NEW_ACCOUNT'] = 'New Account';
+$lang['NEW_ACCOUNT_EXPL'] = 'Create a new account';
 $lang['RECOVER_PASSWORD'] = 'Recover your password';
+$lang['RECOVER_PASSWORD_EXPL'] = 'Send the account info to your e-mail';
 
 //links.php
 $lang['LINKS_LINKS'] = 'Links';
 $lang['LINKS_NAME'] = 'Name';
 
 //login.php
+$lang['LOGIN'] = 'Login';
 $lang['LOGIN_WELCOME'] = 'Welcome';
 $lang['LOGIN_HELLO'] = 'Hello';
 $lang['LOGIN_REMEMBER'] = 'remember me';
+$lang['LOGOFF'] = 'Logoff';
+$lang['LOGOFF_EXPL'] = 'Logoff the server and, if any, reset the cookies';
 
 //about.php
 $lang['ABOUT_ABOUT'] = 'About the server';
@@ -262,3 +318,45 @@ $lang['ABOUT_WOE_TIMES'] = 'WoE times';
 //ceres.php
 $lang['ABOUT_CERES'] = 'Ceres Control Panel Information';
 $lang['CERES_TITLE'] = 'Ceres Control Panel';
+
+//storage.php
+$lang['STORAGE'] = 'Storage';
+$lang['STORAGE_YOUR'] = 'Your Storage';
+$lang['STORAGE_COUNT'] = '%d items found';
+
+//vending.php
+$lang['VENDING'] = 'Vending';
+$lang['VENDING_NOUSER'] = 'There is currently no character using vending.';
+
+//purchasing.php
+$lang['PURCHASING'] = 'Purchasing';
+$lang['PURCHASING_NOUSER'] = 'There is currently no character having a purchasing store.';
+
+//selectlang.php
+$lang['LANGUAGE'] = 'Language';
+
+//admin
+$lang['ADMIN_TYPE_MIN_CHARS'] = 'Please type at least %d chars';
+
+//adminaccounts.php
+$lang['ADMIN_ACCS'] = 'View Accounts';
+$lang['ADMIN_ACCS_CHARS'] = 'Chars';
+$lang['ADMIN_ACCS_CHARS_EXPL'] = 'View Chars';
+$lang['ADMIN_ACCS_BAN_UNBAN'] = '(Un)Ban';
+$lang['ADMIN_ACCS_BAN_UNBAN_EXPL'] = 'Ban, Block, Unban or Unblock';
+$lang['ADMIN_ACCS_EDIT'] = 'Account Edit';
+$lang['ADMIN_ACCS_ID'] = 'Account - %d';
+$lang['ADMIN_ACCS_BAN_BLOCK'] = 'Account BAN/BLOCK';
+
+//adminchars.php
+$lang['ADMIN_CHARS'] = 'View Chars';
+
+//adminaccban.php
+$lang['ADMIN_ACCBAN_LAST_LOGIN'] = 'Last Login';
+$lang['ADMIN_ACCBAN_BAN_UNTIL'] = 'Ban until';
+$lang['ADMIN_ACCBAN_BLOCK'] = 'Block';
+$lang['ADMIN_ACCBAN_UNBLOCK'] = 'Unlock';
+
+foreach ($lang as &$l) {
+	$l = preg_replace('/./', '#', $l);
+}

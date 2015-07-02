@@ -142,7 +142,7 @@ $var = rand(10, 9999999);
 	<tr>
 		<td align="right">'.$lang['BIRTHDAY'].':</td>
 		<td align="left">
-			<input type="text" name="birthdate" maxlength="8" size="8" onKeyPress="return force(this.name,this.form.id,event);">
+			<input type="text" name="birthday" maxlength="8" size="8" onKeyPress="return force(this.name,this.form.id,event);">
 		</td>
 	</tr>';
 	if ($CONFIG_auth_image && function_exists("gd_info")) { 

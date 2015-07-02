@@ -39,7 +39,7 @@ include_once 'lib/functions.php';
 				<td align=center>
 				<form id="ladder">
 					<select name="opt" onChange="javascript:GET_ajax(\'ladder.php\', \'ladder_div\', \'ladder\');">
-						<option selected="selected" value="0">All</option>
+						<option selected="selected" value="0">'.$lang['SHOW_ALL'].'</option>
 			';
 			for ($i = 1; $i < 26; $i++) {
 				if ($i != 13 && $i != 21 && $i != 22 && $i != 26)

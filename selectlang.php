@@ -56,7 +56,7 @@ if (isset($GET_language)) {
 	$selected = $GET_language;
 }
 
-caption('Language');
+caption($lang['LANGUAGE']);
 echo '
 <form id="selectlang">
 <table class="maintable">

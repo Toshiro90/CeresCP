@@ -465,12 +465,12 @@ function print_items($result) {
 		<table class="maintable" style="width: 610px">
 		<tr>
 			<th></th>
-			<th align="center">Item Name</th>
-			<th align="center">Amount</th>
-			<th align="center">Card0</th>
-			<th align="center">Card1</th>
-			<th align="center">Card2</th>
-			<th align="center">Card3</th>
+			<th align="center">'.$lang['ITEM_NAME'].'</th>
+			<th align="center">'.$lang['ITEM_AMOUNT'].'</th>
+			<th align="center">'.$lang['ITEM_CARD'].' 1</th>
+			<th align="center">'.$lang['ITEM_CARD'].' 2</th>
+			<th align="center">'.$lang['ITEM_CARD'].' 3</th>
+			<th align="center">'.$lang['ITEM_CARD'].' 4</th>
 		</tr>
 	';
 	while ($item = $result->fetch_assoc()) {
@@ -497,7 +497,7 @@ function print_items($result) {
 
 			echo '
 				<td colspan="4" style="text-align: center">
-					'.(item_has_signed_data($item['card0'])?'signed':'forged').' by '.$chname.'</td>
+					'.(item_has_signed_data($item['card0'])?$lang['ITEM_SIGNED_BY']:$lang['ITEM_FORGED_BY']).' '.$chname.'</td>
 				</tr>
 			';
 		}
@@ -513,7 +513,7 @@ function print_items($result) {
 			
 			echo '
 				<td colspan="4" style="text-align: center">
-					Pet: '.$petname.'</td>
+					'.$lang['ITEM_PET'].': '.$petname.'</td>
 				</tr>
 			';
 		}

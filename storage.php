@@ -31,7 +31,7 @@ include_once 'lib/functions.php';
 
 $items = readitems();
 
-caption('Your Storage');
+caption($lang['STORAGE_YOUR']);
 
 
 if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
@@ -39,7 +39,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 	
 		$query = sprintf(ACCOUNT_STORAGE, $_SESSION[$CONFIG_name.'account_id']);
 		$answere = execute_query($query, 'storage.php');
-		print '<center>'.$answere->count().' items found.</center>';
+		print '<center>'.sprintf($lang['STORAGE_COUNT'], $answere->count()).'</center>';
 
 		print_items($answere);
 

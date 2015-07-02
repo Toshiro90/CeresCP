@@ -98,7 +98,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 						<input type="hidden" name="charnum" value="'.$slot.'">
 						<input type="hidden" name="opt" value="1">
 						<input type="hidden" name="GID1" value="'.$GID.'">
-						<input type="submit" value="equip">
+						<input type="submit" value="'.$lang['RESETLOOK_EQUIP'].'">
 					</form>
 				</td><td align="center">
 					<form id="hair_style'.$slot.'" onsubmit="return GET_ajax(\'resetlook.php\',\'main_div\',\'hair_style'.$slot.'\')">
@@ -106,7 +106,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 						<input type="hidden" name="charnum" value="'.$slot.'">
 						<input type="hidden" name="opt" value="1">
 						<input type="hidden" name="GID1" value="'.$GID.'">
-						<input type="submit" value="Hair Style">
+						<input type="submit" value="'.$lang['RESETLOOK_HAIRS'].'">
 					</form>
 				</td><td align="center">
 					<form id="clothes_color'.$slot.'" onsubmit="return GET_ajax(\'resetlook.php\',\'main_div\',\'clothes_color'.$slot.'\')">
@@ -114,7 +114,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 						<input type="hidden" name="charnum" value="'.$slot.'">
 						<input type="hidden" name="opt" value="1">
 						<input type="hidden" name="GID1" value="'.$GID.'">
-						<input type="submit" value="Clothes Color">
+						<input type="submit" value="'.$lang['RESETLOOK_CLOTHESC'].'">
 					</form>
 				</td><td align="center">
 					<form id="hair_color'.$slot.'" onsubmit="return GET_ajax(\'resetlook.php\',\'main_div\',\'hair_color'.$slot.'\')">
@@ -122,7 +122,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 						<input type="hidden" name="charnum" value="'.$slot.'">
 						<input type="hidden" name="opt" value="1">
 						<input type="hidden" name="GID1" value="'.$GID.'">
-						<input type="submit" value="Hair Color">
+						<input type="submit" value="'.$lang['RESETLOOK_HAIRC'].'">
 					</form>
 				</td>
 			</tr>

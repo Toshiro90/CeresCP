@@ -61,10 +61,10 @@ if (isset($GET_frm_name) && isset($GET_id)) {
 	}
 }
 
-caption('Account Edit');
+caption($lang['ADMIN_ACCS_EDIT']);
 if (isset($GET_back)) {
 	$back = base64_decode($GET_back);
-	echo '<center><span title="Back" class="link" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span></center>';
+	echo '<center><span title="'.$lang['LINK_BACK'].'" class="link" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;- '.$lang['LINK_BACK'].'</span></center>';
 }
 
 if (isset($GET_id)) {
@@ -79,7 +79,7 @@ if (isset($GET_id)) {
 		<form id="accedit" onSubmit="return GET_ajax(\'adminaccedit.php\',\'accounts_div\',\'accedit\');">
 			<table class="maintable">
 				<tr>
-					<td align="right">Account ID</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
+					<td align="right">'.$lang['ACCOUNT_ID'].'</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
 				</tr><tr>
 					<td align="right">'.$lang['USERNAME'].'</td><td align="left"><input type="text" name="login" value="'.htmlformat($line[1]).'" maxlength="23" size="23"></td>
 				</tr><tr>

@@ -80,6 +80,9 @@ $lang['THURSDAY'] = 'Donnerstag';
 $lang['FRIDAY'] = 'Freitag';
 $lang['SATURDAY'] = 'Samstag';
 $lang['BLOCKED'] = 'Du wurdest geblockt. Erneuter Versuch in %d Minuten.';
+$lang['LEVEL'] = 'Level';
+$lang['GMLEVEL'] = 'GM Level';
+$lang['SHOW_ALL'] = 'Alle anzeigen';
 
 //menu.php
 $lang['MENU_HOME'] = 'Home';
@@ -103,6 +106,22 @@ $lang['MENU_RESETPOS'] = 'Position zurücksetzten';
 $lang['MENU_RESETLOOK'] = 'Aussehen zurücksetzten';
 $lang['MENU_OTHER'] = 'Anderes';
 $lang['MENU_LINKS'] = 'Links';
+$lang['MENU_STORAGE'] = 'Lager';
+$lang['MENU_VENDING'] = 'Verkaufsstände';
+$lang['MENU_PURCHASING'] = 'Ankaufsstände';
+$lang['MENU_LOGS'] = 'Logs';
+$lang['MENU_LOG_ATCOMMAND'] = 'Atcommand Logs';
+$lang['MENU_LOG_CASH'] = 'Cash Logs';
+$lang['MENU_LOG_CHAR'] = 'Char Logs';
+$lang['MENU_LOG_BRANCH'] = 'Dead Branch Logs';
+$lang['MENU_LOG_ITEM'] = 'Item Logs';
+$lang['MENU_LOG_LOGIN'] = 'Login Logs';
+$lang['MENU_LOG_MVP'] = 'MVP Logs';
+$lang['MENU_LOG_NPC'] = 'NPC Logs';
+$lang['MENU_LOG_ZENY'] = 'Zeny Logs';
+$lang['MENU_ADMIN'] = 'Administration';
+$lang['MENU_ADMIN_ACC'] = 'Accounts';
+$lang['MENU_ADMIN_CHAR'] = 'Chars';
 
 //common
 $lang['NAME'] = 'Name';
@@ -115,6 +134,37 @@ $lang['ZENY'] = 'Zeny';
 $lang['SLOT'] = 'Slot';
 $lang['ONE_CHAR'] = 'Du musst mindestens einen Charakter haben.';
 $lang['WOE_TIME'] = 'Du kannst diese Funktion nur wärend WoE benutzen';
+$lang['SEARCH'] = 'Suchen';
+$lang['DETAIL'] = 'Detail';
+$lang['ACCOUNT_ID'] = 'Account ID';
+$lang['CHAR_ID'] = 'Char ID';
+$lang['MOB_ID'] = 'Mob ID';
+$lang['TIME'] = 'Zeit';
+$lang['REFRESH_PAGE'] = 'Neu laden';
+$lang['MESSAGE'] = 'Nachricht';
+$lang['COMMAND'] = 'Befehl';
+$lang['TYPE'] = 'Typ';
+$lang['EXP'] = 'Erfahrung';
+$lang['ABR_EXP'] = 'EP';
+$lang['HAIR_COLOR'] = 'Haar Farbe';
+$lang['HAIR_STYLE'] = 'Frisur';
+$lang['IP_ADDRESS'] = 'IP';
+$lang['EDIT'] = 'Bearbeiten';
+$lang['STATUS'] = 'Status';
+$lang['STATUS_ON'] = 'On';
+$lang['STATUS_OFF'] = 'Off';
+$lang['LINK_BACK'] = 'Zurück';
+
+
+//items
+$lang['ITEM_NAME'] = 'Item Name';
+$lang['ITEM_AMOUNT'] = 'Menge';
+$lang['ITEM_CARD'] = 'Card';
+$lang['ITEM_SIGNED_BY'] = 'signiert von';
+$lang['ITEM_FORGED_BY'] = 'geschmiedet von';
+$lang['ITEM_PET'] = 'Haustier';
+$lang['ITEM_TYPE'] = 'Typ';
+$lang['CASH_TYPE'] = 'Cash Typ';
 
 //whoisonline.php
 $lang['WHOISONLINE_WHOISONLINE'] = 'Wer ist online';
@@ -145,12 +195,16 @@ $lang['AGIT_ON'] = 'On';
 
 //resetlook.php
 $lang['RESETLOOK_RESET_LOOK'] = 'Aussehen zurücksetzten fehlgeschlagen.';
-$lang['RESETLOOK_EQUIP_OK'] = 'Equipment wurde zurückgesetzt.';
+$lang['RESETLOOK_EQUIP_OK'] = 'Ausrüstung wurde zurückgesetzt.';
 $lang['RESETLOOK_HAIRC_OK'] = 'Haar Farbe wurde zurückgesetzt.';
 $lang['RESETLOOK_HAIRS_OK'] = 'Frisur wurde zurückgesetzt.';
 $lang['RESETLOOK_CLOTHESC_OK'] = 'Charakter Farbe wurde zurückgesetzt.';
 $lang['RESETLOOK_SELECT'] = 'Wähle einen Charakter aus, dessen Aussehen zurück gesetzt werden soll.';
 $lang['RESETLOOK_RESETLOOK'] = 'Aussehen zurücksetzten.';
+$lang['RESETLOOK_EQUIP'] = 'Ausrüstung';
+$lang['RESETLOOK_HAIRC'] = 'Haar Farbe';
+$lang['RESETLOOK_HAIRS'] = 'Frisur';
+$lang['RESETLOOK_CLOTHESC'] = 'Kleidungsfarbe';
 
 //recover.php
 $lang['RECOVER_RECOVER'] = 'Passwort wiederherstellen';
@@ -182,6 +236,7 @@ $lang['MONEY_TWO_CHAR'] = 'Du musst min. 2 Charakter besitzen.';
 $lang['MONEY_TRANSFER_FROM'] = 'Transferiere Zeny von';
 $lang['MONEY_TRANSFER_TO'] = 'Transferiere Zeny zu';
 $lang['MONEY_PS1'] = '*Es wird dich %.2f%%, von den transferierten Zenys kosten, um diesen Dienst nutzen zu können.';
+$lang['MONEY_SELECT'] = 'Auswahl';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Scheidung';
@@ -230,19 +285,25 @@ $lang['ACCOUNT_CREATED'] = 'Account regisriert. Du kannst dich nun einloggen.';
 $lang['ACCOUNT_PROBLEM'] = 'Fehler beim Account erstellen, bitte versuche es zu einem späteren Zeitpunkt erneut.';
 $lang['INTERNAL_STATISTIC'] = '(für interne Statistiken)';
 $lang['BIRTHDAY'] = 'Geburtstag (JJJJMMTT)';
+$lang['ACCOUNT_MAX_REACHED'] = 'Es sind bereits zuviele Accounts registiert, versuche es später erneut.';
 
 //index.php
 $lang['NEW_ACCOUNT'] = 'Neuer Account';
+$lang['NEW_ACCOUNT_EXPL'] = 'Neuen Account erstellen';
 $lang['RECOVER_PASSWORD'] = 'Passwort wiederherstellen';
+$lang['RECOVER_PASSWORD_EXPL'] = 'Accountinformationen per E-Mail zusenden';
 
 //links.php
 $lang['LINKS_LINKS'] = 'Links';
 $lang['LINKS_NAME'] = 'Name';
 
 //login.php
+$lang['LOGIN'] = 'Einloggen';
 $lang['LOGIN_WELCOME'] = 'Willkommen';
 $lang['LOGIN_HELLO'] = 'Hallo';
 $lang['LOGIN_REMEMBER'] = 'eingeloggt bleiben';
+$lang['LOGOFF'] = 'Ausloggen';
+$lang['LOGOFF_EXPL'] = 'Ausloggen und, sofern vorhanden, Cookies löschen';
 
 //about.php
 $lang['ABOUT_ABOUT'] = 'Über den Server';
@@ -253,3 +314,46 @@ $lang['ABOUT_TOTAL_CHAR'] = 'Gesamtanzahl der Charactere';
 $lang['ABOUT_TOTAL_ZENY'] = 'Gesamtanzahl der Zeny';
 $lang['ABOUT_TOTAL_CLASS'] = 'Gesamtanzahl der Klassen';
 $lang['ABOUT_WOE_TIMES'] = 'WoE Zeiten';
+
+//ceres.php
+$lang['ABOUT_CERES'] = 'Ceres Control Panel Information';
+$lang['CERES_TITLE'] = 'Ceres Control Panel';
+
+//storage.php
+$lang['STORAGE'] = 'Lager';
+$lang['STORAGE_YOUR'] = 'Dein Lager';
+$lang['STORAGE_COUNT'] = '%d Gegenstände gefunden';
+
+//vending.php
+$lang['VENDING'] = 'Verkaufsstände';
+$lang['VENDING_NOUSER'] = 'Es hat derzeit kein Spieler einen Verkaufsstand geöffnet.';
+
+//purchasing.php
+$lang['PURCHASING'] = 'Ankaufsstände';
+$lang['PURCHASING_NOUSER'] = 'Es hat derzeit kein Spieler einen Ankaufsstand geöffnet.';
+
+//selectlang.php
+$lang['LANGUAGE'] = 'Sprache';
+
+//admin
+$lang['ADMIN_TYPE_MIN_CHARS'] = 'Bitte gib mindestens %d Zeichen ein';
+
+//adminaccounts.php
+$lang['ADMIN_ACCS'] = 'Accounts anzeigen';
+$lang['ADMIN_ACCS_CHARS'] = 'Chars';
+$lang['ADMIN_ACCS_CHARS_EXPL'] = 'Chars anzeigen';
+$lang['ADMIN_ACCS_BAN_UNBAN'] = '(Ent)Bannen';
+$lang['ADMIN_ACCS_BAN_UNBAN_EXPL'] = 'Bannen, blocken, entbannen or entblocken';
+$lang['ADMIN_ACCS_EDIT'] = 'Account bearbeiten';
+$lang['ADMIN_ACCS_ID'] = 'Account - %d';
+$lang['ADMIN_ACCS_BAN_BLOCK'] = 'Account BANNEN/BLOCKEN';
+
+//adminchars.php
+$lang['ADMIN_CHARS'] = 'Chars anzeigen';
+
+//adminaccban.php
+$lang['ADMIN_ACCBAN_LAST_LOGIN'] = 'Letzter Login';
+$lang['ADMIN_ACCBAN_BAN_UNTIL'] = 'Gebannt bis';
+$lang['ADMIN_ACCBAN_BLOCK'] = 'Geblockt';
+$lang['ADMIN_ACCBAN_UNBLOCK'] = 'Entblockt';
+

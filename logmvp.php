@@ -34,7 +34,7 @@ if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] <
 
 $items = readitems();
 
-caption('MVP Logs');
+caption($lang['MENU_LOG_MVP']);
 
 if (!isset($GET_page))
 	$GET_page = 0;
@@ -78,17 +78,17 @@ if ($pages) {
 }
 
 echo $pagestring;
-echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logmvp.php?page='.$GET_page.'\',\'main_div\');">Refresh</span></td></tr></table>';
+echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logmvp.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 
 echo '
 <table class="maintable">
 	<tr>
-		<th style="text-align: center; width: 100px;">Time</th>
-		<th style="text-align: center; width: 100px;">CharID</th>
-		<th style="text-align: center; width:  50px;">MobID</th>
-		<th style="text-align: center; width:  100%;">Prize</th>
-		<th style="text-align: center; width:   40px;">MEXP</th>
-		<th style="text-align: center; width:   40px;">Map</th>
+		<th style="text-align: center; width: 100px;">'.$lang['TIME'].'</th>
+		<th style="text-align: center; width: 100px;">'.$lang['CHAR_ID'].'</th>
+		<th style="text-align: center; width:  50px;">'.$lang['MOB_ID'].'</th>
+		<th style="text-align: center; width:  100%;">'.$lang['ITEM_NAME'].'</th>
+		<th style="text-align: center; width:   40px;">'.$lang['ABR_EXP'].'</th>
+		<th style="text-align: center; width:   40px;">'.$lang['MAP'].'</th>
 	</tr>';
 
 while ($line = $result->fetch_assoc()) {
@@ -104,7 +104,7 @@ while ($line = $result->fetch_assoc()) {
 }
 echo '</table>';
 
-echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logmvp.php?page='.$GET_page.'\',\'main_div\');">Refresh</span></td></tr></table>';
+echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logmvp.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 echo $pagestring;
 
 fim();

@@ -32,7 +32,7 @@ include_once 'lib/functions.php';
 if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] < $CONFIG['cp_admin'])
 	die ('Not Authorized');
 
-caption('Char Logs');
+caption($lang['MENU_LOG_CHAR']);
 
 if (!isset($GET_page))
 	$GET_page = 0;
@@ -76,23 +76,23 @@ if ($pages) {
 }
 
 echo $pagestring;
-echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logchar.php?page='.$GET_page.'\',\'main_div\');">Refresh</span></td></tr></table>';
+echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logchar.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 
 echo '
 <table class="maintable">
 	<tr>
-		<th>Date</th>
-		<th>AccountID</th>
-		<th>Slot</th>
-		<th>Name</th>
+		<th>'.$lang['TIME'].'</th>
+		<th>'.$lang['ACCOUNT_ID'].'</th>
+		<th>'.$lang['SLOT'].'</th>
+		<th>'.$lang['NAME'].'</th>
 		<th>STR</th>
 		<th>AGI</th>
 		<th>VIT</th>
 		<th>INT</th>
 		<th>DEX</th>
 		<th>LUK</th>
-		<th>Hair</th>
-		<th>Color</th>
+		<th>'.$lang['HAIR_STYLE'].'</th>
+		<th>'.$lang['HAIR_COLOR'].'</th>
 		<th>Message</th>
 	</tr>';
 
@@ -115,7 +115,7 @@ while ($line = $result->fetch_assoc()) {
 }
 echo '</table>';
 
-echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logchar.php?page='.$GET_page.'\',\'main_div\');">Refresh</span></td></tr></table>';
+echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logchar.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 echo $pagestring;
 
 fim();

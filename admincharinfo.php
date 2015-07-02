@@ -64,10 +64,10 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 		$gname = htmlformat($result['guild_name']);
 		echo '
 			<tr>
-				<th align="right">Account ID:</th><td align="left">'.$result['account_id'].'</td>
-				<th align="right">Char ID:</th><td align="left">'.$result['char_id'].'</td>';
+				<th align="right">'.$lang['ACCOUNT_ID'].':</th><td align="left">'.$result['account_id'].'</td>
+				<th align="right">'.$lang['CHAR_ID'].':</th><td align="left">'.$result['char_id'].'</td>';
 		if ($CONFIG_servermode == SERVER_HERCULES) {
-			echo '<th align="right">Sex:</th><td>'.$result['sex'].'</td>';
+			echo '<th align="right">'.$lang['SEX'].':</th><td>'.$result['sex'].'</td>';
 		}
 		else {
 			echo '<th></th><td></td>';
@@ -75,8 +75,8 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 		echo '
 			</tr>
 			<tr>
-				<th align="right">Name:</th><td align="left">'.htmlformat($result['name']).'</td>
-				<th align="right">Job:</th><td align="left">
+				<th align="right">'.$lang['NAME'].':</th><td align="left">'.htmlformat($result['name']).'</td>
+				<th align="right">'.$lang['CLASS'].':</th><td align="left">
 			';
 		if (isset($jobs[$result['class']]))
 			echo $jobs[$result['class']];
@@ -93,8 +93,8 @@ if (isset($GET_id) && !notnumber($GET_id)) {
 				</td>
 			</tr>
 			<tr>
-				<th align="right">Level:</th><td align="left">'.$result['base_level'].'/'.$result['job_level'].'</td>
-				<th align="right">Zeny:</th><td align="left">'.$result['zeny'].'</td>
+				<th align="right">'.$lang['LEVEL'].':</th><td align="left">'.$result['base_level'].'/'.$result['job_level'].'</td>
+				<th align="right">'.$lang['ZENY'].':</th><td align="left">'.$result['zeny'].'</td>
 				<th></th><td></td>
 			</tr>
 			<tr>

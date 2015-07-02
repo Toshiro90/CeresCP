@@ -80,6 +80,9 @@ $lang['THURSDAY'] = 'Jeudi';
 $lang['FRIDAY'] = 'Vendredi';
 $lang['SATURDAY'] = 'Samedi';
 $lang['BLOCKED'] = 'You have been blocked, try again in %d min';
+$lang['LEVEL'] = 'Level'; // TODO: translate
+$lang['GMLEVEL'] = 'GM Level'; // TODO: translate
+$lang['SHOW_ALL'] = 'Show All'; // TODO: translate
 
 //menu.php
 $lang['MENU_HOME'] = 'Home';
@@ -103,6 +106,22 @@ $lang['MENU_RESETPOS'] = 'Reseter la Position';
 $lang['MENU_RESETLOOK'] = 'Reseter le look';
 $lang['MENU_OTHER'] = 'Autre';
 $lang['MENU_LINKS'] = 'Liens';
+$lang['MENU_STORAGE'] = 'Storage'; // TODO: translate
+$lang['MENU_VENDING'] = 'Vending'; // TODO: translate
+$lang['MENU_PURCHASING'] = 'Purchasing'; // TODO: translate
+$lang['MENU_LOGS'] = 'Logs'; // TODO: translate
+$lang['MENU_LOG_ATCOMMAND'] = 'Atcommand Logs'; // TODO: translate
+$lang['MENU_LOG_CASH'] = 'Cash Logs'; // TODO: translate
+$lang['MENU_LOG_CHAR'] = 'Char Logs'; // TODO: translate
+$lang['MENU_LOG_BRANCH'] = 'Dead Branch Logs'; // TODO: translate
+$lang['MENU_LOG_ITEM'] = 'Item Logs'; // TODO: translate
+$lang['MENU_LOG_LOGIN'] = 'Login Logs'; // TODO: translate
+$lang['MENU_LOG_MVP'] = 'MVP Logs'; // TODO: translate
+$lang['MENU_LOG_NPC'] = 'NPC Logs'; // TODO: translate
+$lang['MENU_LOG_ZENY'] = 'Zeny Logs'; // TODO: translate
+$lang['MENU_ADMIN'] = 'Administration'; // TODO: translate
+$lang['MENU_ADMIN_ACC'] = 'Accounts'; // TODO: translate
+$lang['MENU_ADMIN_CHAR'] = 'Chars'; // TODO: translate
 
 //common
 $lang['NAME'] = 'Nom';
@@ -115,6 +134,37 @@ $lang['ZENY'] = 'Zeny';
 $lang['SLOT'] = 'Slot';
 $lang['ONE_CHAR'] = 'Tu dois avoir au moins un character.';
 $lang['WOE_TIME'] = 'Vous ne pouvez pas utilisez cette fonction pendant WoE.';
+$lang['SEARCH'] = 'Search'; // TODO: translate
+$lang['DETAIL'] = 'Detail'; // TODO: translate
+$lang['ACCOUNT_ID'] = 'Account ID'; // TODO: translate
+$lang['CHAR_ID'] = 'Char ID'; // TODO: translate
+$lang['MOB_ID'] = 'Mob ID'; // TODO: translate
+$lang['TIME'] = 'Time'; // TODO: translate
+$lang['REFRESH_PAGE'] = 'Refresh'; // TODO: translate
+$lang['MESSAGE'] = 'Message'; // TODO: translate
+$lang['COMMAND'] = 'Command'; // TODO: translate
+$lang['TYPE'] = 'Type'; // TODO: translate
+$lang['EXP'] = 'Experience'; // TODO: translate
+$lang['ABR_EXP'] = 'Exp'; // TODO: translate
+$lang['HAIR_COLOR'] = 'Hair Color'; // TODO: translate
+$lang['HAIR_STYLE'] = 'Hair Style'; // TODO: translate
+$lang['IP_ADDRESS'] = 'IP'; // TODO: translate
+$lang['EDIT'] = 'Edit'; // TODO: translate
+$lang['STATUS'] = 'Status'; // TODO: translate
+$lang['STATUS_ON'] = 'On'; // TODO: translate
+$lang['STATUS_OFF'] = 'Off'; // TODO: translate
+$lang['LINK_BACK'] = 'Back'; // TODO: translate
+
+
+//items
+$lang['ITEM_NAME'] = 'Item Name'; // TODO: translate
+$lang['ITEM_AMOUNT'] = 'Amount'; // TODO: translate
+$lang['ITEM_CARD'] = 'Card'; // TODO: translate
+$lang['ITEM_SIGNED_BY'] = 'signed by'; // TODO: translate
+$lang['ITEM_FORGED_BY'] = 'forged by'; // TODO: translate
+$lang['ITEM_PET'] = 'Pet'; // TODO: translate
+$lang['ITEM_TYPE'] = 'Type'; // TODO: translate
+$lang['CASH_TYPE'] = 'Cash Type'; // TODO: translate
 
 //whoisonline.php
 $lang['WHOISONLINE_WHOISONLINE'] = 'Qui est connecté';
@@ -151,6 +201,10 @@ $lang['RESETLOOK_HAIRS_OK'] = 'Hair Style à été reseté.';
 $lang['RESETLOOK_CLOTHESC_OK'] = 'Clothes Color à été reseté.';
 $lang['RESETLOOK_SELECT'] = 'Choisie au moins un look à reseter.';
 $lang['RESETLOOK_RESETLOOK'] = 'Reset Look';
+$lang['RESETLOOK_EQUIP'] = 'Equipment'; // TODO: translate
+$lang['RESETLOOK_HAIRC'] = 'Hair Color'; // TODO: translate
+$lang['RESETLOOK_HAIRS'] = 'Hair Style'; // TODO: translate
+$lang['RESETLOOK_CLOTHESC'] = 'Clothes Color'; // TODO: translate
 
 //recover.php
 $lang['RECOVER_RECOVER'] = 'Recover Password';
@@ -183,6 +237,7 @@ $lang['MONEY_TWO_CHAR'] = 'Tu dois avoir au moins 2 characters.';
 $lang['MONEY_TRANSFER_FROM'] = 'Transferer l\'argent de';
 $lang['MONEY_TRANSFER_TO'] = 'Transferer l\'argent à';
 $lang['MONEY_PS1'] = '*Il y aura un prix de %.2f%% du montant transferée pour cette fonction';
+$lang['MONEY_SELECT'] = 'Select'; // TODO: translate
 
 //marriage.php
 $lang['MARRIAGE'] = 'Marriage';
@@ -197,8 +252,8 @@ $lang['MARRIAGE_PS2'] = '*Tu ne peux que changer un character à la foix';
 $lang['MARRIAGE_PS3'] = '*You will be banned for 2 minutes to save the changes';
 
 //ladder.php
-$lang['LADDER_TOP100'] = 'Ladder Top 100 Rang';
 $lang['LADDER_GUILD'] = 'Guild';
+$lang['LADDER_TOP100'] = 'Ladder Top 100 Rang';
 $lang['LADDER_STATUS'] = 'Status';
 $lang['LADDER_STATUS_ON'] = 'On';
 $lang['LADDER_STATUS_OFF'] = 'Off';
@@ -235,16 +290,21 @@ $lang['ACCOUNT_MAX_REACHED'] = 'There are too many accounts registered, please t
 
 //index.php
 $lang['NEW_ACCOUNT'] = 'Nouvel Account';
+$lang['NEW_ACCOUNT_EXPL'] = 'Create a new account'; // TODO: translate
 $lang['RECOVER_PASSWORD'] = 'Retrouver ton password';
+$lang['RECOVER_PASSWORD_EXPL'] = 'Send the account info to your e-mail'; // TODO: translate
 
 //links.php
 $lang['LINKS_LINKS'] = 'Liens';
 $lang['LINKS_NAME'] = 'Nom';
 
 //login.php
+$lang['LOGIN'] = 'Login'; // TODO: translate
 $lang['LOGIN_WELCOME'] = 'Bienvenue';
 $lang['LOGIN_HELLO'] = 'Bonjour';
 $lang['LOGIN_REMEMBER'] = 'Ne pas oublier';
+$lang['LOGOFF'] = 'Logoff'; // TODO: translate
+$lang['LOGOFF_EXPL'] = 'Logoff the server and, if any, reset the cookies'; // TODO: translate
 
 //about.php
 $lang['ABOUT_ABOUT'] = 'À propos du server';
@@ -255,3 +315,46 @@ $lang['ABOUT_TOTAL_CHAR'] = 'Total des Characteres';
 $lang['ABOUT_TOTAL_ZENY'] = 'Total des Zeny';
 $lang['ABOUT_TOTAL_CLASS'] = 'Total par classes';
 $lang['ABOUT_WOE_TIMES'] = 'Programmes de WoE'; //temp des WoE
+
+//ceres.php
+$lang['ABOUT_CERES'] = 'Ceres Control Panel Information'; // TODO: translate
+$lang['CERES_TITLE'] = 'Ceres Control Panel';
+
+//storage.php
+$lang['STORAGE'] = 'Storage'; // TODO: translate
+$lang['STORAGE_YOUR'] = 'Your Storage'; // TODO: translate
+$lang['STORAGE_COUNT'] = '%d items found'; // TODO: translate
+
+//vending.php
+$lang['VENDING'] = 'Vending'; // TODO: translate
+$lang['VENDING_NOUSER'] = 'There is currently no character using vending.'; // TODO: translate
+
+//purchasing.php
+$lang['PURCHASING'] = 'Purchasing'; // TODO: translate
+$lang['PURCHASING_NOUSER'] = 'There is currently no character having a purchasing store.'; // TODO: translate
+
+//selectlang.php
+$lang['LANGUAGE'] = 'Language'; // TODO: translate
+
+//admin
+$lang['ADMIN_TYPE_MIN_CHARS'] = 'Please type at least %d chars'; // TODO: translate
+
+//adminaccounts.php
+$lang['ADMIN_ACCS'] = 'View Accounts'; // TODO: translate
+$lang['ADMIN_ACCS_CHARS'] = 'Chars'; // TODO: translate
+$lang['ADMIN_ACCS_CHARS_EXPL'] = 'View Chars'; // TODO: translate
+$lang['ADMIN_ACCS_BAN_UNBAN'] = '(Un)Ban'; // TODO: translate
+$lang['ADMIN_ACCS_BAN_UNBAN_EXPL'] = 'Ban, Block, Unban or Unblock'; // TODO: translate
+$lang['ADMIN_ACCS_EDIT'] = 'Account Edit'; // TODO: translate
+$lang['ADMIN_ACCS_ID'] = 'Account - %d'; // TODO: translate
+$lang['ADMIN_ACCS_BAN_BLOCK'] = 'Account BAN/BLOCK'; // TODO: translate
+
+//adminchars.php
+$lang['ADMIN_CHARS'] = 'View Chars'; // TODO: translate
+
+//adminaccban.php
+$lang['ADMIN_ACCBAN_LAST_LOGIN'] = 'Last Login'; // TODO: translate
+$lang['ADMIN_ACCBAN_BAN_UNTIL'] = 'Ban until'; // TODO: translate
+$lang['ADMIN_ACCBAN_BLOCK'] = 'Block'; // TODO: translate
+$lang['ADMIN_ACCBAN_UNBLOCK'] = 'Unlock'; // TODO: translate
+

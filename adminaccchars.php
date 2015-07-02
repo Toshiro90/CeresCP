@@ -34,11 +34,11 @@ if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] <
 
 
 if (isset($GET_id)) {
-	caption('Account - '.$GET_id);
+	caption(sprintf($lang['ADMIN_ACCS_ID'], $GET_id));
 	
 	if (isset($GET_back)) {
 		$back = base64_decode($GET_back);
-		echo '<center><span title="View Chars" class="link" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span></center>';
+		echo '<center><span title="'.$lang['ADMIN_ACCS_CHARS_EXPL'].'" class="link" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;- '.$lang['LINK_BACK'].'</span></center>';
 	}
 	
 	$jobs = $_SESSION[$CONFIG_name.'jobs'];
@@ -50,7 +50,7 @@ if (isset($GET_id)) {
 	<table class="maintable">
 	<tr>
 		<th align="right">'.$lang['SLOT'].'</th>
-		<th align="left">Char ID</th>';
+		<th align="left">'.$lang['CHAR_ID'].'</th>';
 if ($CONFIG_servermode == SERVER_HERCULES) {
 	echo '<th align="center">'.$lang['SEX'].'</th>';
 }		
@@ -58,16 +58,16 @@ echo '
 		<th align="left">'.$lang['NAME'].'</th>
 		<th align="left">'.$lang['CLASS'].'</th>
 		<th align="center">'.$lang['BLVLJLVL'].'</th>
-		<th align="center">online</th>
+		<th align="center">'.$lang['STATUS'].'</th>
 		<th align="center">'.$lang['MAP'].'</th>
 		<th align="center">coords</th>
 	</tr>
 	';
 	while ($line = $result->fetch_row()) {
 		if ($line[6] != 0)
-			$online = '<font color="green">on</font>';
+			$online = '<font color="green">'.$lang['STATUS_ON'].'</font>';
 		else
-			$online = '<font color="red">off</font>';
+			$online = '<font color="red">'.$lang['STATUS_OFF'].'</font>';
 
 		echo '
 		<tr>
@@ -91,7 +91,7 @@ echo '
 			<td align="center">'.$line[7].'</td>
 			<td align="center">'.$line[8].','.$line[9].'</td>
 			<td align="left">
-			<span title="Detailed Info" class="link" onClick="window.open(\'admincharinfo.php?id='.$line[0].'\', \'_blank\', \'height = 600, width = 800, menubar = no, status = no, titlebar = no, scrollbars = yes\');">Detail</span>
+			<span title="Detailed Info" class="link" onClick="window.open(\'admincharinfo.php?id='.$line[0].'\', \'_blank\', \'height = 600, width = 800, menubar = no, status = no, titlebar = no, scrollbars = yes\');">'.$lang['DETAIL'].'</span>
 
 			</td>
 		</tr>

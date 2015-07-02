@@ -28,21 +28,17 @@ include_once 'config.php'; // loads config variables
 include_once 'lib/functions.php';
 
 if (!$CONFIG_disable_account) {
-?>
-<span title="Create a new account" class="link" onClick="return LINK_ajax('account.php','main_div');">
-<b><?php echo $lang['NEW_ACCOUNT'] ?></b>
-</span>
-<?php
+
+echo '<span title="'.$lang['NEW_ACCOUNT_EXPL'].'" class="link" onClick="return LINK_ajax(\'account.php\',\'main_div\');">
+	<b>'.$lang['NEW_ACCOUNT'].'</b>
+</span>';
 }
-?>
-<br>
-<?php
+echo '<br>';
+
 if ($CONFIG_password_recover) {
-?>
-<span title="Send the account info to your e-mail" class="link" onClick="return LINK_ajax('recover.php','main_div');">
-<b><?php echo $lang['RECOVER_PASSWORD'] ?></b>
-</span>
-<?php
+	echo '<span title="'.$lang['RECOVER_PASSWORD_EXPL'].'" class="link" onClick="return LINK_ajax(\'recover.php\',\'main_div\');">
+	<b>'.$lang['RECOVER_PASSWORD'].'</b>
+</span>';
 }
 
 fim();

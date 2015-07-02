@@ -24,8 +24,8 @@ an e-mail to cerescp@gmail.com
 */
 
 include_once 'config.php'; // loads config variables
-include_once '../classes/class.phpmailer.php';
-include_once '../classes/class.smtp.php';
+include_once './classes/class.phpmailer.php';
+include_once './classes/class.smtp.php';
 
 
 function email($contas) {

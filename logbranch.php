@@ -32,7 +32,7 @@ include_once 'lib/functions.php';
 if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] < $CONFIG['cp_admin'])
 	die ('Not Authorized');
 
-caption('Dead Branch Logs');
+caption($lang['MENU_LOG_BRANCH']);
 
 if (!isset($GET_page))
 	$GET_page = 0;
@@ -76,16 +76,16 @@ if ($pages) {
 }
 
 echo $pagestring;
-echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logbranch.php?page='.$GET_page.'\',\'main_div\');">Refresh</span></td></tr></table>';
+echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logbranch.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 
 echo '
 <table class="maintable">
 	<tr>
-		<th style="width: 100px;">Date</th>
-		<th style="width: 100px;">AccountID</th>
-		<th style="width:  50px;">CharID</th>
-		<th style="width:  100%;">Name</th>
-		<th style="width:  50px;">Map</th>
+		<th style="width: 100px;">'.$lang['TIME'].'</th>
+		<th style="width: 100px;">'.$lang['ACCOUNT_ID'].'</th>
+		<th style="width:  50px;">'.$lang['CHAR_ID'].'</th>
+		<th style="width:  100%;">'.$lang['NAME'].'</th>
+		<th style="width:  50px;">'.$lang['MAP'].'</th>
 	</tr>';
 
 while ($line = $result->fetch_assoc()) {
@@ -99,7 +99,7 @@ while ($line = $result->fetch_assoc()) {
 }
 echo '</table>';
 
-echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logbranch.php?page='.$GET_page.'\',\'main_div\');">Refresh</span></td></tr></table>';
+echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logbranch.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 echo $pagestring;
 
 fim();

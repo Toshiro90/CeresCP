@@ -157,7 +157,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 						if ($clevel >= 20) {
 							echo '
 							<form id="money'.$slot.'" onsubmit="return GET_ajax(\'money.php\',\'main_div\',\'money'.$slot.'\')">
-									<input type="submit" value="select">
+									<input type="submit" value="'.$lang['MONEY_SELECT'].'">
 									<input type="hidden" name="opt" value="2">
 									<input type="hidden" name="zeny1" value="'.$GET_zeny1.'">
 									<input type="hidden" name="GID2" value="'.$GID.'">
@@ -222,7 +222,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 			if ($clevel >= 20) {
 				echo '
 					<form id="money'.$slot.'" onsubmit="return GET_ajax(\'money.php\',\'main_div\',\'money'.$slot.'\')">
-						<input type="submit" value="select">
+						<input type="submit" value="'.$lang['MONEY_SELECT'].'">
 						<input type="hidden" name="opt" value="1">
 						<input type="hidden" name="zeny1" value="'.$zeny.'">
 						<input type="hidden" name="GID1" value="'.$GID.'">

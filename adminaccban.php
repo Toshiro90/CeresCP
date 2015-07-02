@@ -63,11 +63,11 @@ if (isset($GET_frm_name) && isset($GET_id)) {
 	}
 }
 
-caption('Account BAN/BLOCK');
+caption($lang['ADMIN_ACCS_BAN_BLOCK']);
 
 if (isset($GET_back)) {
 	$back = base64_decode($GET_back);
-	echo '<center><span title="Back" class="link" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;-back</span></center>';
+	echo '<center><span title="'.$lang['LINK_BACK'].'" class="link" onClick="return LINK_ajax(\'adminaccounts.php?'.$back.'\',\'accounts_div\');">&lt;- '.$lang['LINK_BACK'].'</span></center>';
 }
 
 
@@ -82,14 +82,14 @@ if (isset($GET_id)) {
 		<form id="accban" onSubmit="return GET_ajax(\'adminaccban.php\',\'accounts_div\',\'accban\');">
 			<table class="maintable">
 				<tr>
-					<td align="right">Account ID:</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
+					<td align="right">'.$lang['ACCOUNT_ID'].':</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
 				</tr><tr>
-					<td align="right">Login:</td><td align="left">'.htmlformat($line[1]).'</td>
+					<td align="right">'.$lang['USERNAME'].':</td><td align="left">'.htmlformat($line[1]).'</td>
 				</tr><tr>
-					<td align="right">Last Login:</td><td align="left">'.$line[9].'</td>
+					<td align="right">'.$lang['ADMIN_ACCBAN_LAST_LOGIN'].':</td><td align="left">'.$line[9].'</td>
 				</tr><tr>
 
-					<td align="right">Ban untill:</td><td align="left"><select name="bday">
+					<td align="right">'.$lang['ADMIN_ACCBAN_BAN_UNTIL'].':</td><td align="left"><select name="bday">
 		';
 
 		if ($line[6] > 0)
@@ -166,12 +166,12 @@ if (isset($GET_id)) {
 					</select></td>
 
 				</tr><tr>
-					<td align="right">Block:</td><td align="left">
+					<td align="right">'.$lang['ADMIN_ACCBAN_BLOCK'].':</td><td align="left">
 					<select name="block">';
 		if ($line[7] == 5)
-			echo '<option selected="selected" value="5">Block <option value="0">Unblock';
+			echo '<option selected="selected" value="5">'.$lang['ADMIN_ACCBAN_BLOCK'].'</option><option value="0">'.$lang['ADMIN_ACCBAN_UNBLOCK'].'</option>';
 		else
-			echo '<option value="5">Block <option selected="selected" value="0">Unblock';
+			echo '<option value="5">'.$lang['ADMIN_ACCBAN_BLOCK'].'</option><option selected="selected" value="0">'.$lang['ADMIN_ACCBAN_UNBLOCK'].'</option>';
 
 		echo '
 					</seletc></td>

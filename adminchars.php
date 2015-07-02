@@ -33,20 +33,20 @@ if (!isset($_SESSION[$CONFIG_name.'level']) || $_SESSION[$CONFIG_name.'level'] <
 	die ('Not Authorized');
 
 if (!isset($GET_frm_name) && !isset($GET_page)) {
-	caption('View Chars');
+	caption($lang['ADMIN_CHARS']);
 	echo '
 	<form id="chars" onSubmit="return GET_ajax(\'adminchars.php\',\'accounts_div\',\'chars\');">
 		<table class="maintable" style="width: auto">
 			<tr>
-				<td>Search</td><td>
+				<td>'.$lang['SEARCH'].'</td><td>
 				<input type="text" name="termo" maxlength="23" size="23">
 				<select name="tipo">
-				<option value="1">account_id
-				<option value="2">char_id
-				<option selected="selected" value="3">name
+					<option value="1">'.$lang['ACCOUNT_ID'].'</option>
+					<option value="2">'.$lang['CHAR_ID'].'</option>
+					<option selected="selected" value="3">'.$lang['NAME'].'</option>
 				</select></td><td>
-				<input type="submit" name="search" value="search"></td>
-				<td><span title="Show All" class="link" onClick="return LINK_ajax(\'adminchars.php?page=0\',\'accounts_div\');">Show All</span></td>
+				<input type="submit" name="search" value="'.$lang['SEARCH'].'"></td>
+				<td><span title="'.$lang['SHOW_ALL'].'" class="link" onClick="return LINK_ajax(\'adminchars.php?page=0\',\'accounts_div\');">'.$lang['SHOW_ALL'].'</span></td>
 			</tr>
 		</table>
 	</form>
@@ -60,7 +60,7 @@ if (isset($GET_tipo)) {
 		alert($lang['INCORRECT_CHARACTER']);
 
 	if (strlen($GET_termo) < 3)
-		alert("Please type at least 3 chars");
+		alert(sprintf($lang['ADMIN_TYPE_MIN_CHARS'], 3));
 
 	switch($GET_tipo) {
 		case 1:
@@ -99,8 +99,8 @@ $result = execute_query($query, 'adminchars.php');
 echo '
 <table class="maintable">
 	<tr>
-		<th align="right">Account ID</th>
-		<th align="right">Char ID</th>';
+		<th align="right">'.$lang['ACCOUNT_ID'].'</th>
+		<th align="right">'.$lang['CHAR_ID'].'</th>';
 if ($CONFIG_servermode == SERVER_HERCULES) {
 	echo '<th align="center">'.$lang['SEX'].'</th>';
 }		
@@ -108,7 +108,7 @@ echo '
 		<th align="left">'.$lang['NAME'].'</th>
 		<th align="left">'.$lang['CLASS'].'</th>
 		<th align="center">'.$lang['BLVLJLVL'].'</th>
-		<th align="left">Online</th>
+		<th align="left">'.$lang['STATUS'].'</th>
 		<th>&nbsp;</th>
 	</tr>
 	';
@@ -117,9 +117,9 @@ $jobs = $_SESSION[$CONFIG_name.'jobs'];
 
 while ($line = $result->fetch_row()) {
 	if ($line[6] != 0)
-		$online = '<font color="green">on</font>';
+		$online = '<font color="green">'.$lang['STATUS_ON'].'</font>';
 	else
-		$online = '<font color="red">off</font>';
+		$online = '<font color="red">'.$lang['STATUS_OFF'].'</font>';
 	
 	$job = $lang['UNKNOWN'];
 	if (isset($jobs[$line[3]]))
@@ -139,7 +139,7 @@ echo '
 		<td align="center">'.$line[4].'/'.$line[5].'</td>
 		<td align="center">'.$online.'</td>
 		<td align="center">
-			<span title="Detailed Info" class="link" onClick="window.open(\'admincharinfo.php?id='.$line[1].'\', \'_blank\', \'height = 600, width = 800, menubar = no, status = no, titlebar = no, scrollbars = yes\');">Detail</span>
+			<span title="Detailed Info" class="link" onClick="window.open(\'admincharinfo.php?id='.$line[1].'\', \'_blank\', \'height = 600, width = 800, menubar = no, status = no, titlebar = no, scrollbars = yes\');">'.$lang['DETAIL'].'</span>
 		</td>
 
 	</tr>

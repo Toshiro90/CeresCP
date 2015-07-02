@@ -41,9 +41,9 @@ if (!$result)
 	redir('motd.php', 'main_div', 'An error occured, please try again later.');
 
 if ($result->count() < 1)
-	redir('purchasing.php', 'main_div', 'There is currently no character having a purchasing store.', 'Purchasing');
+	redir('purchasing.php', 'main_div', $lang['PURCHASING_NOUSER'], $lang['PURCHASING']);
 
-caption('Purchasing');
+caption($lang['PURCHASING']);
 
 $num = 0;
 $previd = 0;
@@ -69,7 +69,7 @@ while ($result && $row = $result->fetch_assoc()) {
 	print '<tr>
 			<td style="text-align: left;">'.get_item_icon($row['item_id']).$row['item_name'].'</td>
 			<td align="right" width="70px">'.$row['amount'].'</td>
-			<td align="right" width="100px">'.number_format($row['price'], 0).' Zeny</td>
+			<td align="right" width="100px">'.number_format($row['price'], 0).' '.$lang['ZENY'].'</td>
 		   </tr>';
 	$previd = $row['char_id'];
 }
