@@ -33,36 +33,47 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 
 		if (!empty($GET_opt)) {
 			if ($GET_opt == 1) {
-				if (is_online()) 
+				// Currently logged in
+				if (is_online())
 					alert($lang['NEED_TO_LOGOUT_F']);
 
-				if (inject($GET_GID1)) 
+				// Submitted ID contains illegal characters
+				if (inject($GET_GID1))
 					alert($lang['RESETLOOK_RESET_LOOK']);
-				
+
+				// Fetch account id
+				$query = sprintf(GET_ACCOUNT_ID, $GET_GID1);
+				$result = execute_query($query, 'resetlook.php');
+				list($accountid) = $result->fetch_row();
+
+				// Not your character
+				if ($accountid != $_SESSION[$CONFIG_name.'account_id'])
+					alert($lang['RESETLOOK_RESET_LOOK']);
+
 				if (isset($GET_equip) && $GET_equip > 0) {
 					$query = sprintf(LOOK_EQUIP, $GET_GID1, $_SESSION[$CONFIG_name.'account_id']);
-					$result = execute_query($query, "resetlook.php");
-		
+					$result = execute_query($query, 'resetlook.php');
+
 					$query = sprintf(LOOK_INVENTORY, $GET_GID1);
-					$result = execute_query($query, "resetlook.php");
+					$result = execute_query($query, 'resetlook.php');
 					alert($lang['RESETLOOK_EQUIP_OK']);
 				}
 
 				if (isset($GET_hair_color) && $GET_hair_color > 0) {
 					$query = sprintf(LOOK_HAIR_COLOR, $GET_GID1, $_SESSION[$CONFIG_name.'account_id']);
-					$result = execute_query($query, "resetlook.php");
+					$result = execute_query($query, 'resetlook.php');
 					alert($lang['RESETLOOK_HAIRC_OK']);
 				}
 
 				if (isset($GET_hair_style) && $GET_hair_style > 0) {
 					$query = sprintf(LOOK_HAIR_STYLE, $GET_GID1, $_SESSION[$CONFIG_name.'account_id']);
-					$result = execute_query($query, "resetlook.php");
+					$result = execute_query($query, 'resetlook.php');
 					alert($lang['RESETLOOK_HAIRS_OK']);
 				}
 
 				if (isset($GET_clothes_color) && $GET_clothes_color > 0) {
 					$query = sprintf(LOOK_CLOTHES_COLOR, $GET_GID1, $_SESSION[$CONFIG_name.'account_id']);
-					$result = execute_query($query, "resetlook.php");
+					$result = execute_query($query, 'resetlook.php');
 					alert($lang['RESETLOOK_CLOTHESC_OK']);
 				}
 
@@ -71,7 +82,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 		}
 
 		$query = sprintf(LOOK_GET_CHARS, $_SESSION[$CONFIG_name.'account_id']);
-		$result = execute_query($query, "resetlook.php");
+		$result = execute_query($query, 'resetlook.php');
 
 		if ($result->count() < 1)
 			redir('motd.php', 'main_div', $lang['ONE_CHAR']);
@@ -82,13 +93,17 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 		<tr>
 			<th align="right">'.$lang['SLOT'].'</th>
 			<th align="left">'.$lang['NAME'].'</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
 		</tr>
 		';
 		while ($line = $result->fetch_row()) {
 			$GID = $line[0];
 			$slot = $line[1];
 			$charname = htmlformat($line[2]);
-			echo '    
+			echo '
 			<tr>
 				<td align="right">'.$slot.'</td>
 				<td align="left">'.$charname.'</td>

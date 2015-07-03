@@ -218,6 +218,7 @@ ORDER BY `name`, `bi`.`index` ASC');
 
 //general
 DEFINE('GET_CHARNAME', "SELECT `name` FROM `char` WHERE `char_id`='%d' LIMIT 1");
+DEFINE('GET_ACCOUNT_ID', "SELECT `account_id` FROM `char` WHERE `char_id`='%d' LIMIT 1");
 DEFINE('GET_PETNAME', "SELECT `name` FROM `pet` WHERE `pet_id`='%d' LIMIT 1");
 DEFINE('FOUND_ROWS', "SELECT FOUND_ROWS()");
 
