@@ -491,8 +491,11 @@ function print_items($result) {
 		if (item_has_signed_data($item['card0']) || item_has_forge_data($item['card0'])) {
 			$query2 = sprintf(GET_CHARNAME, $charid=forger($item['card2'], $item['card3']));
 			$result2 = execute_query($query2, 'storage.php');
-			if ($result2->count())
-				$chname = htmlformat($result2->row(0));
+
+			if ($result2->count()) {
+				list($chname) = $result2->fetch_row();
+				$chname = htmlformat($chname);
+			}
 			else $chname = '<span style="color: #777777; font-style: italic">('.$lang['UNKNOWN'].', #'.$charid.')</span>';
 
 			echo '
@@ -504,10 +507,11 @@ function print_items($result) {
 		else if (item_has_pet_data($item['card0'])) {
 			$query2 = sprintf(GET_PETNAME, $petid=forger($item['card1'], $item['card2']));
 			$result2 = execute_query($query2, 'admincharinfo.php');
-			$result2->fetch_row();
 			
-			if ($result2->count())
-				$petname = htmlformat($result2->row(0));
+			if ($result2->count()) {
+				list($petname) = $result2->fetch_row();
+				$petname = htmlformat($petname);
+			}
 			else
 				$petname = '<span style="color: #777777; font-style: italic">('.$lang['UNKNOWN'].', #'.$petid.')</span>';
 			
