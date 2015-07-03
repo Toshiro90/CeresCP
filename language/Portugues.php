@@ -250,6 +250,7 @@ $lang['MARRIAGE_SINGLE'] = 'Solteiro';
 $lang['MARRIAGE_PS1'] = '*Para execução do divorcio, ambos devem estar offline do jogo';
 $lang['MARRIAGE_PS2'] = '*Você só pode alterar um personagem por vez';
 $lang['MARRIAGE_PS3'] = '*Você será banido por 2 minutos para fazer efeito';
+$lang['MARRIAGE_DIVORCE_FAILED'] = 'Divorce failed.'; // TODO: translate
 
 //ladder.php
 $lang['LADDER_TOP100'] = 'Ladder Top 100 Rank';

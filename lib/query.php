@@ -143,8 +143,10 @@ DEFINE('TOTALCLASSES', "SELECT `class`, COUNT(1) FROM `char` WHERE `account_id` 
 DEFINE('TOTALZENY', "SELECT SUM(`zeny`) FROM `char` WHERE `account_id` > '0'");
 
 //marriage.php - Divorce
-DEFINE('PARTNER_GET', "SELECT c1.`name`, c1.`char_id`, c2.`name`, c2.`char_id`
-FROM `char` c1 LEFT JOIN `char` c2 ON c1.`partner_id` = c2.`char_id` WHERE c1.`account_id` = '%d'");
+DEFINE('PARTNER_GET', "SELECT `c1`.`name`, `c1`.`char_id`, `c1`.`partner_id`, `c2`.`name` as `partner_name`
+FROM `char` as `c1` LEFT JOIN `char` as `c2` ON `c1`.`partner_id` = `c2`.`char_id` WHERE `c1`.`account_id` = %d");
+DEFINE('PARTNER_GET_CHAR', "SELECT `c1`.`partner_id`, `c2`.`name` as `partner_name`
+FROM `char` as `c1` LEFT JOIN `char` as `c2` ON `c1`.`partner_id` = `c2`.`char_id` WHERE `c1`.`char_id` = %d LIMIT 1");
 DEFINE('PARTNER_ONLINE', "SELECT `online` FROM `char` WHERE `char_id` = '%d' AND `online` = '1'");
 DEFINE('PARTNER_NULL', "UPDATE `char` SET `partner_id` = '0' WHERE `char_id` = '%d'");
 DEFINE('PARTNER_RING', "DELETE FROM `inventory` WHERE (`nameid` = '2634' OR `nameid` = '2635') AND `char_id` = '%d'");

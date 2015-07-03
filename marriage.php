@@ -33,22 +33,48 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 
 		if (!empty($GET_opt)) {
 			if ($GET_opt == 1 && $CONFIG_marry_enable) {
-				if (is_online()) 
+				// Currently logged in
+				if (is_online())
 					alert($lang['NEED_TO_LOGOUT_F']);
 
-				if (inject($GET_GID1) && inject($GET_GID2)) 
-					alert($lang['INCORRECT_CHARACTER']);
-				
 				if (isset($GET_divorce) && $GET_divorce > 0) {
+
+					// Submitted IDs contain illegal characters
+					if (inject($GET_GID1) && inject($GET_GID2))
+						alert($lang['INCORRECT_CHARACTER']);
+
+					// Fetch account id
+					$query = sprintf(GET_ACCOUNT_ID, $GET_GID1);
+					$result = execute_query($query, 'resetlook.php');
+					list($accountid) = $result->fetch_row();
+
+					// Not your character
+					if ($accountid != $_SESSION[$CONFIG_name.'account_id'])
+						alert($lang['MARRIAGE_DIVORCE_FAILED']);
+
+					// Get partner id
+					$query = sprintf(PARTNER_GET_CHAR, $GET_GID1);
+					$result = execute_query($query, 'marriage.php');
+					$line = $result->fetch_assoc();
+
+					// You don't have a partner
+					if (!$line['partner_id'])
+						alert($lang['MARRIAGE_DIVORCE_FAILED']);
+
+					// Not your partner
+					if ($line['partner_id'] != $GET_GID2)
+						alert($lang['MARRIAGE_DIVORCE_FAILED']);
+
 					$query = sprintf(PARTNER_ONLINE, $GET_GID2);
 					$result = execute_query($query, 'marriage.php');
 
+					// Partner currently logged in
 					if ($result->fetch_row())
 						alert($lang['MARRIAGE_COUPLE_OFF']);
-		
+
 					$query = sprintf(PARTNER_NULL, $GET_GID1);
 					$result = execute_query($query, 'marriage.php');
-					
+
 					$query = sprintf(PARTNER_NULL, $GET_GID2);
 					$result = execute_query($query, 'marriage.php');
 
@@ -84,13 +110,14 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 			<th align="center">'.$lang['MARRIAGE_DIVORCE'].'</th>
 		</tr>
 		';
-		while ($line = $result->fetch_row()) {
-			$charname = htmlformat($line[0]);
-			$GID1 = $line[1];
-			$partnername = htmlformat($line[2]);
-			if (strlen($partnername) < 4)
+		while ($line = $result->fetch_assoc()) {
+			$charname = htmlformat($line['name']);
+			$GID1 = $line['char_id'];
+			$GID2 = $line['partner_id'];
+			if (!$GID2)
 				$partnername = $lang['MARRIAGE_SINGLE'];
-			$GID2 = $line[3];
+			else
+				$partnername = htmlformat($line['partner_name']);
 			echo '
 			<tr>
 				<td align="left">'.$charname.'</td>

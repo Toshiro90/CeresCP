@@ -250,6 +250,7 @@ $lang['MARRIAGE_SINGLE'] = 'Single';
 $lang['MARRIAGE_PS1'] = '*Prüfe und Bestätige zum Scheiden, beide Charakter müssen offline sein.';
 $lang['MARRIAGE_PS2'] = '*Du kannst nur einen Charakter auf einmal Scheiden lassen.';
 $lang['MARRIAGE_PS3'] = '*Du wirst für 2 Minuten gebannt, damit die Änderungen gespeichert werden können.';
+$lang['MARRIAGE_DIVORCE_FAILED'] = 'Scheidung fehlgeschlagen.';
 
 //ladder.php
 $lang['LADDER_TOP100'] = 'Top 100 Rang Liste';

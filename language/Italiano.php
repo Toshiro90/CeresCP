@@ -251,6 +251,7 @@ $lang['MARRIAGE_SINGLE'] = 'Celibe';
 $lang['MARRIAGE_PS1'] = '*Dovette essere disconnessi entrambi per confermare il divorzio';
 $lang['MARRIAGE_PS2'] = '*Puoi cambiare solo un character per volta';
 $lang['MARRIAGE_PS3'] = '*Sarai bannato 2 minuti per permettere il salvataggio';
+$lang['MARRIAGE_DIVORCE_FAILED'] = 'Divorce failed.'; // TODO: translate
 
 //ladder.php
 $lang['LADDER_TOP100'] = 'Classifica Ladder Top 100';

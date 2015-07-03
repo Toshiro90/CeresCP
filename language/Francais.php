@@ -251,6 +251,7 @@ $lang['MARRIAGE_SINGLE'] = 'Célibataire';
 $lang['MARRIAGE_PS1'] = '*Vous devez être tous les deux déconnectés pour comfirmer le divorce';
 $lang['MARRIAGE_PS2'] = '*Tu ne peux que changer un character à la foix';
 $lang['MARRIAGE_PS3'] = '*You will be banned for 2 minutes to save the changes';
+$lang['MARRIAGE_DIVORCE_FAILED'] = 'Divorce failed.'; // TODO: translate
 
 //ladder.php
 $lang['LADDER_GUILD'] = 'Guild';

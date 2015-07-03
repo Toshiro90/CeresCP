@@ -251,6 +251,7 @@ $lang['MARRIAGE_SINGLE'] = 'Singel';
 $lang['MARRIAGE_PS1'] = '*Check en dan scheid, beiden moeten offline zijn';
 $lang['MARRIAGE_PS2'] = '*Je kan maar 1 char tegelijk veranderen';
 $lang['MARRIAGE_PS3'] = '*Je wordt gebanned voor 2 minuten om te veranderingen op te slaan';
+$lang['MARRIAGE_DIVORCE_FAILED'] = 'Divorce failed.'; // TODO: translate
 
 //ladder.php
 $lang['LADDER_GUILD'] = 'Guild';

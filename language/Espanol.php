@@ -250,6 +250,7 @@ $lang['MARRIAGE_SINGLE'] = 'Soltero';
 $lang['MARRIAGE_PS1'] = '*Compruebe y confirme para divorciar, ambos deben estar offline para hacerlo';
 $lang['MARRIAGE_PS2'] = '*Usted puede modificar solamente uno por uno';
 $lang['MARRIAGE_PS3'] = '*Usted será baneado por 2 minutos para guardar los cambios';
+$lang['MARRIAGE_DIVORCE_FAILED'] = 'Divorce failed.'; // TODO: translate
 
 //ladder.php
 $lang['LADDER_GUILD'] = 'Guild';
