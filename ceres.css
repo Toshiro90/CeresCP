@@ -136,15 +136,44 @@ input[disabled], select[disabled], option[disabled], textarea[disabled] {
 /** TABLE TR, TD */
 tr, td {
 	font-size: 10px;
-	FONT-FAMILY: verdana,arial;
+	font-family: verdana,arial;
 	color: #000000;
 }
 
 th {
 	font-size: 10px;
-	FONT-FAMILY: verdana,arial;
+	font-family: verdana,arial;
 	color: #000000;
 	font-weight: bold;
+}
+
+.dataformat td {
+	font-size: 10px;
+	font-family: verdana,arial;
+	color: #000;
+	background-color: #E7E7E9;
+}
+
+.dataformat th{
+	font-size: 10px;
+	font-family: verdana,arial;
+	color: #000;
+	font-weight: bold;
+	background-color: #D1D3D7;
+}
+
+.vending tr:first-child td {
+	font-size: 10px;
+	font-family: verdana,arial;
+	color: #000;
+	background-color: #D1D3D7;
+}
+
+.vending tr td {
+	font-size: 10px;
+	font-family: verdana,arial;
+	color: #000;
+	background-color: #E7E7E9;
 }
 
 .highlight {

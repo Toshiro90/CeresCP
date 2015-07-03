@@ -82,7 +82,7 @@ echo $pagestring;
 echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'logcash.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 
 echo '
-<table class="maintable">
+<table class="maintable dataformat">
 	<tr>
 		<th style="white-space: nowrap; text-align: center; width: 100px;">'.$lang['TIME'].'</th>
 		<th style="white-space: nowrap; text-align: center; width: 100px;">'.$lang['CHAR_ID'].'</th>

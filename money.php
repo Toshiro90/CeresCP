@@ -134,12 +134,13 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 
 				caption($lang['MONEY_TRANSFER_TO']);
 				echo '
-				<table class="maintable">
+				<table class="maintable dataformat">
 				<tr>
 					<th align="left">'.$lang['SLOT'].'</th>
 					<th align="left">'.$lang['NAME'].'</th>
 					<th align="left">'.$lang['CLASS'].'</th>
 					<th align="right">'.$lang['ZENY'].'</th>
+					<th></th>
 				</tr>
 				';
 				while ($line = $result->fetch_row()) {
@@ -163,7 +164,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 						echo '<tr>';
 					}
 					echo '
-						<td align="left">'.$slot.'</td>
+						<td align="right">'.$slot.'</td>
 						<td align="left">'.$charname.'</td>
 						<td align="left">'.$job.'</td>
 						<td align="right">'.$zeny.'</td>
@@ -209,12 +210,13 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 
 		caption($lang['MONEY_TRANSFER_FROM']);
 		echo '
-		<table class="maintable">
+		<table class="maintable dataformat">
 		<tr>
 			<th align="left">'.$lang['SLOT'].'</th>
 			<th align="left">'.$lang['NAME'].'</th>
 			<th align="left">'.$lang['CLASS'].'</th>
 			<th align="right">'.$lang['ZENY'].'</th>
+			<th></th>
 		</tr>
 		';
 		while ($line = $result->fetch_row()) {
@@ -235,7 +237,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 				echo '<tr>';
 			}
 			echo '
-				<td align="left">'.$slot.'</td>
+				<td align="right">'.$slot.'</td>
 				<td align="left">'.$charname.'</td>
 				<td align="left">'.$job.'</td>
 				<td align="right">'.$zeny.'</td>

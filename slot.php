@@ -67,7 +67,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_set_slot) {
 
 		caption($lang['SLOT_CHANGE_SLOT']);
 		echo '
-		<table class="maintable">
+		<table class="maintable dataformat">
 		<tr>
 			<th align="right">'.$lang['SLOT'].'</th>
 			<th align="left">'.$lang['NAME'].'</th>

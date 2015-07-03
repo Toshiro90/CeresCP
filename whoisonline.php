@@ -38,7 +38,7 @@ $result = execute_query($query, "whoisonline.php");
 
 caption($lang['WHOISONLINE_WHOISONLINE']);
 echo '
-<table class="maintable">
+<table class="maintable dataformat">
 <tr>
 	<th align="left">'.$lang['NAME'].'</th>
 	<th align="left">'.$lang['CLASS'].'</th>

@@ -89,7 +89,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 
 		caption($lang['RESETLOOK_RESETLOOK']);
 		echo '
-		<table class="maintable">
+		<table class="maintable dataformat">
 		<tr>
 			<th align="right">'.$lang['SLOT'].'</th>
 			<th align="left">'.$lang['NAME'].'</th>

@@ -81,7 +81,7 @@ echo $pagestring;
 echo '<table align="center"><tr><td><span title="'.$GET_page.'" class="link" onClick="return LINK_ajax(\'lognpc.php?page='.$GET_page.'\',\'main_div\');">'.$lang['REFRESH_PAGE'].'</span></td></tr></table>';
 
 echo '
-<table class="maintable">
+<table class="maintable dataformat">
 	<tr>
 		<th style="text-align: center; width: 100px;">'.$lang['TIME'].'</th>
 		<th style="text-align: center; width: 100px;">'.$lang['ACCOUNT_ID'].'</th>

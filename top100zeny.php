@@ -35,7 +35,7 @@ $result = execute_query($query, "top100zeny.php");
 
 caption($lang['TOP100ZENY_TOP100ZENY']);
 echo '
-<table class="maintable">
+<table class="maintable dataformat">
 <tr>
 	<th align="right">'.$lang['POS'].'</th>
 	<th align="left">'.$lang['NAME'].'</th>

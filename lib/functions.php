@@ -462,7 +462,7 @@ function print_items($result) {
 	global $lang;
 
 	echo '
-		<table class="maintable" style="width: 610px">
+		<table class="maintable dataformat">
 		<tr>
 			<th></th>
 			<th align="center">'.$lang['ITEM_NAME'].'</th>

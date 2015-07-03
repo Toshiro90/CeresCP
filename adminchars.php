@@ -97,7 +97,7 @@ $back = base64_encode($back);
 $result = execute_query($query, 'adminchars.php');
 
 echo '
-<table class="maintable">
+<table class="maintable dataformat">
 	<tr>
 		<th align="right">'.$lang['ACCOUNT_ID'].'</th>
 		<th align="right">'.$lang['CHAR_ID'].'</th>';

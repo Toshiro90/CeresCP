@@ -36,17 +36,13 @@ include_once 'lib/functions.php';
 
 		caption($lang['GUILD_TOP50']);
 		echo '
-		<table class="maintable">
+		<table class="maintable dataformat">
 		<tr>
 			<th align="right">'.$lang['POS'].'</th>
 			<th align="center">'.$lang['GUILD_EMBLEM'].'</th>
-			<th>&nbsp;</th>
 			<th align="left">'.$lang['GUILD_GNAME'].'</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
 			<th align="left">'.$lang['GUILD_GLEVEL'].'</th>
 			<th align="right">'.$lang['GUILD_GEXPERIENCE'].'</th>
-			<th>&nbsp;</th>
 			<th align="center">'.$lang['GUILD_MEMBERS'].'</th>
 			<th align="right">'.$lang['GUILD_GAVLEVEL'].'</th>
 		</tr>
@@ -62,13 +58,9 @@ include_once 'lib/functions.php';
 			<tr>
 				<td align="right">'.$i.'</td>
 				<td align="center"><img src="emblema.php?data='.$line[4].'" alt="'.$gname.'"></td>
-				<td>&nbsp;</td>
 				<td align="left">'.$gname.'</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
 				<td align="left">'.$line[2].'</td>
 				<td align="right">'.$experience.'</td>
-				<td>&nbsp;</td>
 				<td align="center">'.$line[6].'</td>
 				<td align="right">'.$line[5].'</td>
 			</tr>';
@@ -84,13 +76,10 @@ include_once 'lib/functions.php';
 			caption($lang['GUILD_GCASTLES']);
 			$castles = $_SESSION[$CONFIG_name.'castles'];
 			echo '
-			<table class="maintable">
+			<table class="maintable dataformat">
 			<tr>
 				<th align="center">'.$lang['GUILD_EMBLEM'].'</th>
-				<th>&nbsp;</th>
 				<th align="left">'.$lang['GUILD_GNAME'].'</th>
-				<th>&nbsp;</th>
-				<th>&nbsp;</th>
 				<th align="left">'.$lang['GUILD_GCASTLE'].'</th>
 			</tr>
 			';
@@ -104,10 +93,7 @@ include_once 'lib/functions.php';
 				echo '
 				<tr>
 					<td align="center"><img src="emblema.php?data='.$line[3].'" alt="'.$gname.'"></td>
-					<td>&nbsp;</td>
 					<td align="left">'.$gname.'</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
 					<td align="left">'.$cname.'</td>
 				</tr>';
 			}

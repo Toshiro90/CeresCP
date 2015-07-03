@@ -143,14 +143,11 @@ include_once 'lib/functions.php';
 
 		$result = execute_query($query, 'ladder.php');
 		echo '
-		<table class="maintable">
+		<table class="maintable dataformat">
 		<tr>
 			<th align="right">'.$lang['POS'].'</th>
-			<th>&nbsp;</th>
 			<th align="left">'.$lang['NAME'].'</th>
-			<th>&nbsp;&nbsp;&nbsp;</th>
 			<th align="left">'.$lang['CLASS'].'</th>
-			<th>&nbsp;&nbsp;&nbsp;</th>
 			<th align="center">'.$lang['BLVLJLVL'].'</th>
 			<th align="left">'.$lang['LADDER_GUILD'].'</th>
 			<th align="center">'.$lang['LADDER_STATUS'].'</th>
@@ -173,11 +170,8 @@ include_once 'lib/functions.php';
 				echo '<tr>';
 			echo '
 				<td align="right">'.$i.'</td>
-				<td>&nbsp;</td>
 				<td align="left">'.$charname.'</td>
-				<td>&nbsp;</td>
 				<td align="left">'.$job.'</td>
-				<td>&nbsp;</td>
 				<td align="center">'.$line['base_level'].'/'.$line['job_level'].'</td>';
 			
 			if ($line['guild_id'] > 0)

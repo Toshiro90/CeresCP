@@ -76,7 +76,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 
 		caption($lang['POSITION_TITLE']);
 		echo '
-		<table class="maintable">
+		<table class="maintable dataformat">
 			<tr>
 				<th align="right">'.$lang['SLOT'].'</th>
 				<th align="left">'.$lang['NAME'].'</th>

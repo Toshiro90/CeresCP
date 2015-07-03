@@ -59,7 +59,7 @@ while ($result && $row = $result->fetch_assoc()) {
 		if ($num > 1) {
 			print '</table>';
 		}
-		print '<table align="center" style="width: 550px; border: 1px solid #555555; margin: 20px;" cellpadding="1">
+		print '<table class="vending" align="center" style="width: 550px; border: 1px solid #555555; margin: 20px;" cellpadding="1">
 				  <tr>
 				   <td style="text-align: left;"><b>'.$row['char_name'].'</b> '.($row['autotrade']?'(Autotrade)':'').'</td>
 				   <td align="right" colspan="2">'.$row['map'].' '.$row['x'].':'.$row['y'].'</td>

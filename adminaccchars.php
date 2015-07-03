@@ -47,7 +47,7 @@ if (isset($GET_id)) {
 	$result = execute_query($query, 'adminaccchars.php');
 
 	echo '
-	<table class="maintable">
+	<table class="maintable dataformat">
 	<tr>
 		<th align="right">'.$lang['SLOT'].'</th>
 		<th align="left">'.$lang['CHAR_ID'].'</th>';
@@ -61,6 +61,7 @@ echo '
 		<th align="center">'.$lang['STATUS'].'</th>
 		<th align="center">'.$lang['MAP'].'</th>
 		<th align="center">coords</th>
+		<th></th>
 	</tr>
 	';
 	while ($line = $result->fetch_row()) {

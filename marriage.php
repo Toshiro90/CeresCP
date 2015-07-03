@@ -103,7 +103,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 
 		caption($lang['MARRIAGE']);
 		echo '
-		<table class="maintable">
+		<table class="maintable dataformat">
 		<tr>
 			<th align="left">'.$lang['NAME'].'</th>
 			<th align="left">'.$lang['MARRIAGE_PARTNER'].'</th>

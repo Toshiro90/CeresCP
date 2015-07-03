@@ -80,16 +80,18 @@ if (isset($GET_id)) {
 	if ($line = $result->fetch_assoc()) {
 		echo '
 		<form id="accban" onSubmit="return GET_ajax(\'adminaccban.php\',\'accounts_div\',\'accban\');">
-			<table class="maintable">
+			<table class="maintable dataformat">
 				<tr>
-					<td align="right">'.$lang['ACCOUNT_ID'].':</td><td align="left">'.$line['account_id'].'<input type="hidden" name="id" value="'.$line['account_id'].'"></td>
-				</tr><tr>
-					<td align="right">'.$lang['USERNAME'].':</td><td align="left">'.htmlformat($line['userid']).'</td>
-				</tr><tr>
-					<td align="right">'.$lang['ADMIN_ACCBAN_LAST_LOGIN'].':</td><td align="left">'.$line['lastlogin'].'</td>
-				</tr><tr>
-
-					<td align="right">'.$lang['ADMIN_ACCBAN_BAN_UNTIL'].':</td><td align="left"><select name="bday">
+					<th align="right">'.$lang['ACCOUNT_ID'].':</th><td align="left">'.$line['account_id'].'<input type="hidden" name="id" value="'.$line['account_id'].'"></td>
+				</tr>
+				<tr>
+					<th align="right">'.$lang['USERNAME'].':</th><td align="left">'.htmlformat($line['userid']).'</td>
+				</tr>
+				<tr>
+					<th align="right">'.$lang['ADMIN_ACCBAN_LAST_LOGIN'].':</th><td align="left">'.$line['lastlogin'].'</td>
+				</tr>
+				<tr>
+					<th align="right">'.$lang['ADMIN_ACCBAN_BAN_UNTIL'].':</th><td align="left"><select name="bday">
 		';
 
 		if ($line['unban_time'] > 0)
@@ -165,8 +167,9 @@ if (isset($GET_id)) {
 		echo '
 					</select></td>
 
-				</tr><tr>
-					<td align="right">'.$lang['ADMIN_ACCBAN_BLOCK'].':</td><td align="left">
+				</tr>
+				<tr>
+					<th align="right">'.$lang['ADMIN_ACCBAN_BLOCK'].':</th><td align="left">
 					<select name="block">';
 		if ($line['state'] == 5)
 			echo '<option selected="selected" value="5">'.$lang['ADMIN_ACCBAN_BLOCK'].'</option><option value="0">'.$lang['ADMIN_ACCBAN_UNBLOCK'].'</option>';
@@ -175,8 +178,9 @@ if (isset($GET_id)) {
 
 		echo '
 					</seletc></td>
-				</tr><tr>
-					<td>&nbsp;</td><td align="left"><input type="submit" value="'.$lang['CHANGEMAIL_CHANGE'].'">
+				</tr>
+				<tr>
+					<th></th><td align="left"><input type="submit" value="'.$lang['CHANGEMAIL_CHANGE'].'">
 				</td></tr>
 			</table>
 		</form>

@@ -101,7 +101,7 @@ $back = base64_encode($back);
 $result = execute_query($query, 'adminaccounts.php');
 
 echo '
-<table class="maintable">
+<table class="maintable dataformat">
 	<tr>
 		<th align="right">'.$lang['ACCOUNT_ID'].'</th>
 		<th align="left">'.$lang['USERNAME'].'</th>
@@ -110,6 +110,9 @@ echo '
 		<th align="center">'.$lang['LEVEL'].'</th>
 		<th align="left">'.$lang['IP_ADDRESS'].'</th>
 		<th align="center">BAN</th>
+		<th></th>
+		<th></th>
+		<th></th>
 	</tr>
 	';
 

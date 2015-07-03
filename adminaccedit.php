@@ -77,15 +77,18 @@ if (isset($GET_id)) {
 		$sex = $line[2];
 		echo '
 		<form id="accedit" onSubmit="return GET_ajax(\'adminaccedit.php\',\'accounts_div\',\'accedit\');">
-			<table class="maintable">
+			<table class="maintable dataformat">
 				<tr>
-					<td align="right">'.$lang['ACCOUNT_ID'].'</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
-				</tr><tr>
-					<td align="right">'.$lang['USERNAME'].'</td><td align="left"><input type="text" name="login" value="'.htmlformat($line[1]).'" maxlength="23" size="23"></td>
-				</tr><tr>
-					<td align="right">'.$lang['PASSWORD'].'</td><td align="left"><input type="text" name="password" value="'.htmlformat($line[8]).'" maxlength="32" size="23"></td>
-				</tr><tr>
-					<td align="right">'.$lang['SEX'].'</td>
+					<th align="right">'.$lang['ACCOUNT_ID'].'</th><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
+				</tr>
+				<tr>
+					<th align="right">'.$lang['USERNAME'].'</th><td align="left"><input type="text" name="login" value="'.htmlformat($line[1]).'" maxlength="23" size="23"></td>
+				</tr
+				><tr>
+					<th align="right">'.$lang['PASSWORD'].'</th><td align="left"><input type="text" name="password" value="'.htmlformat($line[8]).'" maxlength="32" size="23"></td>
+				</tr>
+				<tr>
+					<th align="right">'.$lang['SEX'].'</td>
 					<td align="left">
 						<select name="sex">
 		';
@@ -96,15 +99,19 @@ if (isset($GET_id)) {
 		echo '
 						</select>
 					</td>
-				</tr><tr>
-					<td align="right">'.$lang['MAIL'].'</td><td align="left"><input type="text" name="email" value="'.htmlformat($line[3]).'" maxlength="60" size="23"></td>
-				</tr><tr>
-					<td align="right">'.$lang['BIRTHDAY'].'</td><td align="left"><input type="text" name="birthdate" value="'.$line[10].'" maxlength="10" size="10"></td>
-				</tr><tr>
-					<td align="right">'.$lang['LEVEL'].'</td><td align="left"><input type="text" name="level" value="'.$line[4].'" maxlength="2" size="2"></td>
-				</tr><tr>
-					<td>&nbsp;</td><td align="left"><input type="submit" value="'.$lang['CHANGEMAIL_CHANGE'].'">
-				</td></tr>
+				</tr>
+				<tr>
+					<th align="right">'.$lang['MAIL'].'</th><td align="left"><input type="text" name="email" value="'.htmlformat($line[3]).'" maxlength="60" size="23"></td>
+				</tr>
+				<tr>
+					<th align="right">'.$lang['BIRTHDAY'].'</th><td align="left"><input type="text" name="birthdate" value="'.$line[10].'" maxlength="10" size="10"></td>
+				</tr>
+				<tr>
+					<th align="right">'.$lang['LEVEL'].'</th><td align="left"><input type="text" name="level" value="'.$line[4].'" maxlength="2" size="2"></td>
+				</tr>
+				<tr>
+					<th></th><td align="left"><input type="submit" value="'.$lang['CHANGEMAIL_CHANGE'].'"></td>
+				</tr>
 			</table>
 		</form>
 		';
