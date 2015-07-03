@@ -101,7 +101,7 @@ while ($line = $result->fetch_assoc()) {
 		  <td style="white-space: nowrap;">'.$line['type'].'</td>
 		  <td style="white-space: nowrap;">'.htmlformat($line['char_name']).'</td>
 		  <td style="white-space: nowrap; text-align: right;">'.$line['amount'].'</td>
-		  <td style="white-space: nowrap;">'.(isset($items[$line['nameid']])?$items[$line['nameid']]:$line['nameid']).'</td>
+		  <td style="white-space: nowrap;">'.get_item_icon($line['nameid']).get_item_name($line['nameid']).'</td>
 		  <td style="white-space: nowrap;">'.$line['map'].'</td>
 		 </tr>';
 }
