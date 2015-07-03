@@ -30,7 +30,7 @@ include_once 'lib/functions.php';
 
 $jobs = $_SESSION[$CONFIG_name.'jobs'];
 
-$query = sprintf(TOP100ZENY, $CONFIG_gm_level);
+$query = sprintf(TOP100ZENY, $CONFIG_gm_hide);
 $result = execute_query($query, "top100zeny.php");
 
 caption($lang['TOP100ZENY_TOP100ZENY']);

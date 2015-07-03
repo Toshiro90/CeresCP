@@ -77,23 +77,23 @@ if (isset($GET_id)) {
 
 	$query = sprintf(ACCOUNTS_SEARCH_ACCOUNT_ID, trim($GET_id));
 	$result = execute_query($query, 'adminaccban.php');
-	if ($line = $result->fetch_row()) {
+	if ($line = $result->fetch_assoc()) {
 		echo '
 		<form id="accban" onSubmit="return GET_ajax(\'adminaccban.php\',\'accounts_div\',\'accban\');">
 			<table class="maintable">
 				<tr>
-					<td align="right">'.$lang['ACCOUNT_ID'].':</td><td align="left">'.$line[0].'<input type="hidden" name="id" value="'.$line[0].'"></td>
+					<td align="right">'.$lang['ACCOUNT_ID'].':</td><td align="left">'.$line['account_id'].'<input type="hidden" name="id" value="'.$line['account_id'].'"></td>
 				</tr><tr>
-					<td align="right">'.$lang['USERNAME'].':</td><td align="left">'.htmlformat($line[1]).'</td>
+					<td align="right">'.$lang['USERNAME'].':</td><td align="left">'.htmlformat($line['userid']).'</td>
 				</tr><tr>
-					<td align="right">'.$lang['ADMIN_ACCBAN_LAST_LOGIN'].':</td><td align="left">'.$line[9].'</td>
+					<td align="right">'.$lang['ADMIN_ACCBAN_LAST_LOGIN'].':</td><td align="left">'.$line['lastlogin'].'</td>
 				</tr><tr>
 
 					<td align="right">'.$lang['ADMIN_ACCBAN_BAN_UNTIL'].':</td><td align="left"><select name="bday">
 		';
 
-		if ($line[6] > 0)
-			$today = getdate($line[6]);
+		if ($line['unban_time'] > 0)
+			$today = getdate($line['unban_time']);
 		else
 			$today = getdate();
 
@@ -159,7 +159,7 @@ if (isset($GET_id)) {
 		
 		echo '</select>&nbsp;&nbsp;<select name="byear">';
 		
-//		$today = getdate();
+		//$today = getdate();
 		for ($i = $today['year']; $i < ($today['year'] + 5); $i++)
 			echo '<option value="'.$i.'">'.$i;
 		echo '
@@ -168,7 +168,7 @@ if (isset($GET_id)) {
 				</tr><tr>
 					<td align="right">'.$lang['ADMIN_ACCBAN_BLOCK'].':</td><td align="left">
 					<select name="block">';
-		if ($line[7] == 5)
+		if ($line['state'] == 5)
 			echo '<option selected="selected" value="5">'.$lang['ADMIN_ACCBAN_BLOCK'].'</option><option value="0">'.$lang['ADMIN_ACCBAN_UNBLOCK'].'</option>';
 		else
 			echo '<option value="5">'.$lang['ADMIN_ACCBAN_BLOCK'].'</option><option selected="selected" value="0">'.$lang['ADMIN_ACCBAN_UNBLOCK'].'</option>';
