@@ -46,19 +46,27 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 
 				$query = sprintf(CHECK_ZENY, $GET_GID1, $_SESSION[$CONFIG_name.'account_id']);
 				$result = execute_query($query, 'money.php');
-				$line = $result->fetch_row();
-				$zeny1 = $line[0];
+				$line = $result->fetch_assoc();
+				$zeny1 = $line['zeny'];
+
+				// Not your character
+				if ($line['account_id'] != $_SESSION[$CONFIG_name.'account_id'])
+					alert($lang['MONEY_OPER_IMPOSSIBLE']);
 
 				$query = sprintf(CHECK_ZENY, $GET_GID2, $_SESSION[$CONFIG_name.'account_id']);
 				$result = execute_query($query, 'money.php');
-				$line = $result->fetch_row();
-				$zeny2 = $line[0];
+				$line = $result->fetch_assoc();
+				$zeny2 = $line['zeny'];
+
+				// Not your character
+				if ($line['account_id'] != $_SESSION[$CONFIG_name.'account_id'])
+					alert($lang['MONEY_OPER_IMPOSSIBLE']);
 
 				$cost = (int)($GET_zeny * $CONFIG_money_cost / 10000);
 				$less = $zeny1 - ($GET_zeny + $cost);
 				$more = $zeny2 + $GET_zeny;
 				if ($less < 0)
-					alert('Not enough zeny.');
+					alert($lang['MONEY_NO_ZENY']);
 				if ($less > 999999999)
 					redir('motd.php', 'main_div', $lang['MONEY_OPER_IMPOSSIBLE']);
 				if ($more > 999999999)
@@ -73,7 +81,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 				$query = sprintf(PARTNER_BAN, $ban_length, $_SESSION[$CONFIG_name.'account_id']);
 				$result = execute_query($query, 'money.php');
 
-				
+
 				if (is_online()) {
 					$query = sprintf(SET_ZENY, $zeny1, $GET_GID1, $_SESSION[$CONFIG_name.'account_id']);
 					$result = execute_query($query, 'money.php');
@@ -219,7 +227,7 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 			$job = $lang['UNKNOWN'];
 			if (isset($jobs[$line[5]]))
 				$job = $jobs[$line[5]];
-			
+
 			if ($clevel < 20 || $zeny <= 0) {
 				echo '<tr class="disabled">';
 			}

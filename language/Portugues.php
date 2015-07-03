@@ -237,6 +237,7 @@ $lang['MONEY_TRANSFER_FROM'] = 'Transferir Zeny De';
 $lang['MONEY_TRANSFER_TO'] = 'Transferir Zeny Para';
 $lang['MONEY_PS1'] = '*Haverá um custo de %.2f%%, do montante transferido, para utilização deste serviço';
 $lang['MONEY_SELECT'] = 'Select'; // TODO: translate
+$lang['MONEY_NO_ZENY'] = 'Você não possui zeny o suficiente.';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Casamento';

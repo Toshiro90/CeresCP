@@ -75,9 +75,9 @@ DEFINE('RECOVER_PASSWORD', "SELECT `userid`, `user_pass`, `email` FROM `login` W
 
 //money.php - Money Transfer
 DEFINE('GET_ZENY', "SELECT `char_id`, `char_num`, `name`, `zeny`, `base_level`, `class` FROM `char` 
-WHERE `account_id` = '%d' ORDER BY `char_num`");
-DEFINE('SET_ZENY', "UPDATE `char` SET `zeny` = '%d' WHERE `char_id` = '%d' AND `account_id` = '%d'");
-DEFINE('CHECK_ZENY', "SELECT `zeny` FROM `char` WHERE `char_id` = '%d' AND `account_id` = '%d'");
+WHERE `account_id` = %d ORDER BY `char_num` ASC");
+DEFINE('SET_ZENY', "UPDATE `char` SET `zeny` = '%d' WHERE `char_id` = %d AND `account_id` = %d LIMIT 1");
+DEFINE('CHECK_ZENY', "SELECT `zeny`, `account_id` FROM `char` WHERE `char_id` = %d LIMIT 1");
 
 //guild.php - Guild Ladder
 DEFINE('GUILD_LADDER', "SELECT `guild`.`name`, `guild`.`emblem_data`, `guild`.`guild_lv`, `guild`.`exp`, `guild`.`guild_id`,

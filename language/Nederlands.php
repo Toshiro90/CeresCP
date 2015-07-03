@@ -238,6 +238,7 @@ $lang['MONEY_TRANSFER_FROM'] = 'Verzet Zeny van.';
 $lang['MONEY_TRANSFER_TO'] = 'Verzet Zeny Naar';
 $lang['MONEY_PS1'] = '*Het Kost %.2f%%, Van het verzette aantal om het te verzetten';
 $lang['MONEY_SELECT'] = 'Select'; // TODO: translate
+$lang['MONEY_NO_ZENY'] = 'Niet genoeg Zeny.';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Trouwerij';

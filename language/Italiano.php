@@ -238,6 +238,7 @@ $lang['MONEY_TRANSFER_FROM'] = 'Trasferire da';
 $lang['MONEY_TRANSFER_TO'] = 'Trasferire a';
 $lang['MONEY_PS1'] = '*Ci sarà un prezzo di %.2f%% per utilizzare questa funzione';
 $lang['MONEY_SELECT'] = 'Select'; // TODO: translate
+$lang['MONEY_NO_ZENY'] = 'zenny insuficienti.';
 
 //marriage.php
 $lang['MARRIAGE'] = 'Matrimonio';
