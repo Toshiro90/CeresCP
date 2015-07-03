@@ -33,31 +33,43 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 
 		if (!empty($GET_opt)) {
 			if ($GET_opt == 1) {
-				if (is_online()) 
+				// Currently logged in
+				if (is_online())
 					alert($lang['NEED_TO_LOGOUT_F']);
 
-				if (inject($GET_GID1)) 
-					alert($lang['POSITION_RESET']);
+				// Submitted ID contains illegal characters
+				if (inject($GET_GID1))
+					alert($lang['POSITION_RESET_FAILED']);
 
-				$query = sprintf(GET_SAVE_POSITION, $GET_GID1, $GET_GID1);
-				$result = execute_query($query, "position.php");
-				if ($result->count() < 1) alert($lang['POSITION_JAIL']);
-				$line = $result->fetch_row();
-				$last_map = $line[1];
-				$last_x = $line[2];
-				$last_y = $line[3];
-				$zeny = $line[4];
-				if ($zeny < $CONFIG_reset_cost)
+				$query = sprintf(GET_SAVE_POSITION, $GET_GID1);
+				$result = execute_query($query, 'position.php');
+				$line = $result->fetch_assoc();
+
+				// Non-existing character
+				if ($line==NULL)
+					alert($lang['POSITION_RESET_FAILED']);
+				// Character is in jail
+				if ($line['jailed'])
+					alert($lang['POSITION_JAIL']);
+				// Not your character
+				if ($line['account_id']!=$_SESSION[$CONFIG_name.'account_id'])
+					alert($lang['POSITION_RESET_FAILED']);
+				// Not enough zeny
+				if ($line['zeny'] < $CONFIG_reset_cost)
 					alert($lang['POSITION_NO_ZENY']);
-				$zeny = $zeny - $CONFIG_reset_cost;
-				$query = sprintf(FINAL_POSITION, $last_map, $last_x, $last_y, $zeny, $GET_GID1);
-				$result = execute_query($query, "position.php");
-				redir("position.php", "main_div", $lang['POSITION_OK']);
+
+				$last_map = $line['save_map'];
+				$last_x = $line['save_x'];
+				$last_y = $line['save_y'];
+				$zeny = $line['zeny'];
+				$query = sprintf(FINAL_POSITION, $last_map, $last_x, $last_y, $CONFIG_reset_cost, $GET_GID1);
+				$result = execute_query($query, 'position.php');
+				redir('position.php', 'main_div', $lang['POSITION_OK']);
 			}
 		}
 
-		$query = sprintf(CHAR_GET_CHARS, $_SESSION[$CONFIG_name.'account_id'], $_SESSION[$CONFIG_name.'account_id']);
-		$result = execute_query($query, "position.php");
+		$query = sprintf(CHAR_GET_CHARS, $_SESSION[$CONFIG_name.'account_id']);
+		$result = execute_query($query, 'position.php');
 
 		if ($result->count() < 1)
 			redir('motd.php', 'main_div', $lang['ONE_CHAR']);
@@ -65,44 +77,61 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_reset_enable) {
 		caption($lang['POSITION_TITLE']);
 		echo '
 		<table class="maintable">
-		<tr>
-			<th align="right">'.$lang['SLOT'].'</th>
-			<th align="left">'.$lang['NAME'].'</th>
-			<th align="center">'.$lang['POSITION_LEVEL'].'</th>
-			<th align="left">'.$lang['MAP'].'</th>
-			<th align="center">'.$lang['POSITION_SELECT'].'</th>
-		</tr>
-		';
-		while ($line = $result->fetch_row()) {
-			$GID = $line[0];
-			$slot = $line[1];
-			$charname = htmlformat($line[2]);
-			$clevel = $line[4];
-			$joblevel = $line[5];
-			$lastmap = $line[6];
-			echo '    
 			<tr>
+				<th align="right">'.$lang['SLOT'].'</th>
+				<th align="left">'.$lang['NAME'].'</th>
+				<th align="center">'.$lang['POSITION_LEVEL'].'</th>
+				<th align="center">'.$lang['ZENY'].'</th>
+				<th align="left">'.$lang['MAP'].'</th>
+				<th align="center"></th>
+			</tr>';
+
+		while ($line = $result->fetch_assoc()) {
+			$GID = $line['char_id'];
+			$slot = $line['char_num'];
+			$charname = htmlformat($line['name']);
+			$clevel = $line['base_level'];
+			$joblevel = $line['job_level'];
+			$lastmap = $line['last_map'];
+			$zeny = moneyformat($line['zeny']);
+
+			if ($line['jailed'] || $line['zeny'] < $CONFIG_reset_cost) {
+				echo '<tr class="disabled">';
+			}
+			else {
+				echo '<tr>';
+			}
+
+			echo '
 				<td align="right">'.$slot.'</td>
 				<td align="left">'.$charname.'</td>
 				<td align="center">'.$clevel.'/'.$joblevel.'</td>
+				<td align="right">'.$zeny.'</td>
 				<td align="left">'.$lastmap.'</td>
-				<td align="center">
+				<td align="center">';
+
+			if ($line['jailed'] || $line['zeny'] < $CONFIG_reset_cost) {
+				echo '<input type="submit" value="'.$lang['POSITION_RESET'].'" disabled>';
+			}
+			else {
+				echo '
 				<form id="position'.$slot.'" onsubmit="return GET_ajax(\'position.php\',\'main_div\',\'position'.$slot.'\')">
 					<input type="submit" value="'.$lang['POSITION_RESET'].'">
 					<input type="hidden" name="charnum" value="'.$slot.'">
 					<input type="hidden" name="opt" value="1">
 					<input type="hidden" name="GID1" value="'.$GID.'">
-				</form>
+				</form>';
+			}
+			echo '
 				</td>
 			</tr>
 			';
 		}
 		echo '</table>';
 		if ($CONFIG_reset_cost) {
-			$lang['POSITION_PS1'] = sprintf($lang['POSITION_PS1'], $CONFIG_reset_cost);
 			echo '
 				<table class="maintable">
-					<tr><td align="left">'.$lang['POSITION_PS1'].'</td></tr>
+					<tr><td align="left">'.sprintf($lang['POSITION_PS1'], $CONFIG_reset_cost).'</td></tr>
 				</table>
 			';
 		}

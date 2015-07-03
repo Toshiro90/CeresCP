@@ -230,7 +230,6 @@ if (isset($POST_install)) {
 	$buffer .= "\$CONFIG['max_chars']			=	".config_int($POST_feat_cc).";			// Max amount of chars (set this to what's set for MAX_CHARS in your emulators src/common/mmo.h)".PHP_EOL;
 	$buffer .= "\$CONFIG['reset_look']			=	".config_bool($POST_feat_rl).";			// reset char equips and colors with error enable = 1, disable = 0".PHP_EOL;
 	$buffer .= "\$CONFIG['marry_enable']			=	".config_bool($POST_feat_divorce).";			// enable marriage view and divorce".PHP_EOL;
-	$buffer .= "\$CONFIG['prison_map']			=	".config_string($POST_feat_pm).";		// Name of the map that is used as your jail (mapname.gat)".PHP_EOL;
 	$buffer .= "\$CONFIG['servermode']			=	".servertype_by_value($POST_feat_server).";	// For use the right query with rA or eA ".PHP_EOL;
 	$buffer .= "\$CONFIG['item_icon_path']		=	".config_string($POST_feat_iip).";	// Path to item icon images, use %d as placeholder for the id. Example: images/icon/%d.png".PHP_EOL;
 	$buffer .= "".PHP_EOL;
@@ -601,10 +600,6 @@ for ($i = 0; isset($idiom[$i]); $i++) {
 									<tr>
 										<td align="left">Divorce</td>
 										<td align="left"><select name="feat_divorce"><option value="0">No</option><option selected="selected" value="1">Yes</option></select></td>
-									</tr>
-									<tr>
-										<td align="left">Prison Map</td>
-										<td align="left"><input type="text" name="feat_pm" size="30" value="sec_pri"></td>
 									</tr>
 									<tr>
 										<td align="left">Server</td>

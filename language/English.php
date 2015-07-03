@@ -210,7 +210,7 @@ $lang['RESETLOOK_CLOTHESC'] = 'Clothes Color';
 $lang['RECOVER_RECOVER'] = 'Recover Password';
 
 //position.php
-$lang['POSITION_RESET'] = 'Reset Position Failed.';
+$lang['POSITION_RESET_FAILED'] = 'Reset Position Failed.';
 $lang['POSITION_NO_ZENY'] = 'Not enough zeny.';
 $lang['POSITION_OK'] = 'Position has been reset.';
 $lang['POSITION_TITLE'] = 'Reset Position';
@@ -218,7 +218,7 @@ $lang['POSITION_LEVEL'] = 'Level';
 $lang['POSITION_SELECT'] = 'Select';
 $lang['POSITION_RESET'] = 'Reset';
 $lang['POSITION_PS1'] = '*There will be a cost of %d zenys to use this service';
-$lang['POSITION_JAIL'] = 'You may not use this while in jail.';
+$lang['POSITION_JAIL'] = 'You may not use this while your character is in jail.';
 
 //motd.php
 $lang['NEWS_MESSAGE'] = 'Message';

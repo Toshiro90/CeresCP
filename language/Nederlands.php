@@ -211,7 +211,7 @@ $lang['RESETLOOK_CLOTHESC'] = 'Clothes Color'; // TODO: translate
 $lang['RECOVER_RECOVER'] = 'Herstel Wachtwoord';
 
 //position.php
-$lang['POSITION_RESET'] = 'Positie Resetten gefaald.';
+$lang['POSITION_RESET_FAILED'] = 'Positie Resetten gefaald.';
 $lang['POSITION_NO_ZENY'] = 'Niet genoeg Zeny.';
 $lang['POSITION_OK'] = 'Positie is geresset.';
 $lang['POSITION_TITLE'] = 'Reset Positie';

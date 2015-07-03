@@ -58,15 +58,10 @@ DEFINE('CHECK_EMAIL', "SELECT `email` FROM `login` WHERE `account_id` = '%d'");
 
 //position.php - Reset Position
 DEFINE('CHAR_GET_CHARS', "SELECT `char_id`, `char_num`, `name`, `class`, `base_level`, `job_level`, 
-`last_map` FROM `char` WHERE `account_id` = '%d' and `online`=0 and `char_id` not in (select 
-`char_id` FROM `sc_data` where type=249 and `account_id` = '%d') ORDER BY 
-`char_num`");
-DEFINE('GET_SAVE_POSITION', "SELECT `name`, `save_map`, `save_x`, `save_y`, `zeny` FROM `char` WHERE `char_id` 
-= '%d'  and `online`=0 and `char_id` not in (select `char_id` FROM `sc_data` where type=249 and 
-`char_id` = '%d')");
-DEFINE('FINAL_POSITION', "UPDATE `char` SET `last_map` = '%s', `last_x` = '%d', `last_y` = '%d', `zeny` = '%d'
-WHERE `char_id` = '%d'
-AND `online` = '0'
+`last_map`, `zeny`, IFNULL((SELECT 1 FROM `sc_data` where type=249 AND `sc_data`.`account_id`=`char`.`account_id` AND `sc_data`.`char_id`=`char`.`char_id`), 0) as `jailed`
+FROM `char` WHERE `account_id`=%d ORDER BY `char_num`");
+DEFINE('GET_SAVE_POSITION', "SELECT `account_id`, `name`, `save_map`, `save_x`, `save_y`, `zeny`, IFNULL((SELECT 1 FROM `sc_data` where type=249 AND `sc_data`.`account_id`=`char`.`account_id` AND `sc_data`.`char_id`=`char`.`char_id`), 0) as `jailed` FROM `char` WHERE `char_id` = %d LIMIT 1");
+DEFINE('FINAL_POSITION', "UPDATE `char` SET `last_map` = '%s', `last_x` = %d, `last_y` = %d, `zeny` = `zeny`-%d WHERE `char_id` = %d AND `online` = 0 LIMIT 1
 ");
 
 //account.php - Account Creation

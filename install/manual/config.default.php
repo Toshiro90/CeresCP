@@ -81,7 +81,6 @@ $CONFIG['money_cost']		=	'0';			// money transfer cost (100 = 1%), disable cost 
 $CONFIG['set_slot']		=	'1';			// change char slot enable = 1, disable = 0
 $CONFIG['reset_look']		=	'1';			// reset char equips and colors with error enable = 1, disable = 0
 $CONFIG['marry_enable']		=	'1';			// enable marriage view and divorce
-$CONFIG['prison_map']		=	'sec_pri';		// Name of the map that is used as your jail (mapname.gat)
 
 //About Information
 $CONFIG['classlist_show']	=	'1';			// Show the class list on about.php? (disable = 0, enable = 1)

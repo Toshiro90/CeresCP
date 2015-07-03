@@ -211,7 +211,7 @@ $lang['RESETLOOK_CLOTHESC'] = 'Clothes Color'; // TODO: translate
 $lang['RECOVER_RECOVER'] = 'Recover Password';
 
 //position.php
-$lang['POSITION_RESET'] = 'Reset Posisi Gagal.';
+$lang['POSITION_RESET_FAILED'] = 'Reset Posisi Gagal.';
 $lang['POSITION_NO_ZENY'] = 'Zeny Tidak Cukup.';
 $lang['POSITION_OK'] = 'Posisi telah di Reset.';
 $lang['POSITION_TITLE'] = 'Reset Position';
