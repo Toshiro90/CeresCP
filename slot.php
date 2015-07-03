@@ -91,32 +91,35 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_set_slot) {
 				$job = $jobs[$line['class']];
 
 			if ($slot < 0 || $slot > $CONFIG_max_chars-1) {
-			echo '
-			<tr>
-				<td class="disabled" align="right">'.$slot.'</td>
-				<td class="disabled" align="left">'.$charname.'</td>
-				<td class="disabled" align="left">'.$job.'</td>
-				<td class="disabled" align="center">
-				<select class="disabled" name="newslot" disabled>';
-			for ($i = 0; $i < $CONFIG_max_chars; $i++) {
-				if ($slot == $i)
-					echo '<option value="'.$i.'" selected="selected">'.$i.' - '.$slots[$i];
-				else
-					echo '<option value="'.$i.'">'.$i.' - '.$slots[$i];
+				echo '<tr class="disabled">';
 			}
-			echo '</select>
-					<input type="submit" value="'.$lang['CHANGE'].'" class="disabled" disabled>
-				</form>
-				</td>
-			</tr>';
+			else {
+				echo '<tr>';
+			}
+			
+			echo '
+				<td align="right">'.$slot.'</td>
+				<td align="left">'.$charname.'</td>
+				<td align="left">'.$job.'</td>
+				<td align="center">';
+				
+			if ($slot < 0 || $slot > $CONFIG_max_chars-1) {
+				echo '
+					<select name="newslot" disabled>';
+				for ($i = 0; $i < $CONFIG_max_chars; $i++) {
+					if ($slot == $i)
+						echo '<option value="'.$i.'" selected="selected">'.$i.' - '.$slots[$i];
+					else
+						echo '<option value="'.$i.'">'.$i.' - '.$slots[$i];
+				}
+				echo '</select>
+						<input type="submit" value="'.$lang['CHANGE'].'" disabled>
+					</form>
+					</td>
+				</tr>';
 			}
 			else {
 				echo '
-				<tr>
-					<td align="right">'.$slot.'</td>
-					<td align="left">'.$charname.'</td>
-					<td align="left">'.$job.'</td>
-					<td align="center">
 					<form id="slot'.$j.'" onsubmit="return GET_ajax(\'slot.php\',\'main_div\',\'slot'.$j.'\')">
 						<select name="newslot">';
 				for ($i = 0; $i < $CONFIG_max_chars; $i++) {

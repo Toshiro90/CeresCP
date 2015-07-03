@@ -101,11 +101,19 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 				<td align="center">
 				<form id="marriage'.$GID1.'" onsubmit="return GET_ajax(\'marriage.php\',\'main_div\',\'marriage'.$GID1.'\');">
 					<input type="checkbox" name="divorce" value="1" style="border-color: #FFFFFF">
-					<input type="submit" value="Confirm" class="myctl">
+					<input type="submit" value="Confirm">
 					<input type="hidden" name="opt" value="1">
 					<input type="hidden" name="GID1" value="'.$GID1.'">
 					<input type="hidden" name="GID2" value="'.$GID2.'">
 				</form>
+				</td>
+				';
+			}
+			else {
+				echo '
+				<td align="center">
+					<input type="checkbox" style="border-color: #FFFFFF" disabled>
+					<input type="submit" value="Confirm" disabled>
 				</td>
 				';
 			}

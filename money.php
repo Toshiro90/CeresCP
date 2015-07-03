@@ -145,31 +145,40 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 					if (isset($jobs[$line[5]]))
 						$job = $jobs[$line[5]];
 
-					if ($GID != $GET_GID1) {
+					if ($GID == $GET_GID1) {
+						echo '<tr class="highlight">';
+					}
+					elseif ($clevel < 20) {
+						echo '<tr class="disabled">';
+					}
+					else {
+						echo '<tr>';
+					}
+					echo '
+						<td align="left">'.$slot.'</td>
+						<td align="left">'.$charname.'</td>
+						<td align="left">'.$job.'</td>
+						<td align="right">'.$zeny.'</td>
+					<td>
+					';
+					if ($clevel >= 20 && $GID != $GET_GID1) {
 						echo '
-						<tr>
-							<td align="left">'.$slot.'</td>
-							<td align="left">'.$charname.'</td>
-							<td align="left">'.$job.'</td>
-							<td align="right">'.$zeny.'</td>
-						<td>
-						';
-						if ($clevel >= 20) {
-							echo '
-							<form id="money'.$slot.'" onsubmit="return GET_ajax(\'money.php\',\'main_div\',\'money'.$slot.'\')">
-									<input type="submit" value="'.$lang['MONEY_SELECT'].'">
-									<input type="hidden" name="opt" value="2">
-									<input type="hidden" name="zeny1" value="'.$GET_zeny1.'">
-									<input type="hidden" name="GID2" value="'.$GID.'">
-									<input type="hidden" name="GID1" value="'.$GET_GID1.'">
-							</form>
-							';
-						}
-						echo '
-							</td>
-							</tr>
+						<form id="money'.$slot.'" onsubmit="return GET_ajax(\'money.php\',\'main_div\',\'money'.$slot.'\')">
+								<input type="submit" value="'.$lang['MONEY_SELECT'].'">
+								<input type="hidden" name="opt" value="2">
+								<input type="hidden" name="zeny1" value="'.$GET_zeny1.'">
+								<input type="hidden" name="GID2" value="'.$GID.'">
+								<input type="hidden" name="GID1" value="'.$GET_GID1.'">
+						</form>
 						';
 					}
+					else {
+						echo '<input type="submit" value="'.$lang['MONEY_SELECT'].'" disabled>';
+					}
+					echo '
+						</td>
+						</tr>
+					';
 				}
 				echo '</table>';
 				if ($CONFIG_money_cost) {
@@ -210,16 +219,21 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 			$job = $lang['UNKNOWN'];
 			if (isset($jobs[$line[5]]))
 				$job = $jobs[$line[5]];
-		
-			echo ' 
-			<tr>
+			
+			if ($clevel < 20 || $zeny <= 0) {
+				echo '<tr class="disabled">';
+			}
+			else {
+				echo '<tr>';
+			}
+			echo '
 				<td align="left">'.$slot.'</td>
 				<td align="left">'.$charname.'</td>
 				<td align="left">'.$job.'</td>
 				<td align="right">'.$zeny.'</td>
 				<td>
 			';
-			if ($clevel >= 20) {
+			if ($clevel >= 20 && $zeny > 0) {
 				echo '
 					<form id="money'.$slot.'" onsubmit="return GET_ajax(\'money.php\',\'main_div\',\'money'.$slot.'\')">
 						<input type="submit" value="'.$lang['MONEY_SELECT'].'">
@@ -228,6 +242,9 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_money_transfer) {
 						<input type="hidden" name="GID1" value="'.$GID.'">
 					</form>
 				';
+			}
+			else {
+				echo '<input type="submit" value="'.$lang['MONEY_SELECT'].'" disabled="disabled">';
 			}
 			echo '
 					</td>

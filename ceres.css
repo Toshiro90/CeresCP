@@ -125,6 +125,14 @@ input, select, option, textarea {
 	border: solid;
 }
 
+input[disabled], select[disabled], option[disabled], textarea[disabled] { 
+	font-family: verdana,arial;
+	font-size: 10px;
+	background-color: #D6D3D6;
+	color: #AAAAAA;
+	border: solid;
+}
+
 /** TABLE TR, TD */
 tr, td {
 	font-size: 10px;
@@ -142,7 +150,7 @@ th {
 .highlight {
 	font-weight: bold;
 }
-.disabled {
+.disabled, .disabled td {
 	color: #AAAAAA;
 }
 
