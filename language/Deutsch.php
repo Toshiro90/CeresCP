@@ -253,7 +253,7 @@ $lang['MARRIAGE_PS3'] = '*Du wirst für 2 Minuten gebannt, damit die Änderungen g
 $lang['MARRIAGE_DIVORCE_FAILED'] = 'Scheidung fehlgeschlagen.';
 
 //ladder.php
-$lang['LADDER_TOP100'] = 'Top 100 Rang Liste';
+$lang['LADDER_TOP100'] = 'Top 100 Rangliste';
 $lang['LADDER_GUILD'] = 'Gilden';
 $lang['LADDER_STATUS'] = 'Status';
 $lang['LADDER_STATUS_ON'] = 'On';
@@ -358,4 +358,16 @@ $lang['ADMIN_ACCBAN_LAST_LOGIN'] = 'Letzter Login';
 $lang['ADMIN_ACCBAN_BAN_UNTIL'] = 'Gebannt bis';
 $lang['ADMIN_ACCBAN_BLOCK'] = 'Geblockt';
 $lang['ADMIN_ACCBAN_UNBLOCK'] = 'Entblockt';
+
+//taekwon.php
+$lang['TAEKWON_LADDER'] = 'Top 20 Taekwon Rangliste';
+$lang['TAEKWON_POINTS'] = 'Punkte';
+
+//alchemy.php
+$lang['ALCHEMY_LADDER'] = 'Top 20 Alchemie Rangliste';
+$lang['ALCHEMY_POINTS'] = 'Punkte';
+
+//forging.php
+$lang['FORGING_LADDER'] = 'Top 20 Schmiede Rangliste';
+$lang['FORGING_POINTS'] = 'Punkte';
 

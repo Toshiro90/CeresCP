@@ -122,6 +122,9 @@ $lang['MENU_LOG_ZENY'] = 'Zeny Logs';
 $lang['MENU_ADMIN'] = 'Administration';
 $lang['MENU_ADMIN_ACC'] = 'Accounts';
 $lang['MENU_ADMIN_CHAR'] = 'Chars';
+$lang['MENU_TAEKWON'] = 'Taekwon Ladder';
+$lang['MENU_ALCHEMY'] = 'Alchemy Ladder';
+$lang['MENU_FORGING'] = 'Forging Ladder';
 
 //common
 $lang['NAME'] = 'Name';
@@ -251,6 +254,8 @@ $lang['MARRIAGE_PS1'] = '*Check and confirm to divorce, both must be offline to 
 $lang['MARRIAGE_PS2'] = '*You can only change one char at time';
 $lang['MARRIAGE_PS3'] = '*You will be banned for 2 minutes to save the changes';
 $lang['MARRIAGE_DIVORCE_FAILED'] = 'Divorce failed.';
+$lang['MARRIAGE_DIVORCE_FAILED'] = 'Divorce failed.';
+$lang['MARRIAGE_DIVORCE_FAILED'] = 'Divorce failed.';
 
 //ladder.php
 $lang['LADDER_GUILD'] = 'Guild';
@@ -358,3 +363,16 @@ $lang['ADMIN_ACCBAN_LAST_LOGIN'] = 'Last Login';
 $lang['ADMIN_ACCBAN_BAN_UNTIL'] = 'Ban until';
 $lang['ADMIN_ACCBAN_BLOCK'] = 'Block';
 $lang['ADMIN_ACCBAN_UNBLOCK'] = 'Unlock';
+
+//taekwon.php
+$lang['TAEKWON_LADDER'] = 'Top 20 Taekwon Ranking';
+$lang['TAEKWON_POINTS'] = 'Points';
+
+//alchemy.php
+$lang['ALCHEMY_LADDER'] = 'Top 20 Alchemy Ranking';
+$lang['ALCHEMY_POINTS'] = 'Points';
+
+//forging.php
+$lang['FORGING_LADDER'] = 'Top 20 Forging Ranking';
+$lang['FORGING_POINTS'] = 'Points';
+

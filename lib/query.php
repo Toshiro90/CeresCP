@@ -218,6 +218,24 @@ LEFT JOIN `buyingstore_items` as `bi` ON (`b`.`id`=`buyingstore_id`)
 LEFT JOIN `char` as `c` ON (`b`.`char_id`=`c`.`char_id`)
 ORDER BY `name`, `bi`.`index` ASC');
 
+//taekwon.php - Taekwon Ranking
+DEFINE('TAEKWON', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`fame`, `char`.`account_id`, `char`.`char_id`,
+`char`.`guild_id`, `guild`.`name` as `guild_name`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+LEFT JOIN `guild` ON (`guild`.`guild_id`=`char`.`guild_id`)
+WHERE `char`.`class`=4046 AND `login`.`group_id` < %d AND `login`.`state` != '5' ORDER BY `fame` DESC LIMIT 0, 20");
+
+//alchemy.php - Alchemy Ranking
+DEFINE('ALCHEMY', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`fame`, `char`.`account_id`, `char`.`char_id`,
+`char`.`guild_id`, `char`.`class`, `guild`.`name` as `guild_name`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+LEFT JOIN `guild` ON (`guild`.`guild_id`=`char`.`guild_id`)
+WHERE `char`.`class` IN (18,4019,4041,4071,4078,4107) AND `login`.`group_id` < %d AND `login`.`state` != '5' ORDER BY `fame` DESC LIMIT 0, 20");
+
+//forging.php - Forging Ranking
+DEFINE('FORGING', "SELECT `char`.`name`, `char`.`class`, `char`.`base_level`, `char`.`job_level`, `char`.`fame`, `char`.`account_id`, `char`.`char_id`,
+`char`.`guild_id`, `char`.`class`,, `guild`.`name` as `guild_name`, `guild`.`emblem_data` FROM `char` LEFT JOIN `login` ON `login`.`account_id` = `char`.`account_id`
+LEFT JOIN `guild` ON (`guild`.`guild_id`=`char`.`guild_id`)
+WHERE `char`.`class` IN (10,4011,4033,4058,4064,4100) AND `login`.`group_id` < %d AND `login`.`state` != '5' ORDER BY `fame` DESC LIMIT 0, 20");
+
 //general
 DEFINE('GET_CHARNAME', "SELECT `name` FROM `char` WHERE `char_id`='%d' LIMIT 1");
 DEFINE('GET_ACCOUNT_ID', "SELECT `account_id` FROM `char` WHERE `char_id`='%d' LIMIT 1");

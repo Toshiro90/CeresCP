@@ -359,3 +359,15 @@ $lang['ADMIN_ACCBAN_BAN_UNTIL'] = 'Ban until'; // TODO: translate
 $lang['ADMIN_ACCBAN_BLOCK'] = 'Block'; // TODO: translate
 $lang['ADMIN_ACCBAN_UNBLOCK'] = 'Unlock'; // TODO: translate
 
+//taekwon.php
+$lang['TAEKWON_LADDER'] = 'Top 20 Taekwon Ranking'; // TODO: translate
+$lang['TAEKWON_POINTS'] = 'Points'; // TODO: translate
+
+//alchemy.php
+$lang['ALCHEMY_LADDER'] = 'Top 20 Alchemy Ranking'; // TODO: translate
+$lang['ALCHEMY_POINTS'] = 'Points'; // TODO: translate
+
+//forging.php
+$lang['FORGING_LADDER'] = 'Top 20 Forging Ranking'; // TODO: translate
+$lang['FORGING_POINTS'] = 'Points'; // TODO: translate
+
