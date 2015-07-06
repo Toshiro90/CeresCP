@@ -97,40 +97,40 @@ include_once 'lib/functions.php';
 					$query = sprintf(LADDER_LKPA, $GET_opt, 4048);
 					break;
 				case 4056:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4084);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4084);
 					break;
 				case 4054:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4080);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4080);
 					break;
 				case 4058:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4086);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4086);
 					break;
 				case 4060:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4081);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4081);
 					break;
 				case 4062:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4085);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4085);
 					break;
 				case 4064:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4087);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4087);
 					break;
 				case 4066:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4082);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4082);
 					break;
 				case 4073:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4083);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4083);
 					break;
 				case 4096:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4109);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4109);
 					break;
 				case 4098:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4111);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4111);
 					break;
 				case 4100:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4112);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4112);
 					break;
 				case 4102:
-					$query = sprintf(LADDER_LKPA, $_GET_opt, 4110);
+					$query = sprintf(LADDER_LKPA, $GET_opt, 4110);
 					break;
 				default:
 					$query = sprintf(LADDER_JOB, $GET_opt);
