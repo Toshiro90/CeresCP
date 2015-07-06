@@ -109,8 +109,10 @@ if (!empty($_SESSION[$CONFIG_name.'account_id']) && $CONFIG_set_slot) {
 				for ($i = 0; $i < $CONFIG_max_chars; $i++) {
 					if ($slot == $i)
 						echo '<option value="'.$i.'" selected="selected">'.$i.' - '.$slots[$i];
-					else
+					elseif (isset($slots[$i]))
 						echo '<option value="'.$i.'">'.$i.' - '.$slots[$i];
+					else
+						echo '<option value="'.$i.'">'.$i;
 				}
 				echo '</select>
 						<input type="submit" value="'.$lang['CHANGE'].'" disabled>
