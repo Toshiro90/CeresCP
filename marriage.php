@@ -118,8 +118,12 @@ if (!empty($_SESSION[$CONFIG_name.'account_id'])) {
 				$partnername = $lang['MARRIAGE_SINGLE'];
 			else
 				$partnername = htmlformat($line['partner_name']);
-			echo '
-			<tr>
+
+			if ($GID2 > 0)
+				echo '<tr>';
+			else
+				echo '<tr class="disabled">';
+			echo'
 				<td align="left">'.$charname.'</td>
 				<td align="left">'.$partnername.'</td>
 			';
