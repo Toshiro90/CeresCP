@@ -81,11 +81,11 @@ DEFINE('CHECK_ZENY', "SELECT `zeny`, `account_id` FROM `char` WHERE `char_id` = 
 
 //guild.php - Guild Ladder
 DEFINE('GUILD_LADDER', "SELECT `guild`.`name`, `guild`.`emblem_data`, `guild`.`guild_lv`, `guild`.`exp`, `guild`.`guild_id`,
-`guild`.`average_lv`, count(`guild_member`.`name`), (count(`guild_member`.`name`) * `guild`.`average_lv`) as `gmate`
+`guild`.`average_lv`, count(`guild_member`.`name`) as `count`, (count(`guild_member`.`name`) * `guild`.`average_lv`) as `gmate`, `master`
 FROM `guild` LEFT JOIN `guild_member` ON `guild`.`guild_id` = `guild_member`.`guild_id`
 GROUP BY `guild_member`.`guild_id` ORDER BY `guild`.`guild_lv` DESC, `guild`.`exp` DESC, `gmate` DESC LIMIT 0, 50
 ");
-DEFINE('GUILD_CASTLE', "SELECT `guild`.`name`, `guild`.`emblem_data`, `guild_castle`.`castle_id`, `guild`.`guild_id`
+DEFINE('GUILD_CASTLE', "SELECT `guild`.`name`, `guild`.`emblem_data`, `guild_castle`.`castle_id`, `guild`.`guild_id`, `master`
 FROM `guild_castle` LEFT JOIN `guild` ON `guild`.`guild_id` = `guild_castle`.`guild_id`
 ORDER BY (`guild_castle`.`castle_id` * 1)
 ");

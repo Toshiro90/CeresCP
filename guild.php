@@ -41,6 +41,7 @@ include_once 'lib/functions.php';
 			<th align="right">'.$lang['POS'].'</th>
 			<th align="center">'.$lang['GUILD_EMBLEM'].'</th>
 			<th align="left">'.$lang['GUILD_GNAME'].'</th>
+			<th align="left">'.$lang['GUILD_LEADER'].'</th>
 			<th align="left">'.$lang['GUILD_GLEVEL'].'</th>
 			<th align="right">'.$lang['GUILD_GEXPERIENCE'].'</th>
 			<th align="center">'.$lang['GUILD_MEMBERS'].'</th>
@@ -48,29 +49,30 @@ include_once 'lib/functions.php';
 		</tr>
 		';
 		for ($i = 1; $i < 51; $i++) {
-			if (!($line = $result->fetch_row()))
+			if (!($line = $result->fetch_assoc()))
 				break;
-			$gname = $line[0];
-			$gname = htmlformat($line[0]);
-			$emblems[$line[4]] = $line[1];
-			$experience = moneyformat($line[3]);
+			$gname = htmlformat($line['name']);
+			$gmaster = htmlformat($line['master']);
+			$emblems[$line['guild_id']] = $line['emblem_data'];
+			$experience = moneyformat($line['exp']);
 			echo '
 			<tr>
 				<td align="right">'.$i.'</td>
-				<td align="center"><img src="emblema.php?data='.$line[4].'" alt="'.$gname.'"></td>
+				<td align="center"><img src="emblema.php?data='.$line['guild_id'].'" alt="'.$gname.'"></td>
 				<td align="left">'.$gname.'</td>
-				<td align="left">'.$line[2].'</td>
+				<td align="left">'.$gmaster.'</td>
+				<td align="center">'.$line['guild_lv'].'</td>
 				<td align="right">'.$experience.'</td>
-				<td align="center">'.$line[6].'</td>
-				<td align="right">'.$line[5].'</td>
+				<td align="center">'.$line['count'].'</td>
+				<td align="right">'.$line['average_lv'].'</td>
 			</tr>';
 		}
 		echo '</table>';
 
 		if (is_woe()) {
 			caption($lang['WOE_TIME']);
-		} else {
-
+		}
+		else {
 			$query = sprintf(GUILD_CASTLE);
 			$result = execute_query($query, "guild.php");
 			caption($lang['GUILD_GCASTLES']);
@@ -80,20 +82,23 @@ include_once 'lib/functions.php';
 			<tr>
 				<th align="center">'.$lang['GUILD_EMBLEM'].'</th>
 				<th align="left">'.$lang['GUILD_GNAME'].'</th>
+				<th align="left">'.$lang['GUILD_LEADER'].'</th>
 				<th align="left">'.$lang['GUILD_GCASTLE'].'</th>
 			</tr>
 			';
-			for ($i = $i; $line = $result->fetch_row(); $i++) {
-				$gname = htmlformat($line[0]);
-				if (isset($castles[$line[2]]))
-					$cname = $castles[$line[2]];
+			for ($i = $i; $line = $result->fetch_assoc(); $i++) {
+				$gname = htmlformat($line['name']);
+				$gmaster = htmlformat($line['master']);
+				if (isset($castles[$line['castle_id']]))
+					$cname = $castles[$line['castle_id']];
 				else 
 					continue;
-				$emblems[$line[3]] = $line[1];
+				$emblems[$line['guild_id']] = $line['emblem_data'];
 				echo '
 				<tr>
-					<td align="center"><img src="emblema.php?data='.$line[3].'" alt="'.$gname.'"></td>
+					<td align="center"><img src="emblema.php?data='.$line['guild_id'].'" alt="'.$gname.'"></td>
 					<td align="left">'.$gname.'</td>
+					<td align="left">'.$gmaster.'</td>
 					<td align="left">'.$cname.'</td>
 				</tr>';
 			}

@@ -270,6 +270,7 @@ $lang['GUILD_GAVLEVEL'] = 'Average Level';
 $lang['GUILD_GCASTLES'] = 'Guild Castles';
 $lang['GUILD_GCASTLE'] = 'Castle';
 $lang['GUILD_MEMBERS'] = 'Members';
+$lang['GUILD_LEADER'] = 'Leader'; // TODO: translate
 
 //changemail.php
 $lang['CHANGEMAIL_MAIL_INVALID'] = 'Email yang baru salah.';

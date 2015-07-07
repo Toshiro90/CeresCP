@@ -269,6 +269,7 @@ $lang['GUILD_GAVLEVEL'] = 'Nível Médio';
 $lang['GUILD_GCASTLES'] = 'Castelos de Guildas';
 $lang['GUILD_GCASTLE'] = 'Castelo';
 $lang['GUILD_MEMBERS'] = 'Membros';
+$lang['GUILD_LEADER'] = 'Leader'; // TODO: translate
 
 //changemail.php
 $lang['CHANGEMAIL_MAIL_INVALID'] = 'Novo e-mail não é um e-mail válido.';

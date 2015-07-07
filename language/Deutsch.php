@@ -269,6 +269,7 @@ $lang['GUILD_GAVLEVEL'] = 'Gilden Level';
 $lang['GUILD_GCASTLES'] = 'Gilden Burgen';
 $lang['GUILD_GCASTLE'] = 'Burg';
 $lang['GUILD_MEMBERS'] = 'Mitglieder';
+$lang['GUILD_LEADER'] = 'Leiter';
 
 //changemail.php
 $lang['CHANGEMAIL_MAIL_INVALID'] = 'Neue E-Mail ist nicht aktzeptabel.';
